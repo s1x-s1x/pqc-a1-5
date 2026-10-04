@@ -29,6 +29,15 @@ jobs:
         run: make -C c OUT=../build/ci-native CFLAGS=-O3 all test review-test repair-test avx2-test wots-test prehash-test fault-test guard-test cuda-cleanup-host-test
       - name: Regression and bounded parser mutations
         run: python -B ops/run_review_checks.py --native-library build/ci-native/libslhdsa_sm3.so --output build/ci-review
+      - name: Incremental candidate correctness and analytical checks
+        env:
+          OMP_DYNAMIC: 'FALSE'
+        run: |
+          python -B tools/run_incremental_correctness.py --phase kernel --run-dir validation/incremental-ci-kernel
+          python -B tools/run_incremental_correctness.py --phase v1 --run-dir validation/incremental-ci-v1
+          python -B tools/run_incremental_correctness.py --phase integration --run-dir validation/incremental-ci-integration
+          python -B tools/record_incremental_analysis.py --output validation/incremental-ci-analysis
+          python -B tools/incremental_perf_plan.py --check
       - name: Sanitizers
         env:
           OMP_NUM_THREADS: '2'

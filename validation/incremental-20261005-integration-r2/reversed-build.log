@@ -1,0 +1,5 @@
+mkdir -p ../build/incremental-20261005-integration-r2/reversed
+rm -f ../build/incremental-20261005-integration-r2/reversed/.a15-config-*
+touch ../build/incremental-20261005-integration-r2/reversed/.a15-config-6ec7b2d19b14435164b9dd285a74269e79aaeac84efddf099500c1bfb3cfd1ba
+mkdir -p ../build/incremental-20261005-integration-r2/reversed
+cc -std=c11 -Wall -Wextra -Wno-misleading-indentation -fPIC -fopenmp -Iinclude -Isrc -I../third_party/slhdsa-c -DA15_INCREMENTAL_V1=1 -DA15_INCREMENTAL_B1=1 -DA15_INCREMENTAL_MODE=4 -DSLH_COUNTERS -O3 -DSLH_TEST_REVERSE_TASKS src/sm3.c src/sm3x8.c src/sm3_incremental.c ../third_party/slhdsa-c/sha2_256.c ../third_party/slhdsa-c/sha2_512.c ../third_party/slhdsa-c/sha3_api.c ../third_party/slhdsa-c/sha3_f1600.c src/sm3_cuda_stub.c tests/test_incremental_engine.c   -o ../build/incremental-20261005-integration-r2/reversed/test_incremental_engine

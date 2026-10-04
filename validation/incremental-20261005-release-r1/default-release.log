@@ -1,0 +1,40 @@
+mkdir -p ../build/incremental-20261005-release-r1/default
+rm -f ../build/incremental-20261005-release-r1/default/.a15-config-*
+touch ../build/incremental-20261005-release-r1/default/.a15-config-339ebe1331df30f2872cbf8f2e6b7d831accd693fdcef05a1702fc684ca5a665
+mkdir -p ../build/incremental-20261005-release-r1/default
+cc -std=c11 -Wall -Wextra -Wno-misleading-indentation -fPIC -fopenmp -Iinclude -Isrc -I../third_party/slhdsa-c -DA15_INCREMENTAL_V1=0 -DA15_INCREMENTAL_B1=0 -DA15_INCREMENTAL_MODE=0 -O3 -DSLH_RELEASE_BUILD -shared src/engine.c src/sm3.c src/sm3x8.c src/sm3_incremental.c ../third_party/slhdsa-c/sha2_256.c ../third_party/slhdsa-c/sha2_512.c ../third_party/slhdsa-c/sha3_api.c ../third_party/slhdsa-c/sha3_f1600.c src/sm3_cuda_stub.c   -o ../build/incremental-20261005-release-r1/default/libslhdsa_sm3.so
+python3 ../tools/check_native_guards.py --cc 'cc' --library ../build/incremental-20261005-release-r1/default/libslhdsa_sm3.so
+native guard source checks PASS: two-macro test gate, release exclusion, five calculation sites
+native guard compiler checks PASS: release code erased; four bad builds rejected; release symbols clean
+mkdir -p ../build/incremental-20261005-release-r1/default
+cc -std=c11 -Wall -Wextra -Wno-misleading-indentation -fPIC -fopenmp -Iinclude -Isrc -I../third_party/slhdsa-c -DA15_INCREMENTAL_V1=0 -DA15_INCREMENTAL_B1=0 -DA15_INCREMENTAL_MODE=0 -O3 src/sm3.c src/sm3x8.c src/sm3_incremental.c ../third_party/slhdsa-c/sha2_256.c ../third_party/slhdsa-c/sha2_512.c ../third_party/slhdsa-c/sha3_api.c ../third_party/slhdsa-c/sha3_f1600.c src/sm3_cuda_stub.c tests/test_wots.c   -o ../build/incremental-20261005-release-r1/default/test_wots
+../build/incremental-20261005-release-r1/default/test_wots
+WOTS pid=201 lane masks/tails1..8/start/zero/max/divergent steps: 96 comparisons PASS
+WOTS pid=201 lgw=2 len=68 leaf/sign/T_len/recovery/auth/counters: 96 comparisons PASS
+WOTS pid=1 lane masks/tails1..8/start/zero/max/divergent steps: 96 comparisons PASS
+WOTS pid=1 lgw=4 len=35 leaf/sign/T_len/recovery/auth/counters: 96 comparisons PASS
+WOTS pid=2 lane masks/tails1..8/start/zero/max/divergent steps: 96 comparisons PASS
+WOTS pid=2 lgw=4 len=35 leaf/sign/T_len/recovery/auth/counters: 96 comparisons PASS
+WOTS pid=3 lane masks/tails1..8/start/zero/max/divergent steps: 96 comparisons PASS
+WOTS pid=3 lgw=2 len=68 leaf/sign/T_len/recovery/auth/counters: 96 comparisons PASS
+WOTS correctness PASS; no performance measured
+mkdir -p ../build/incremental-20261005-release-r1/default
+cc -std=c11 -Wall -Wextra -Wno-misleading-indentation -fPIC -fopenmp -Iinclude -Isrc -I../third_party/slhdsa-c -DA15_INCREMENTAL_V1=0 -DA15_INCREMENTAL_B1=0 -DA15_INCREMENTAL_MODE=0 -O3 src/engine.c src/sm3.c src/sm3x8.c src/sm3_incremental.c ../third_party/slhdsa-c/sha2_256.c ../third_party/slhdsa-c/sha2_512.c ../third_party/slhdsa-c/sha3_api.c ../third_party/slhdsa-c/sha3_f1600.c src/sm3_cuda_stub.c tests/test_prehash.c   -o ../build/incremental-20261005-release-r1/default/test_prehash
+../build/incremental-20261005-release-r1/default/test_prehash
+five prehash abc known answers/lengths PASS
+prehash id=1 backend=1 message/digest/DER/internal/mode/context/length/counters PASS
+prehash id=2 backend=1 message/digest/DER/internal/mode/context/length/counters PASS
+prehash id=3 backend=1 message/digest/DER/internal/mode/context/length/counters PASS
+prehash id=4 backend=1 message/digest/DER/internal/mode/context/length/counters PASS
+prehash id=5 backend=1 message/digest/DER/internal/mode/context/length/counters PASS
+prehash id=1 backend=2 message/digest/DER/internal/mode/context/length/counters PASS
+prehash id=2 backend=2 message/digest/DER/internal/mode/context/length/counters PASS
+prehash id=3 backend=2 message/digest/DER/internal/mode/context/length/counters PASS
+prehash id=4 backend=2 message/digest/DER/internal/mode/context/length/counters PASS
+prehash id=5 backend=2 message/digest/DER/internal/mode/context/length/counters PASS
+native prehash checks PASS
+mkdir -p ../build/incremental-20261005-release-r1/default
+cc -std=c11 -Wall -Wextra -Wno-misleading-indentation -fPIC -fopenmp -Iinclude -Isrc -I../third_party/slhdsa-c -DA15_INCREMENTAL_V1=0 -DA15_INCREMENTAL_B1=0 -DA15_INCREMENTAL_MODE=0 -O3 src/sm3.c src/sm3x8.c src/sm3_incremental.c ../third_party/slhdsa-c/sha2_256.c ../third_party/slhdsa-c/sha2_512.c ../third_party/slhdsa-c/sha3_api.c ../third_party/slhdsa-c/sha3_f1600.c src/sm3_cuda_stub.c tests/test_repair.c   -o ../build/incremental-20261005-release-r1/default/test_repair
+../build/incremental-20261005-release-r1/default/test_repair ../build/incremental-20261005-release-r1/default/repair.cache
+repair midstate full256/boundaries/thread-copy: 224 comparisons PASS
+repair capacities/private-publication/reordered-tasks/changing-cache/failure-wipes: PASS; 169709 observed wipes

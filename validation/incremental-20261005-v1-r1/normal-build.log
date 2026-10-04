@@ -1,0 +1,5 @@
+mkdir -p ../build/incremental-20261005-v1-r1/normal
+rm -f ../build/incremental-20261005-v1-r1/normal/.a15-config-*
+touch ../build/incremental-20261005-v1-r1/normal/.a15-config-766ddb8487aac9808d5162c0bab8a24a6f3bd908f9320f608faf948413ee53b9
+mkdir -p ../build/incremental-20261005-v1-r1/normal
+gcc -std=c11 -Wall -Wextra -Wno-misleading-indentation -fPIC -fopenmp -Iinclude -Isrc -I../third_party/slhdsa-c -DA15_INCREMENTAL_V1=1 -O3 -DSLH_COUNTERS src/sm3.c src/sm3x8.c ../third_party/slhdsa-c/sha2_256.c ../third_party/slhdsa-c/sha2_512.c ../third_party/slhdsa-c/sha3_api.c ../third_party/slhdsa-c/sha3_f1600.c src/sm3_cuda_stub.c tests/test_incremental_v1.c   -o ../build/incremental-20261005-v1-r1/normal/test_incremental_v1

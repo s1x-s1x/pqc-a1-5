@@ -1,0 +1,5 @@
+mkdir -p ../build/incremental-20261005-integration-r1/m3-b0
+rm -f ../build/incremental-20261005-integration-r1/m3-b0/.a15-config-*
+touch ../build/incremental-20261005-integration-r1/m3-b0/.a15-config-a981128cb479190cf194a635014a96ad8c52f2c6864d159b7a42c5b8f661770a
+mkdir -p ../build/incremental-20261005-integration-r1/m3-b0
+cc -std=c11 -Wall -Wextra -Wno-misleading-indentation -fPIC -fopenmp -Iinclude -Isrc -I../third_party/slhdsa-c -DA15_INCREMENTAL_V1=1 -DA15_INCREMENTAL_B1=0 -DA15_INCREMENTAL_MODE=3 -O3 src/sm3.c src/sm3x8.c src/sm3_incremental.c ../third_party/slhdsa-c/sha2_256.c ../third_party/slhdsa-c/sha2_512.c ../third_party/slhdsa-c/sha3_api.c ../third_party/slhdsa-c/sha3_f1600.c src/sm3_cuda_stub.c tests/test_incremental_engine.c   -o ../build/incremental-20261005-integration-r1/m3-b0/test_incremental_engine

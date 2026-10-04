@@ -1,0 +1,24 @@
+test_authentication_cost_by_independent_sibling_tree_enumeration (tools.test_incremental_parameters.FormulaTests.test_authentication_cost_by_independent_sibling_tree_enumeration) ... ok
+test_cache_compression_saving_is_distinct_from_primitive_saving (tools.test_incremental_parameters.FormulaTests.test_cache_compression_saving_is_distinct_from_primitive_saving) ... ok
+test_cache_storage_anchors_and_counted_vs_uninstrumented_load (tools.test_incremental_parameters.FormulaTests.test_cache_storage_anchors_and_counted_vs_uninstrumented_load) ... ok
+test_costs_agree_with_implemented_counter_model_at_wots_extremes (tools.test_incremental_parameters.FormulaTests.test_costs_agree_with_implemented_counter_model_at_wots_extremes) ... ok
+test_published_size_and_fors_anchors (tools.test_incremental_parameters.FormulaTests.test_published_size_and_fors_anchors) ... ok
+test_q1_probability_has_independent_closed_form (tools.test_incremental_parameters.FormulaTests.test_q1_probability_has_independent_closed_form) ... ok
+test_reject_unfrozen_structures_or_levels (tools.test_incremental_parameters.FormulaTests.test_reject_unfrozen_structures_or_levels) ... ok
+test_cache_scales_with_active_keys (tools.test_incremental_parameters.ResourceTests.test_cache_scales_with_active_keys) ... ok
+test_each_constraint_accepts_boundary_and_rejects_one_above (tools.test_incremental_parameters.ResourceTests.test_each_constraint_accepts_boundary_and_rejects_one_above) ... ok
+test_four_keys_budget_changes_cache_feasibility (tools.test_incremental_parameters.ResourceTests.test_four_keys_budget_changes_cache_feasibility) ... ok
+test_native_applicability_and_explicit_reserve (tools.test_incremental_parameters.ResourceTests.test_native_applicability_and_explicit_reserve) ... ok
+test_shared_tables_are_not_charged_once_per_worker (tools.test_incremental_parameters.ResourceTests.test_shared_tables_are_not_charged_once_per_worker) ... ok
+test_smaller_secret_representation_does_not_claim_smaller_total (tools.test_incremental_parameters.ResourceTests.test_smaller_secret_representation_does_not_claim_smaller_total) ... ok
+test_cache_prepare_interaction_depends_on_usage (tools.test_incremental_parameters.SelectionTests.test_cache_prepare_interaction_depends_on_usage) ... ok
+test_exact_sign_vs_verify_boundary_with_ref_self_verify (tools.test_incremental_parameters.SelectionTests.test_exact_sign_vs_verify_boundary_with_ref_self_verify) ... ok
+test_minimax_regret_uses_same_candidates_in_every_scenario (tools.test_incremental_parameters.SelectionTests.test_minimax_regret_uses_same_candidates_in_every_scenario) ... ok
+test_pareto_includes_storage_and_does_not_discard_small_cache (tools.test_incremental_parameters.SelectionTests.test_pareto_includes_storage_and_does_not_discard_small_cache) ... ok
+test_pinned_upstream_table_changes_are_detected (tools.test_incremental_parameters.SelectionTests.test_pinned_upstream_table_changes_are_detected) ... ok
+test_workload_cost_is_exact_and_float_weights_rejected (tools.test_incremental_parameters.SelectionTests.test_workload_cost_is_exact_and_float_weights_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 0.017s
+
+OK

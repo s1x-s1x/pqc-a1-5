@@ -1,0 +1,7 @@
+mkdir -p ../build/incremental-20261005-isolation-r1/cuda
+rm -f ../build/incremental-20261005-isolation-r1/cuda/.a15-config-*
+touch ../build/incremental-20261005-isolation-r1/cuda/.a15-config-b344a6e2192398b215471655499287696baeff348544a48ceed98b5603145774
+mkdir -p ../build/incremental-20261005-isolation-r1/cuda
+nvcc -std=c++14 -O3 -gencode=arch=compute_86,code=compute_86 -Xcompiler=-fPIC,-fvisibility=hidden,-pthread -Iinclude -Isrc -DSLH_RELEASE_BUILD -c src/sm3_cuda.cu -o ../build/incremental-20261005-isolation-r1/cuda/sm3_cuda.o
+mkdir -p ../build/incremental-20261005-isolation-r1/cuda
+cc -std=c11 -Wall -Wextra -Wno-misleading-indentation -fPIC -fopenmp -Iinclude -Isrc -I../third_party/slhdsa-c -DA15_INCREMENTAL_V1=1 -DA15_INCREMENTAL_B1=1 -DA15_INCREMENTAL_MODE=4 -O3 src/sm3.c src/sm3x8.c src/sm3_incremental.c ../third_party/slhdsa-c/sha2_256.c ../third_party/slhdsa-c/sha2_512.c ../third_party/slhdsa-c/sha3_api.c ../third_party/slhdsa-c/sha3_f1600.c tests/test_incremental_isolation.c ../build/incremental-20261005-isolation-r1/cuda/sm3_cuda.o -L/usr/lib/x86_64-linux-gnu -lcudart -lstdc++ -pthread -o ../build/incremental-20261005-isolation-r1/cuda/test_incremental_engine

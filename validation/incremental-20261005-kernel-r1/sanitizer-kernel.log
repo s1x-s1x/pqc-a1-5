@@ -1,0 +1,1 @@
+{"status":"passed","checks":5159276,"basis_inputs":512,"stream_batches":4264,"table_publication_streams":88,"parallel_enabled":true,"stream_object_bytes":2304,"secret_w8_bytes":2176,"secret_u_bytes":272,"public_delta_bytes":5712,"public_offsets_all_q_bytes":47872,"performance_samples":0}

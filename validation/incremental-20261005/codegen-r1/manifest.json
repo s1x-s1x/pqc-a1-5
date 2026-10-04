@@ -1,0 +1,114 @@
+{
+  "compiler": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+  "compile_command": [
+    "gcc",
+    "-std=c11",
+    "-O3",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-Wpedantic",
+    "-fstack-usage",
+    "-fPIC",
+    "-DSLH_RELEASE_BUILD",
+    "-Ic/src",
+    "-c",
+    "c/src/sm3_incremental.c",
+    "-o",
+    "/home/guest-experiment/pqc-a1-5/validation/incremental-20261005/codegen-r1/sm3_incremental.o"
+  ],
+  "stack_usage": [
+    {
+      "function": "c/src/sm3_incremental.c:17:13:expand",
+      "stack_bytes": 8,
+      "classification": "static"
+    },
+    {
+      "function": "c/src/sm3_incremental.c:159:18:update8",
+      "stack_bytes": 8,
+      "classification": "static"
+    },
+    {
+      "function": "c/src/sm3_incremental.c:107:18:expand8",
+      "stack_bytes": 8,
+      "classification": "static"
+    },
+    {
+      "function": "c/src/sm3_incremental.c:82:25:prepare_offsets",
+      "stack_bytes": 880,
+      "classification": "static"
+    },
+    {
+      "function": "c/src/sm3_incremental.c:47:13:layout_bytes",
+      "stack_bytes": 112,
+      "classification": "static"
+    },
+    {
+      "function": "c/src/sm3_incremental.c:122:18:rounds8",
+      "stack_bytes": 864,
+      "classification": "static"
+    },
+    {
+      "function": "c/src/sm3_incremental.c:122:18:rounds8.constprop",
+      "stack_bytes": 864,
+      "classification": "static"
+    },
+    {
+      "function": "c/src/sm3_incremental.c:25:5:a15_sm3i_layout_words",
+      "stack_bytes": 8,
+      "classification": "static"
+    },
+    {
+      "function": "c/src/sm3_incremental.c:222:13:build_schedule",
+      "stack_bytes": 192,
+      "classification": "static"
+    },
+    {
+      "function": "c/src/sm3_incremental.c:201:5:a15_sm3i_thash8",
+      "stack_bytes": 3120,
+      "classification": "static"
+    },
+    {
+      "function": "c/src/sm3_incremental.c:217:6:a15_sm3i_clear",
+      "stack_bytes": 8,
+      "classification": "static"
+    },
+    {
+      "function": "c/src/sm3_incremental.c:238:5:a15_sm3i_init",
+      "stack_bytes": 80,
+      "classification": "static"
+    },
+    {
+      "function": "c/src/sm3_incremental.c:264:5:a15_sm3i_consume",
+      "stack_bytes": 304,
+      "classification": "static"
+    },
+    {
+      "function": "c/src/sm3_incremental.c:274:5:a15_sm3i_advance",
+      "stack_bytes": 16,
+      "classification": "static"
+    },
+    {
+      "function": "c/src/sm3_incremental.c:286:5:a15_sm3i_next",
+      "stack_bytes": 304,
+      "classification": "static"
+    }
+  ],
+  "round_AVX2_present": true,
+  "baseline_initializer_AVX_free": true,
+  "performance_samples": 0,
+  "scope": "compiler stack frames and disassembly only; not RSS, physical leakage, or complete spill erasure",
+  "source_sha256": {
+    "c/src/sm3_incremental.c": "1a5ce2d63e1dfcbb58771d493bb696ac37da58065b334bd300fd2bfc6722de52",
+    "c/src/sm3_incremental.h": "26185cd00d4c55db2a0141095d8992a3f8c4aa114f7a36b4925db8f46dc9c44c",
+    "c/src/secure_zero.h": "9ac49e9ece7575d338b8cec116cbacee394273392f2672af97af58266dca2b70",
+    "tools/check_incremental_release.py": "4ee7b641061c446adda977b15cd20657141d1f4ff37449b042c2f55fab8471b5",
+    "tools/inspect_incremental_codegen.py": "63bc2e7cee609db8156cd64cf0960091ced8adf5864c7b90f771054d465fc859"
+  },
+  "files_sha256": {
+    "sm3_incremental.su": "aab17b54605864341b043193c4fe8afe9f434607c152416f9d6ae3350c7d9b3b",
+    "sm3_incremental.asm": "91119b4794b67b2da463645494d1e6d7230cc4493bd58083960866b28b718448",
+    "release-guards.json": "b8b830b3c26714bfcfa6758c22080bf7acaea6d7b0238dddb6a3d69e60b11fd7",
+    "sm3_incremental.o": "a9bf6bdadf984465b3d20c9c854422e4b9cb0b6a64adabe940dc92206ba6f569"
+  }
+}

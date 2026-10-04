@@ -1,0 +1,411 @@
+{
+  "schema": "a15-incremental-isolation-v1",
+  "performance_samples": 0,
+  "performance_enabled": false,
+  "source_sha256": {
+    "c/Makefile": "38c3fe2763f9d3c7d53f377de8f7028ea58749944aa34b72c5719c180c007769",
+    "c/fors_snapshot_20261004/include__slhdsa_sm3.h": "3db66ab03238caea0c2880c61875d2be3a6216de45c9aeb8d086e7b362ff243c",
+    "c/fors_snapshot_20261004/src__engine.c": "7d767a8b55ba81d62adfb1a29363c6471787cfbdcac335ed0ce5c98484188615",
+    "c/fors_snapshot_20261004/src__sm3.c": "5b165c63a7747fbad817459e1e4cbff4e884eab53ba5a14539b401a89db2d2dc",
+    "c/fors_snapshot_20261004/src__sm3.h": "a8eb36558ee2680ffb486c81430461406f8a6002a367d3187fa130e3e0d46761",
+    "c/fors_snapshot_20261004/src__sm3x8.c": "6d419a5e838c2402b5021b1bed6f8c4047402848ea2df234555cb210557e8f05",
+    "c/fors_snapshot_20261004/src__sm3x8.h": "94f3bef4ff710d6fff7d3e29633e390778ef0cfd2b4ab90084a01e497da43fc4",
+    "c/fors_snapshot_20261004/tests__test_avx2.c": "c97da4c1494073276977a166ba9df34d45bd304d56528c79df09bd6fd1e85a60",
+    "c/fors_snapshot_20261004/tests__test_fault.c": "248400cc2474fcfa9f441f12e8ece08a6c2ddcf6b3fed0692b1037a9dd61d745",
+    "c/fors_snapshot_20261004/tests__test_native.c": "e6452112bb3bfd4fd730c46301e8547e4dbba6b6cee248e42c11f129dace5723",
+    "c/fors_snapshot_20261004/tests__test_prehash.c": "f7c91d9e01ba8d82b4cd9ec50d7d3dad12c95ac3ebcc62f82d008d088c30e4c7",
+    "c/include/slhdsa_sm3.h": "dd3c12dd2ea439eab9bdd38fead74bd1bdae271588650c9fd1a8e511f52674c4",
+    "c/scalar_snapshot_20261004/include__slhdsa_sm3.h": "c84ef52141276d408b2f4b48155093c6e6011e69f0cfbc773006f68c9cab8cb5",
+    "c/scalar_snapshot_20261004/src__engine.c": "3dfd824ae1d619c041c7018f491c32e6fffd6a7138489c676301a7fe716d5acc",
+    "c/scalar_snapshot_20261004/src__sm3.c": "e655fbb8b8048230562beb03c8e0a0a0702acbed9a5a7e62862f0fcb8c374114",
+    "c/scalar_snapshot_20261004/src__sm3.h": "a00c3116686428ef9fbc7d4f7a9e88f066cf45ba39812fd7f17ec25ea70439b3",
+    "c/scalar_snapshot_20261004/tests__test_fault.c": "12e484882299aacc79f4b0732d80b49ee0d60c9f644fd53a6f6182a3fe9438aa",
+    "c/scalar_snapshot_20261004/tests__test_native.c": "4998f2cacc173249c76bdda2f3f880456016e7f83b42b5983201bfa7befb0739",
+    "c/scalar_snapshot_20261004/tests__test_review.c": "b906632f604a8b59abd32c76ab37a2b9b6c3f195dc8501db7971af72dc1f0e52",
+    "c/src/cuda_cleanup.h": "4a3f07159ddc9c0b12a8d5a571df2f1491fab269911b97c82b4e6e2b8372c3bc",
+    "c/src/engine.c": "3ff0bc4e9d4c0bd35ec527c04322cf857310f37899026b6b61f2e0bf1f826d07",
+    "c/src/fors_verify_x8.inc": "250e0f7e8745a3a38afbff97b5f8f656330015eff475c1a15d175f6304490504",
+    "c/src/secure_zero.h": "9ac49e9ece7575d338b8cec116cbacee394273392f2672af97af58266dca2b70",
+    "c/src/sm3.c": "1e2712dc6a2ac0f7f2950936acc37c08d80c69e39743ce211abbc5ed7142d20f",
+    "c/src/sm3.h": "a8eb36558ee2680ffb486c81430461406f8a6002a367d3187fa130e3e0d46761",
+    "c/src/sm3_cuda.cu": "9f7cbfedc974060cc70e30c9a1c99c8a5f290e73abd8695b18a8822634f90309",
+    "c/src/sm3_cuda.h": "6354878a69a8c299688d8805de46a4b6adfecdf43560de04d6f081feabd18bf1",
+    "c/src/sm3_cuda_device.cuh": "7e9a63997620c38a1a8b93406b55ebbde9201679c4a1006f2b6cc1867c9ee48e",
+    "c/src/sm3_cuda_stub.c": "b5f2ccb7c8ca60e0eb8adf4609962ad0f5f6acbb109b22a799cc33e274a998f6",
+    "c/src/sm3_incremental.c": "1a5ce2d63e1dfcbb58771d493bb696ac37da58065b334bd300fd2bfc6722de52",
+    "c/src/sm3_incremental.h": "26185cd00d4c55db2a0141095d8992a3f8c4aa114f7a36b4925db8f46dc9c44c",
+    "c/src/sm3x8.c": "41da8e709dd31d8ce126b5ea4bbf972ad57fcdc1565247a959f94f8001263b2e",
+    "c/src/sm3x8.h": "94f3bef4ff710d6fff7d3e29633e390778ef0cfd2b4ab90084a01e497da43fc4",
+    "c/tests/test_avx2.c": "8fa2c9478fec4a81accca00d9cec4b20257feec2d75aadec512aed574c37a9f5",
+    "c/tests/test_cuda.c": "6dee97e16a8f89832f6073f106c3b96202648c4d20de5b3ed23d51e61710e16b",
+    "c/tests/test_fault.c": "b40a103482ef8490756a765238a4fafadd703be6652a4fa91e219b7b91760d68",
+    "c/tests/test_incremental_engine.c": "bacee7879239dcc20e4febd4eea42359f3143b53ce326e0eddf2ff96d645f369",
+    "c/tests/test_incremental_isolation.c": "b33ba3063bffa82be62507a1ba16a42fe86d1cecf2d36195a52d8e8fb1ea994d",
+    "c/tests/test_incremental_kernel.c": "a0bfa9f2109f87a0f555c624e71a85aafb8a8630b61d15df8e3285ec1c4038a7",
+    "c/tests/test_incremental_v1.c": "77cd43ae4e1d826814a61c37e53aa2a5028238e4ea1d145b3dd0122501c49dea",
+    "c/tests/test_native.c": "e6452112bb3bfd4fd730c46301e8547e4dbba6b6cee248e42c11f129dace5723",
+    "c/tests/test_prehash.c": "f7c91d9e01ba8d82b4cd9ec50d7d3dad12c95ac3ebcc62f82d008d088c30e4c7",
+    "c/tests/test_repair.c": "13833da787015ed9d0f76ce962707a3c0589c82466c78f898c658279915a5a35",
+    "c/tests/test_review.c": "b906632f604a8b59abd32c76ab37a2b9b6c3f195dc8501db7971af72dc1f0e52",
+    "c/tests/test_wots.c": "a9e79929776709535b365f5c0bd18853bb04c39c2b6ba5b33a81c204b6cbe413",
+    "third_party/slhdsa-c/plat_local.h": "57ca78d49794cbfd5b45bca5b31576e8de126eb3b9e07beb7a783282f84d706a",
+    "third_party/slhdsa-c/sha2_256.c": "cbc9ef22886cf8a6a8f4e51b60b4b858d9c8a5a5dbe2ad16764a7e6ea3fba85c",
+    "third_party/slhdsa-c/sha2_512.c": "b06e26570cc3492b060c7f97d4fe7f69b1667628c176ed9f83af11b60076c9aa",
+    "third_party/slhdsa-c/sha2_api.h": "96698a33d10b8e1c50f82ee82e34209f37607ea207baaf6ee8f238bff9878ef7",
+    "third_party/slhdsa-c/sha3_api.c": "6d3814614abbc671f290a39a65c0ab7dd9176a31c4cca52cd28b7d37b06cccdb",
+    "third_party/slhdsa-c/sha3_api.h": "1432755b08078487d2391f2bdb3def145f3f5c8855e01ab301fd9e9f7ce0b4eb",
+    "third_party/slhdsa-c/sha3_f1600.c": "1c094367c05bb887fd5b48faf24125619904b88fe0c18ca0d64dd4e5bb5ab757",
+    "third_party/slhdsa-c/slh_adrs.h": "fbf442b5a4ba250531aad2a3f7f082df968910ca28f14863ea8dd7227b7542cf",
+    "third_party/slhdsa-c/slh_dsa.c": "8587b0de61a7b2396dd457f86ae2478ae74f6c6720e4375b41ae060caf2a9a6e",
+    "third_party/slhdsa-c/slh_dsa.h": "9fe6c6b5b59bcb7c19b535060fddbb6af0ab7800a1d8cf1bf92245d46d902f75",
+    "third_party/slhdsa-c/slh_param.h": "bdf877749c858e887bd4f4e41e2dde4f3b0a69f0881d51c8362af7ea10216d5b",
+    "third_party/slhdsa-c/slh_prehash.c": "606b642b698f88ff678e4eed19e146678614339d9288874fdf974c856b52bad2",
+    "third_party/slhdsa-c/slh_prehash.h": "8415e1911ba6a9029be79fe76d330087b97d00ac0cecc68bdaa1284ad3b11113",
+    "third_party/slhdsa-c/slh_sha2.c": "961951fc123bbe571218b3459572ac6e682ec83bddba1c5fbec80cf8d5987c9a",
+    "third_party/slhdsa-c/slh_shake.c": "63a95a40479d4c9b70b90b38bc531ce0c8d2d891c585612a723521c86855bbc6",
+    "third_party/slhdsa-c/slh_var.h": "9ae8c5f4a8646bae74d9ebb6abd7c67627bde8aa78ddc97c3e523154460592b9",
+    "third_party/slhdsa-c/test/my_dbg.c": "cb81992bc7e254dd03e43b1440f0f3f5190b22c8c5735a4e760655595bda0b4e",
+    "third_party/slhdsa-c/test/my_dbg.h": "9dd2c35b1a8ccd695ab652509c0cf3d47400da44c9be69d5b7fb89704e9ba921",
+    "third_party/slhdsa-c/test/xcount.c": "2b8ede4b5e9641b9b6dbe7ba18ac4c06356cdc05807a71219ac1cded00bbcc82",
+    "third_party/slhdsa-c/test/xfips205.c": "fd0a6761e1dee7fb0898c3daa7aee1d0b4bbc375e31de8748a789d7356273b7e",
+    "tools/run_incremental_correctness.py": "82c9f6fc887d942b4d5863e3a585c36f06e25fdda2538fb0412c0f4fb9c1626e",
+    "tools/close_incremental_correctness.py": "4ece9f82666bb38193892c57fbc3549207ac9cf1b90da91d5f472fe8303a445b"
+  },
+  "steps": [
+    {
+      "name": "sanitizer-build",
+      "command": [
+        "make",
+        "-f",
+        "/home/guest-experiment/pqc-a1-5/build/incremental-isolation.Makefile",
+        "OUT=../build/incremental-20261005-isolation-r1/sanitizer",
+        "CFLAGS=-O1 -g -fsanitize=address,undefined -fno-omit-frame-pointer",
+        "INCREMENTAL_MODE=4",
+        "INCREMENTAL_B1=1",
+        "INCREMENTAL_V1=1",
+        "../build/incremental-20261005-isolation-r1/sanitizer/test_incremental_engine"
+      ],
+      "returncode": 0,
+      "log": "validation/incremental-20261005-isolation-r1/sanitizer-build.log",
+      "log_sha256": "a380af9a9bcb2b17a13aaf2555d103419a561e38a3f74901849b5b8cf38d6055"
+    },
+    {
+      "name": "sanitizer-isolation",
+      "command": [
+        "/home/guest-experiment/pqc-a1-5/build/incremental-20261005-isolation-r1/sanitizer/test_incremental_engine",
+        "/home/guest-experiment/pqc-a1-5/build/incremental-20261005-full-af-r2/fixtures/python-3-0/pk.bin",
+        "/home/guest-experiment/pqc-a1-5/build/incremental-20261005-full-af-r2/fixtures/python-3-0/sig.bin",
+        "/home/guest-experiment/pqc-a1-5/build/incremental-20261005-full-af-r2/fixtures/python-3-0/message.bin",
+        "/home/guest-experiment/pqc-a1-5/build/incremental-20261005-full-af-r2/fixtures/python-3-0/context.bin"
+      ],
+      "returncode": 0,
+      "log": "validation/incremental-20261005-isolation-r1/sanitizer-isolation.log",
+      "log_sha256": "577cb77ef3db51193905275f21a35eb78f71b35fbb5e78515a4a94123274b988"
+    },
+    {
+      "name": "cuda-build",
+      "command": [
+        "make",
+        "-f",
+        "/home/guest-experiment/pqc-a1-5/build/incremental-isolation.Makefile",
+        "OUT=../build/incremental-20261005-isolation-r1/cuda",
+        "CFLAGS=-O3",
+        "INCREMENTAL_MODE=4",
+        "INCREMENTAL_B1=1",
+        "INCREMENTAL_V1=1",
+        "CUDA=1",
+        "../build/incremental-20261005-isolation-r1/cuda/test_incremental_engine"
+      ],
+      "returncode": 0,
+      "log": "validation/incremental-20261005-isolation-r1/cuda-build.log",
+      "log_sha256": "4841f5258525358c3fafd660ba446e3d0626f3821a6cd3e6f227dd83e40933d3"
+    },
+    {
+      "name": "cuda-isolation",
+      "command": [
+        "/home/guest-experiment/pqc-a1-5/build/incremental-20261005-isolation-r1/cuda/test_incremental_engine",
+        "/home/guest-experiment/pqc-a1-5/build/incremental-20261005-full-af-r2/fixtures/python-3-0/pk.bin",
+        "/home/guest-experiment/pqc-a1-5/build/incremental-20261005-full-af-r2/fixtures/python-3-0/sig.bin",
+        "/home/guest-experiment/pqc-a1-5/build/incremental-20261005-full-af-r2/fixtures/python-3-0/message.bin",
+        "/home/guest-experiment/pqc-a1-5/build/incremental-20261005-full-af-r2/fixtures/python-3-0/context.bin",
+        "cuda"
+      ],
+      "returncode": 0,
+      "log": "validation/incremental-20261005-isolation-r1/cuda-isolation.log",
+      "log_sha256": "2b38eb995ec93fde72da0c3348bc801dc8a615cf5e47148030b781f2c1e18b28"
+    }
+  ],
+  "passed": true,
+  "artifacts": [
+    {
+      "path": "build/incremental-20261005-isolation-r1/sanitizer/test_incremental_engine",
+      "sha256": "4148e59b1bf2fc2e8c6d58b79e572ceaaf638b161a00c392dd6301aa7025058a",
+      "capture": "immediately after accepted run"
+    },
+    {
+      "path": "build/incremental-20261005-isolation-r1/cuda/test_incremental_engine",
+      "sha256": "6f7783d9d75f2beabf133e68179b64daa2dcfd480d3c9b2e94025a7d637e700f",
+      "capture": "immediately after accepted run"
+    },
+    {
+      "path": "build/incremental-20261005-v1-r1/normal/test_incremental_v1",
+      "sha256": "c337e1b963d2096d0ffb8941d6ae7ec4ee21eceeb2cbcfdf951be79be19c517e",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-v1-r1/sanitizer/test_incremental_v1",
+      "sha256": "723d8fc2797cabbc2863ce7f5748d086a169d6830da69c6c2099bc44071d1768",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-kernel-r1/normal/test_incremental_kernel",
+      "sha256": "b915828da442bf30a233ded625db87dbae98f6f402fdaaaf62a514a88a4c7d0d",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-kernel-r1/portable/test_incremental_kernel",
+      "sha256": "35a9ccb8b6748e5d8ba06a736e5f720fb4f159be2046e7b274870638e67c0e20",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-kernel-r1/sanitizer/test_incremental_kernel",
+      "sha256": "ac9c4f33e4e2a9fe6fe3c051628be5507b62710636f076a722965f9dd7e2621e",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-integration-r1/fault-2/test_incremental_fault_2",
+      "sha256": "b5ed3829bb419d422d3f34342196073588345596d6c8fec367c7446de98990b6",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-integration-r1/fault-5/test_incremental_fault_5",
+      "sha256": "53ecaee8fc1ffd131d5ee0834e26a1c46c0346b5029d76ddf3bd02a53940e413",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-integration-r1/m0-b0/test_incremental_engine",
+      "sha256": "c260522ebfe593968b7b05bbd1f4a1d088fc1ae350e3e4b15f59fcc73a6d8669",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-integration-r1/m0-b1/test_incremental_engine",
+      "sha256": "57b6a784bb5acacbf6e108c53bc9301b382dbbef6ebb4f6fd7229f18dc4a338a",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-integration-r1/m1-b0/test_incremental_engine",
+      "sha256": "7244099ac48637236a78237dd12c683d5b71351e8317614fd7a30dd39b936dbe",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-integration-r1/m1-b1/test_incremental_engine",
+      "sha256": "e6f6d071e6cffc819dcdad578c0a1e00f23599d78bffd937a0b5f8491d2fbd51",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-integration-r1/m2-b0/test_incremental_engine",
+      "sha256": "62177794282991c9df84283a3edb90e44e2eee4863784d82ea546832a39fa2a7",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-integration-r1/m2-b1/test_incremental_engine",
+      "sha256": "51dd0202764be563203fbe56995f679a96232438a4f7df5a4f0dc51bff38660d",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-integration-r1/m3-b0/test_incremental_engine",
+      "sha256": "8b85635dca871a0bcfdbaca481d1d7fbb4975c725468b6007c86379689801ada",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-integration-r1/m3-b1/test_incremental_engine",
+      "sha256": "f17a29bb5ba073627eea3bd4b2334628487b61f3a8e56e530f2275ebdb5322e6",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-integration-r1/m4-b0/test_incremental_engine",
+      "sha256": "2b9dc9b005c69d2a50e7d4540bff96b83eb94e6891d0ef76c460ab275c118ccc",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-integration-r1/m4-b1/test_incremental_engine",
+      "sha256": "61dce1e7a316e4108331b0c4d9d34a61d52bec29ce16aab267f7e2eb3612b32a",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-integration-r1/reversed/test_incremental_engine",
+      "sha256": "db99c5319cbb7817a3eecf4cf3199cf74c791a712565621434e5b1719cbeb3fc",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-integration-r1/sanitizer/test_incremental_engine",
+      "sha256": "331016b3879d27ec130eb64e47823b22ff59b4baea239980e521ec9537f6d0a8",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-integration-r2/fault-2/test_incremental_fault_2",
+      "sha256": "7f1812138f4cb524e071780d31e5d4101d7c2105109f5933d9c0067faa961b01",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-integration-r2/fault-5/test_incremental_fault_5",
+      "sha256": "7b51b1022706c52532de22f7282ee8980e2973905f630e9d47028e90b698ad6b",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-integration-r2/m0-b0/test_incremental_engine",
+      "sha256": "833496a56967120648b8b0402cbca5bc6287f573f48d3f4469feb53ec0789f40",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-integration-r2/m0-b1/test_incremental_engine",
+      "sha256": "b45ab23c5ec20cd0237755e9567ea81237f3ee1aa8ba34b492fb5bdc8256397e",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-integration-r2/m1-b0/test_incremental_engine",
+      "sha256": "74220f1340d3ec5ebe146eac6f63d7b77ea7448b5b099582f13f7b2d7035b6a6",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-integration-r2/m1-b1/test_incremental_engine",
+      "sha256": "f0c6a4a3edbe97df7375005532b32225b0668aba6d29efa84bf5532240a64f4f",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-integration-r2/m2-b0/test_incremental_engine",
+      "sha256": "0ce9bf10ef60aac64d4cc4e4f9a80ce33bde06b0624bcf2dadac07763ce3255a",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-integration-r2/m2-b1/test_incremental_engine",
+      "sha256": "153c248ed8c2ec6422605259a74f25683ee815fd45e778fa8957203aec2fedb4",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-integration-r2/m3-b0/test_incremental_engine",
+      "sha256": "c291414a5982d60220e71b668ec67eeb772a265504c11385a8d9b7e4713e209d",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-integration-r2/m3-b1/test_incremental_engine",
+      "sha256": "c78d749a9d6eaf2f38d6cf338f049c9749793e7115602ff94a5d9912ebb93400",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-integration-r2/m4-b0/test_incremental_engine",
+      "sha256": "6c5a36e408215977a812c1fa0f89db93941177073c864265ac74598f263ce71c",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-integration-r2/m4-b1/test_incremental_engine",
+      "sha256": "3250462314350be350506471203a234519085dbd5024e484cad92d468c0645df",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-integration-r2/reversed/test_incremental_engine",
+      "sha256": "89e3dd08ea32e447f878b20a61161d235b49c4b43420061a94499f72f2ab7d66",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-integration-r2/sanitizer/test_incremental_engine",
+      "sha256": "bcc701b27186cb49ba6faaa19ab68c0e4002601160accb17158741b3e23f8ef6",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-full-af-r1/full/test_incremental_engine",
+      "sha256": "61dce1e7a316e4108331b0c4d9d34a61d52bec29ce16aab267f7e2eb3612b32a",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-full-a8-r1/full/test_incremental_engine",
+      "sha256": "d406aa0ba6bce9cbca3d01c92f96e96d6702c4d731ebdc7ae427d9190a5c7f6b",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-full-af-r2/full/test_incremental_engine",
+      "sha256": "517098bb95837048c5dd288247638989bba58dd6160b18b3c6d2f6e127e5a94c",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-full-fault5-r1/full/test_incremental_fault_5",
+      "sha256": "d37bb3b6cb70ac387915bc0e0da1937303c54bd929e087f2e15254656e1145b0",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-release-r1/candidate/libslhdsa_sm3.so",
+      "sha256": "9be69aa313691b5c32f0c9cb324f91417b8f8034124e117ab765341630f649ce",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-release-r1/candidate/test_prehash",
+      "sha256": "0a042ac0885c535329af7c347edce4634941911a137ee409bd2311bc9514945b",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-release-r1/candidate/test_repair",
+      "sha256": "debd85feb4f117c009b07250f6bc1f1066b2ebb1385bd207fb0c033b1c8d82a8",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-release-r1/candidate/test_wots",
+      "sha256": "7ffbc96b4d0cad9d451a3fda0d6afab12353d1e7a85d5e8daab57e39ca7c7276",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-release-r1/combined-v1/test_incremental_v1",
+      "sha256": "ad73caa6e1d5813bfce2266015a2235c0cba5a4b6392194931d675191ccb6681",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-release-r1/default/libslhdsa_sm3.so",
+      "sha256": "4627a36e23dde99675485706662e58825f7f2b350a27f89a64a54c60d92fdd86",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-release-r1/default/test_prehash",
+      "sha256": "7bc1ad58938d89054ecce2fa9e03aa7e728b49bab47d34b245e34a1d35a110a2",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-release-r1/default/test_repair",
+      "sha256": "6505faf5aea90df9b18dd2fc72238f99d603f131775f807dfcc85b9c6104cb00",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-release-r1/default/test_wots",
+      "sha256": "e748fb7662c18afed7bff1e1f8dbcd7a023be0538fcf3c3fb68ca1555d6493e2",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-release-r1/portable/libslhdsa_sm3.so",
+      "sha256": "e4c6eb7119cb0658eaa1f54fe2e0b6b7332381079c188697ddbcbc59ced9d9f0",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-release-r1/portable/test_prehash",
+      "sha256": "6fc646a9496068125879145fcb3867b8de7850960e59816f22483ce65f8c8b14",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-release-r1/portable/test_repair",
+      "sha256": "b77097cd54cd017e160ed8c21e4f33d7c3008cc7d4509aa703957c2fd90d107d",
+      "capture": "retained post-run artifact"
+    },
+    {
+      "path": "build/incremental-20261005-release-r1/portable/test_wots",
+      "sha256": "bea5118cd5eb0b7acc030bf8e39459455b0c1dd5e2ca756ff6b01629086c5202",
+      "capture": "retained post-run artifact"
+    }
+  ],
+  "captured_at_utc": "2026-10-04T21:00:36.989252+00:00",
+  "capture_scope": "retained post-run bytes; earlier runners did not hash binaries at invocation",
+  "private_makefile_sha256": "3672ba6d38ae1858672da49c833a2e31d2e6f56cd952b202e3cadc3bebef5855",
+  "fixture_sha256": {
+    "pk": "b41e74f16fb3d8906febd6f471f967932760b13da05cced08add6132e864a2bb",
+    "sig": "79fdf94fd27ac2df384ee32bdde2dd4337670c8944925a206d9f81d4ac9bb5af",
+    "message": "9eb417e0a6c3873d23af3b7f9a4b3a7a8dbc234e679e25e5cf3a2cc3a405b145",
+    "context": "f930e7f71bc64c413ea3809e23d55ca29c9c8c9cd8f7ccdb39cc65c653fb2298"
+  },
+  "source_unchanged": true
+}

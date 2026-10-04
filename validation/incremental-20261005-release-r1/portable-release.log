@@ -1,0 +1,27 @@
+mkdir -p ../build/incremental-20261005-release-r1/portable
+rm -f ../build/incremental-20261005-release-r1/portable/.a15-config-*
+touch ../build/incremental-20261005-release-r1/portable/.a15-config-ca26627c356925ce3ce1b291a5211f9beb5c1e74b1bee7dc64b8390a1d252c77
+mkdir -p ../build/incremental-20261005-release-r1/portable
+cc -std=c11 -Wall -Wextra -Wno-misleading-indentation -fPIC -fopenmp -Iinclude -Isrc -I../third_party/slhdsa-c -DA15_INCREMENTAL_V1=1 -DA15_INCREMENTAL_B1=1 -DA15_INCREMENTAL_MODE=4 -DSLH_DISABLE_AVX2 -O3 -DSLH_RELEASE_BUILD -shared src/engine.c src/sm3.c src/sm3x8.c src/sm3_incremental.c ../third_party/slhdsa-c/sha2_256.c ../third_party/slhdsa-c/sha2_512.c ../third_party/slhdsa-c/sha3_api.c ../third_party/slhdsa-c/sha3_f1600.c src/sm3_cuda_stub.c   -o ../build/incremental-20261005-release-r1/portable/libslhdsa_sm3.so
+python3 ../tools/check_native_guards.py --cc 'cc' --library ../build/incremental-20261005-release-r1/portable/libslhdsa_sm3.so
+native guard source checks PASS: two-macro test gate, release exclusion, five calculation sites
+native guard compiler checks PASS: release code erased; four bad builds rejected; release symbols clean
+mkdir -p ../build/incremental-20261005-release-r1/portable
+cc -std=c11 -Wall -Wextra -Wno-misleading-indentation -fPIC -fopenmp -Iinclude -Isrc -I../third_party/slhdsa-c -DA15_INCREMENTAL_V1=1 -DA15_INCREMENTAL_B1=1 -DA15_INCREMENTAL_MODE=4 -DSLH_DISABLE_AVX2 -O3 src/sm3.c src/sm3x8.c src/sm3_incremental.c ../third_party/slhdsa-c/sha2_256.c ../third_party/slhdsa-c/sha2_512.c ../third_party/slhdsa-c/sha3_api.c ../third_party/slhdsa-c/sha3_f1600.c src/sm3_cuda_stub.c tests/test_wots.c   -o ../build/incremental-20261005-release-r1/portable/test_wots
+../build/incremental-20261005-release-r1/portable/test_wots
+WOTS SIMD unavailable: runtime skip; no AVX2 worker invoked
+mkdir -p ../build/incremental-20261005-release-r1/portable
+cc -std=c11 -Wall -Wextra -Wno-misleading-indentation -fPIC -fopenmp -Iinclude -Isrc -I../third_party/slhdsa-c -DA15_INCREMENTAL_V1=1 -DA15_INCREMENTAL_B1=1 -DA15_INCREMENTAL_MODE=4 -DSLH_DISABLE_AVX2 -O3 src/engine.c src/sm3.c src/sm3x8.c src/sm3_incremental.c ../third_party/slhdsa-c/sha2_256.c ../third_party/slhdsa-c/sha2_512.c ../third_party/slhdsa-c/sha3_api.c ../third_party/slhdsa-c/sha3_f1600.c src/sm3_cuda_stub.c tests/test_prehash.c   -o ../build/incremental-20261005-release-r1/portable/test_prehash
+../build/incremental-20261005-release-r1/portable/test_prehash
+five prehash abc known answers/lengths PASS
+prehash id=1 backend=1 message/digest/DER/internal/mode/context/length/counters PASS
+prehash id=2 backend=1 message/digest/DER/internal/mode/context/length/counters PASS
+prehash id=3 backend=1 message/digest/DER/internal/mode/context/length/counters PASS
+prehash id=4 backend=1 message/digest/DER/internal/mode/context/length/counters PASS
+prehash id=5 backend=1 message/digest/DER/internal/mode/context/length/counters PASS
+native prehash checks PASS
+mkdir -p ../build/incremental-20261005-release-r1/portable
+cc -std=c11 -Wall -Wextra -Wno-misleading-indentation -fPIC -fopenmp -Iinclude -Isrc -I../third_party/slhdsa-c -DA15_INCREMENTAL_V1=1 -DA15_INCREMENTAL_B1=1 -DA15_INCREMENTAL_MODE=4 -DSLH_DISABLE_AVX2 -O3 src/sm3.c src/sm3x8.c src/sm3_incremental.c ../third_party/slhdsa-c/sha2_256.c ../third_party/slhdsa-c/sha2_512.c ../third_party/slhdsa-c/sha3_api.c ../third_party/slhdsa-c/sha3_f1600.c src/sm3_cuda_stub.c tests/test_repair.c   -o ../build/incremental-20261005-release-r1/portable/test_repair
+../build/incremental-20261005-release-r1/portable/test_repair ../build/incremental-20261005-release-r1/portable/repair.cache
+repair midstate full256/boundaries/thread-copy: 224 comparisons PASS
+repair capacities/private-publication/reordered-tasks/changing-cache/failure-wipes: PASS; 1722781 observed wipes

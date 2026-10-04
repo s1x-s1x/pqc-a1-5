@@ -1,0 +1,5 @@
+mkdir -p ../build/incremental-20261005-kernel-r1/sanitizer
+rm -f ../build/incremental-20261005-kernel-r1/sanitizer/.a15-config-*
+touch ../build/incremental-20261005-kernel-r1/sanitizer/.a15-config-fd283993bb77281d41be2ad6266ab1c31547d19ce096225b40a223e44ab60155
+mkdir -p ../build/incremental-20261005-kernel-r1/sanitizer
+cc -std=c11 -Wall -Wextra -Wno-misleading-indentation -fPIC -fopenmp -Iinclude -Isrc -I../third_party/slhdsa-c -DA15_INCREMENTAL_V1=0 -DA15_INCREMENTAL_B1=0 -DA15_INCREMENTAL_MODE=0 -O1 -g -fsanitize=address,undefined -fno-omit-frame-pointer -DSLH_TEST_BUILD src/sm3_incremental.c src/sm3.c src/sm3x8.c tests/test_incremental_kernel.c -o ../build/incremental-20261005-kernel-r1/sanitizer/test_incremental_kernel

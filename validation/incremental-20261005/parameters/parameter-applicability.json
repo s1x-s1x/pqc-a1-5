@@ -1,0 +1,78 @@
+[
+  {
+    "FORS_term_record": "FORS-single-term-intervals.json",
+    "analysis_structure_constraints": "passed bounded d=1 structural checks",
+    "analysis_usage_limit": "16777216",
+    "full_scheme_applicability_status": "pending candidate-specific review",
+    "historical_pid3_delivery_status_changed": false,
+    "native_parameter_available": true,
+    "native_pid": 3,
+    "parameter_identity": "pid3",
+    "production_parameter_registration_performed": false,
+    "required_before_new_parameter_prototype": [
+      "complete versioned security argument and signing/attack-query assumptions",
+      "classical and quantum scope, multi-target losses and all non-FORS terms",
+      "SM3 PRF/hash-family substitution assumptions",
+      "distinct parameter encoding/OID, key identity and bound cache identity",
+      "independent reference vectors and aggregate per-key usage budget"
+    ],
+    "source_parameter_claim_transferred_to_SM3": false
+  },
+  {
+    "FORS_term_record": "FORS-single-term-intervals.json",
+    "analysis_structure_constraints": "passed bounded d=1 structural checks",
+    "analysis_usage_limit": "16777216",
+    "full_scheme_applicability_status": "pending candidate-specific review",
+    "historical_pid3_delivery_status_changed": false,
+    "native_parameter_available": false,
+    "native_pid": null,
+    "parameter_identity": "rls128cs3",
+    "production_parameter_registration_performed": false,
+    "required_before_new_parameter_prototype": [
+      "complete versioned security argument and signing/attack-query assumptions",
+      "classical and quantum scope, multi-target losses and all non-FORS terms",
+      "SM3 PRF/hash-family substitution assumptions",
+      "distinct parameter encoding/OID, key identity and bound cache identity",
+      "independent reference vectors and aggregate per-key usage budget"
+    ],
+    "source_parameter_claim_transferred_to_SM3": false
+  },
+  {
+    "FORS_term_record": "FORS-single-term-intervals.json",
+    "analysis_structure_constraints": "passed bounded d=1 structural checks",
+    "analysis_usage_limit": "16777216",
+    "full_scheme_applicability_status": "pending candidate-specific review",
+    "historical_pid3_delivery_status_changed": false,
+    "native_parameter_available": false,
+    "native_pid": null,
+    "parameter_identity": "rls128cs11",
+    "production_parameter_registration_performed": false,
+    "required_before_new_parameter_prototype": [
+      "complete versioned security argument and signing/attack-query assumptions",
+      "classical and quantum scope, multi-target losses and all non-FORS terms",
+      "SM3 PRF/hash-family substitution assumptions",
+      "distinct parameter encoding/OID, key identity and bound cache identity",
+      "independent reference vectors and aggregate per-key usage budget"
+    ],
+    "source_parameter_claim_transferred_to_SM3": false
+  },
+  {
+    "FORS_term_record": "FORS-single-term-intervals.json",
+    "analysis_structure_constraints": "passed bounded d=1 structural checks",
+    "analysis_usage_limit": "16777216",
+    "full_scheme_applicability_status": "pending candidate-specific review",
+    "historical_pid3_delivery_status_changed": false,
+    "native_parameter_available": false,
+    "native_pid": null,
+    "parameter_identity": "rls128cs18",
+    "production_parameter_registration_performed": false,
+    "required_before_new_parameter_prototype": [
+      "complete versioned security argument and signing/attack-query assumptions",
+      "classical and quantum scope, multi-target losses and all non-FORS terms",
+      "SM3 PRF/hash-family substitution assumptions",
+      "distinct parameter encoding/OID, key identity and bound cache identity",
+      "independent reference vectors and aggregate per-key usage budget"
+    ],
+    "source_parameter_claim_transferred_to_SM3": false
+  }
+]

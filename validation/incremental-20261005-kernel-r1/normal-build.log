@@ -1,0 +1,5 @@
+mkdir -p ../build/incremental-20261005-kernel-r1/normal
+rm -f ../build/incremental-20261005-kernel-r1/normal/.a15-config-*
+touch ../build/incremental-20261005-kernel-r1/normal/.a15-config-339ebe1331df30f2872cbf8f2e6b7d831accd693fdcef05a1702fc684ca5a665
+mkdir -p ../build/incremental-20261005-kernel-r1/normal
+cc -std=c11 -Wall -Wextra -Wno-misleading-indentation -fPIC -fopenmp -Iinclude -Isrc -I../third_party/slhdsa-c -DA15_INCREMENTAL_V1=0 -DA15_INCREMENTAL_B1=0 -DA15_INCREMENTAL_MODE=0 -O3 -DSLH_TEST_BUILD src/sm3_incremental.c src/sm3.c src/sm3x8.c tests/test_incremental_kernel.c -o ../build/incremental-20261005-kernel-r1/normal/test_incremental_kernel

@@ -6,6 +6,7 @@
 #include "slhdsa_sm3.h"
 #include "sm3.h"
 #include "sm3x8.h"
+#include "sm3_incremental.h"
 #include "sm3_cuda.h"
 #include "secure_zero.h"
 #include "sha2_api.h"
@@ -25,6 +26,19 @@
 #define MAX_LEN 68
 #define MAX_HEIGHT 24
 #define NO_TARGET UINT32_MAX
+#if defined(A15_TEST_INCREMENTAL_DIAGNOSTICS) && !defined(SLH_TEST_BUILD)
+#error Private incremental diagnostics require SLH_TEST_BUILD
+#endif
+#ifdef A15_TEST_INCREMENTAL_DIAGNOSTICS
+static _Atomic uint64_t a15_test_incremental_streams[5];
+static _Atomic uint64_t a15_test_incremental_prf_packages;
+static _Atomic uint64_t a15_test_incremental_fallbacks;
+static _Atomic uint64_t a15_test_incremental_b1_packages;
+static _Atomic uint64_t a15_test_incremental_ref_verifications;
+#define INCREMENTAL_HIT(counter,n) atomic_fetch_add_explicit(&(counter),(n),memory_order_relaxed)
+#else
+#define INCREMENTAL_HIT(counter,n) ((void)0)
+#endif
 #if (defined(A15_TEST_CANDIDATE_OBSERVER) || defined(A15_TEST_CACHE_PREALLOC) || defined(SLH_TEST_REVERSE_TASKS)) && !defined(SLH_TEST_BUILD)
 #error Private repair hooks require a standalone SLH_TEST_BUILD
 #endif
@@ -134,6 +148,15 @@ static void fors_leaf(work *w,uint32_t idx,uint8_t node[N]) {put32(w->adrs+28,id
 /* PRF/F/H each have one final block after the cached PK.seed block. Counts are
  * logical scalar primitives and scalar compression blocks, never SIMD calls. */
 static void thash8_mask(work lanes[8],uint8_t out[8][N],const uint8_t *in[8],size_t n,int kind,unsigned mask) {
+ #if A15_INCREMENTAL_B1
+ if(lanes[0].p->pid==SLH_SM3_128_24&&lanes[0].p->sm3&&lanes[0].backend==SLH_BACKEND_AVX2){
+  uint8_t addresses[8][32];for(unsigned lane=0;lane<8;lane++)memcpy(addresses[lane],lanes[lane].adrs,32);
+  if(a15_sm3i_thash8(lanes[0].seed.sm3.h,(const uint8_t (*)[32])addresses,in,n,1,out)){
+   unsigned active=0;for(unsigned lane=0;lane<8;lane++)active+=(mask>>lane)&1u;COUNT(kind,active);COUNT(C_COMP,active);
+   INCREMENTAL_HIT(a15_test_incremental_b1_packages,1);return;
+  }
+ }
+ #endif
  uint8_t blocks[8][64]={{0}};for(unsigned lane=0;lane<8;lane++){
   blocks[lane][0]=lanes[lane].adrs[3];memcpy(blocks[lane]+1,lanes[lane].adrs+8,8);memcpy(blocks[lane]+9,lanes[lane].adrs+19,13);memcpy(blocks[lane]+22,in[lane],n);blocks[lane][22+n]=0x80;
   uint64_t bits=(64+22+n)*8;for(unsigned j=0;j<8;j++)blocks[lane][63-j]=(uint8_t)(bits>>(8*j));
@@ -186,12 +209,27 @@ static void wots_from_sig8(work w,uint8_t node[N],const uint8_t *sig,const uint3
 /* Eight independent aligned lane subtrees retain O(8*height) stack memory.
  * Their absolute addresses match scalar treehash; only the final three levels
  * use scalar H. Target authentication nodes are captured before reduction. */
-static void fors_tree8(work w,uint32_t start,unsigned z,uint32_t target,uint8_t root[N],uint8_t *auth) {
+static int fors_tree8(work w,uint32_t start,unsigned z,uint32_t target,uint8_t root[N],uint8_t *auth) {
  const unsigned sub=z-3;const uint32_t leaves=1u<<sub;work lanes[8];uint8_t stack[MAX_HEIGHT+1][8][N],nodes[8][N];unsigned sp=0,levels[MAX_HEIGHT+1];const uint8_t *inputs[8];
+ #if A15_INCREMENTAL_MODE
+ a15_sm3i_stream stream;int candidate=0;
+ if(w.p->pid==SLH_SM3_128_24&&w.p->sm3){
+  candidate=a15_sm3i_init(&stream,w.seed.sm3.h,w.adrs,w.skseed,start,z,w.p->pid,w.p->a,w.p->k,A15_INCREMENTAL_MODE,A15_INCREMENTAL_B1);
+  if(candidate<0)return SLH_ERR_PARAM;
+  if(candidate)INCREMENTAL_HIT(a15_test_incremental_streams[A15_INCREMENTAL_MODE],1);
+  else INCREMENTAL_HIT(a15_test_incremental_fallbacks,1);
+ }else memset(&stream,0,sizeof stream);
+ #endif
  for(unsigned lane=0;lane<8;lane++)lanes[lane]=w;
  for(uint32_t step=0;step<leaves;step++){
   uint32_t indices[8];unsigned height=0;
   for(unsigned lane=0;lane<8;lane++){indices[lane]=start+lane*leaves+step;put32(lanes[lane].adrs+16,6);put32(lanes[lane].adrs+24,0);put32(lanes[lane].adrs+28,indices[lane]);inputs[lane]=lanes[lane].skseed;}
+  #if A15_INCREMENTAL_MODE
+  if(candidate){
+   if(!a15_sm3i_next(&stream,nodes)){a15_sm3i_clear(&stream);a15_secure_zero(nodes,sizeof nodes);a15_secure_zero(stack,sizeof stack);return SLH_ERR_FAULT;}
+   COUNT(C_PRF,8);COUNT(C_COMP,8);
+  }else
+  #endif
   thash8(lanes,nodes,inputs,N,C_PRF);
   for(unsigned lane=0;lane<8;lane++){TEST_FAULT(&lanes[lane],2,indices[lane],nodes[lane]);put32(lanes[lane].adrs+16,3);inputs[lane]=nodes[lane];}
   thash8(lanes,nodes,inputs,N,C_F);
@@ -210,6 +248,11 @@ static void fors_tree8(work w,uint32_t start,unsigned z,uint32_t target,uint8_t 
   for(unsigned j=0;j<count;j+=2){put32(w.adrs+24,height+1);put32(w.adrs+28,(first+j)>>1);hpair(&w,nodes[j/2],nodes[j],nodes[j+1]);}
  }
  memcpy(root,nodes[0],N);
+ #if A15_INCREMENTAL_MODE
+ if(candidate)INCREMENTAL_HIT(a15_test_incremental_prf_packages,leaves);
+ a15_sm3i_clear(&stream);
+ #endif
+ a15_secure_zero(nodes,sizeof nodes);a15_secure_zero(stack,sizeof stack);return 0;
 }
 static size_t node_offset(unsigned hp,unsigned t,unsigned height,uint32_t index) {
  size_t offset=0;for(unsigned j=t;j<height;j++)offset+=((size_t)1<<(hp-j));return (offset+index)*N;
@@ -219,8 +262,9 @@ static void record_node(const slh_ctx *ctx,uint8_t *cache,unsigned height,uint32
 }
 /* An aligned treehash uses only O(height) stack space. Independent chunks are
  * combined at their absolute address heights, preserving the scalar result. */
-static void serial_tree(work w,slh_leaf_type type,uint32_t start,unsigned z,uint32_t target,uint8_t root[N],uint8_t *auth,const slh_ctx *ctx,uint8_t *cache) {
- if(type==SLH_LEAF_FORS&&ctx->backend==SLH_BACKEND_AVX2&&z>=3){fors_tree8(w,start,z,target,root,auth);return;}
+static int serial_tree(work w,slh_leaf_type type,uint32_t start,unsigned z,uint32_t target,uint8_t root[N],uint8_t *auth,const slh_ctx *ctx,uint8_t *cache) {
+ w.backend=ctx->backend;
+ if(type==SLH_LEAF_FORS&&ctx->backend==SLH_BACKEND_AVX2&&z>=3)return fors_tree8(w,start,z,target,root,auth);
  uint8_t stack[MAX_HEIGHT+1][N];unsigned levels[MAX_HEIGHT+1],sp=0;uint32_t end=start+(1u<<z);
  for(uint32_t i=start;i<end;i++) {
   uint8_t node[N];unsigned h=0;uint32_t idx=i;
@@ -235,7 +279,7 @@ static void serial_tree(work w,slh_leaf_type type,uint32_t start,unsigned z,uint
   }
   memcpy(stack[sp],node,N);levels[sp++]=h;
  }
- memcpy(root,stack[0],N);
+ memcpy(root,stack[0],N);return 0;
 }
 static int treehash(const slh_ctx *ctx,work w,slh_leaf_type type,uint32_t start,unsigned z,uint32_t target,uint8_t root[N],uint8_t *auth,uint8_t *cache) {
  if(ctx->backend==SLH_BACKEND_CUDA&&type==SLH_LEAF_FORS){
@@ -249,17 +293,18 @@ static int treehash(const slh_ctx *ctx,work w,slh_leaf_type type,uint32_t start,
  unsigned split=0;while(split<z&&split<10&&(1u<<split)<(unsigned)ctx->threads*4u)split++;
  if(ctx->threads<=1||z<5)split=0;
  if(type==SLH_LEAF_FORS&&ctx->backend==SLH_BACKEND_AVX2&&z>=3&&split>z-3)split=z-3;
- if(!split){serial_tree(w,type,start,z,target,root,auth,ctx,cache);return 0;}
- unsigned chunks=1u<<split,sub=z-split;uint8_t *nodes=malloc(chunks*N);if(!nodes)return SLH_ERR_ALLOC;
- #pragma omp parallel for num_threads(ctx->threads) schedule(static)
+ if(!split)return serial_tree(w,type,start,z,target,root,auth,ctx,cache);
+ unsigned chunks=1u<<split,sub=z-split;uint8_t *nodes=malloc(chunks*N);if(!nodes)return SLH_ERR_ALLOC;int failure=0;
+ #pragma omp parallel for num_threads(ctx->threads) schedule(static) reduction(min:failure)
  for(unsigned i=0;i<chunks;i++) {
   unsigned task=i;
   #ifdef SLH_TEST_REVERSE_TASKS
   task=chunks-1-i;
   #endif
   uint32_t base=start+(task<<sub),chosen=(target!=NO_TARGET&&target>=base&&target<base+(1u<<sub))?target:NO_TARGET;
-  serial_tree(w,type,base,sub,chosen,nodes+task*N,chosen==NO_TARGET?NULL:auth,ctx,cache);
+  int rc=serial_tree(w,type,base,sub,chosen,nodes+task*N,chosen==NO_TARGET?NULL:auth,ctx,cache);if(rc<failure)failure=rc;
  }
+ if(failure){a15_secure_zero(nodes,chunks*N);free(nodes);return failure;}
  for(unsigned h=sub;h<z;h++) {
   unsigned count=1u<<(z-h);uint32_t first=start>>h;
   if(auth&&target!=NO_TARGET)memcpy(auth+h*N,nodes+(((target>>h)^1u)-first)*N,N);
@@ -338,13 +383,19 @@ static int sign_core(slh_ctx *ctx,uint8_t *sig,const uint8_t *m,size_t mlen,cons
  }
  return 0;
 }
+#include "fors_verify_x8.inc"
 static int verify_core(slh_ctx *ctx,const uint8_t *sig,size_t siglen,const uint8_t *m,size_t mlen,const uint8_t *pk) {
+ if(ctx->backend==SLH_BACKEND_REF)INCREMENTAL_HIT(a15_test_incremental_ref_verifications,1);
  if(siglen!=slh_sig_bytes(ctx->p->pid))return SLH_ERR_VERIFY;work w;init_work(&w,ctx->p,NULL,pk);w.backend=ctx->backend;uint8_t digest[49],roots[35*N],node[N];uint32_t v[35],leaf;uint64_t tree;
  h_msg(&w,digest,sig,m,mlen);split_digest(w.p,digest,v,&tree,&leaf);set_tree(&w,tree);set_type_kp(&w,3);put32(w.adrs+20,leaf);
- const uint8_t *s=sig+N;for(unsigned i=0;i<w.p->k;i++){
+ const uint8_t *s=sig+N;
+ #if A15_INCREMENTAL_V1
+ if(fors_verify_x8_eligible(&w)){fors_from_sig_x8(w,roots,s,v);s+=w.p->k*(w.p->a+1)*N;}else
+ #endif
+ {for(unsigned i=0;i<w.p->k;i++){
   uint32_t idx=(i<<w.p->a)+v[i];put32(w.adrs+24,0);put32(w.adrs+28,idx);thash(&w,roots+i*N,s,N,C_F);s+=N;
   for(unsigned j=0;j<w.p->a;j++){put32(w.adrs+24,j+1);put32(w.adrs+28,idx>>(j+1));if((v[i]>>j)&1)hpair(&w,roots+i*N,s,roots+i*N);else hpair(&w,roots+i*N,roots+i*N,s);s+=N;}
- }
+ }}
  set_type_kp(&w,4);thash(&w,node,roots,w.p->k*N,C_T);memset(w.adrs,0,32);set_tree(&w,tree);
  for(unsigned layer=0;layer<w.p->d;layer++){
   put32(w.adrs,layer);xmss_from_sig(w,node,s,node,leaf);s+=(w.p->len+w.p->hp)*N;leaf=(uint32_t)tree&((1u<<w.p->hp)-1);tree>>=w.p->hp;set_tree(&w,tree);

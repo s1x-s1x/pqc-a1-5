@@ -1,0 +1,40 @@
+V1 independent scalar roots: 64 cases, logical F=6 H=144, physical F_x8=1 H_x8=24 padding=50 per case PASS
+V1 eligibility: seven parameters x REF/AVX2/CUDA = 21 cases PASS
+V1 fixture valid REF/current-AVX2/new-V1 status=0 route_hits=1 logical counts identical PASS
+V1 fixture signature-mutation REF/current-AVX2/new-V1 status=-3 route_hits=1 logical counts identical PASS
+V1 fixture signature-mutation REF/current-AVX2/new-V1 status=-3 route_hits=1 logical counts identical PASS
+V1 fixture signature-mutation REF/current-AVX2/new-V1 status=-3 route_hits=1 logical counts identical PASS
+V1 fixture signature-mutation REF/current-AVX2/new-V1 status=-3 route_hits=1 logical counts identical PASS
+V1 fixture each-tree-secret-auth REF/current-AVX2/new-V1 status=-3 route_hits=1 logical counts identical PASS
+V1 fixture each-tree-secret-auth REF/current-AVX2/new-V1 status=-3 route_hits=1 logical counts identical PASS
+V1 fixture each-tree-secret-auth REF/current-AVX2/new-V1 status=-3 route_hits=1 logical counts identical PASS
+V1 fixture each-tree-secret-auth REF/current-AVX2/new-V1 status=-3 route_hits=1 logical counts identical PASS
+V1 fixture each-tree-secret-auth REF/current-AVX2/new-V1 status=-3 route_hits=1 logical counts identical PASS
+V1 fixture each-tree-secret-auth REF/current-AVX2/new-V1 status=-3 route_hits=1 logical counts identical PASS
+V1 fixture each-tree-secret-auth REF/current-AVX2/new-V1 status=-3 route_hits=1 logical counts identical PASS
+V1 fixture each-tree-secret-auth REF/current-AVX2/new-V1 status=-3 route_hits=1 logical counts identical PASS
+V1 fixture each-tree-secret-auth REF/current-AVX2/new-V1 status=-3 route_hits=1 logical counts identical PASS
+V1 fixture each-tree-secret-auth REF/current-AVX2/new-V1 status=-3 route_hits=1 logical counts identical PASS
+V1 fixture each-tree-secret-auth REF/current-AVX2/new-V1 status=-3 route_hits=1 logical counts identical PASS
+V1 fixture each-tree-secret-auth REF/current-AVX2/new-V1 status=-3 route_hits=1 logical counts identical PASS
+V1 fixture each-tree-secret-auth REF/current-AVX2/new-V1 status=-3 route_hits=1 logical counts identical PASS
+V1 fixture each-tree-secret-auth REF/current-AVX2/new-V1 status=-3 route_hits=1 logical counts identical PASS
+V1 fixture each-tree-secret-auth REF/current-AVX2/new-V1 status=-3 route_hits=1 logical counts identical PASS
+V1 fixture each-tree-secret-auth REF/current-AVX2/new-V1 status=-3 route_hits=1 logical counts identical PASS
+V1 fixture each-tree-secret-auth REF/current-AVX2/new-V1 status=-3 route_hits=1 logical counts identical PASS
+V1 fixture each-tree-secret-auth REF/current-AVX2/new-V1 status=-3 route_hits=1 logical counts identical PASS
+V1 fixture pk-seed REF/current-AVX2/new-V1 status=-3 route_hits=1 logical counts identical PASS
+V1 fixture pk-root REF/current-AVX2/new-V1 status=-3 route_hits=1 logical counts identical PASS
+V1 fixture message REF/current-AVX2/new-V1 status=-3 route_hits=1 logical counts identical PASS
+V1 fixture context REF/current-AVX2/new-V1 status=-3 route_hits=1 logical counts identical PASS
+V1 fixture signature-short REF/current-AVX2/new-V1 status=-3 route_hits=0 logical counts identical PASS
+V1 fixture signature-long REF/current-AVX2/new-V1 status=-3 route_hits=0 logical counts identical PASS
+V1 fixture context-long REF/current-AVX2/new-V1 status=-7 route_hits=0 logical counts identical PASS
+V1 fixture context-null REF/current-AVX2/new-V1 status=-1 route_hits=0 logical counts identical PASS
+V1 fixture message-null REF/current-AVX2/new-V1 status=-1 route_hits=0 logical counts identical PASS
+V1 fixture pk-null REF/current-AVX2/new-V1 status=-1 route_hits=0 logical counts identical PASS
+V1 fixture signature-null REF/current-AVX2/new-V1 status=-1 route_hits=0 logical counts identical PASS
+V1 fixture parameter-length REF/current-AVX2/new-V1 status=-3 route_hits=0 logical counts identical PASS
+V1 fixture parameter-length REF/current-AVX2/new-V1 status=-3 route_hits=0 logical counts identical PASS
+V1 full fixture: 36 three-path cases plus SHA2 parameter rejection PASS
+V1 correctness PASS; no signing, timing or performance samples

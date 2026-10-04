@@ -1,0 +1,2 @@
+{"concurrent_requests":64,"threads":16,"valid":32,"invalid":32,"changed_public_seeds":16,"REF_per_request":true,"shared_and_private_contexts":true,"V1_hits":64,"passed":true,"performance_samples":0}
+{"CUDA_subtrees":8,"CUDA_verify_cases":2,"V1_hits":0,"AF_streams":0,"new_B1_hits":0,"kernel_launches":46,"device_hashes":6574,"timed":false,"passed":true,"performance_samples":0}

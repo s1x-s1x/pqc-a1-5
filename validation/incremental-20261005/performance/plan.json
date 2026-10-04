@@ -1,0 +1,202 @@
+{
+  "schema": "a15-incremental-performance-preparation-v1",
+  "performance_enabled": false,
+  "execution_permit": false,
+  "new_performance_samples": 0,
+  "samples": [],
+  "pid": 3,
+  "cache_t": 12,
+  "self_verify": true,
+  "main_physical_threads": 1,
+  "configurations": [
+    {
+      "id": "K0",
+      "commit": "4ad41308ad537e0578f6dea6d85ebcd7535c46b1",
+      "mode": null,
+      "b1": 0,
+      "v1": 0,
+      "role": "unchanged original comparator"
+    },
+    {
+      "id": "generic-B0",
+      "mode": 0,
+      "b1": 0,
+      "v1": 0,
+      "make_variables": {
+        "INCREMENTAL_MODE": 0,
+        "INCREMENTAL_B1": 0,
+        "INCREMENTAL_V1": 0,
+        "COUNTERS": 0
+      },
+      "role": "internal layout/expansion control"
+    },
+    {
+      "id": "generic-B1",
+      "mode": 0,
+      "b1": 1,
+      "v1": 0,
+      "make_variables": {
+        "INCREMENTAL_MODE": 0,
+        "INCREMENTAL_B1": 1,
+        "INCREMENTAL_V1": 0,
+        "COUNTERS": 0
+      },
+      "role": "internal layout/expansion control"
+    },
+    {
+      "id": "F8-B0",
+      "mode": 1,
+      "b1": 0,
+      "v1": 0,
+      "make_variables": {
+        "INCREMENTAL_MODE": 1,
+        "INCREMENTAL_B1": 0,
+        "INCREMENTAL_V1": 0,
+        "COUNTERS": 0
+      },
+      "role": "internal layout/expansion control"
+    },
+    {
+      "id": "F8-B1",
+      "mode": 1,
+      "b1": 1,
+      "v1": 0,
+      "make_variables": {
+        "INCREMENTAL_MODE": 1,
+        "INCREMENTAL_B1": 1,
+        "INCREMENTAL_V1": 0,
+        "COUNTERS": 0
+      },
+      "role": "internal layout/expansion control"
+    },
+    {
+      "id": "A8-B0",
+      "mode": 2,
+      "b1": 0,
+      "v1": 0,
+      "make_variables": {
+        "INCREMENTAL_MODE": 2,
+        "INCREMENTAL_B1": 0,
+        "INCREMENTAL_V1": 0,
+        "COUNTERS": 0
+      },
+      "role": "internal layout/expansion control"
+    },
+    {
+      "id": "A8-B1",
+      "mode": 2,
+      "b1": 1,
+      "v1": 0,
+      "make_variables": {
+        "INCREMENTAL_MODE": 2,
+        "INCREMENTAL_B1": 1,
+        "INCREMENTAL_V1": 0,
+        "COUNTERS": 0
+      },
+      "role": "internal layout/expansion control"
+    },
+    {
+      "id": "F1-B0",
+      "mode": 3,
+      "b1": 0,
+      "v1": 0,
+      "make_variables": {
+        "INCREMENTAL_MODE": 3,
+        "INCREMENTAL_B1": 0,
+        "INCREMENTAL_V1": 0,
+        "COUNTERS": 0
+      },
+      "role": "internal layout/expansion control"
+    },
+    {
+      "id": "F1-B1",
+      "mode": 3,
+      "b1": 1,
+      "v1": 0,
+      "make_variables": {
+        "INCREMENTAL_MODE": 3,
+        "INCREMENTAL_B1": 1,
+        "INCREMENTAL_V1": 0,
+        "COUNTERS": 0
+      },
+      "role": "internal layout/expansion control"
+    },
+    {
+      "id": "AF-B0",
+      "mode": 4,
+      "b1": 0,
+      "v1": 0,
+      "make_variables": {
+        "INCREMENTAL_MODE": 4,
+        "INCREMENTAL_B1": 0,
+        "INCREMENTAL_V1": 0,
+        "COUNTERS": 0
+      },
+      "role": "internal layout/expansion control"
+    },
+    {
+      "id": "AF-B1",
+      "mode": 4,
+      "b1": 1,
+      "v1": 0,
+      "make_variables": {
+        "INCREMENTAL_MODE": 4,
+        "INCREMENTAL_B1": 1,
+        "INCREMENTAL_V1": 0,
+        "COUNTERS": 0
+      },
+      "role": "internal layout/expansion control"
+    },
+    {
+      "id": "AF-B1-V1",
+      "mode": 4,
+      "b1": 1,
+      "v1": 1,
+      "make_variables": {
+        "INCREMENTAL_MODE": 4,
+        "INCREMENTAL_B1": 1,
+        "INCREMENTAL_V1": 1,
+        "COUNTERS": 0
+      },
+      "role": "integrated candidate, not a speed-selected winner"
+    }
+  ],
+  "compiler_flags": "-O3; no test hooks, counters or global -mavx2",
+  "comparisons": [
+    "A8/F8 at identical B1",
+    "AF/F1 at identical B1",
+    "F1/F8 and AF/A8 representation tradeoff",
+    "B1/B0 at identical mode",
+    "single-request V1/current AVX2 verifier",
+    "final candidate/K0"
+  ],
+  "external_comparators": [
+    "ISA-L SM3 x8 f22c49a",
+    "GmSSL SM3 x8 24ae482",
+    "OpenSSL supported SM3 4d25710"
+  ],
+  "unknowns": {
+    "pilot_N": null,
+    "formal_N": null,
+    "V1_practical_threshold": null,
+    "external_adapters": "must be accepted before external timed comparisons"
+  },
+  "excluded_current_stage": [
+    "timers",
+    "cycles",
+    "profiling",
+    "warmup",
+    "tuning",
+    "pilot",
+    "throughput",
+    "P99",
+    "network"
+  ],
+  "source_sha256": {
+    "c/Makefile": "38c3fe2763f9d3c7d53f377de8f7028ea58749944aa34b72c5719c180c007769",
+    "c/src/engine.c": "3ff0bc4e9d4c0bd35ec527c04322cf857310f37899026b6b61f2e0bf1f826d07",
+    "c/src/sm3_incremental.c": "1a5ce2d63e1dfcbb58771d493bb696ac37da58065b334bd300fd2bfc6722de52",
+    "c/src/sm3_incremental.h": "26185cd00d4c55db2a0141095d8992a3f8c4aa114f7a36b4925db8f46dc9c44c",
+    "c/src/fors_verify_x8.inc": "250e0f7e8745a3a38afbff97b5f8f656330015eff475c1a15d175f6304490504"
+  }
+}

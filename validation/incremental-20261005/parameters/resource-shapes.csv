@@ -1,0 +1,33 @@
+configuration,execution_mode,tile_height,q,persistent_secret_schedule_bytes_per_worker,public_offsets_bytes_per_copy,public_deltas_bytes_per_copy,tree_stack_and_level_bytes_per_worker,stream_object_reserved_bytes_per_worker,tree_stack_and_level_reserved_bytes_per_worker,public_tables_and_atomic_state_reserved_bytes_per_copy,auxiliary_reserve_bytes_per_worker,workspace_bytes_per_worker,shared_public_bytes,active_cache_node_ram_bytes,cache_files_bytes,verifier_buffers_bytes,other_live_memory_bytes,modeled_total_live_bytes,mode_applicability,is_measured_peak_memory
+pid3-t10,F8,24,21,2176,0,0,3300,2304,3300,53676,16384,21988,53676,131056,65632,16384,65536,288640,pid3 current 64-bit prototype reservation plus explicit reserve,False
+pid3-t10,A8,24,21,2176,0,5712,3300,2304,3300,53676,16384,21988,53676,131056,65632,16384,65536,288640,pid3 current 64-bit prototype reservation plus explicit reserve,False
+pid3-t10,F1,24,21,272,2176,0,3300,2304,3300,53676,16384,21988,53676,131056,65632,16384,65536,288640,pid3 current 64-bit prototype reservation plus explicit reserve,False
+pid3-t10,AF,24,21,272,2176,5712,3300,2304,3300,53676,16384,21988,53676,131056,65632,16384,65536,288640,pid3 current 64-bit prototype reservation plus explicit reserve,False
+pid3-t12,F8,24,21,2176,0,0,3300,2304,3300,53676,16384,21988,53676,32752,16480,16384,65536,190336,pid3 current 64-bit prototype reservation plus explicit reserve,False
+pid3-t12,A8,24,21,2176,0,5712,3300,2304,3300,53676,16384,21988,53676,32752,16480,16384,65536,190336,pid3 current 64-bit prototype reservation plus explicit reserve,False
+pid3-t12,F1,24,21,272,2176,0,3300,2304,3300,53676,16384,21988,53676,32752,16480,16384,65536,190336,pid3 current 64-bit prototype reservation plus explicit reserve,False
+pid3-t12,AF,24,21,272,2176,5712,3300,2304,3300,53676,16384,21988,53676,32752,16480,16384,65536,190336,pid3 current 64-bit prototype reservation plus explicit reserve,False
+rls128cs3-t10,F8,21,18,2176,0,0,2904,2304,3300,53676,16384,21988,53676,131056,65632,16384,65536,288640,hypothetical same-capacity adaptation; native adaptation pending,False
+rls128cs3-t10,A8,21,18,2176,0,4896,2904,2304,3300,53676,16384,21988,53676,131056,65632,16384,65536,288640,hypothetical same-capacity adaptation; native adaptation pending,False
+rls128cs3-t10,F1,21,18,272,2176,0,2904,2304,3300,53676,16384,21988,53676,131056,65632,16384,65536,288640,hypothetical same-capacity adaptation; native adaptation pending,False
+rls128cs3-t10,AF,21,18,272,2176,4896,2904,2304,3300,53676,16384,21988,53676,131056,65632,16384,65536,288640,hypothetical same-capacity adaptation; native adaptation pending,False
+rls128cs3-t12,F8,21,18,2176,0,0,2904,2304,3300,53676,16384,21988,53676,32752,16480,16384,65536,190336,hypothetical same-capacity adaptation; native adaptation pending,False
+rls128cs3-t12,A8,21,18,2176,0,4896,2904,2304,3300,53676,16384,21988,53676,32752,16480,16384,65536,190336,hypothetical same-capacity adaptation; native adaptation pending,False
+rls128cs3-t12,F1,21,18,272,2176,0,2904,2304,3300,53676,16384,21988,53676,32752,16480,16384,65536,190336,hypothetical same-capacity adaptation; native adaptation pending,False
+rls128cs3-t12,AF,21,18,272,2176,4896,2904,2304,3300,53676,16384,21988,53676,32752,16480,16384,65536,190336,hypothetical same-capacity adaptation; native adaptation pending,False
+rls128cs11-t10,F8,19,16,2176,0,0,2640,2304,3300,53676,16384,21988,53676,131056,65632,16384,65536,288640,hypothetical same-capacity adaptation; native adaptation pending,False
+rls128cs11-t10,A8,19,16,2176,0,4352,2640,2304,3300,53676,16384,21988,53676,131056,65632,16384,65536,288640,hypothetical same-capacity adaptation; native adaptation pending,False
+rls128cs11-t10,F1,19,16,272,2176,0,2640,2304,3300,53676,16384,21988,53676,131056,65632,16384,65536,288640,hypothetical same-capacity adaptation; native adaptation pending,False
+rls128cs11-t10,AF,19,16,272,2176,4352,2640,2304,3300,53676,16384,21988,53676,131056,65632,16384,65536,288640,hypothetical same-capacity adaptation; native adaptation pending,False
+rls128cs11-t12,F8,19,16,2176,0,0,2640,2304,3300,53676,16384,21988,53676,32752,16480,16384,65536,190336,hypothetical same-capacity adaptation; native adaptation pending,False
+rls128cs11-t12,A8,19,16,2176,0,4352,2640,2304,3300,53676,16384,21988,53676,32752,16480,16384,65536,190336,hypothetical same-capacity adaptation; native adaptation pending,False
+rls128cs11-t12,F1,19,16,272,2176,0,2640,2304,3300,53676,16384,21988,53676,32752,16480,16384,65536,190336,hypothetical same-capacity adaptation; native adaptation pending,False
+rls128cs11-t12,AF,19,16,272,2176,4352,2640,2304,3300,53676,16384,21988,53676,32752,16480,16384,65536,190336,hypothetical same-capacity adaptation; native adaptation pending,False
+rls128cs18-t10,F8,17,14,2176,0,0,2376,2304,3300,53676,16384,21988,53676,131056,65632,16384,65536,288640,hypothetical same-capacity adaptation; native adaptation pending,False
+rls128cs18-t10,A8,17,14,2176,0,3808,2376,2304,3300,53676,16384,21988,53676,131056,65632,16384,65536,288640,hypothetical same-capacity adaptation; native adaptation pending,False
+rls128cs18-t10,F1,17,14,272,2176,0,2376,2304,3300,53676,16384,21988,53676,131056,65632,16384,65536,288640,hypothetical same-capacity adaptation; native adaptation pending,False
+rls128cs18-t10,AF,17,14,272,2176,3808,2376,2304,3300,53676,16384,21988,53676,131056,65632,16384,65536,288640,hypothetical same-capacity adaptation; native adaptation pending,False
+rls128cs18-t12,F8,17,14,2176,0,0,2376,2304,3300,53676,16384,21988,53676,32752,16480,16384,65536,190336,hypothetical same-capacity adaptation; native adaptation pending,False
+rls128cs18-t12,A8,17,14,2176,0,3808,2376,2304,3300,53676,16384,21988,53676,32752,16480,16384,65536,190336,hypothetical same-capacity adaptation; native adaptation pending,False
+rls128cs18-t12,F1,17,14,272,2176,0,2376,2304,3300,53676,16384,21988,53676,32752,16480,16384,65536,190336,hypothetical same-capacity adaptation; native adaptation pending,False
+rls128cs18-t12,AF,17,14,272,2176,3808,2376,2304,3300,53676,16384,21988,53676,32752,16480,16384,65536,190336,hypothetical same-capacity adaptation; native adaptation pending,False

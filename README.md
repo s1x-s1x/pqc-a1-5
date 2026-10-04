@@ -12,7 +12,19 @@ alternative CA/TLS harness. Each acceptance result is tied to its tested source.
 Measurements before the first correctness gate are diagnostic timings only.
 They are not final competition performance results.
 
-## Current checkpoint: friend review repairs, before formal performance
+## Current checkpoint: incremental paths, before performance
+
+The 2026-10-05 fixed-pid3 round implements B1, address recursion A1, the A2
+common-schedule path and single-request FORS verification V1. Independent
+kernel/sanitizer, ten-configuration subtree/counter, complete signature/fault,
+concurrent request and actual CUDA dispatch checks passed. Switches remain
+off by default. Finite parameter analysis and bounded mock scheduling are
+included; production cross-request scheduling and new parameters are deferred.
+See [the incremental handoff](docs/research/HANDOFF_20261005.md) and
+`validation/incremental-20261005/final/freeze.json` for versioned evidence.
+New performance samples remain zero; the paper/LaTeX delivery is unchanged.
+
+## Historical checkpoint: friend review repairs
 
 The second 2026-10-04 engineering review addresses digest ABI lengths,
 benchmark restart warmups and receipt ownership, scalable budget reconciliation,

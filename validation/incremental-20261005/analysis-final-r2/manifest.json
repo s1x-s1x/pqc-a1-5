@@ -1,0 +1,46 @@
+{
+  "schema": "a15-incremental-analysis-final-v1",
+  "passed": true,
+  "native_crypto_calls": 0,
+  "new_performance_samples": 0,
+  "source_sha256": {
+    "tools/incremental_parameters.py": "a8cac8cdd79851f20d8fff3278a7d5bf70afbdc78be1eadeaf405cfb13a9325b",
+    "tools/test_incremental_parameters.py": "6652b43cf7be2159e7527b9bd92fa06cb3652c216e94f50fbe54a977452ec116",
+    "tools/incremental_scheduler.py": "7ebe6590651cef76fd4efce264d77d7fa8e08a1b408247d23e25b472a04a1df2",
+    "tools/test_incremental_scheduler.py": "90e9d727ecc76eb0d14244ea3ca0e5868f9d1d270b8c9128bd177d7b666bc440",
+    "tools/record_incremental_analysis.py": "80f5e8dee19a9fe48515a71e1a1f52d73fa14880f391010f7ce2d828bd70ebeb",
+    "docs/research/P_20261005.md": "ad7e24218dc078bac864fa46fe3881ba650b67193597d7b785864e72a28c3509",
+    "docs/research/SCHEDULER_20261005.md": "832b8173b73968486f152a2045f6f360c30845a6e3242653e7fd6a54db5a5479",
+    "c/src/engine.c": "3ff0bc4e9d4c0bd35ec527c04322cf857310f37899026b6b61f2e0bf1f826d07",
+    "c/src/sm3_incremental.c": "1a5ce2d63e1dfcbb58771d493bb696ac37da58065b334bd300fd2bfc6722de52",
+    "c/src/sm3_incremental.h": "26185cd00d4c55db2a0141095d8992a3f8c4aa114f7a36b4925db8f46dc9c44c"
+  },
+  "steps": [
+    {
+      "name": "parameters",
+      "command": [
+        "C:\\Users\\23380\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "-B",
+        "tools/test_incremental_parameters.py"
+      ],
+      "returncode": 0,
+      "log": "validation/incremental-20261005/analysis-final-r2/parameters.log",
+      "log_sha256": "5b3e83ad5b60d63c8d799f6f636a002f4a08bee98934fc2748cadf30eb971c55"
+    },
+    {
+      "name": "scheduler-real-clocks-forbidden",
+      "command": [
+        "C:\\Users\\23380\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "-B",
+        "-c",
+        "import runpy, sys, time, unittest\nsys.path.insert(0,'tools')\ndef forbidden(*args, **kwargs):\n    raise AssertionError('real clock/sleep called by mock scheduler')\nfor name in ('time','time_ns','monotonic','monotonic_ns','perf_counter','perf_counter_ns','process_time','process_time_ns','thread_time','thread_time_ns','sleep'):\n    if hasattr(time,name): setattr(time,name,forbidden)\nrunpy.run_path('tools/test_incremental_scheduler.py', run_name='__main__')\n"
+      ],
+      "returncode": 0,
+      "log": "validation/incremental-20261005/analysis-final-r2/scheduler-real-clocks-forbidden.log",
+      "log_sha256": "99b12ce2b8293f67e79296aaa4d554f6b3b462e543a610214d557cfdae170143"
+    }
+  ],
+  "parameter_tests": 19,
+  "scheduler_tests": 27,
+  "real_scheduler_clocks_forbidden": true
+}

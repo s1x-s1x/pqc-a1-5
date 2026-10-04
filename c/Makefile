@@ -3,7 +3,7 @@ CC ?= gcc
 BASE = -std=c11 -Wall -Wextra -Wno-misleading-indentation -fPIC -fopenmp -Iinclude -Isrc -I../third_party/slhdsa-c
 CFLAGS ?= -O3
 OUT ?= ../build
-SOURCES = src/engine.c src/sm3.c src/sm3x8.c ../third_party/slhdsa-c/sha2_256.c ../third_party/slhdsa-c/sha2_512.c ../third_party/slhdsa-c/sha3_api.c ../third_party/slhdsa-c/sha3_f1600.c
+SOURCES = src/engine.c src/sm3.c src/sm3x8.c src/sm3_incremental.c ../third_party/slhdsa-c/sha2_256.c ../third_party/slhdsa-c/sha2_512.c ../third_party/slhdsa-c/sha3_api.c ../third_party/slhdsa-c/sha3_f1600.c
 HEADERS = include/slhdsa_sm3.h src/sm3.h src/sm3x8.h src/secure_zero.h ../third_party/slhdsa-c/sha2_api.h ../third_party/slhdsa-c/sha3_api.h ../third_party/slhdsa-c/plat_local.h
 CUDA ?= 0
 NVCC ?= nvcc
@@ -11,6 +11,12 @@ CUDA_ARCH ?= compute_86
 CUDA_RESOURCE_ARCH ?= sm_86
 CUDA_LIBDIR ?= /usr/lib/x86_64-linux-gnu
 HEADERS += src/sm3_cuda.h src/sm3_cuda_device.cuh
+HEADERS += src/fors_verify_x8.inc
+HEADERS += src/sm3_incremental.h
+INCREMENTAL_V1 ?= 0
+INCREMENTAL_B1 ?= 0
+INCREMENTAL_MODE ?= 0
+BASE += -DA15_INCREMENTAL_V1=$(INCREMENTAL_V1) -DA15_INCREMENTAL_B1=$(INCREMENTAL_B1) -DA15_INCREMENTAL_MODE=$(INCREMENTAL_MODE)
 ifeq ($(CUDA),1)
 CUDA_OBJECT = $(OUT)/sm3_cuda.o
 CUDA_LIBS = -L$(CUDA_LIBDIR) -lcudart -lstdc++ -pthread
@@ -75,6 +81,18 @@ $(OUT)/test_prehash: $(SOURCES) $(HEADERS) tests/test_prehash.c $(CUDA_OBJECT) $
 	$(CC) $(BASE) $(CFLAGS) $(SOURCES) tests/test_prehash.c $(CUDA_OBJECT) $(CUDA_LIBS) -o $@
 prehash-test: $(OUT)/test_prehash
 	$(OUT)/test_prehash
+$(OUT)/test_incremental_v1: $(SOURCES) $(HEADERS) tests/test_incremental_v1.c $(CUDA_OBJECT) $(CONFIG_STAMP)
+	mkdir -p $(OUT)
+	$(CC) $(BASE) $(CFLAGS) -DSLH_COUNTERS $(filter-out src/engine.c,$(SOURCES)) tests/test_incremental_v1.c $(CUDA_OBJECT) $(CUDA_LIBS) -o $@
+$(OUT)/test_incremental_kernel: src/sm3_incremental.c src/sm3_incremental.h src/sm3.c src/sm3.h src/sm3x8.c src/sm3x8.h src/secure_zero.h tests/test_incremental_kernel.c $(CONFIG_STAMP)
+	mkdir -p $(OUT)
+	$(CC) $(BASE) $(CFLAGS) -DSLH_TEST_BUILD src/sm3_incremental.c src/sm3.c src/sm3x8.c tests/test_incremental_kernel.c -o $@
+$(OUT)/test_incremental_engine: $(SOURCES) $(HEADERS) tests/test_incremental_engine.c $(CUDA_OBJECT) $(CONFIG_STAMP)
+	mkdir -p $(OUT)
+	$(CC) $(BASE) $(CFLAGS) $(filter-out src/engine.c,$(SOURCES)) tests/test_incremental_engine.c $(CUDA_OBJECT) $(CUDA_LIBS) -o $@
+$(OUT)/test_incremental_fault_%: $(SOURCES) $(HEADERS) tests/test_incremental_engine.c $(CUDA_OBJECT) $(CONFIG_STAMP)
+	mkdir -p $(OUT)
+	$(CC) $(BASE) $(CFLAGS) -DSLH_TEST_FAULT_POINT=$* $(filter-out src/engine.c,$(SOURCES)) tests/test_incremental_engine.c $(CUDA_OBJECT) $(CUDA_LIBS) -o $@
 $(OUT)/test_repair: $(SOURCES) $(HEADERS) tests/test_repair.c $(CUDA_OBJECT) $(CONFIG_STAMP)
 	mkdir -p $(OUT)
 	$(CC) $(BASE) $(CFLAGS) $(filter-out src/engine.c,$(SOURCES)) tests/test_repair.c $(CUDA_OBJECT) $(CUDA_LIBS) -o $@

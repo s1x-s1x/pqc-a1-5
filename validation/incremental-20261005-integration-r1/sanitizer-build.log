@@ -1,0 +1,5 @@
+mkdir -p ../build/incremental-20261005-integration-r1/sanitizer
+rm -f ../build/incremental-20261005-integration-r1/sanitizer/.a15-config-*
+touch ../build/incremental-20261005-integration-r1/sanitizer/.a15-config-53b27a9f38ce87f9caa479f56749dc3277d88071d81a6503c4cb194ec8f8b96f
+mkdir -p ../build/incremental-20261005-integration-r1/sanitizer
+cc -std=c11 -Wall -Wextra -Wno-misleading-indentation -fPIC -fopenmp -Iinclude -Isrc -I../third_party/slhdsa-c -DA15_INCREMENTAL_V1=1 -DA15_INCREMENTAL_B1=1 -DA15_INCREMENTAL_MODE=4 -O1 -g -fsanitize=address,undefined -fno-omit-frame-pointer src/sm3.c src/sm3x8.c src/sm3_incremental.c ../third_party/slhdsa-c/sha2_256.c ../third_party/slhdsa-c/sha2_512.c ../third_party/slhdsa-c/sha3_api.c ../third_party/slhdsa-c/sha3_f1600.c src/sm3_cuda_stub.c tests/test_incremental_engine.c   -o ../build/incremental-20261005-integration-r1/sanitizer/test_incremental_engine

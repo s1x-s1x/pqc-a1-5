@@ -1,0 +1,123 @@
+{
+  "analysis_id": "P-finite-d1-20261005",
+  "candidate_count": 4,
+  "cryptographic_kernel_invoked": false,
+  "execution_modes": [
+    "F8",
+    "A8",
+    "F1",
+    "AF"
+  ],
+  "execution_timing_model": "F_x + Q*S_x + V*G_x + N*B_x*beta; F/S/G unknown for each p,t,e,v",
+  "files": {
+    "FORS-single-term-intervals.json": "a453fd8422ae4d2e82be2950ea8007d57e7cd92eed4c3a13a6f4334696c762ca",
+    "constraints.csv": "8c275e25f1bf8630c151a75052eee87dc774ddf11224805bf7f5293083bc8986",
+    "finite-scenarios.json": "3e513f8fc5952487a126b5cbab0a03ab13fb2f2c964698f1238a0cf43c30b952",
+    "pairwise-selection-regions.csv": "4d09253782f1fc22513d6b4e611d09519d4ee0eb3653331a2683f5f3cd51fd6c",
+    "parameter-applicability.json": "3d8574a6a4fa69826ac647bd9caf06ab31c9b7e07d0399fcc16a64492c868c97",
+    "parameter-cache-exact.csv": "17cede1045d35828a81f2690dc7d91f8acf2798835ea20f33417a7bfe6e32ec6",
+    "pareto-and-regret.json": "4df35eeca5b145cf1c7a6dd2647ae72a63925e0c64b42be1d7cc5d3e386b2d0f",
+    "resource-shapes.csv": "3918f81bbc3c983d5266fb26ede2fd9784bdf49f9f109efea1dba102934e6c8f",
+    "sources/LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "sources/README.md": "c680ee0932bf14457c93da5cacaef7ea367e8bc54d00ce57a172ff90f35c5179",
+    "sources/param.go": "4b888a86c98ba479e278b0458e7fde496dfdad089a5c9da998e70698e810281d",
+    "tables.md": "c9cd0cfa4a49d63cc4542b541e5914057fd1c3aa29d81a82d0a4ea2f880a1a96",
+    "unit-tests.log": "a5dc9100a8cf2bd5f8b7ce893ee97a478754ca9e4370d5df7dbc63df3ac7bf50"
+  },
+  "native_pid3_parameters_as_read": {
+    "a": 24,
+    "d": 1,
+    "h": 22,
+    "hp": 22,
+    "k": 6,
+    "length": 68,
+    "lgw": 2,
+    "m": 21,
+    "n": 16,
+    "pid": 3,
+    "sm3": 1
+  },
+  "new_performance_samples": 0,
+  "pairwise_region_count": 168,
+  "parameter_cache_count": 8,
+  "parameter_cache_lifetime": "parameter fixed at key creation; cache identity bound to pid/key/t",
+  "resource_model_scope": "represented objects plus explicit design reserve, not measured RSS/stack",
+  "resource_profile": {
+    "active_keys": 1,
+    "auxiliary_workspace_per_worker": 16384,
+    "other_live_memory_bytes": 65536,
+    "public_table_copies": 1,
+    "verifier_buffers_bytes": 16384,
+    "workers": 1
+  },
+  "resource_shape_count": 32,
+  "schema_version": 1,
+  "security_scope": "FORS target coverage term only; no full-scheme security label",
+  "source_hashes": {
+    "SPEC.md": "129950b0bacd869345ac3ac8738e35429a2dc77ef0418c233fd74ed8e0562960",
+    "c/src/engine.c": "3ff0bc4e9d4c0bd35ec527c04322cf857310f37899026b6b61f2e0bf1f826d07",
+    "c/src/sm3_incremental.c": "1a5ce2d63e1dfcbb58771d493bb696ac37da58065b334bd300fd2bfc6722de52",
+    "c/src/sm3_incremental.h": "26185cd00d4c55db2a0141095d8992a3f8c4aa114f7a36b4925db8f46dc9c44c",
+    "docs/research/P_20261005.md": "ad7e24218dc078bac864fa46fe3881ba650b67193597d7b785864e72a28c3509",
+    "tools/count_model.py": "6ac77e6b63e6cf9c03818c0e7d349012e16fafc5d1624e59da960564d97fc419",
+    "tools/incremental_parameters.py": "a8cac8cdd79851f20d8fff3278a7d5bf70afbdc78be1eadeaf405cfb13a9325b",
+    "tools/parameter_grid.py": "293f447acb29827ca84cee0471e40cfd94a1a57bc8b71be2747778765f498fd8",
+    "tools/security_terms.py": "8a1ef5eb04282b3b552c6a72f7a97bb4d47f92e64b4ca933e7e3e7abf2d33cac",
+    "tools/test_incremental_parameters.py": "6652b43cf7be2159e7527b9bd92fa06cb3652c216e94f50fbe54a977452ec116"
+  },
+  "upstream": {
+    "commit": "375c69e638b079fdf4bb8ef10c9c3549f08e05f9",
+    "files": [
+      {
+        "path": "sources/README.md",
+        "sha256": "c680ee0932bf14457c93da5cacaef7ea367e8bc54d00ce57a172ff90f35c5179",
+        "url": "https://raw.githubusercontent.com/chrisfenner/slh-dsa-rls/375c69e638b079fdf4bb8ef10c9c3549f08e05f9/README.md"
+      },
+      {
+        "path": "sources/param.go",
+        "sha256": "4b888a86c98ba479e278b0458e7fde496dfdad089a5c9da998e70698e810281d",
+        "url": "https://raw.githubusercontent.com/chrisfenner/slh-dsa-rls/375c69e638b079fdf4bb8ef10c9c3549f08e05f9/pkg/slhdsa/param.go"
+      },
+      {
+        "path": "sources/LICENSE",
+        "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+        "url": "https://raw.githubusercontent.com/chrisfenner/slh-dsa-rls/375c69e638b079fdf4bb8ef10c9c3549f08e05f9/LICENSE"
+      }
+    ],
+    "license": "Apache-2.0",
+    "reason": "upstream full-cache and approximate WOTS costs differ from current execution formulas",
+    "table_rows": [
+      {
+        "exact_table_line": "| rls128cs1 | 22 | 1 | 22 | 24 | 6 | 2 | 21 | 3856 | 1.45B | 302M | 311 | 27.25 |",
+        "id": "rls128cs1",
+        "readme_line": 119,
+        "w_column_interpreted_as_lgw": 2
+      },
+      {
+        "exact_table_line": "| rls128cs3 | 22 | 1 | 22 | 21 | 7 | 2 | 22 | 3920 | 1.19B | 44M | 315 | 26.87 |",
+        "id": "rls128cs3",
+        "readme_line": 121,
+        "w_column_interpreted_as_lgw": 2
+      },
+      {
+        "exact_table_line": "| rls128cs11 | 22 | 1 | 22 | 19 | 8 | 2 | 22 | 4016 | 1.16B | 12.6M | 321 | 26.85 |",
+        "id": "rls128cs11",
+        "readme_line": 129,
+        "w_column_interpreted_as_lgw": 2
+      },
+      {
+        "exact_table_line": "| rls128cs18 | 22 | 1 | 22 | 17 | 9 | 2 | 23 | 4048 | 1.15B | 3.54M | 323 | 26.32 |",
+        "id": "rls128cs18",
+        "readme_line": 136,
+        "w_column_interpreted_as_lgw": 2
+      }
+    ],
+    "upstream_costs_imported": false
+  },
+  "usage_limit": "16777216",
+  "usage_scope": "strict aggregate per key across copies/devices",
+  "verification_modes": [
+    "V0",
+    "V1"
+  ]
+}

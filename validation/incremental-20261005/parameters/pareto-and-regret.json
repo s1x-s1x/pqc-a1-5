@@ -1,0 +1,120 @@
+{
+  "budgets": {
+    "cache_files_bytes": 262144,
+    "per_worker_workspace_bytes": 32768,
+    "require_native_parameter": false,
+    "signature_bytes": 4096,
+    "signature_lifetime_count": 16777216,
+    "total_memory_bytes": 524288
+  },
+  "calls": {
+    "minimax_ids": [
+      "rls128cs11-t12"
+    ],
+    "scope": "exact logical-work regret on this fixed finite feasible/scenario set",
+    "worst_regret": {
+      "pid3-t10": {
+        "denominator": "1",
+        "numerator": "305613742080"
+      },
+      "pid3-t12": {
+        "denominator": "1",
+        "numerator": "306475666432"
+      },
+      "rls128cs11-t10": {
+        "denominator": "1",
+        "numerator": "13421775872"
+      },
+      "rls128cs11-t12": {
+        "denominator": "1",
+        "numerator": "13421772800"
+      },
+      "rls128cs18-t10": {
+        "denominator": "1",
+        "numerator": "16106130432"
+      },
+      "rls128cs18-t12": {
+        "denominator": "1",
+        "numerator": "16106127360"
+      },
+      "rls128cs3-t10": {
+        "denominator": "1",
+        "numerator": "41473261568"
+      },
+      "rls128cs3-t12": {
+        "denominator": "1",
+        "numerator": "42335185920"
+      }
+    }
+  },
+  "compressions": {
+    "minimax_ids": [
+      "rls128cs11-t12"
+    ],
+    "scope": "exact logical-work regret on this fixed finite feasible/scenario set",
+    "worst_regret": {
+      "pid3-t10": {
+        "denominator": "1",
+        "numerator": "305613742080"
+      },
+      "pid3-t12": {
+        "denominator": "1",
+        "numerator": "306475666432"
+      },
+      "rls128cs11-t10": {
+        "denominator": "1",
+        "numerator": "13421775872"
+      },
+      "rls128cs11-t12": {
+        "denominator": "1",
+        "numerator": "13421772800"
+      },
+      "rls128cs18-t10": {
+        "denominator": "1",
+        "numerator": "16106130432"
+      },
+      "rls128cs18-t12": {
+        "denominator": "1",
+        "numerator": "16106127360"
+      },
+      "rls128cs3-t10": {
+        "denominator": "1",
+        "numerator": "41473261568"
+      },
+      "rls128cs3-t12": {
+        "denominator": "1",
+        "numerator": "42335185920"
+      }
+    }
+  },
+  "dominated_by": {
+    "pid3-t10": [],
+    "pid3-t12": [],
+    "rls128cs11-t10": [],
+    "rls128cs11-t12": [],
+    "rls128cs18-t10": [],
+    "rls128cs18-t12": [],
+    "rls128cs3-t10": [],
+    "rls128cs3-t12": []
+  },
+  "feasible_set_execution_resource_shape": "AF",
+  "feasible_set_resource_profile": {
+    "active_keys": 1,
+    "auxiliary_workspace_per_worker": 16384,
+    "other_live_memory_bytes": 65536,
+    "public_table_copies": 1,
+    "verifier_buffers_bytes": 16384,
+    "workers": 1
+  },
+  "fixed_feasible_set": [
+    "pid3-t10",
+    "pid3-t12",
+    "rls128cs3-t10",
+    "rls128cs3-t12",
+    "rls128cs11-t10",
+    "rls128cs11-t12",
+    "rls128cs18-t10",
+    "rls128cs18-t12"
+  ],
+  "not_global_optimum": true
+}

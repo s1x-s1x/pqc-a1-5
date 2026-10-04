@@ -1,0 +1,377 @@
+{
+  "scope": "bounded code-neighbor checks, not a global novelty search",
+  "new_performance_samples": 0,
+  "sources": [
+    {
+      "name": "isa-l-sm3-x8.asm",
+      "repository": "intel/isa-l_crypto",
+      "commit": "f22c49aef162d7632bde4f22dc7491b22f0a7fc2",
+      "path": "sm3_mb/sm3_mb_x8_avx2.asm",
+      "url": "https://raw.githubusercontent.com/intel/isa-l_crypto/f22c49aef162d7632bde4f22dc7491b22f0a7fc2/sm3_mb/sm3_mb_x8_avx2.asm",
+      "sha256": "ba6c73110860ea64f541b2c98a8b8a976f11ce68d7c429aeb2b437bf98649068",
+      "positions": [
+        {
+          "line": 168,
+          "source": "%macro TRANSPOSE8 10"
+        },
+        {
+          "line": 322,
+          "source": "TRANSPOSE8 WB0, WB1, WB2, WB3, WB4, WB5, WB6, WB7, WBTMP0, WBTMP1"
+        },
+        {
+          "line": 345,
+          "source": "TRANSPOSE8 WB8, WB9, WB10, WB11, WB12, WB13, WB14, WB15, WBTMP2, WBTMP3"
+        }
+      ]
+    },
+    {
+      "name": "gmssl-sm3-avx2.c",
+      "repository": "guanzhi/GmSSL",
+      "commit": "24ae482701a7b124826c382fffc55c19f76d475d",
+      "path": "src/sm3_avx2.c",
+      "url": "https://raw.githubusercontent.com/guanzhi/GmSSL/24ae482701a7b124826c382fffc55c19f76d475d/src/sm3_avx2.c",
+      "sha256": "c8bfdbec9b80075b29b513951f5e38ca67f192a5d183d565f743fb0108a49fe2",
+      "positions": [
+        {
+          "line": 79,
+          "source": "void sm3_x8_compress_blocks(__m256i digest[8], const uint8_t *data, size_t datalen)"
+        },
+        {
+          "line": 90,
+          "source": "uint32_t W[68][8];"
+        },
+        {
+          "line": 127,
+          "source": "SS1 = _mm256_i32gather_epi32(data + 4*j, TT1, 1);"
+        },
+        {
+          "line": 272,
+          "source": "sm3_x8_compress_blocks(ctx.digest, data, datalen);"
+        },
+        {
+          "line": 282,
+          "source": "sm3_x8_compress_blocks(ctx.digest, &block[0][0], SM3_BLOCK_SIZE);"
+        },
+        {
+          "line": 289,
+          "source": "sm3_x8_compress_blocks(ctx.digest, &block[0][0], SM3_BLOCK_SIZE);"
+        },
+        {
+          "line": 296,
+          "source": "a = _mm256_i32gather_epi32((uint8_t *)&ctx + 4*i, vindex, 1);"
+        }
+      ]
+    },
+    {
+      "name": "openssl-sm3-local.h",
+      "repository": "openssl/openssl",
+      "commit": "4d25710dbfeacbb36d055592a3bc6811172248b1",
+      "path": "crypto/sm3/sm3_local.h",
+      "url": "https://raw.githubusercontent.com/openssl/openssl/4d25710dbfeacbb36d055592a3bc6811172248b1/crypto/sm3/sm3_local.h",
+      "sha256": "8d6fd211593eee389560ef1a25d71204d74622326053d18541dec157e085de3a",
+      "positions": [
+        {
+          "line": 12,
+          "source": "#if !defined(OSSL_LIBCRYPTO_SM3_SM3_LOCAL_H)"
+        },
+        {
+          "line": 13,
+          "source": "#define OSSL_LIBCRYPTO_SM3_SM3_LOCAL_H"
+        },
+        {
+          "line": 21,
+          "source": "#define HASH_LONG SM3_WORD"
+        },
+        {
+          "line": 22,
+          "source": "#define HASH_CTX SM3_CTX"
+        },
+        {
+          "line": 23,
+          "source": "#define HASH_CBLOCK SM3_CBLOCK"
+        },
+        {
+          "line": 48,
+          "source": "#if defined(OPENSSL_SM3_ASM)"
+        },
+        {
+          "line": 51,
+          "source": "#define HWSM3_CAPABLE (OPENSSL_armcap_P & ARMV8_SM3)"
+        },
+        {
+          "line": 52,
+          "source": "void ossl_hwsm3_block_data_order(SM3_CTX *c, const void *p, size_t num);"
+        },
+        {
+          "line": 56,
+          "source": "#define HWSM3_CAPABLE 1"
+        },
+        {
+          "line": 57,
+          "source": "void ossl_hwsm3_block_data_order(SM3_CTX *c, const void *p, size_t num);"
+        },
+        {
+          "line": 60,
+          "source": "#define HWSM3_CAPABLE ((OPENSSL_ia32cap_P[2] & (1 << 5)) && (OPENSSL_ia32cap_P[5] & (1 << 1)))"
+        },
+        {
+          "line": 61,
+          "source": "void ossl_hwsm3_block_data_order(SM3_CTX *c, const void *p, size_t num);"
+        },
+        {
+          "line": 65,
+          "source": "#if defined(HWSM3_CAPABLE)"
+        },
+        {
+          "line": 66,
+          "source": "#define HASH_BLOCK_DATA_ORDER (HWSM3_CAPABLE ? ossl_hwsm3_block_data_order \\"
+        },
+        {
+          "line": 72,
+          "source": "void ossl_sm3_block_data_order(SM3_CTX *c, const void *p, size_t num);"
+        },
+        {
+          "line": 73,
+          "source": "void ossl_sm3_transform(SM3_CTX *c, const unsigned char *data);"
+        },
+        {
+          "line": 86,
+          "source": "#define P1(x) ({ MD32_REG_T ret;        \\"
+        },
+        {
+          "line": 97,
+          "source": "#ifndef P1"
+        },
+        {
+          "line": 98,
+          "source": "#define P1(X) (X ^ ROTATE(X, 15) ^ ROTATE(X, 23))"
+        },
+        {
+          "line": 107,
+          "source": "#define EXPAND(W0, W7, W13, W3, W10) \\"
+        },
+        {
+          "line": 108,
+          "source": "(P1(W0 ^ W7 ^ ROTATE(W13, 15)) ^ ROTATE(W3, 7) ^ W10)"
+        },
+        {
+          "line": 112,
+          "source": "const SM3_WORD A12 = ROTATE(A, 12);                        \\"
+        },
+        {
+          "line": 113,
+          "source": "const SM3_WORD A12_SM = A12 + E + TJ;                      \\"
+        },
+        {
+          "line": 114,
+          "source": "const SM3_WORD SS1 = ROTATE(A12_SM, 7);                    \\"
+        },
+        {
+          "line": 115,
+          "source": "const SM3_WORD TT1 = FF(A, B, C) + D + (SS1 ^ A12) + (Wj); \\"
+        },
+        {
+          "line": 116,
+          "source": "const SM3_WORD TT2 = GG(E, F, G) + H + SS1 + Wi;           \\"
+        },
+        {
+          "line": 129,
+          "source": "#define SM3_A 0x7380166fUL"
+        },
+        {
+          "line": 130,
+          "source": "#define SM3_B 0x4914b2b9UL"
+        },
+        {
+          "line": 131,
+          "source": "#define SM3_C 0x172442d7UL"
+        },
+        {
+          "line": 132,
+          "source": "#define SM3_D 0xda8a0600UL"
+        },
+        {
+          "line": 133,
+          "source": "#define SM3_E 0xa96f30bcUL"
+        },
+        {
+          "line": 134,
+          "source": "#define SM3_F 0x163138aaUL"
+        },
+        {
+          "line": 135,
+          "source": "#define SM3_G 0xe38dee4dUL"
+        },
+        {
+          "line": 136,
+          "source": "#define SM3_H 0xb0fb0e4eUL"
+        },
+        {
+          "line": 138,
+          "source": "#endif /* !defined(OSSL_LIBCRYPTO_SM3_SM3_LOCAL_H) */"
+        }
+      ]
+    },
+    {
+      "name": "sphincs-fors.c",
+      "repository": "sphincs/sphincsplus",
+      "commit": "7ec789ace6874d875f4bb84cb61b81155398167e",
+      "path": "sha2-avx2/fors.c",
+      "url": "https://raw.githubusercontent.com/sphincs/sphincsplus/7ec789ace6874d875f4bb84cb61b81155398167e/sha2-avx2/fors.c",
+      "sha256": "c71dce223cbbad998d3f544ea42c99110e28e5929ca8755dad931b592df53a92",
+      "positions": [
+        {
+          "line": 11,
+          "source": "#include \"thashx8.h\""
+        },
+        {
+          "line": 60,
+          "source": "thashx8(leaf0, leaf1, leaf2, leaf3, leaf4, leaf5, leaf6, leaf7,"
+        },
+        {
+          "line": 139,
+          "source": "void fors_sign(unsigned char *sig, unsigned char *pk,"
+        },
+        {
+          "line": 194,
+          "source": "void fors_pk_from_sig(unsigned char *pk,"
+        },
+        {
+          "line": 226,
+          "source": "compute_root(roots + i*SPX_N, leaf, indices[i], idx_offset,"
+        }
+      ]
+    },
+    {
+      "name": "sphincs-wots.c",
+      "repository": "sphincs/sphincsplus",
+      "commit": "7ec789ace6874d875f4bb84cb61b81155398167e",
+      "path": "sha2-avx2/wots.c",
+      "url": "https://raw.githubusercontent.com/sphincs/sphincsplus/7ec789ace6874d875f4bb84cb61b81155398167e/sha2-avx2/wots.c",
+      "sha256": "0d4fcb08b4f1927233d1b9542ac98b7db0909b93fd05ae589eb61b58c4637ab9",
+      "positions": [
+        {
+          "line": 9,
+          "source": "#include \"thashx8.h\""
+        },
+        {
+          "line": 20,
+          "source": "* Computes up the chains"
+        },
+        {
+          "line": 22,
+          "source": "static void gen_chains("
+        },
+        {
+          "line": 49,
+          "source": "/* Sort the chains in reverse order by steps using counting sort. */"
+        },
+        {
+          "line": 68,
+          "source": "set_chain_addr(addrs+j*8, idx);"
+        },
+        {
+          "line": 72,
+          "source": "/* As the chains are sorted in reverse order, we know that the first"
+        },
+        {
+          "line": 73,
+          "source": "* chain is the longest and the last one is the shortest.  We keep"
+        },
+        {
+          "line": 74,
+          "source": "* an eye on whether the last chain is done and then on the one before,"
+        },
+        {
+          "line": 99,
+          "source": "thashx8(bufs[0], bufs[1], bufs[2], bufs[3],"
+        },
+        {
+          "line": 153,
+          "source": "/* Takes a message and derives the matching chain lengths. */"
+        },
+        {
+          "line": 154,
+          "source": "void chain_lengths(unsigned int *lengths, const unsigned char *msg)"
+        },
+        {
+          "line": 165,
+          "source": "void wots_pk_from_sig(unsigned char *pk,"
+        },
+        {
+          "line": 173,
+          "source": "chain_lengths(start, msg);"
+        },
+        {
+          "line": 179,
+          "source": "gen_chains(pk, sig, start, steps, ctx, addr);"
+        },
+        {
+          "line": 223,
+          "source": "set_chain_addr(leaf_addr + j*8, i);"
+        },
+        {
+          "line": 241,
+          "source": "/* Iterate down the WOTS chain */"
+        },
+        {
+          "line": 250,
+          "source": "/* Check if we hit the top of the chain */"
+        },
+        {
+          "line": 253,
+          "source": "/* Iterate one step on all 8 chains */"
+        },
+        {
+          "line": 257,
+          "source": "thashx8(buffer + 0*wots_offset,"
+        },
+        {
+          "line": 277,
+          "source": "thashx8(dest + 0*SPX_N,"
+        }
+      ]
+    },
+    {
+      "name": "isa-l-LICENSE.txt",
+      "repository": "intel/isa-l_crypto",
+      "commit": "f22c49aef162d7632bde4f22dc7491b22f0a7fc2",
+      "path": "LICENSE",
+      "url": "https://raw.githubusercontent.com/intel/isa-l_crypto/f22c49aef162d7632bde4f22dc7491b22f0a7fc2/LICENSE",
+      "sha256": "bc8fd4a3d031e65e05e9c9e2add2c3f336ce527fa85c1e31031c808b58216217",
+      "positions": []
+    },
+    {
+      "name": "gmssl-LICENSE.txt",
+      "repository": "guanzhi/GmSSL",
+      "commit": "24ae482701a7b124826c382fffc55c19f76d475d",
+      "path": "LICENSE",
+      "url": "https://raw.githubusercontent.com/guanzhi/GmSSL/24ae482701a7b124826c382fffc55c19f76d475d/LICENSE",
+      "sha256": "a6cba85bc92e0cff7a450b1d873c0eaa2e9fc96bf472df0247a26bec77bf3ff9",
+      "positions": []
+    },
+    {
+      "name": "openssl-LICENSE.txt",
+      "repository": "openssl/openssl",
+      "commit": "4d25710dbfeacbb36d055592a3bc6811172248b1",
+      "path": "LICENSE.txt",
+      "url": "https://raw.githubusercontent.com/openssl/openssl/4d25710dbfeacbb36d055592a3bc6811172248b1/LICENSE.txt",
+      "sha256": "7d5450cb2d142651b8afa315b5f238efc805dad827d91ba367d8516bc9d49e7a",
+      "positions": []
+    },
+    {
+      "name": "sphincs-LICENSE.txt",
+      "repository": "sphincs/sphincsplus",
+      "commit": "7ec789ace6874d875f4bb84cb61b81155398167e",
+      "path": "LICENSE",
+      "url": "https://raw.githubusercontent.com/sphincs/sphincsplus/7ec789ace6874d875f4bb84cb61b81155398167e/LICENSE",
+      "sha256": "5797220e196e5b833db8435b188db410c3828739580c42cf615d765b9cdec5d2",
+      "positions": []
+    }
+  ],
+  "literature_gaps": [
+    "ParaSM2 complete mechanism text",
+    "AsicBoost complete mechanism comparison",
+    "global patent and novelty coverage"
+  ]
+}

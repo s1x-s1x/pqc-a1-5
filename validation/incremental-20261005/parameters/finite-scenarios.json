@@ -1,0 +1,410 @@
+[
+  {
+    "costs": {
+      "pid3-t10": {
+        "denominator": "1",
+        "numerator": "302274725"
+      },
+      "pid3-t12": {
+        "denominator": "1",
+        "numerator": "303113379"
+      },
+      "rls128cs11-t10": {
+        "denominator": "1",
+        "numerator": "12867759"
+      },
+      "rls128cs11-t12": {
+        "denominator": "1",
+        "numerator": "13706413"
+      },
+      "rls128cs18-t10": {
+        "denominator": "1",
+        "numerator": "3823793"
+      },
+      "rls128cs18-t12": {
+        "denominator": "1",
+        "numerator": "4662447"
+      },
+      "rls128cs3-t10": {
+        "denominator": "1",
+        "numerator": "44325033"
+      },
+      "rls128cs3-t12": {
+        "denominator": "1",
+        "numerator": "45163687"
+      }
+    },
+    "metric": "calls",
+    "minimum_ids": [
+      "rls128cs18-t10"
+    ],
+    "scenario_id": 0,
+    "workload": {
+      "byte_weight": {
+        "denominator": "1",
+        "numerator": "0"
+      },
+      "external_verifications": 0,
+      "preparations": 1,
+      "signatures": 1,
+      "transmissions": 1
+    }
+  },
+  {
+    "costs": {
+      "pid3-t10": {
+        "denominator": "19807040628566084398385987584",
+        "numerator": "7188482250386138249638364401870259589421"
+      },
+      "pid3-t12": {
+        "denominator": "19807040628566084398385987584",
+        "numerator": "7188498861639989559099309445872290861357"
+      },
+      "rls128cs11-t10": {
+        "denominator": "19807040628566084398385987584",
+        "numerator": "7448595554009369380802888989962729394477"
+      },
+      "rls128cs11-t12": {
+        "denominator": "19807040628566084398385987584",
+        "numerator": "7448612165263220690263834033964760666413"
+      },
+      "rls128cs18-t10": {
+        "denominator": "19807040628566084398385987584",
+        "numerator": "7501585539638760645422989139047357059373"
+      },
+      "rls128cs18-t12": {
+        "denominator": "19807040628566084398385987584",
+        "numerator": "7501602150892611954883934183049388331309"
+      },
+      "rls128cs3-t10": {
+        "denominator": "19807040628566084398385987584",
+        "numerator": "7289711270019361411598459295898278531373"
+      },
+      "rls128cs3-t12": {
+        "denominator": "19807040628566084398385987584",
+        "numerator": "7289727881273212721059404339900309803309"
+      }
+    },
+    "metric": "calls",
+    "minimum_ids": [
+      "pid3-t10"
+    ],
+    "scenario_id": 1,
+    "workload": {
+      "byte_weight": {
+        "denominator": "64",
+        "numerator": "1"
+      },
+      "external_verifications": 1073741824,
+      "preparations": 1,
+      "signatures": 1,
+      "transmissions": 1073741824
+    }
+  },
+  {
+    "costs": {
+      "pid3-t10": {
+        "denominator": "20769187434139310514121985316880384",
+        "numerator": "6428591325361819079610323440725214497499222317"
+      },
+      "pid3-t12": {
+        "denominator": "20769187434139310514121985316880384",
+        "numerator": "6446492793782556147502934819768420137139933485"
+      },
+      "rls128cs11-t10": {
+        "denominator": "20769187434139310514121985316880384",
+        "numerator": "273586075920325743719544526692526011558891821"
+      },
+      "rls128cs11-t12": {
+        "denominator": "20769187434139310514121985316880384",
+        "numerator": "291487544341062811612155905735731651199602989"
+      },
+      "rls128cs18-t10": {
+        "denominator": "20769187434139310514121985316880384",
+        "numerator": "81242233653590849358414822434585751511863597"
+      },
+      "rls128cs18-t12": {
+        "denominator": "20769187434139310514121985316880384",
+        "numerator": "99143702074327917251026201477791391152574765"
+      },
+      "rls128cs3-t10": {
+        "denominator": "20769187434139310514121985316880384",
+        "numerator": "942608176664469247261768477341021282912145709"
+      },
+      "rls128cs3-t12": {
+        "denominator": "20769187434139310514121985316880384",
+        "numerator": "960509645085206315154379856384226922552856877"
+      }
+    },
+    "metric": "calls",
+    "minimum_ids": [
+      "rls128cs18-t10"
+    ],
+    "scenario_id": 2,
+    "workload": {
+      "byte_weight": {
+        "denominator": "1",
+        "numerator": "0"
+      },
+      "external_verifications": 1024,
+      "preparations": 1,
+      "signatures": 1024,
+      "transmissions": 1024
+    }
+  },
+  {
+    "costs": {
+      "pid3-t10": {
+        "denominator": "19807040628566084398385987584",
+        "numerator": "7182495163736905983310631098420071731501"
+      },
+      "pid3-t12": {
+        "denominator": "19807040628566084398385987584",
+        "numerator": "7182495102889677172355619826578317873453"
+      },
+      "rls128cs11-t10": {
+        "denominator": "19807040628566084398385987584",
+        "numerator": "7448340762893889157891392510476140646701"
+      },
+      "rls128cs11-t12": {
+        "denominator": "19807040628566084398385987584",
+        "numerator": "7448340702046660346936381238634386788653"
+      },
+      "rls128cs18-t10": {
+        "denominator": "19807040628566084398385987584",
+        "numerator": "7501509882725285792807544792887354429741"
+      },
+      "rls128cs18-t12": {
+        "denominator": "19807040628566084398385987584",
+        "numerator": "7501509821878056981852533521045600571693"
+      },
+      "rls128cs3-t10": {
+        "denominator": "19807040628566084398385987584",
+        "numerator": "7288833403399699253142935663242499297581"
+      },
+      "rls128cs3-t12": {
+        "denominator": "19807040628566084398385987584",
+        "numerator": "7288833342552470442187924391400745439533"
+      }
+    },
+    "metric": "calls",
+    "minimum_ids": [
+      "pid3-t12"
+    ],
+    "scenario_id": 3,
+    "workload": {
+      "byte_weight": {
+        "denominator": "64",
+        "numerator": "1"
+      },
+      "external_verifications": 1073741824,
+      "preparations": 1,
+      "signatures": 0,
+      "transmissions": 1073741824
+    }
+  },
+  {
+    "costs": {
+      "pid3-t10": {
+        "denominator": "1",
+        "numerator": "302293174"
+      },
+      "pid3-t12": {
+        "denominator": "1",
+        "numerator": "303183284"
+      },
+      "rls128cs11-t10": {
+        "denominator": "1",
+        "numerator": "12886210"
+      },
+      "rls128cs11-t12": {
+        "denominator": "1",
+        "numerator": "13776320"
+      },
+      "rls128cs18-t10": {
+        "denominator": "1",
+        "numerator": "3842244"
+      },
+      "rls128cs18-t12": {
+        "denominator": "1",
+        "numerator": "4732354"
+      },
+      "rls128cs3-t10": {
+        "denominator": "1",
+        "numerator": "44343484"
+      },
+      "rls128cs3-t12": {
+        "denominator": "1",
+        "numerator": "45233594"
+      }
+    },
+    "metric": "compressions",
+    "minimum_ids": [
+      "rls128cs18-t10"
+    ],
+    "scenario_id": 0,
+    "workload": {
+      "byte_weight": {
+        "denominator": "1",
+        "numerator": "0"
+      },
+      "external_verifications": 0,
+      "preparations": 1,
+      "signatures": 1,
+      "transmissions": 1
+    }
+  },
+  {
+    "costs": {
+      "pid3-t10": {
+        "denominator": "19807040628566084398385987584",
+        "numerator": "7656370870322521193316195552912025817389"
+      },
+      "pid3-t12": {
+        "denominator": "19807040628566084398385987584",
+        "numerator": "7656388500767455086273579400263434211629"
+      },
+      "rls128cs11-t10": {
+        "denominator": "19807040628566084398385987584",
+        "numerator": "7937751821917925059704313222765753110829"
+      },
+      "rls128cs11-t12": {
+        "denominator": "19807040628566084398385987584",
+        "numerator": "7937769452362858952661697070117161505069"
+      },
+      "rls128cs18-t10": {
+        "denominator": "19807040628566084398385987584",
+        "numerator": "7990741807547316324324413371850380775725"
+      },
+      "rls128cs18-t12": {
+        "denominator": "19807040628566084398385987584",
+        "numerator": "7990759437992250217281797219201789169965"
+      },
+      "rls128cs3-t10": {
+        "denominator": "19807040628566084398385987584",
+        "numerator": "7778867537927917090499883528701302247725"
+      },
+      "rls128cs3-t12": {
+        "denominator": "19807040628566084398385987584",
+        "numerator": "7778885168372850983457267376052710641965"
+      }
+    },
+    "metric": "compressions",
+    "minimum_ids": [
+      "pid3-t10"
+    ],
+    "scenario_id": 1,
+    "workload": {
+      "byte_weight": {
+        "denominator": "64",
+        "numerator": "1"
+      },
+      "external_verifications": 1073741824,
+      "preparations": 1,
+      "signatures": 1,
+      "transmissions": 1073741824
+    }
+  },
+  {
+    "costs": {
+      "pid3-t10": {
+        "denominator": "20769187434139310514121985316880384",
+        "numerator": "6428962339542310127631186282894245903227916589"
+      },
+      "pid3-t12": {
+        "denominator": "20769187434139310514121985316880384",
+        "numerator": "6447974473657941189249551641810424110946685229"
+      },
+      "rls128cs11-t10": {
+        "denominator": "20769187434139310514121985316880384",
+        "numerator": "273957153903760589416369268244296310744125741"
+      },
+      "rls128cs11-t12": {
+        "denominator": "20769187434139310514121985316880384",
+        "numerator": "292969288019391651034734627160474518462894381"
+      },
+      "rls128cs18-t10": {
+        "denominator": "20769187434139310514121985316880384",
+        "numerator": "81613311637025695055239563986356050697097517"
+      },
+      "rls128cs18-t12": {
+        "denominator": "20769187434139310514121985316880384",
+        "numerator": "100625445752656756673604922902534258415866157"
+      },
+      "rls128cs3-t10": {
+        "denominator": "20769187434139310514121985316880384",
+        "numerator": "942979254647904092958593218892791582097379629"
+      },
+      "rls128cs3-t12": {
+        "denominator": "20769187434139310514121985316880384",
+        "numerator": "961991388763535154576958577808969789816148269"
+      }
+    },
+    "metric": "compressions",
+    "minimum_ids": [
+      "rls128cs18-t10"
+    ],
+    "scenario_id": 2,
+    "workload": {
+      "byte_weight": {
+        "denominator": "1",
+        "numerator": "0"
+      },
+      "external_verifications": 1024,
+      "preparations": 1,
+      "signatures": 1024,
+      "transmissions": 1024
+    }
+  },
+  {
+    "costs": {
+      "pid3-t10": {
+        "denominator": "19807040628566084398385987584",
+        "numerator": "7650383438595027096110139860781162271021"
+      },
+      "pid3-t12": {
+        "denominator": "19807040628566084398385987584",
+        "numerator": "7650383362535991082416375770978969948461"
+      },
+      "rls128cs11-t10": {
+        "denominator": "19807040628566084398385987584",
+        "numerator": "7937496685684568924657362185801716699437"
+      },
+      "rls128cs11-t12": {
+        "denominator": "19807040628566084398385987584",
+        "numerator": "7937496609625532910963598095999524376877"
+      },
+      "rls128cs18-t10": {
+        "denominator": "19807040628566084398385987584",
+        "numerator": "7990665805515965559573514468212930482477"
+      },
+      "rls128cs18-t12": {
+        "denominator": "19807040628566084398385987584",
+        "numerator": "7990665729456929545879750378410738159917"
+      },
+      "rls128cs3-t10": {
+        "denominator": "19807040628566084398385987584",
+        "numerator": "7777989326190379019908905338568075350317"
+      },
+      "rls128cs3-t12": {
+        "denominator": "19807040628566084398385987584",
+        "numerator": "7777989250131343006215141248765883027757"
+      }
+    },
+    "metric": "compressions",
+    "minimum_ids": [
+      "pid3-t12"
+    ],
+    "scenario_id": 3,
+    "workload": {
+      "byte_weight": {
+        "denominator": "64",
+        "numerator": "1"
+      },
+      "external_verifications": 1073741824,
+      "preparations": 1,
+      "signatures": 0,
+      "transmissions": 1073741824
+    }
+  }
+]

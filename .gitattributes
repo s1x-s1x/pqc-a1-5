@@ -11,6 +11,9 @@ docs/history/** -whitespace
 **/cuda-resources/** -whitespace
 # Locked dependency records keep CRLF bytes for their recorded hashes.
 reference/requirements.lock.txt whitespace=cr-at-eol
+# Raw mechanism sources and generated disassembly are evidence, not authored code.
+validation/incremental-20261005/neighbors/** -whitespace linguist-vendored=true
+validation/incremental-20261005/codegen-*/** -whitespace linguist-generated=true
 # Development evidence and first-failure logs retain their captured bytes.
 build/friend-repair-20261004/** -whitespace
 build/friend-repair-20261004-r4/** -whitespace

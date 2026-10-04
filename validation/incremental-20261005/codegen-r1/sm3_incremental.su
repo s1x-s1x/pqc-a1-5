@@ -1,0 +1,15 @@
+c/src/sm3_incremental.c:17:13:expand	8	static
+c/src/sm3_incremental.c:159:18:update8	8	static
+c/src/sm3_incremental.c:107:18:expand8	8	static
+c/src/sm3_incremental.c:82:25:prepare_offsets	880	static
+c/src/sm3_incremental.c:47:13:layout_bytes	112	static
+c/src/sm3_incremental.c:122:18:rounds8	864	static
+c/src/sm3_incremental.c:122:18:rounds8.constprop	864	static
+c/src/sm3_incremental.c:25:5:a15_sm3i_layout_words	8	static
+c/src/sm3_incremental.c:222:13:build_schedule	192	static
+c/src/sm3_incremental.c:201:5:a15_sm3i_thash8	3120	static
+c/src/sm3_incremental.c:217:6:a15_sm3i_clear	8	static
+c/src/sm3_incremental.c:238:5:a15_sm3i_init	80	static
+c/src/sm3_incremental.c:264:5:a15_sm3i_consume	304	static
+c/src/sm3_incremental.c:274:5:a15_sm3i_advance	16	static
+c/src/sm3_incremental.c:286:5:a15_sm3i_next	304	static

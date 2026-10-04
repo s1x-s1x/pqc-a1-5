@@ -1,0 +1,5 @@
+mkdir -p ../build/incremental-20261005-kernel-r1/portable
+rm -f ../build/incremental-20261005-kernel-r1/portable/.a15-config-*
+touch ../build/incremental-20261005-kernel-r1/portable/.a15-config-e938339bd1e985f35c56ae26dd1663afed5bed44d4624207af7dea575e87915f
+mkdir -p ../build/incremental-20261005-kernel-r1/portable
+cc -std=c11 -Wall -Wextra -Wno-misleading-indentation -fPIC -fopenmp -Iinclude -Isrc -I../third_party/slhdsa-c -DA15_INCREMENTAL_V1=0 -DA15_INCREMENTAL_B1=0 -DA15_INCREMENTAL_MODE=0 -DSLH_DISABLE_AVX2 -O3 -DSLH_TEST_BUILD src/sm3_incremental.c src/sm3.c src/sm3x8.c tests/test_incremental_kernel.c -o ../build/incremental-20261005-kernel-r1/portable/test_incremental_kernel
