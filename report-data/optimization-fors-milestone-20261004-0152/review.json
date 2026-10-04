@@ -1,0 +1,14 @@
+{
+  "schema": "a15-milestone-review-v1",
+  "run_manifest": "validation/native-stage2-20261004-0152/manifest.json",
+  "manifest_sha256": "b0ba2a2732e1af32909518a018eaa5e1398c62e4c6f033530786c6b440982fba",
+  "passed": true,
+  "execution_steps": 9,
+  "external_ref_operation_checks_per_build": 351,
+  "complete_12824_ref_cases": 3,
+  "exact_counter_records": 326,
+  "CLI_budget_checks": 23,
+  "source_archive": "validation/native-stage2-20261004-0152/source.tar.gz",
+  "scope": "FORS/prehash milestone. Python external/differential replay explicitly used REF. Direct C tests exercise AVX2 bounded subtrees, toy/128s/128f complete signatures. WOTS and complete AVX2 pid3 need subsequent acceptance.",
+  "formal_performance_started": false
+}

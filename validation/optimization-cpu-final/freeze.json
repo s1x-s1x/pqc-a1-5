@@ -1,0 +1,77 @@
+{
+  "schema": "a15-cpu-freeze-v1",
+  "created_utc": "2026-10-04T05:30:02.997195+00:00",
+  "final": true,
+  "correctness_passed": true,
+  "formal_performance_started": false,
+  "source_sha256": {
+    "c/Makefile": "35b5c5f7bcb836970db98f7af207b6d2cedfa5be1185b2058644b43bf124f574",
+    "c/include/slhdsa_sm3.h": "09420c13f02b1ef73e52df3542918548b759d1d2727bfe950f2f4500b90f81fb",
+    "c/src/engine.c": "db62f123aa1b11848e7903bc9b29eda50c4359a47f808b2e20f19185df41a23c",
+    "c/src/sm3.c": "5b165c63a7747fbad817459e1e4cbff4e884eab53ba5a14539b401a89db2d2dc",
+    "c/src/sm3.h": "a8eb36558ee2680ffb486c81430461406f8a6002a367d3187fa130e3e0d46761",
+    "c/src/sm3x8.c": "6d419a5e838c2402b5021b1bed6f8c4047402848ea2df234555cb210557e8f05",
+    "c/src/sm3x8.h": "94f3bef4ff710d6fff7d3e29633e390778ef0cfd2b4ab90084a01e497da43fc4",
+    "c/src/sm3_cuda.h": "6354878a69a8c299688d8805de46a4b6adfecdf43560de04d6f081feabd18bf1",
+    "c/src/sm3_cuda_stub.c": "b5f2ccb7c8ca60e0eb8adf4609962ad0f5f6acbb109b22a799cc33e274a998f6",
+    "c/src/sm3_cuda_device.cuh": "c36e93f53c0f9561f5f8f194c44ea2ef11a1e7df4bbf20fcec11fd3b15f46f91",
+    "third_party/slhdsa-c/sha2_256.c": "cbc9ef22886cf8a6a8f4e51b60b4b858d9c8a5a5dbe2ad16764a7e6ea3fba85c",
+    "third_party/slhdsa-c/sha2_512.c": "b06e26570cc3492b060c7f97d4fe7f69b1667628c176ed9f83af11b60076c9aa",
+    "third_party/slhdsa-c/sha2_api.h": "96698a33d10b8e1c50f82ee82e34209f37607ea207baaf6ee8f238bff9878ef7",
+    "third_party/slhdsa-c/sha3_api.c": "6d3814614abbc671f290a39a65c0ab7dd9176a31c4cca52cd28b7d37b06cccdb",
+    "third_party/slhdsa-c/sha3_api.h": "1432755b08078487d2391f2bdb3def145f3f5c8855e01ab301fd9e9f7ce0b4eb",
+    "third_party/slhdsa-c/sha3_f1600.c": "1c094367c05bb887fd5b48faf24125619904b88fe0c18ca0d64dd4e5bb5ab757",
+    "third_party/slhdsa-c/plat_local.h": "57ca78d49794cbfd5b45bca5b31576e8de126eb3b9e07beb7a783282f84d706a",
+    "tools/bench_cpu.py": "77de15b25dc7a5da1e90a206dfbc9a675aab709ffeee86e81f20586ac452e232",
+    "tools/bench_sm3_harness.c": "ddf61075e429aa8e6f3bae4f3eab63ec364d8567196a4c489165684ff4e141ee",
+    "tools/native.py": "4224da773aa621464be7ec2e9cc922459ad56d321ded4fff83f1bc818e313a63",
+    "tools/signing_budget.py": "48e349af38e7ff2c52813dbe46f6af57049a570e164b502147ce8529e4b69c7e",
+    "tools/count_model.py": "6ac77e6b63e6cf9c03818c0e7d349012e16fafc5d1624e59da960564d97fc419",
+    "reference/sm3.py": "43fb6d92afc803f4842bd06dfb00f813c7ed102f1b68d9115c3e0cd6497c2c8e"
+  },
+  "library_sha256": "346603fc0dd7d08da383b074efd8b965f03b72f6eeab2b14d72f3ac77094df01",
+  "build_record_sha256": "99c9347783b8bb2058f98f77c70b2660affed5e4182132a50b37478a75f806a3",
+  "plans": {
+    "r3": {
+      "path": "/home/guest-experiment/pqc-a1-5/docs/bench_cpu/R3.plan.json",
+      "sha256": "25623ef32fd3262cf2dbfc3955d561628454de6c0c3983d2ebf759e3452da2c3",
+      "cases": 54
+    },
+    "r4": {
+      "path": "/home/guest-experiment/pqc-a1-5/docs/bench_cpu/R4.plan.json",
+      "sha256": "01f565018f152a25b936f2c8860560403b31155b9daefbc6b8f35c1ed39f2780",
+      "cases": 207
+    },
+    "r5": {
+      "path": "/home/guest-experiment/pqc-a1-5/docs/bench_cpu/R5.pow2.plan.json",
+      "sha256": "dfcacc373551158742ec9c03491a3ef5e260f847ce209f9bd0e4e47a8ff0efed",
+      "cases": 252
+    }
+  },
+  "correctness_evidence": {
+    "/home/guest-experiment/pqc-a1-5/build/cuda-staging-20261004/build/bench-cpu-prep-20261004/build-record.json": "99c9347783b8bb2058f98f77c70b2660affed5e4182132a50b37478a75f806a3",
+    "/home/guest-experiment/pqc-a1-5/build/cuda-staging-20261004/preparation/bench_cpu-mock-final-v6.json": "b25d911c7126bb86dbda728656abcfca39192f361b1484ee569a6e17f9f07e7d",
+    "/home/guest-experiment/pqc-a1-5/build/cuda-staging-20261004/preparation/sm3-correctness.json": "9ca243ecf68ab01d7c07f0d665c4dbfb4b1314808819de955b3f2a52e961fe7c",
+    "/home/guest-experiment/pqc-a1-5/build/cuda-staging-20261004/validation/cpu-matrix-current-20261004-0350/cases.jsonl": "d592d5d7e758ab5d13d7e87a5cf1ade1372fc5dce34b9cfad2a936748bb83af6",
+    "/home/guest-experiment/pqc-a1-5/build/cuda-staging-20261004/validation/cpu-matrix-current-20261004-0350/manifest.json": "a5cb3e1d3d312a293420cfb248259c3cd3bc5f0844f02f15f89194600c1a732b",
+    "/home/guest-experiment/pqc-a1-5/build/cuda-staging-20261004/validation/cpu-matrix-current-20261004-0350/summary.json": "62caf0057ccb3e4f751992a893200b45eb279e7d4a25e820eb9f9e047644492b",
+    "/home/guest-experiment/pqc-a1-5/build/cuda-staging-20261004/validation/native-cuda-cpu-regression-20261004-0344/complete-128-24.summary.json": "19dd8e6d3b4ef3e553296d187e4886af354ae0a92559ee9107378dc629b77b7a",
+    "/home/guest-experiment/pqc-a1-5/build/cuda-staging-20261004/validation/native-cuda-cpu-regression-20261004-0344/manifest.json": "925dbe520dec30fc1aec5ed99379e40b921861dfe73c9bd5cfb7fd50d83c9f81",
+    "/home/guest-experiment/pqc-a1-5/build/cuda-staging-20261004/validation/native-cuda-cpu-regression-20261004-0344/rng.json": "293fd0393ff0582588b94238e3aa00ae3f18faeeb7047e9d8f95ed5beb744571",
+    "/home/guest-experiment/pqc-a1-5/docs/bench_cpu/R3.plan.json": "25623ef32fd3262cf2dbfc3955d561628454de6c0c3983d2ebf759e3452da2c3",
+    "/home/guest-experiment/pqc-a1-5/docs/bench_cpu/R4.plan.json": "01f565018f152a25b936f2c8860560403b31155b9daefbc6b8f35c1ed39f2780",
+    "/home/guest-experiment/pqc-a1-5/docs/bench_cpu/R5.pow2.plan.json": "dfcacc373551158742ec9c03491a3ef5e260f847ce209f9bd0e4e47a8ff0efed",
+    "/home/guest-experiment/pqc-a1-5/report-data/DP1-analysis/count-replay-inputs.jsonl": "cad64b833bfe18ea17e418919788468d3811ebc3f2161314631dc07945e0d8f6",
+    "/home/guest-experiment/pqc-a1-5/validation/native-wots-20261004-0216/manifest.json": "00b01ce2dd6c5c7423704554599a34723f05886e0397e96e8a19a0f6431b5ffa",
+    "/home/guest-experiment/pqc-a1-5/validation/native-wots-20261004-0216/source-archive.json": "190786c4e447ad5fd39c66e4cf71b724ef532e980f94ee114cb57cc1a2bbd683",
+    "/home/guest-experiment/pqc-a1-5/validation/native-wots-20261004-0216/source.tar.gz": "d336e367e446efb375ed49049b98a0e81c23b9b4806f31ab710d9dab7581f844",
+    "/home/guest-experiment/pqc-a1-5/validation/optimization-full-20261004-0228/cases.jsonl": "09ffe3bb41d751597a6d8292bbab4c2ebcfd2abb962a423fceae305a9ebc3968",
+    "/home/guest-experiment/pqc-a1-5/validation/optimization-full-20261004-0228/manifest.json": "52a437a8fa8ec25d25ef272edc7aa584b51d247c552b783732d36d4ea2dbbf9a",
+    "/home/guest-experiment/pqc-a1-5/validation/optimization-full-20261004-0228/summary.json": "4a51153333ea074e2ec97ba7981837b29ff8cb52c72a6ab555987717d1cc625d",
+    "/home/guest-experiment/pqc-a1-5/validation/optimization-full-20261004-0228/tested-source.json": "b80e6cd8d44eedd960ddc511d7401ffff1d2c45ae0c1131b3de7e320b28b7171",
+    "/home/guest-experiment/pqc-a1-5/validation/optimization-full-20261004-0228/tested-source.tar.gz": "da006c09c2a32332b45a956081a44d15b4bf720ad3b04e5137e6055c01eb58e1"
+  },
+  "historical_cpu_matrix": true,
+  "current_cpu_regression": true,
+  "classification": "source/build ready for measurement; contains no performance result"
+}

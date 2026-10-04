@@ -1,0 +1,26 @@
+{
+  "timestamp_utc": "2026-10-03T16:28:50.623393+00:00",
+  "scope": "imported TLS baseline; not new SLH or alt-chain functionality",
+  "python": "3.13.16 (main, Oct  1 2026, 20:59:14) [Clang 22.1.3 ]",
+  "records": [
+    {
+      "name": "pytest",
+      "command": [
+        "/home/guest-experiment/pqc-a1-5/.venv/bin/python",
+        "-m",
+        "pytest",
+        "tests",
+        "-q",
+        "-ra",
+        "--junitxml=/home/guest-experiment/pqc-a1-5/validation/baseline/pytest.xml"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 29.230312936007977,
+      "log": "validation/baseline/pytest.log"
+    }
+  ],
+  "lock_hashes": {
+    "requirements-falcon.lock.txt": "e35b85b3fd3cc9006e2ad6631a58e771e80e41547486b58395ff20a18b2e9a4a",
+    "requirements.lock.txt": "9b15571e55a438085a1591d7e0806d508eac2dd79ae84483da663add35a43b00"
+  }
+}

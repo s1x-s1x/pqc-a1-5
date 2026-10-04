@@ -1,0 +1,11 @@
+{
+  "status": "SWEEP_UNAVAILABLE",
+  "reason": "Phase 4 requires a reviewer from a different model family. This deployment configures exactly one provider (deepseek-official, model deepseek-flash) in $DSH_HOME/settings.yaml, and no Codex MCP server is mounted, so no independent reviewer could be reached.",
+  "policy_note": "Per the skill, a second pass by the same model family is correlated blindness rather than a second opinion, so none was substituted.",
+  "consequence": "The undeclared assumptions this phase exists to find are, by construction, still unknown. Every row in ASSUMPTIONS.md is the implementer's own reading of its own code and has not been externally acquitted.",
+  "how_to_run_later": "Configure a second provider family (for example an llm-pi-ai section in $DSH_HOME/settings.yaml with an OpenRouter or OpenAI key) or mount the codex MCP server, then re-run /research-implement-feature with the same target: it will read implement-stage/SPEC.md, implement-stage/ASSUMPTIONS.md, implement-stage/BUILD_NOTE.md and the file list, and return the undeclared-assumption verdict.",
+  "base_commit": "none (not a git repo)",
+  "diff_substitute": "file list under hybrid-tls13/tls, hybrid-tls13/demo, hybrid-tls13/bench, hybrid-tls13/tests",
+  "semantic_undeclared": null,
+  "verdict": "unknown"
+}

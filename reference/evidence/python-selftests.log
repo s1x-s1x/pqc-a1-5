@@ -1,0 +1,13 @@
+test_compressed_address (__main__.ModelTests) ... ok
+test_midstate_matches_full_prefix (__main__.ModelTests) ... ok
+test_original_sha256_anchor (__main__.ModelTests) ... ok
+test_parallel_indexed_merge (__main__.ModelTests) ... ok
+test_parameters (__main__.ModelTests) ... ok
+test_python_sm3_fallback (__main__.ModelTests) ... ok
+test_sm3_standard_and_copy (__main__.ModelTests) ... ok
+test_treehash_matches_recursive (__main__.ModelTests) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 42.488s
+
+OK

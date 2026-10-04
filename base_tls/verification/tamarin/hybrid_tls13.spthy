@@ -1,0 +1,167 @@
+﻿/*
+ * Hybrid TLS 1.3 — Tamarin skeleton for the hybrid-authentication claim.
+ *
+ * ============================ READ THIS FIRST ============================
+ *
+ * **AN EXTERNAL REVIEW FOUND THIS FILE INVALID AS A MODEL**, and the review was right:
+ *
+ *   1. no rule carries the signature verification conditions, so no client ever checks a
+ *      signature and the "attacks" it would report are not attacks on this protocol;
+ *   2. the two single-key lemmas were written backwards — `agreement_when_classical_leaked`
+ *      *excluded* the classical reveal instead of surviving it (corrected below, but see 1);
+ *   3. `Flight` and `Accept` carry different terms, so agreement between them is not
+ *      expressible as written;
+ *   4. the secrecy lemma has no adversary-knowledge conclusion and no rule emits `Secret`.
+ *
+ * It is kept only as a sketch of the **lemma set**, which is the part worth reusing. It
+ * still has never been parsed by Tamarin. Treat the lemmas as a specification to implement
+ * in a fresh model, not as a model. The reviewer's ProVerif models are the artefact to
+ * start from instead: they cover unbounded sessions and their negative controls fire.
+ *
+ * What follows is the original skeleton, with the two inverted conditions corrected and the
+ * missing pieces marked. Corrections are marked `CORRECTED:`; gaps are marked `TODO:`.
+ *
+ * ============================ WHAT TO PROVE ============================
+ *
+ * The claim is not merely "the flight is authenticated". It is that the flight is
+ * authenticated **as long as at least one of the two signature keys is uncompromised** —
+ * and, per `docs/REDUCTION.md` §1 after review, that is a statement about a *branch*, not
+ * an unconditional minimum.
+ *
+ *   - `agreement_server_flight` : a client accepting implies the server sent that flight.
+ *   - `agreement_when_classical_leaked` / `_pq_leaked` : the same conclusion survives a
+ *     reveal of the other key.
+ *   - `agreement_both_leaked_fails` : an `exists-trace` lemma that must SUCCEED, i.e.
+ *     Tamarin must find the attack. If it verifies, the model is too weak to see anything.
+ *
+ * Write the last one first.
+ */
+
+theory HybridTLS13
+begin
+
+builtins: signing, hashing, diffie-hellman
+
+/*
+ * TODO(kem): replace this placeholder. See the header. `kem_encaps` returns both the
+ * ciphertext and the shared secret, which no Tamarin builtin does; expressing that
+ * faithfully is the modelling decision this file deliberately leaves open.
+ */
+functions: kem_encaps/2, kem_decaps/2, ek/1
+
+// ---------------------------------------------------------------------------
+// Long-term keys and the certificate that binds them.
+// ---------------------------------------------------------------------------
+
+rule Register_honest_server:
+  [ Fr(~skT), Fr(~skPQ) ]
+  --[ KeyGen($S, ~skT, ~skPQ), ClassicalPk($S, pk(~skT)), PqPk($S, pk(~skPQ)) ]->
+  [ !Ltk($S, ~skT, ~skPQ), !Pk($S, pk(~skT), pk(~skPQ)) ]
+
+// The certificate binds one name to both keys. CA verification is assumed rather than
+// modelled: docs/REDUCTION.md A9 assumes the certificate layer, and modelling X.509 is a
+// different project.
+rule Certificate:
+  [ !Pk($S, pkT, pkPQ) ]
+  --[ Cert($S, pkT, pkPQ) ]->
+  [ !Cert($S, pkT, pkPQ) ]
+
+rule Reveal_classical_key:
+  [ !Ltk($S, skT, skPQ) ]
+  --[ RevealClassical($S) ]->
+  [ Out(skT) ]
+
+rule Reveal_pq_key:
+  [ !Ltk($S, skT, skPQ) ]
+  --[ RevealPq($S) ]->
+  [ Out(skPQ) ]
+
+// ---------------------------------------------------------------------------
+// The handshake, one session.
+// ---------------------------------------------------------------------------
+
+rule Client_hello:
+  [ Fr(~x), Fr(~dkPQ), !Pk($S, pkT, pkPQ) ]
+  --[ Hello($C, $S), Running($C, $S, ~x, ~dkPQ) ]->
+  [ Out(<'CH', $C, $S, gexp(~x), ek(~dkPQ)>), State_client($C, $S, ~x, ~dkPQ, pkT, pkPQ) ]
+
+rule Server_flight:
+  [ In(<'CH', $C, $S, gx, ekpq>), !Ltk($S, skT, skPQ), !Cert($S, pkT, pkPQ), Fr(~y), Fr(~r) ]
+  --[ Flight($S, $C, gx, ekpq) ]->
+  [ let ss_pq = kem_encaps(ekpq, ~r)
+    // TODO(kem): destruct the pair; Tamarin has no `let` for projections on functions
+    // returning two values without explicit equations. Fix this before running.
+    let ct = ss_pq
+    let gy = gexp(~y)
+    let mcv = <gx, ekpq, gy, ct, pkT, pkPQ>
+    // BOTH signatures over the SAME message. Do not split this into two.
+    let sigT = sign(mcv, skT)
+    let sigPQ = sign(mcv, skPQ)
+    Out(<'SH', gy, ct, sigT, sigPQ>)
+  ]
+
+rule Client_accept:
+  [ State_client($C, $S, x, dkPQ, pkT, pkPQ)
+  , In(<'SH', gy, ct, sigT, sigPQ>)
+  , !Cert($S, pkT, pkPQ) ]
+  --[ Accept($C, $S, <gy, ct, sigT, sigPQ>), ClientApp($C, $S) ]->
+  [ Out(<'APP', h(<gy, ct>)>) ]
+  // TODO: the two verify checks and the DH/KEM computations belong in the rule
+  // conditions, which Tamarin expresses with `Eq` or by pattern-matching on `verify`.
+  // The skeleton above records the *shape* of the acceptance, not its conditions.
+
+// ---------------------------------------------------------------------------
+// Sanity: the model must be able to run at all. This lemma must SUCCEED.
+// ---------------------------------------------------------------------------
+
+lemma executable:
+  exists-trace
+  "Ex C S #i. Accept(C, S, <gy, ct, sigT, sigPQ>) @ i"
+
+// ---------------------------------------------------------------------------
+// The controls. These must SUCCEED, i.e. Tamarin must find the attack.
+// A model in which these verify is a model that cannot see anything.
+// ---------------------------------------------------------------------------
+
+lemma agreement_fails_when_both_leaked:
+  exists-trace
+  "Ex C S t1 t2 #i #j.
+     Accept(C, S, t1) @ i
+   & not (Ex #k. Flight(S, C, t2) @ k)   // TODO: bind t1 and t2 properly
+   & Ex #a #b. RevealClassical(S) @ a & RevealPq(S) @ b"
+
+// ---------------------------------------------------------------------------
+// The claim. These must SUCCEED as all-traces lemmas.
+// ---------------------------------------------------------------------------
+
+lemma agreement_server_flight:
+  all-traces
+  "all C S t #i. Accept(C, S, t) @ i
+     ==> (Ex #j. Flight(S, C, t) @ j & j < i)"
+
+lemma agreement_when_classical_leaked:
+  all-traces
+  "all C S t #i. Accept(C, S, t) @ i
+     & (Ex #a. RevealClassical(S) @ a)   // CORRECTED: agreement must SURVIVE the leak
+     ==> (Ex #j. Flight(S, C, t) @ j & j < i)"
+
+lemma agreement_when_pq_leaked:
+  all-traces
+  "all C S t #i. Accept(C, S, t) @ i
+     & (Ex #a. RevealPq(S) @ a)          // CORRECTED: likewise
+     ==> (Ex #j. Flight(S, C, t) @ j & j < i)"
+
+/*
+ * Key secrecy: the application secret stays secret unless BOTH halves are revealed.
+ * Note the `min(...)` structure showing up here as a conjunction of two conditions
+ * rather than a disjunction of two advantages -- the symbolic model can express the
+ * "both needed" shape, and cannot express the bound. That difference is exactly why
+ * docs/REDUCTION.md exists separately from this file.
+ */
+lemma secrecy_unless_both_revealed:
+  all-traces
+  "all secret #i.
+     Secret(secret) @ i
+     ==> not (Ex #a #b. RevealClassical($S) @ a & RevealPq($S) @ b)"
+
+end

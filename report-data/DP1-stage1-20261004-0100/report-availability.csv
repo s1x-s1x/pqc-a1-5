@@ -1,0 +1,6 @@
+﻿family,status,report,source
+R1,verified scalar snapshot,第8章，附录D/E,R1-summary.csv;R1-case-index.csv
+R2,executed exact-count coverage listed in summary; large signing costs remain separate,5.3;9.4,exact-counts.jsonl;exact-counts.summary.json
+R3-R5,pending formal performance/SIMD/cache/scaling experiments,第9章,
+R6,pending new SLH chain/TCP experiments,第10章,
+R7-R8,pending numerical security-term/grid analysis; SPEC defines claim boundaries,第5、7章,SPEC.md

@@ -1,0 +1,68 @@
+{
+  "schema": "a15-external-evidence-mirror-v1",
+  "created_utc": "2026-10-04T05:43:49.469920+00:00",
+  "classification": "original Linux file bytes preserved for local provenance audit; execution runtime remains on server",
+  "remote_project_root": "/home/guest-experiment/pqc-a1-5",
+  "files": {
+    "/usr/bin/nvcc": {
+      "local_path": "validation/optimization-external-evidence/usr/bin/nvcc",
+      "sha256": "161d3b102575c96201a515d1b64259d4eab039f95d310604131eb42293a69433",
+      "size_bytes": 59
+    },
+    "/usr/bin/x86_64-linux-gnu-g++-11": {
+      "local_path": "validation/optimization-external-evidence/usr/bin/x86_64-linux-gnu-g++-11",
+      "sha256": "2360901d864cf10bfd6296e261cb2c14053552a80377761ab07146ec9ec9a2c0",
+      "size_bytes": 932680
+    },
+    "/usr/bin/x86_64-linux-gnu-gcc-11": {
+      "local_path": "validation/optimization-external-evidence/usr/bin/x86_64-linux-gnu-gcc-11",
+      "sha256": "821af3c74506283c179ca413bb33e6b528805a4dd8a5c09df125e5ad560a9e89",
+      "size_bytes": 928584
+    },
+    "/usr/include/cuda.h": {
+      "local_path": "validation/optimization-external-evidence/usr/include/cuda.h",
+      "sha256": "d948d7a75ff4d6b4ad61fa36f6f8b1ba39e39fe59b0003da566fde47c7dd1958",
+      "size_bytes": 782360
+    },
+    "/usr/include/cuda_runtime_api.h": {
+      "local_path": "validation/optimization-external-evidence/usr/include/cuda_runtime_api.h",
+      "sha256": "58311f39a916cc0ff1dfc5f231a3d932feac771aba1fb4654adffbc108eec7e5",
+      "size_bytes": 541518
+    },
+    "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2": {
+      "local_path": "validation/optimization-external-evidence/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2",
+      "sha256": "41daf7836f7fce21a40ca63a00c5caf21b05a35a76ccc075d86f1716212cdf01",
+      "size_bytes": 240936
+    },
+    "/usr/lib/x86_64-linux-gnu/libc.so.6": {
+      "local_path": "validation/optimization-external-evidence/usr/lib/x86_64-linux-gnu/libc.so.6",
+      "sha256": "b2cf6c33b74d2f22543b7a469a75b538911e690f769d0b238843a49465b83793",
+      "size_bytes": 2220400
+    },
+    "/usr/lib/x86_64-linux-gnu/libgcc_s.so.1": {
+      "local_path": "validation/optimization-external-evidence/usr/lib/x86_64-linux-gnu/libgcc_s.so.1",
+      "sha256": "fc9d43b2f6c20e53b009238f767c5b949d202389e20de9e202ea684b4ba3729a",
+      "size_bytes": 125488
+    },
+    "/usr/lib/x86_64-linux-gnu/libgomp.so.1.0.0": {
+      "local_path": "validation/optimization-external-evidence/usr/lib/x86_64-linux-gnu/libgomp.so.1.0.0",
+      "sha256": "d46f9225c1883039e8a6853e6d96ca1af11d034ce186a090952e4a7c8a7c2fdc",
+      "size_bytes": 298776
+    },
+    "/usr/lib/x86_64-linux-gnu/libm.so.6": {
+      "local_path": "validation/optimization-external-evidence/usr/lib/x86_64-linux-gnu/libm.so.6",
+      "sha256": "3dd5511ae94785c9f921429b0f2b2f7aabb461b6f0e6de6dfdbef15f24bdfee6",
+      "size_bytes": 940560
+    },
+    "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30": {
+      "local_path": "validation/optimization-external-evidence/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30",
+      "sha256": "ff0825e113603c3866680d5d52216bc6d8eedf3a59f52a0aef67ff01994db128",
+      "size_bytes": 2260296
+    },
+    "/usr/local/cuda-12.1/targets/x86_64-linux/include/cuda_runtime_api.h": {
+      "local_path": "validation/optimization-external-evidence/usr/local/cuda-12.1/targets/x86_64-linux/include/cuda_runtime_api.h",
+      "sha256": "ad4430edd7a80754792ca1202cac2a15da17e9e91ee1b729f7c089ea20a4fee9",
+      "size_bytes": 560622
+    }
+  }
+}

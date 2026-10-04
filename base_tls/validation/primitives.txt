@@ -1,0 +1,8 @@
+wrote .bench-u03\primitives.json
+wrote .bench-u03\primitives.md
+  ml-kem-768.keygen             0.0855 ms   pk=1184 sig=
+  ml-kem-768.encaps             0.0511 ms   pk=1184 sig=
+  ml-kem-768.decaps             0.0661 ms   pk=1184 sig=
+  xmss.keygen                2282.1731 ms   pk=64 sig=4612
+  xmss.sign                     3.0819 ms   pk=64 sig=4612
+  xmss.verify                   1.2133 ms   pk=64 sig=4612

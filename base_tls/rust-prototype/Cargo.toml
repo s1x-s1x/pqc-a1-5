@@ -1,0 +1,16 @@
+﻿[package]
+name = "hybrid-tls13-prototype"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# The ring provider, deliberately not aws-lc-rs: aws-lc-sys builds a large C library and
+# wants nasm on Windows, neither of which this machine has.
+rustls = { version = "0.23", default-features = false, features = ["ring", "std", "logging"] }
+x25519-dalek = { version = "2", features = ["static_secrets"] }
+ml-kem = "0.2"
+rand_core = { version = "0.6", features = ["getrandom"] }
+rcgen = "0.13"
+
+[profile.release]
+opt-level = 3

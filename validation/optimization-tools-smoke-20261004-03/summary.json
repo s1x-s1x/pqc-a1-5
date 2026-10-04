@@ -1,0 +1,160 @@
+{
+  "schema": "a15-optimization-correctness-v1",
+  "completed_requested_scope": true,
+  "passed": true,
+  "planned_cases": 456,
+  "passed_planned": 456,
+  "failed_case_ids": [],
+  "unavailable_case_ids": [],
+  "pending_case_ids": [],
+  "records": 689,
+  "error": null,
+  "failed_auxiliary_case_ids": [],
+  "coverage": {
+    "verify_existing_pids": [
+      1,
+      2,
+      3,
+      101,
+      102,
+      103,
+      201
+    ],
+    "complete_sign_pids": [
+      2,
+      102,
+      201
+    ],
+    "threads_with_direct_execution": [
+      1,
+      4
+    ],
+    "backends_with_direct_execution": [
+      "AVX2",
+      "REF"
+    ],
+    "cache_loaded_levels": {
+      "201": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "3": [],
+      "103": []
+    },
+    "direct_cache_build_levels": {
+      "201": [
+        0,
+        10
+      ],
+      "3": [],
+      "103": []
+    },
+    "direct_keygen_threads": {
+      "201": [
+        4
+      ],
+      "3": [],
+      "103": []
+    },
+    "direct_cache_build_threads": {
+      "201": [
+        4
+      ],
+      "3": [],
+      "103": []
+    },
+    "direct_cache_load_threads": {
+      "201": [
+        1,
+        4
+      ],
+      "3": [],
+      "103": []
+    }
+  },
+  "suite": "light",
+  "full_small": false,
+  "full_sha2": false,
+  "global_atomic_measurements_serialized": true,
+  "source_hashes": {
+    "c/Makefile": "fcd5882bac4d91ddbc414389e85591d6fbbeb53ea79092b50f7c9027943dc538",
+    "c/src/engine.c": "04ce49947542eb396f21fe0ce858387469ce0ef930cc47e2886357d31a3038ec",
+    "c/src/sm3.c": "5b165c63a7747fbad817459e1e4cbff4e884eab53ba5a14539b401a89db2d2dc",
+    "c/src/sm3.h": "a8eb36558ee2680ffb486c81430461406f8a6002a367d3187fa130e3e0d46761",
+    "c/src/sm3x8.c": "6d419a5e838c2402b5021b1bed6f8c4047402848ea2df234555cb210557e8f05",
+    "c/src/sm3x8.h": "94f3bef4ff710d6fff7d3e29633e390778ef0cfd2b4ab90084a01e497da43fc4",
+    "c/include/slhdsa_sm3.h": "4e1cddbf0752e4f7b2c6e47688ba6217dc2367e793ff5ccc9522e08806b59223",
+    "third_party/slhdsa-c/sha2_256.c": "cbc9ef22886cf8a6a8f4e51b60b4b858d9c8a5a5dbe2ad16764a7e6ea3fba85c",
+    "third_party/slhdsa-c/sha2_512.c": "b06e26570cc3492b060c7f97d4fe7f69b1667628c176ed9f83af11b60076c9aa",
+    "third_party/slhdsa-c/sha2_api.h": "96698a33d10b8e1c50f82ee82e34209f37607ea207baaf6ee8f238bff9878ef7",
+    "third_party/slhdsa-c/sha3_api.c": "6d3814614abbc671f290a39a65c0ab7dd9176a31c4cca52cd28b7d37b06cccdb",
+    "third_party/slhdsa-c/sha3_f1600.c": "1c094367c05bb887fd5b48faf24125619904b88fe0c18ca0d64dd4e5bb5ab757",
+    "tools/native.py": "4224da773aa621464be7ec2e9cc922459ad56d321ded4fff83f1bc818e313a63",
+    "tools/count_model.py": "6ac77e6b63e6cf9c03818c0e7d349012e16fafc5d1624e59da960564d97fc419",
+    "tools/signing_budget.py": "48e349af38e7ff2c52813dbe46f6af57049a570e164b502147ce8529e4b69c7e",
+    "tools/check_optimization.py": "e2fd97e2ac697fcbff8aae4bb7327d2ca5747dc09966def282b42aea1eaf43ad",
+    "reference/sm3.py": "43fb6d92afc803f4842bd06dfb00f813c7ed102f1b68d9115c3e0cd6497c2c8e"
+  },
+  "libraries": {
+    "lib0-12c3146a6a11": {
+      "path": "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\build\\optimization-tools-selftest-02\\libslhdsa_sm3.dll",
+      "sha256": "12c3146a6a11a99fe8a767d81b88bac8d99cc16a78d2bfc21ae13fb0e7996a83"
+    }
+  },
+  "cases_jsonl_sha256": "f9de4487644ad338654859bc68383bf08194801276d4321436fdaf0121133832",
+  "budget_database": "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\validation\\optimization-tools-budget.sqlite",
+  "budget_status": [
+    {
+      "key_id": "0b8e2a0bea6c673b42018ba65cc106960d0ba3055d7e60a84ed147f915f5f739",
+      "algorithm": "SLH-DSA-SM3-TOY",
+      "limit": 18446744073709551616,
+      "used": 34,
+      "remaining": 18446744073709551582,
+      "states": {
+        "committed": 30,
+        "failed": 4
+      },
+      "count_reconciled": true
+    },
+    {
+      "key_id": "482072b9124c4861e956c1f8f011f031061a0a48d43a4ab899828a3f3c0e99fd",
+      "algorithm": "SLH-DSA-SM3-128f",
+      "limit": 18446744073709551616,
+      "used": 8,
+      "remaining": 18446744073709551608,
+      "states": {
+        "committed": 8
+      },
+      "count_reconciled": true
+    },
+    {
+      "key_id": "51c71943a463fcd7daac8cf9bc0acd76fcd6188278fc0b2804b489d9ae311347",
+      "algorithm": "SLH-DSA-SHA2-128f",
+      "limit": 18446744073709551616,
+      "used": 4,
+      "remaining": 18446744073709551612,
+      "states": {
+        "committed": 4
+      },
+      "count_reconciled": true
+    }
+  ],
+  "formal_performance_started": false,
+  "measured_durations": false,
+  "deferred_scope": [
+    "pid3 complete signing, keygen and cache-build thread matrices require --suite full",
+    "pid1/101 complete signing matrices require --full-small or --suite full",
+    "pid3 all-level cache format, load and root-binding require --suite cache or full",
+    "pid103 complete keygen/cache/sign workloads require --suite full --full-sha2"
+  ],
+  "final": true
+}

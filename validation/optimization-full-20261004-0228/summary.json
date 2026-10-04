@@ -1,0 +1,350 @@
+{
+  "schema": "a15-optimization-correctness-v1",
+  "completed_requested_scope": true,
+  "passed": true,
+  "planned_cases": 3471,
+  "passed_planned": 3471,
+  "failed_case_ids": [],
+  "unavailable_case_ids": [],
+  "pending_case_ids": [],
+  "records": 4370,
+  "error": null,
+  "failed_auxiliary_case_ids": [],
+  "coverage": {
+    "verify_existing_pids": [
+      1,
+      2,
+      3,
+      101,
+      102,
+      103,
+      201
+    ],
+    "complete_sign_pids": [
+      1,
+      2,
+      3,
+      101,
+      102,
+      103,
+      201
+    ],
+    "threads_with_direct_execution": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      32,
+      64
+    ],
+    "backends_with_direct_execution": [
+      "AVX2",
+      "REF"
+    ],
+    "cache_loaded_levels": {
+      "201": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "3": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "103": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ]
+    },
+    "direct_cache_build_levels": {
+      "201": [
+        0,
+        10
+      ],
+      "3": [
+        0,
+        12,
+        22
+      ],
+      "103": [
+        0,
+        12,
+        22
+      ]
+    },
+    "direct_keygen_threads": {
+      "201": [
+        64
+      ],
+      "3": [
+        1,
+        2,
+        4,
+        8,
+        16,
+        32,
+        64
+      ],
+      "103": [
+        1,
+        2,
+        4,
+        8,
+        16,
+        32,
+        64
+      ]
+    },
+    "direct_cache_build_threads": {
+      "201": [
+        64
+      ],
+      "3": [
+        1,
+        2,
+        4,
+        8,
+        16,
+        32,
+        64
+      ],
+      "103": [
+        1,
+        2,
+        4,
+        8,
+        16,
+        32,
+        64
+      ]
+    },
+    "direct_cache_load_threads": {
+      "201": [
+        1,
+        2,
+        4,
+        8,
+        16,
+        32,
+        64
+      ],
+      "3": [
+        1,
+        2,
+        4,
+        8,
+        16,
+        32,
+        64
+      ],
+      "103": [
+        1,
+        2,
+        4,
+        8,
+        16,
+        32,
+        64
+      ]
+    }
+  },
+  "suite": "full",
+  "full_small": false,
+  "full_sha2": true,
+  "global_atomic_measurements_serialized": true,
+  "source_hashes": {
+    "c/Makefile": "fcd5882bac4d91ddbc414389e85591d6fbbeb53ea79092b50f7c9027943dc538",
+    "c/src/engine.c": "04ce49947542eb396f21fe0ce858387469ce0ef930cc47e2886357d31a3038ec",
+    "c/src/sm3.c": "5b165c63a7747fbad817459e1e4cbff4e884eab53ba5a14539b401a89db2d2dc",
+    "c/src/sm3.h": "a8eb36558ee2680ffb486c81430461406f8a6002a367d3187fa130e3e0d46761",
+    "c/src/sm3x8.c": "6d419a5e838c2402b5021b1bed6f8c4047402848ea2df234555cb210557e8f05",
+    "c/src/sm3x8.h": "94f3bef4ff710d6fff7d3e29633e390778ef0cfd2b4ab90084a01e497da43fc4",
+    "c/include/slhdsa_sm3.h": "4e1cddbf0752e4f7b2c6e47688ba6217dc2367e793ff5ccc9522e08806b59223",
+    "third_party/slhdsa-c/sha2_256.c": "cbc9ef22886cf8a6a8f4e51b60b4b858d9c8a5a5dbe2ad16764a7e6ea3fba85c",
+    "third_party/slhdsa-c/sha2_512.c": "b06e26570cc3492b060c7f97d4fe7f69b1667628c176ed9f83af11b60076c9aa",
+    "third_party/slhdsa-c/sha2_api.h": "96698a33d10b8e1c50f82ee82e34209f37607ea207baaf6ee8f238bff9878ef7",
+    "third_party/slhdsa-c/sha3_api.c": "6d3814614abbc671f290a39a65c0ab7dd9176a31c4cca52cd28b7d37b06cccdb",
+    "third_party/slhdsa-c/sha3_f1600.c": "1c094367c05bb887fd5b48faf24125619904b88fe0c18ca0d64dd4e5bb5ab757",
+    "tools/native.py": "4224da773aa621464be7ec2e9cc922459ad56d321ded4fff83f1bc818e313a63",
+    "tools/count_model.py": "6ac77e6b63e6cf9c03818c0e7d349012e16fafc5d1624e59da960564d97fc419",
+    "tools/signing_budget.py": "48e349af38e7ff2c52813dbe46f6af57049a570e164b502147ce8529e4b69c7e",
+    "tools/check_optimization.py": "8ae573fbe952bcf117413b50e9936ba584abf4fee62b3aa8ec2fbf20ae449813",
+    "reference/sm3.py": "43fb6d92afc803f4842bd06dfb00f813c7ed102f1b68d9115c3e0cd6497c2c8e"
+  },
+  "libraries": {
+    "lib0-b45efe0ce1c1": {
+      "path": "/home/guest-experiment/pqc-a1-5/build/native-wots-20261004-0216/counters/libslhdsa_sm3.so",
+      "sha256": "b45efe0ce1c13db21b3153137fde856635819a8297ca5ac0579a04fd2adb8097"
+    }
+  },
+  "cases_jsonl_sha256": "09ffe3bb41d751597a6d8292bbab4c2ebcfd2abb962a423fceae305a9ebc3968",
+  "budget_database": "/home/guest-experiment/pqc-a1-5/validation/optimization-budget-20261004.sqlite",
+  "budget_status": [
+    {
+      "key_id": "0b8e2a0bea6c673b42018ba65cc106960d0ba3055d7e60a84ed147f915f5f739",
+      "algorithm": "SLH-DSA-SM3-TOY",
+      "limit": 18446744073709551616,
+      "used": 116,
+      "remaining": 18446744073709551500,
+      "states": {
+        "committed": 92,
+        "failed": 24
+      },
+      "count_reconciled": true
+    },
+    {
+      "key_id": "2aef9fa093ae3173d67651e37b8f1481509fbf1e3240550b76e385eab82b1ca9",
+      "algorithm": "SLH-DSA-SM3-TOY",
+      "limit": 18446744073709551616,
+      "used": 15,
+      "remaining": 18446744073709551601,
+      "states": {
+        "committed": 15
+      },
+      "count_reconciled": true
+    },
+    {
+      "key_id": "2d9d974cbf3185c4fef408237f40661fd841d949a4bf5cf4feafc24b0f3915a4",
+      "algorithm": "SLH-DSA-SM3-128s",
+      "limit": 18446744073709551616,
+      "used": 40,
+      "remaining": 18446744073709551576,
+      "states": {
+        "committed": 40
+      },
+      "count_reconciled": true
+    },
+    {
+      "key_id": "42c919702794c16ca86a6aada8faf192e92ed0317d03012905a7771428e9c208",
+      "algorithm": "SLH-DSA-SHA2-128-24",
+      "limit": 16777216,
+      "used": 37,
+      "remaining": 16777179,
+      "states": {
+        "committed": 37
+      },
+      "count_reconciled": true
+    },
+    {
+      "key_id": "42dd550fdf4c2765b5842c471fe008e06776fa4def621168fa9efa7383aa21ac",
+      "algorithm": "SLH-DSA-SM3-128-24",
+      "limit": 16777216,
+      "used": 77,
+      "remaining": 16777139,
+      "states": {
+        "committed": 77
+      },
+      "count_reconciled": true
+    },
+    {
+      "key_id": "482072b9124c4861e956c1f8f011f031061a0a48d43a4ab899828a3f3c0e99fd",
+      "algorithm": "SLH-DSA-SM3-128f",
+      "limit": 18446744073709551616,
+      "used": 48,
+      "remaining": 18446744073709551568,
+      "states": {
+        "committed": 48
+      },
+      "count_reconciled": true
+    },
+    {
+      "key_id": "51c71943a463fcd7daac8cf9bc0acd76fcd6188278fc0b2804b489d9ae311347",
+      "algorithm": "SLH-DSA-SHA2-128f",
+      "limit": 18446744073709551616,
+      "used": 18,
+      "remaining": 18446744073709551598,
+      "states": {
+        "committed": 18
+      },
+      "count_reconciled": true
+    },
+    {
+      "key_id": "6eac894d38610cfa078984d58d05684382eb3e7850b30bb1a466f2ef3b2804e4",
+      "algorithm": "SLH-DSA-SM3-128-24",
+      "limit": 16777216,
+      "used": 3,
+      "remaining": 16777213,
+      "states": {
+        "committed": 3
+      },
+      "count_reconciled": true
+    },
+    {
+      "key_id": "8910a86c3285be86b21b969dd418703280ab6954d5ccdfc4ee7c900639b09c0c",
+      "algorithm": "SLH-DSA-SM3-128-24",
+      "limit": 16777216,
+      "used": 3,
+      "remaining": 16777213,
+      "states": {
+        "committed": 3
+      },
+      "count_reconciled": true
+    },
+    {
+      "key_id": "f50fa06cbdb673481ed510631a1ccbabf38b3f24767b78e07b5d4bf08d68dcc2",
+      "algorithm": "SLH-DSA-SHA2-128s",
+      "limit": 18446744073709551616,
+      "used": 14,
+      "remaining": 18446744073709551602,
+      "states": {
+        "committed": 14
+      },
+      "count_reconciled": true
+    }
+  ],
+  "formal_performance_started": false,
+  "measured_durations": false,
+  "deferred_scope": [],
+  "final": true
+}

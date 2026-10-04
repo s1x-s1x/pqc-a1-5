@@ -1,0 +1,56 @@
+{
+  "schema": "a15-cuda-toolchain-proof-v1",
+  "timestamp_utc": "2026-10-03T18:50:31.975754+00:00",
+  "formal_performance_started": false,
+  "real_timing_samples": 0,
+  "queries": [
+    {
+      "argv": [
+        "nvcc",
+        "--version"
+      ],
+      "returncode": 0,
+      "stdout": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2021 NVIDIA Corporation\nBuilt on Thu_Nov_18_09:45:30_PST_2021\nCuda compilation tools, release 11.5, V11.5.119\nBuild cuda_11.5.r11.5/compiler.30672275_0\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "gcc",
+        "--version"
+      ],
+      "returncode": 0,
+      "stdout": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0\nCopyright (C) 2021 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "ldd",
+        "build/cuda-toolchain-20261004/probe"
+      ],
+      "returncode": 0,
+      "stdout": "\tlinux-vdso.so.1 (0x00007fff215e3000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f32e0b14000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007f32e0ec2000)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "nvidia-smi",
+        "--query-gpu=index,uuid,name,memory.total,memory.used,memory.free,utilization.gpu,driver_version",
+        "--format=csv,noheader"
+      ],
+      "returncode": 0,
+      "stdout": "0, GPU-b1437971-c076-b899-3733-5668ff2dd085, NVIDIA GeForce RTX 4090, 24564 MiB, 9690 MiB, 14392 MiB, 100 %, 575.64.03\n1, GPU-469f3183-02d2-d984-1b0c-5dff8da73116, NVIDIA GeForce RTX 4090, 24564 MiB, 9690 MiB, 14392 MiB, 100 %, 575.64.03\n2, GPU-20e99b07-526a-3a1d-9a4a-48bd6b2f4f1c, NVIDIA GeForce RTX 4090, 24564 MiB, 9690 MiB, 14392 MiB, 100 %, 575.64.03\n3, GPU-3517b169-d757-5630-1237-51b3a6ad8643, NVIDIA GeForce RTX 4090, 24564 MiB, 9690 MiB, 14392 MiB, 100 %, 575.64.03\n4, GPU-1850e9d7-ec77-1330-3603-24cf7683c77d, NVIDIA GeForce RTX 4090, 24564 MiB, 23813 MiB, 269 MiB, 100 %, 575.64.03\n5, GPU-97f2bd58-5a03-3f22-6e19-fb0a299e5bd3, NVIDIA GeForce RTX 4090, 24564 MiB, 23813 MiB, 269 MiB, 100 %, 575.64.03\n6, GPU-9c063cfc-3d0b-348b-56ff-764ffa4b6dc7, NVIDIA GeForce RTX 4090, 24564 MiB, 23813 MiB, 269 MiB, 100 %, 575.64.03\n7, GPU-42ca8521-82a6-4c31-6880-7a7f86a75ebe, NVIDIA GeForce RTX 4090, 24564 MiB, 23815 MiB, 267 MiB, 100 %, 575.64.03\n",
+      "stderr": ""
+    }
+  ],
+  "sha256": {
+    "probe.cu": "54f918bbebb84b1144b60dc99a3074a349b8447653617ab8e79f03f4a77fff77",
+    "probe": "af41b2d949da43c54d95dcc46b907e67f6b07307b896ec2f138e3ab1b5a1e9be",
+    "build.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "proof": {
+    "returncode": 0,
+    "stdout": "devices=1 name=NVIDIA GeForce RTX 4090 cc=8.9\nresult=42 status=no error\n",
+    "stderr": ""
+  },
+  "passed": true
+}

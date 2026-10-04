@@ -1,0 +1,26 @@
+[
+  {
+    "name": "NIST.SP.800-230.ipd",
+    "url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-230.ipd.pdf",
+    "pdf_sha256": "62d092f787a1f79260454bf332b642ff3b5b73dbcce2678a133a1406065e452e",
+    "pdf_path": "NIST.SP.800-230.ipd.pdf",
+    "text_path": "NIST.SP.800-230.ipd.txt",
+    "text_sha256": "ba725a246691469c6b9ab512bf4eb76dfdac2bbc6a138c9ba314396d621628f5",
+    "verified_table_pdf_page": 10,
+    "verified_usage_requirement_pdf_page": 11,
+    "checked_against": "implemented parameter table and supplied report plans",
+    "status": "initial public draft April 2026"
+  },
+  {
+    "name": "NIST.FIPS.205",
+    "url": "https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.205.pdf",
+    "pdf_sha256": "8ef34228276f3386d23cb0da8c14592b8cfb0db3358016bba64df7a004f8d13d",
+    "pdf_path": "NIST.FIPS.205.pdf",
+    "text_path": "NIST.FIPS.205.txt",
+    "text_sha256": "4a14a1af714a2bfeb5baaf6d36b98456db82faa25e53dd42cb017b135ca568ea",
+    "verified_table_pdf_page": 53,
+    "verified_usage_requirement_pdf_page": 53,
+    "checked_against": "implemented parameter table and supplied report plans",
+    "status": "FIPS final standard; accessed current official PDF"
+  }
+]

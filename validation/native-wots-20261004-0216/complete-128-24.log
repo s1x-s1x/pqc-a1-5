@@ -1,0 +1,10 @@
+{"phase": "native_keygen", "case_id": "python-3-0", "threads": 32}
+{"phase": "native_sign", "case_id": "python-3-0", "keygen_seconds": 8.22145015001297}
+{"suite": "complete", "completed": 1, "failed": 0, "elapsed_seconds": 10.335695706307888}
+{"phase": "native_keygen", "case_id": "python-3-1", "threads": 32}
+{"phase": "native_sign", "case_id": "python-3-1", "keygen_seconds": 8.108945839107037}
+{"suite": "complete", "completed": 2, "failed": 0, "elapsed_seconds": 20.481237426400185}
+{"phase": "native_keygen", "case_id": "python-3-2", "threads": 32}
+{"phase": "native_sign", "case_id": "python-3-2", "keygen_seconds": 8.180659376084805}
+{"suite": "complete", "completed": 3, "failed": 0, "elapsed_seconds": 30.720817804336548}
+{"schema": "a15-differential-summary-v1", "suite": "complete", "upstream_python_commit": "1c859956c0217b04fa5ae76e338e5570aba622c5", "sources_sha256": {"reference/slhdsa.py": "d7412bafb27d9e40b98a10eaf10faf24753007b0585099532fbaf628c717b043", "reference/sm3.py": "43fb6d92afc803f4842bd06dfb00f813c7ed102f1b68d9115c3e0cd6497c2c8e", "reference/differential.py": "f6675752546d8755c9ef17f155576c6d74cedf12d1f68c25e4081850ef979dd9", "tools/native.py": "4224da773aa621464be7ec2e9cc922459ad56d321ded4fff83f1bc818e313a63"}, "native_library_sha256": "6173e3e9be2d407aa8407b1725cf5d81d608fce568675806bb0098497316b7a9", "workers": 32, "backend_requested": "avx2", "selected_backend_counts": {"2": 3}, "native_threads": 32, "started_at_utc": "2026-10-03T18:21:08.087211+00:00", "total": 3, "passed": 3, "failed": 0, "scope": "independent implementation agreement; not a security proof or final benchmark", "elapsed_seconds": 30.720947846770287, "native_library_unchanged": true, "cases_jsonl_sha256": "1ef998fed5e84749f718ce64843a062334e245fd08a144cc22da24e87355931d"}

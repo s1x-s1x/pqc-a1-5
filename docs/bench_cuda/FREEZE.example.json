@@ -1,0 +1,24 @@
+{
+  "schema": "a15-cuda-freeze-v1",
+  "final": false,
+  "correctness_passed": false,
+  "formal_performance_started": false,
+  "real_timing_samples": 0,
+  "library_sha256": "REPLACE_WITH_ACCEPTED_CUDA_LIBRARY_SHA256",
+  "build_record_sha256": "REPLACE_WITH_CHECKED_CUDA_BUILD_RECORD_SHA256",
+  "source_sha256": {},
+  "plans": {
+    "cuda_b1": {
+      "path": "docs/bench_cuda/CUDA_B1.v2.plan.json",
+      "sha256": "REPLACE_WITH_EXACT_PLAN_SHA256"
+    }
+  },
+  "device_identity": {},
+  "evidence": {
+    "correctness": {"path": "REPLACE_WITH_CUDA_ACCEPTANCE_SUMMARY", "sha256": "REPLACE_WITH_SUMMARY_SHA256"},
+    "mock": {"path": "docs/bench_cuda/SELFTEST.v7.json", "sha256": "REPLACE_WITH_MOCK_RECORD_SHA256"}
+  },
+  "correctness_evidence_sha256": {},
+  "budget_snapshots": [],
+  "note": "Preparation example only. Correctness summary must bind source_sha256, library_sha256 and device_identity to the checked build. Mock summary binds the current TOOL_FILES and has native_calls=0/real_timing_samples=0. Native acceptance and final freeze are supplied by the root task."
+}

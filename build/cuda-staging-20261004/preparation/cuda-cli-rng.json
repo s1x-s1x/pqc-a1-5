@@ -1,0 +1,103 @@
+{
+  "schema": "a15-native-rng-v1",
+  "timestamp_utc": "2026-10-03T19:28:58.228576+00:00",
+  "passed": true,
+  "results": [
+    {
+      "case_id": "rng-keygen-one",
+      "result": {
+        "command": "keygen",
+        "pid": 201,
+        "backend_requested": "cuda",
+        "backend_selected": 5,
+        "threads_requested": 1,
+        "library_sha256": "74773e202e646fcda30bc15d095cc5788fedd1b32eeecc22f8e51dc2e3f8e204",
+        "pk_sha256": "b0d976bf779d0927a9c8494baf2e8c4b694e4022bac45ad3b218d726d7529094",
+        "sk_sha256": "9fd27bcabf0a60f65f53b967a36a736bfabd2b0c9ff826c522059a6d4940e8b3",
+        "pk_bytes": 32,
+        "sk_bytes": 64,
+        "signature_bytes": 2320,
+        "fixture_seeded": false
+      },
+      "passed": true
+    },
+    {
+      "case_id": "rng-keygen-two",
+      "result": {
+        "command": "keygen",
+        "pid": 201,
+        "backend_requested": "cuda",
+        "backend_selected": 5,
+        "threads_requested": 1,
+        "library_sha256": "74773e202e646fcda30bc15d095cc5788fedd1b32eeecc22f8e51dc2e3f8e204",
+        "pk_sha256": "6d455e7b4feda3f0b73b2033b25e8047f426ed0fc84371eb204341c367d42718",
+        "sk_sha256": "1ccc24b834e36025a863e0aa07097601200f6da4a0fabeaf86c7685852af858d",
+        "pk_bytes": 32,
+        "sk_bytes": 64,
+        "signature_bytes": 2320,
+        "fixture_seeded": false
+      },
+      "passed": true
+    },
+    {
+      "case_id": "independent-rng-keys",
+      "passed": true,
+      "note": "operational sanity check, not a randomness quality proof"
+    },
+    {
+      "case_id": "rng-randomized-sign",
+      "result": {
+        "command": "sign",
+        "pid": 201,
+        "backend_requested": "cuda",
+        "backend_selected": 5,
+        "threads_requested": 1,
+        "library_sha256": "74773e202e646fcda30bc15d095cc5788fedd1b32eeecc22f8e51dc2e3f8e204",
+        "signature_bytes": 2320,
+        "signature_sha256": "f187126860374b32d3579b54d68bbce3c2ca827163847eccbf53b8cb56f7554b",
+        "budget_receipt": "d220c775adc24e75aef1af896ae03e34",
+        "mode": "pure"
+      },
+      "passed": true
+    },
+    {
+      "case_id": "rng-verify",
+      "result": {
+        "command": "verify",
+        "pid": 201,
+        "backend_requested": "cuda",
+        "backend_selected": 5,
+        "threads_requested": 1,
+        "library_sha256": "74773e202e646fcda30bc15d095cc5788fedd1b32eeecc22f8e51dc2e3f8e204",
+        "valid": true
+      },
+      "passed": true
+    },
+    {
+      "case_id": "budget",
+      "passed": true,
+      "status": [
+        {
+          "key_id": "c546a6c37207b5cd2ae789d3586812abc2e2420f132ec658c2d3cc2042ecc7d1",
+          "algorithm": "SLH-DSA-SM3-TOY",
+          "limit": 18446744073709551616,
+          "used": 1,
+          "remaining": 18446744073709551615,
+          "states": {
+            "committed": 1
+          },
+          "count_reconciled": true
+        }
+      ]
+    }
+  ],
+  "library_sha256": "74773e202e646fcda30bc15d095cc5788fedd1b32eeecc22f8e51dc2e3f8e204",
+  "backend_requested": "cuda",
+  "sources_sha256": {
+    "tools/check_rng_native.py": "6e67fa5f28c875142ee50538304f0f6c5ab95e430e0af56fdd18528f89e0ab5d",
+    "tools/cli.py": "2cd27f4a6cbdb26aba9d22df57b00be936ddbdf2475f7407f33b47289e505661",
+    "tools/native.py": "4224da773aa621464be7ec2e9cc922459ad56d321ded4fff83f1bc818e313a63"
+  },
+  "formal_performance_started": false,
+  "duration_measured": false
+}

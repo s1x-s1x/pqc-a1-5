@@ -1,0 +1,14 @@
+# Dependencies are installed into the workspace by tools\bootstrap_env.ps1.
+.deps/
+.deps-falcon/
+.venv/
+
+# Verifpal is fetched by tools\install_verifpal.ps1.
+.tools/
+
+# Benchmark output is regenerated; keep the directory, drop its contents.
+.bench-out/*.json
+
+__pycache__/
+*.py[cod]
+.pytest_cache/

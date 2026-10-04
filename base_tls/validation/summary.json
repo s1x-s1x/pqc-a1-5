@@ -1,0 +1,37 @@
+{
+  "source_archive": "hybrid-tls13-review-package-v6.zip",
+  "source_sha256": "aefc2346bf15766e3fef772b84767134d746a2dc036e6f6c0cd791249764a053",
+  "date": "2026-09-21",
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "baseline": {
+    "passed": 272,
+    "skipped": 1,
+    "seconds": 11.6,
+    "falcon_provider_installed": false
+  },
+  "final": {
+    "passed": 305,
+    "skipped": 0,
+    "failed": 0,
+    "seconds": 27.17,
+    "falcon_provider_installed": true
+  },
+  "new_u03_cases": 31,
+  "live_checks": {
+    "definitions": 85,
+    "tests_only": 0,
+    "unattributed": 0,
+    "dead": 0,
+    "result": "PASS"
+  },
+  "default_public_key_bytes": 64,
+  "default_signature_bytes": 4612,
+  "xmss_scheme": "0xFE00 + height",
+  "limitations": [
+    "Custom XMSS remains non-interoperable with RFC 8391",
+    "No complete security reduction",
+    "Counter durability and rollback resistance remain caller responsibilities",
+    "Timings are local small-sample measurements"
+  ]
+}

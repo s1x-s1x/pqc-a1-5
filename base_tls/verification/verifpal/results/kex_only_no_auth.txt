@@ -1,0 +1,32 @@
+﻿Verifpal 1.4.12 - https://verifpal.com
+ Verifpal * Verification initiated for 'kex_only_no_auth.vp' at 07:26:48 PM.
+     Info . Attacker is configured as active.
+     Info . Running at phase 0.
+     FAIL x confidentiality? m (Analysis 4)
+
+--------------------------------------------------
+ Verifpal * Verification completed for 'kex_only_no_auth.vp' at 07:26:49 PM in 53ms.
+
+     FAIL x confidentiality? m
+            Attack trace:
+            | 1. Attacker constructs PUBKEY(nil).
+            | 2. Attacker observes ekpq on the wire.
+            | 3. Attacker constructs KEM_ENCAP(ekpq, nil)|2.
+            | 4. Attacker replaces gy, ct (sent by Server to Client) with PUBKEY(nil), KEM_ENCAP(ekpq, nil)|2. (gy was PUBKEY(y); ct was KEM_ENCAP(ekpq, r_kem)|2)
+            | 5. Attacker observes AEAD_ENC(HKDF(nil, CONCAT(DH_KEX(gx, nil), KEM_ENCAP(ekpq, nil)|1), labelhs)|1, nil, m, nil) on the wire.
+            | 6. Attacker observes gx on the wire.
+            | 7. Attacker constructs DH_KEX(gx, nil).
+            | 8. Attacker constructs KEM_ENCAP(ekpq, nil)|1.
+            | 9. Attacker constructs CONCAT(DH_KEX(gx, nil), KEM_ENCAP(ekpq, nil)|1).
+            | 10. Attacker constructs HKDF(nil, CONCAT(DH_KEX(gx, nil), KEM_ENCAP(ekpq, nil)|1), labelhs)|1.
+            | 11. Attacker opens AEAD_ENC(HKDF(nil, CONCAT(DH_KEX(gx, nil), KEM_ENCAP(ekpq, nil)|1), labelhs)|1, nil, m, nil) with HKDF(nil, CONCAT(DH_KEX(gx, nil), KEM_ENCAP(ekpq, nil)|1), labelhs)|1, nil, obtaining m.
+            > m (m) is obtained by Attacker.
+     PASS + freshness? k_c  [search exhausted at 1 session]
+
+--------------------------------------------------
+     FAIL x 1 of 2 queries failed.
+ Verifpal * Thank you for using Verifpal.
+
+
+// ---- compact result code ----
+c1f0

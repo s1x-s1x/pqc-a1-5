@@ -1,0 +1,103 @@
+{
+  "schema": "a15-native-rng-v1",
+  "timestamp_utc": "2026-10-03T19:47:53.709796+00:00",
+  "passed": true,
+  "results": [
+    {
+      "case_id": "rng-keygen-one",
+      "result": {
+        "command": "keygen",
+        "pid": 201,
+        "backend_requested": "auto",
+        "backend_selected": 2,
+        "threads_requested": 1,
+        "library_sha256": "346603fc0dd7d08da383b074efd8b965f03b72f6eeab2b14d72f3ac77094df01",
+        "pk_sha256": "ea8a554b1e5343da8b482133c1979b949583fbaa40149ffb35e8c6bb451c5299",
+        "sk_sha256": "79741da9c7d47be80e2d21bdd9816c9fe92acf17557472520ad25388281d5a3e",
+        "pk_bytes": 32,
+        "sk_bytes": 64,
+        "signature_bytes": 2320,
+        "fixture_seeded": false
+      },
+      "passed": true
+    },
+    {
+      "case_id": "rng-keygen-two",
+      "result": {
+        "command": "keygen",
+        "pid": 201,
+        "backend_requested": "auto",
+        "backend_selected": 2,
+        "threads_requested": 1,
+        "library_sha256": "346603fc0dd7d08da383b074efd8b965f03b72f6eeab2b14d72f3ac77094df01",
+        "pk_sha256": "5a21492fd1bb113cc0a63e1338ce27d834ede6e5f8f68720a07ae476d3dde159",
+        "sk_sha256": "9cec03a8efe727bc8ad23573743564ed871e70426d6768ba39e6b29854138663",
+        "pk_bytes": 32,
+        "sk_bytes": 64,
+        "signature_bytes": 2320,
+        "fixture_seeded": false
+      },
+      "passed": true
+    },
+    {
+      "case_id": "independent-rng-keys",
+      "passed": true,
+      "note": "operational sanity check, not a randomness quality proof"
+    },
+    {
+      "case_id": "rng-randomized-sign",
+      "result": {
+        "command": "sign",
+        "pid": 201,
+        "backend_requested": "auto",
+        "backend_selected": 2,
+        "threads_requested": 1,
+        "library_sha256": "346603fc0dd7d08da383b074efd8b965f03b72f6eeab2b14d72f3ac77094df01",
+        "signature_bytes": 2320,
+        "signature_sha256": "4bc40caed1bb6c32975a1d5ba3e06a2200a8c572e7f19813bb0d62b95cd2e0bb",
+        "budget_receipt": "76a3ebf74957499cab694fbe9b1aafcd",
+        "mode": "pure"
+      },
+      "passed": true
+    },
+    {
+      "case_id": "rng-verify",
+      "result": {
+        "command": "verify",
+        "pid": 201,
+        "backend_requested": "auto",
+        "backend_selected": 2,
+        "threads_requested": 1,
+        "library_sha256": "346603fc0dd7d08da383b074efd8b965f03b72f6eeab2b14d72f3ac77094df01",
+        "valid": true
+      },
+      "passed": true
+    },
+    {
+      "case_id": "budget",
+      "passed": true,
+      "status": [
+        {
+          "key_id": "87a34bf6ba013796fe93426aa66144778311e299662e35d57e1db407f89f6a62",
+          "algorithm": "SLH-DSA-SM3-TOY",
+          "limit": 18446744073709551616,
+          "used": 1,
+          "remaining": 18446744073709551615,
+          "states": {
+            "committed": 1
+          },
+          "count_reconciled": true
+        }
+      ]
+    }
+  ],
+  "library_sha256": "346603fc0dd7d08da383b074efd8b965f03b72f6eeab2b14d72f3ac77094df01",
+  "backend_requested": "auto",
+  "sources_sha256": {
+    "tools/check_rng_native.py": "6e67fa5f28c875142ee50538304f0f6c5ab95e430e0af56fdd18528f89e0ab5d",
+    "tools/cli.py": "2cd27f4a6cbdb26aba9d22df57b00be936ddbdf2475f7407f33b47289e505661",
+    "tools/native.py": "4224da773aa621464be7ec2e9cc922459ad56d321ded4fff83f1bc818e313a63"
+  },
+  "formal_performance_started": false,
+  "duration_measured": false
+}

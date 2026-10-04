@@ -1,0 +1,24 @@
+{
+  "sources_sha256": {
+    "c/Makefile": "fcd5882bac4d91ddbc414389e85591d6fbbeb53ea79092b50f7c9027943dc538",
+    "c/src/engine.c": "04ce49947542eb396f21fe0ce858387469ce0ef930cc47e2886357d31a3038ec",
+    "c/src/sm3.c": "5b165c63a7747fbad817459e1e4cbff4e884eab53ba5a14539b401a89db2d2dc",
+    "c/src/sm3.h": "a8eb36558ee2680ffb486c81430461406f8a6002a367d3187fa130e3e0d46761",
+    "c/src/sm3x8.c": "6d419a5e838c2402b5021b1bed6f8c4047402848ea2df234555cb210557e8f05",
+    "c/src/sm3x8.h": "94f3bef4ff710d6fff7d3e29633e390778ef0cfd2b4ab90084a01e497da43fc4",
+    "c/include/slhdsa_sm3.h": "4e1cddbf0752e4f7b2c6e47688ba6217dc2367e793ff5ccc9522e08806b59223",
+    "third_party/slhdsa-c/sha2_256.c": "cbc9ef22886cf8a6a8f4e51b60b4b858d9c8a5a5dbe2ad16764a7e6ea3fba85c",
+    "third_party/slhdsa-c/sha2_512.c": "b06e26570cc3492b060c7f97d4fe7f69b1667628c176ed9f83af11b60076c9aa",
+    "third_party/slhdsa-c/sha2_api.h": "96698a33d10b8e1c50f82ee82e34209f37607ea207baaf6ee8f238bff9878ef7",
+    "third_party/slhdsa-c/sha3_api.c": "6d3814614abbc671f290a39a65c0ab7dd9176a31c4cca52cd28b7d37b06cccdb",
+    "third_party/slhdsa-c/sha3_f1600.c": "1c094367c05bb887fd5b48faf24125619904b88fe0c18ca0d64dd4e5bb5ab757",
+    "tools/native.py": "4224da773aa621464be7ec2e9cc922459ad56d321ded4fff83f1bc818e313a63",
+    "tools/count_model.py": "6ac77e6b63e6cf9c03818c0e7d349012e16fafc5d1624e59da960564d97fc419",
+    "tools/signing_budget.py": "48e349af38e7ff2c52813dbe46f6af57049a570e164b502147ce8529e4b69c7e",
+    "tools/check_optimization.py": "8ae573fbe952bcf117413b50e9936ba584abf4fee62b3aa8ec2fbf20ae449813",
+    "reference/sm3.py": "43fb6d92afc803f4842bd06dfb00f813c7ed102f1b68d9115c3e0cd6497c2c8e",
+    "tools/run_native_stage2.py": "4a4adc98330a77923ff8b6859fae24fa48a6ab34ae1e7b7c3ab0c8ca63ce6c14",
+    "tools/check_rng_native.py": "6d448e9197b4997091e7c9e8342ce2843ce1299d344d7376ba28768b5004cbed"
+  },
+  "archive_sha256": "da006c09c2a32332b45a956081a44d15b4bf720ad3b04e5137e6055c01eb58e1"
+}

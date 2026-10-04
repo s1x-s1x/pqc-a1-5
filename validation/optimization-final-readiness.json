@@ -1,0 +1,43 @@
+{
+  "schema": "a15-optimization-final-readiness-v1",
+  "passed": true,
+  "created_utc": "2026-10-04T05:33:32.634388+00:00",
+  "packages": {
+    "cpu": {
+      "passed": true,
+      "source_files": 71,
+      "evidence_files": 21,
+      "freeze_sha256": "ed766fa2423e39cddc5f7c585eb4edb19f4e01ee1598a231e996169447d357bf",
+      "package_sha256": "224738028985e2f67a1aa195141072d9ca24a5e026c06c8388c274c373dd50bf",
+      "files_sha256": {
+        "source.tar.gz": "f349975388fb1b13c9704abf1a5de31850f1d091d8b0a2d7f480be6f10dcb2e5",
+        "source-manifest.json": "8917cd4ec218724890fa012dfd40ac55b9b8f032908289bf9d2d0d4bfd096070",
+        "REVIEW.md": "e0c9eb23e2ef37d40cf3d6eee20f9f8d2f74e7179e726cf63722d74cb151cb63",
+        "freeze.json": "ed766fa2423e39cddc5f7c585eb4edb19f4e01ee1598a231e996169447d357bf"
+      },
+      "real_timing_samples": 0
+    },
+    "cuda": {
+      "passed": true,
+      "source_files": 68,
+      "evidence_files": 186,
+      "freeze_sha256": "265caa6d2ddb8a8a7fe6f4482410e667c0edbcaa2ce223ac17f26a5935403e91",
+      "package_sha256": "feb5f7dbf79c6e35c1c039a0bd7943be7636ef775301f4170ee4db19e370740b",
+      "files_sha256": {
+        "source.tar.gz": "3f8205fdf25e3cddccacead95d79fc53f7e71c9c6e1b6b3f1d835c77b4de76ed",
+        "source-manifest.json": "8094bc5f7470a98fecc377b856982528409dffe92ccc6ea8bf7687ea6e316f76",
+        "REVIEW.md": "de88a18fe6f56d61dcb2a7eee653e68d67b615c8a9ad61c627a8aabd49fb11c4",
+        "freeze.json": "265caa6d2ddb8a8a7fe6f4482410e667c0edbcaa2ce223ac17f26a5935403e91"
+      },
+      "real_timing_samples": 0
+    }
+  },
+  "cpu_gate_passed": true,
+  "cuda_gate_passed": true,
+  "real_native_calls": 0,
+  "real_timing_samples": 0,
+  "formal_performance_started": false,
+  "active_benchmark_processes": [],
+  "performance_jsonl_files": [],
+  "stopping_point": "CPU and CUDA optimization accepted; ready to start formal performance campaign; campaign not started"
+}

@@ -1,0 +1,287 @@
+{
+  "environment": {
+    "python": "3.13.7",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "processor": "Intel64 Family 6 Model 170 Stepping 4, GenuineIntel",
+    "machine": "AMD64",
+    "timestamp": "2026-09-22T23:48:33+0800"
+  },
+  "kem": "ml-kem-768",
+  "cold_iterations": 5,
+  "hot_iterations": 30,
+  "wall_seconds": 29.601,
+  "cpu_seconds": 29.172,
+  "results": [
+    {
+      "height": 8,
+      "max_signatures": 256,
+      "public_key_bytes": 64,
+      "signature_bytes": 4548,
+      "phases": {
+        "tree_keygen": {
+          "count": 5,
+          "median_ms": 543.99,
+          "min_ms": 526.708,
+          "max_ms": 557.368,
+          "mean_ms": 543.69,
+          "cpu_seconds_total": 2.6875,
+          "samples_ms": [
+            526.708,
+            540.08,
+            543.99,
+            557.368,
+            550.304
+          ]
+        },
+        "certificate_build": {
+          "count": 5,
+          "median_ms": 0.024,
+          "min_ms": 0.023,
+          "max_ms": 4.035,
+          "mean_ms": 0.83,
+          "samples_ms": [
+            4.035,
+            0.044,
+            0.024,
+            0.023,
+            0.023
+          ]
+        },
+        "sign": {
+          "count": 5,
+          "median_ms": 3.29,
+          "min_ms": 3.236,
+          "max_ms": 4.617,
+          "mean_ms": 3.54,
+          "samples_ms": [
+            4.617,
+            3.29,
+            3.238,
+            3.321,
+            3.236
+          ]
+        },
+        "verify": {
+          "count": 5,
+          "median_ms": 1.142,
+          "min_ms": 1.117,
+          "max_ms": 1.469,
+          "mean_ms": 1.227,
+          "samples_ms": [
+            1.142,
+            1.133,
+            1.272,
+            1.469,
+            1.117
+          ]
+        },
+        "cold_handshake": {
+          "count": 1,
+          "median_ms": 724.802,
+          "min_ms": 724.802,
+          "max_ms": 724.802,
+          "mean_ms": 724.802,
+          "samples_ms": [
+            724.802
+          ],
+          "timeline_seconds": [
+            {
+              "credentials_built": 0.7156786999548785,
+              "credentials_ready": 357316.1955775,
+              "client_hello_ready": 357316.1960785,
+              "server_hello_ready": 357316.1964931,
+              "server_flight_ready": 357316.2024408,
+              "client_finished_ready": 357316.2045545,
+              "complete": 357316.2045935,
+              "cpu_seconds": 0.7344
+            }
+          ]
+        },
+        "hot_handshake": {
+          "count": 30,
+          "median_ms": 5.826,
+          "min_ms": 5.04,
+          "max_ms": 13.301,
+          "mean_ms": 7.133,
+          "online_median_ms": 5.605,
+          "cpu_seconds_total": 0.2031,
+          "leaves_before": 256,
+          "leaves_spent": 30,
+          "leaves_remaining_after": 226,
+          "samples_ms": [
+            5.525,
+            5.409,
+            13.301,
+            12.08,
+            10.074,
+            5.552,
+            5.352,
+            5.46,
+            5.323,
+            5.308,
+            5.888,
+            7.994,
+            5.95,
+            5.6,
+            5.04,
+            10.669,
+            9.525,
+            5.228,
+            5.222,
+            11.263,
+            8.949,
+            5.764,
+            6.365,
+            6.885,
+            5.486,
+            6.119,
+            11.09,
+            6.688,
+            5.467,
+            5.43
+          ],
+          "leaf_index_uniqueness": "asserted by tests/test_handshake.py (test_xmss_credentials_spend_one_leaf_per_handshake) and tests/test_wots_xmss.py (test_xmss_sign_exhaustion_and_no_index_reuse)"
+        }
+      },
+      "hot_reuses_credential_only": true
+    },
+    {
+      "height": 10,
+      "max_signatures": 1024,
+      "public_key_bytes": 64,
+      "signature_bytes": 4612,
+      "phases": {
+        "tree_keygen": {
+          "count": 5,
+          "median_ms": 3047.602,
+          "min_ms": 2884.012,
+          "max_ms": 3073.682,
+          "mean_ms": 2991.602,
+          "cpu_seconds_total": 14.6406,
+          "samples_ms": [
+            3047.602,
+            2899.475,
+            3053.237,
+            3073.682,
+            2884.012
+          ]
+        },
+        "certificate_build": {
+          "count": 5,
+          "median_ms": 0.026,
+          "min_ms": 0.024,
+          "max_ms": 0.199,
+          "mean_ms": 0.061,
+          "samples_ms": [
+            0.199,
+            0.033,
+            0.026,
+            0.025,
+            0.024
+          ]
+        },
+        "sign": {
+          "count": 5,
+          "median_ms": 3.666,
+          "min_ms": 2.933,
+          "max_ms": 4.436,
+          "mean_ms": 3.769,
+          "samples_ms": [
+            4.436,
+            2.933,
+            3.569,
+            3.666,
+            4.24
+          ]
+        },
+        "verify": {
+          "count": 5,
+          "median_ms": 1.142,
+          "min_ms": 0.972,
+          "max_ms": 1.457,
+          "mean_ms": 1.157,
+          "samples_ms": [
+            1.038,
+            0.972,
+            1.142,
+            1.457,
+            1.177
+          ]
+        },
+        "cold_handshake": {
+          "count": 1,
+          "median_ms": 3023.855,
+          "min_ms": 3023.855,
+          "max_ms": 3023.855,
+          "mean_ms": 3023.855,
+          "samples_ms": [
+            3023.855
+          ],
+          "timeline_seconds": [
+            {
+              "credentials_built": 3.017672699992545,
+              "credentials_ready": 357338.3303893,
+              "client_hello_ready": 357338.330656,
+              "server_hello_ready": 357338.3308819,
+              "server_flight_ready": 357338.3348766,
+              "client_finished_ready": 357338.3364511,
+              "complete": 357338.3364838,
+              "cpu_seconds": 3.0156
+            }
+          ]
+        },
+        "hot_handshake": {
+          "count": 30,
+          "median_ms": 7.057,
+          "min_ms": 5.527,
+          "max_ms": 13.212,
+          "mean_ms": 7.985,
+          "online_median_ms": 6.783,
+          "cpu_seconds_total": 0.2344,
+          "leaves_before": 1024,
+          "leaves_spent": 30,
+          "leaves_remaining_after": 994,
+          "samples_ms": [
+            10.154,
+            7.511,
+            12.027,
+            13.212,
+            10.342,
+            9.775,
+            7.116,
+            6.119,
+            6.052,
+            6.903,
+            7.386,
+            11.26,
+            5.94,
+            5.577,
+            5.701,
+            6.505,
+            5.589,
+            5.547,
+            6.417,
+            7.586,
+            11.331,
+            13.094,
+            10.657,
+            6.117,
+            5.621,
+            5.527,
+            9.384,
+            7.782,
+            6.999,
+            6.321
+          ],
+          "leaf_index_uniqueness": "asserted by tests/test_handshake.py (test_xmss_credentials_spend_one_leaf_per_handshake) and tests/test_wots_xmss.py (test_xmss_sign_exhaustion_and_no_index_reuse)"
+        }
+      },
+      "hot_reuses_credential_only": true
+    }
+  ],
+  "reading": {
+    "cold_handshake": "credentials (whole-tree keygen + certificate) built inside the timed section",
+    "hot_handshake": "authentication credential reused; transcript, ECDHE/KEM ephemeral keys, traffic secrets and record sequences are per handshake",
+    "not_measured": "connection flooding, mid-handshake aborts, queue backpressure, and any cross-process key state; those need the state design the plan gates"
+  }
+}

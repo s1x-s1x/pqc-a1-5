@@ -1,0 +1,5 @@
+﻿source,sha256,records,kind
+vectors/external-acvp-inputs.jsonl,e28982e70a993aef9b3b337fd802be664de5cf5cc36a516c6bc8105ecf44a5f3,208,preserved external operation inputs
+vectors/external-xous-inputs.jsonl,eb473873b9ac9695a4fab872740290076148b4b6210c0941af7733c9f4bf709c,3,preserved external operation inputs
+vectors/external-gmsm-inputs.jsonl,4d01be651294b66c2f4d3889656725cb11093951096e752c07ce4170a24fae06,140,preserved external operation inputs
+reference/evidence/python-sm3-128-24.jsonl,b9a0cdf1ca02deaa666ee88c1726ce1ed590f04afb551432bb21e52c741c9c46,3,complete Python reference inputs

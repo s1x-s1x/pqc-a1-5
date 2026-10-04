@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "suite": "exact-native-counts",
+  "generated_utc": "2026-10-03T17:06:15.899443+00:00",
+  "stage": "scalar-correctness",
+  "final": false,
+  "passed": true,
+  "records": 326,
+  "passing_records": 326,
+  "failed_case_ids": [],
+  "per_field": {
+    "prf": {
+      "passed": 326,
+      "failed": 0
+    },
+    "prf_msg": {
+      "passed": 326,
+      "failed": 0
+    },
+    "h_msg": {
+      "passed": 326,
+      "failed": 0
+    },
+    "f": {
+      "passed": 326,
+      "failed": 0
+    },
+    "h": {
+      "passed": 326,
+      "failed": 0
+    },
+    "t": {
+      "passed": 326,
+      "failed": 0
+    },
+    "compress": {
+      "passed": 326,
+      "failed": 0
+    }
+  },
+  "coverage": {
+    "all_seven_fields_compared": true,
+    "thread_counts": [
+      1,
+      4
+    ],
+    "parameters": [
+      2,
+      102,
+      201
+    ],
+    "operations": {
+      "subtree": 33,
+      "keygen": 5,
+      "cache_build": 6,
+      "cache_save": 6,
+      "cache_load": 6,
+      "sign": 134,
+      "verify": 134,
+      "verify_invalid_length": 2
+    },
+    "message_encodings": [
+      "internal",
+      "pure"
+    ],
+    "toy_actual_chain_sums": [
+      84,
+      90,
+      96,
+      99,
+      105,
+      108,
+      111,
+      114
+    ],
+    "actual_chain_steps_vary": true,
+    "cache_paths": [
+      "built-t0",
+      "key-mismatch",
+      "loaded-t0",
+      "loaded-t10",
+      "loaded-t5",
+      "none",
+      "self-verify-t5"
+    ],
+    "no_full_limited_use_signature_generated": true
+  },
+  "counter_build_sha256": "8a69d882741c9042875045579f06172e194eedd707668175ecbe6420d5aea72c",
+  "implementation_hashes": {
+    "c/src/engine.c": "3dfd824ae1d619c041c7018f491c32e6fffd6a7138489c676301a7fe716d5acc",
+    "c/src/sm3.c": "e655fbb8b8048230562beb03c8e0a0a0702acbed9a5a7e62862f0fcb8c374114",
+    "c/src/sm3.h": "a00c3116686428ef9fbc7d4f7a9e88f066cf45ba39812fd7f17ec25ea70439b3",
+    "c/include/slhdsa_sm3.h": "c84ef52141276d408b2f4b48155093c6e6011e69f0cfbc773006f68c9cab8cb5",
+    "third_party/slhdsa-c/sha2_256.c": "cbc9ef22886cf8a6a8f4e51b60b4b858d9c8a5a5dbe2ad16764a7e6ea3fba85c",
+    "third_party/slhdsa-c/sha2_api.h": "96698a33d10b8e1c50f82ee82e34209f37607ea207baaf6ee8f238bff9878ef7",
+    "reference/sm3.py": "43fb6d92afc803f4842bd06dfb00f813c7ed102f1b68d9115c3e0cd6497c2c8e",
+    "tools/native.py": "6fac9b242a1cbf6976174b48704832ae8cb6b48d07e7f7b10275b06e7760d63a",
+    "tools/count_model.py": "6ac77e6b63e6cf9c03818c0e7d349012e16fafc5d1624e59da960564d97fc419",
+    "tools/check_counts.py": "58df7b4ff67a72f11bb2704a95aab928348fb74ce7e0787bb328235b74649984"
+  },
+  "source_commit": null,
+  "output_sha256": "db6e998d9b222d86e512c19a5819bb666e827c721d756b5702ba5a04d24f613f",
+  "diagnostic_seconds": 9.285262748599052,
+  "error": null,
+  "limitations": [
+    "global atomic counters require exclusive sequential library use",
+    "cache checksum calls use raw SM3 and are outside public compress counter",
+    "counts validate the implemented path; they are not benchmark or security claims",
+    "toy plus bounded pid2/102 tests do not measure full pid3/103 signing"
+  ]
+}

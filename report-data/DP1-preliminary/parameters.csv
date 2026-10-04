@@ -1,0 +1,8 @@
+﻿pid,hash,n,h,d,hp,a,k,lgw,wots_len,digest_bytes,pk_bytes,sk_bytes,signature_bytes,basis,source,source_line,source_sha256,final
+1,SM3,16,63,7,9,12,14,4,35,30,32,64,7856,calculated from implemented parameters; not performance measurement,c\src\engine.c,46,3dfd824ae1d619c041c7018f491c32e6fffd6a7138489c676301a7fe716d5acc,False
+2,SM3,16,66,22,3,6,33,4,35,34,32,64,17088,calculated from implemented parameters; not performance measurement,c\src\engine.c,46,3dfd824ae1d619c041c7018f491c32e6fffd6a7138489c676301a7fe716d5acc,False
+3,SM3,16,22,1,22,24,6,2,68,21,32,64,3856,calculated from implemented parameters; not performance measurement,c\src\engine.c,47,3dfd824ae1d619c041c7018f491c32e6fffd6a7138489c676301a7fe716d5acc,False
+101,SHA256,16,63,7,9,12,14,4,35,30,32,64,7856,calculated from implemented parameters; not performance measurement,c\src\engine.c,47,3dfd824ae1d619c041c7018f491c32e6fffd6a7138489c676301a7fe716d5acc,False
+102,SHA256,16,66,22,3,6,33,4,35,34,32,64,17088,calculated from implemented parameters; not performance measurement,c\src\engine.c,48,3dfd824ae1d619c041c7018f491c32e6fffd6a7138489c676301a7fe716d5acc,False
+103,SHA256,16,22,1,22,24,6,2,68,21,32,64,3856,calculated from implemented parameters; not performance measurement,c\src\engine.c,48,3dfd824ae1d619c041c7018f491c32e6fffd6a7138489c676301a7fe716d5acc,False
+201,SM3,16,10,1,10,10,6,2,68,10,32,64,2320,calculated from implemented parameters; not performance measurement,c\src\engine.c,49,3dfd824ae1d619c041c7018f491c32e6fffd6a7138489c676301a7fe716d5acc,False

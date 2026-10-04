@@ -1,0 +1,1691 @@
+{
+  "schema": "a15-python-acvp-v1",
+  "upstream_commit": "1c859956c0217b04fa5ae76e338e5570aba622c5",
+  "generated_at_utc": "2026-10-03T15:40:12.346160+00:00",
+  "counts": {
+    "keyGen": 20,
+    "sigGen": 104,
+    "sigVer": 84
+  },
+  "total": 208,
+  "passed": 208,
+  "failed": 0,
+  "workers": 16,
+  "elapsed_seconds": 23.9428648352623,
+  "sources_sha256": {
+    "json-copy/SLH-DSA-keyGen-FIPS205/prompt.json": "fd8d1018bf79c83b2c1143f7abde331da93e17f4751ef2a86498870cc7fa6ae9",
+    "json-copy/SLH-DSA-keyGen-FIPS205/expectedResults.json": "9d6c45cae724c1776803860c43de78dc1efd8496b0cde6edba2a62e0d7c920c0",
+    "json-copy/SLH-DSA-sigGen-FIPS205/prompt.json": "646fc260ee78f5a288f449e72dc729786fd54edb5d8f2a37a7f895e612910195",
+    "json-copy/SLH-DSA-sigGen-FIPS205/expectedResults.json": "910ba52aae05518068f2997fb136b2e4d620fb417ea5ca412b334ce797417092",
+    "json-copy/SLH-DSA-sigVer-FIPS205/prompt.json": "8553cabe7df8d93bf52c794c27010f2c8448f157f886753d5d09e9a08b6347b1",
+    "json-copy/SLH-DSA-sigVer-FIPS205/expectedResults.json": "fb4b087f3705f68902c0fd1b58d2d4f8a6d24e1c4f65cd3cf3c3629a7ed197b3",
+    "json-copy/SLH-DSA-sigVer-FIPS205/internalProjection.json": "a777f9684460845998e7e89babd8d98f4047c064d1366f364ab034f19b859e52"
+  },
+  "results": [
+    {
+      "operation": "keyGen",
+      "pid": 101,
+      "tgId": 1,
+      "tcId": 1,
+      "passed": true,
+      "seconds": 0.619034968316555
+    },
+    {
+      "operation": "keyGen",
+      "pid": 101,
+      "tgId": 1,
+      "tcId": 2,
+      "passed": true,
+      "seconds": 0.6146790981292725
+    },
+    {
+      "operation": "keyGen",
+      "pid": 101,
+      "tgId": 1,
+      "tcId": 3,
+      "passed": true,
+      "seconds": 0.7988432943820953
+    },
+    {
+      "operation": "keyGen",
+      "pid": 101,
+      "tgId": 1,
+      "tcId": 4,
+      "passed": true,
+      "seconds": 0.6608158648014069
+    },
+    {
+      "operation": "keyGen",
+      "pid": 101,
+      "tgId": 1,
+      "tcId": 5,
+      "passed": true,
+      "seconds": 0.6761682108044624
+    },
+    {
+      "operation": "keyGen",
+      "pid": 101,
+      "tgId": 1,
+      "tcId": 6,
+      "passed": true,
+      "seconds": 1.136600024998188
+    },
+    {
+      "operation": "keyGen",
+      "pid": 101,
+      "tgId": 1,
+      "tcId": 7,
+      "passed": true,
+      "seconds": 0.6419171690940857
+    },
+    {
+      "operation": "keyGen",
+      "pid": 101,
+      "tgId": 1,
+      "tcId": 8,
+      "passed": true,
+      "seconds": 0.6186404526233673
+    },
+    {
+      "operation": "keyGen",
+      "pid": 101,
+      "tgId": 1,
+      "tcId": 9,
+      "passed": true,
+      "seconds": 0.7419976964592934
+    },
+    {
+      "operation": "keyGen",
+      "pid": 101,
+      "tgId": 1,
+      "tcId": 10,
+      "passed": true,
+      "seconds": 0.615592785179615
+    },
+    {
+      "operation": "keyGen",
+      "pid": 102,
+      "tgId": 3,
+      "tcId": 21,
+      "passed": true,
+      "seconds": 0.01563260704278946
+    },
+    {
+      "operation": "keyGen",
+      "pid": 102,
+      "tgId": 3,
+      "tcId": 22,
+      "passed": true,
+      "seconds": 0.01954180747270584
+    },
+    {
+      "operation": "keyGen",
+      "pid": 102,
+      "tgId": 3,
+      "tcId": 23,
+      "passed": true,
+      "seconds": 0.019505657255649567
+    },
+    {
+      "operation": "keyGen",
+      "pid": 102,
+      "tgId": 3,
+      "tcId": 24,
+      "passed": true,
+      "seconds": 0.010277636349201202
+    },
+    {
+      "operation": "keyGen",
+      "pid": 102,
+      "tgId": 3,
+      "tcId": 25,
+      "passed": true,
+      "seconds": 0.029237210750579834
+    },
+    {
+      "operation": "keyGen",
+      "pid": 102,
+      "tgId": 3,
+      "tcId": 26,
+      "passed": true,
+      "seconds": 0.033641353249549866
+    },
+    {
+      "operation": "keyGen",
+      "pid": 102,
+      "tgId": 3,
+      "tcId": 27,
+      "passed": true,
+      "seconds": 0.009508766233921051
+    },
+    {
+      "operation": "keyGen",
+      "pid": 102,
+      "tgId": 3,
+      "tcId": 28,
+      "passed": true,
+      "seconds": 0.014802604913711548
+    },
+    {
+      "operation": "keyGen",
+      "pid": 102,
+      "tgId": 3,
+      "tcId": 29,
+      "passed": true,
+      "seconds": 0.018423087894916534
+    },
+    {
+      "operation": "keyGen",
+      "pid": 102,
+      "tgId": 3,
+      "tcId": 30,
+      "passed": true,
+      "seconds": 0.018178455531597137
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 1,
+      "tcId": 1,
+      "passed": true,
+      "seconds": 0.2946709915995598
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 1,
+      "tcId": 2,
+      "passed": true,
+      "seconds": 0.23441772162914276
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 1,
+      "tcId": 3,
+      "passed": true,
+      "seconds": 0.23901139944791794
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 1,
+      "tcId": 4,
+      "passed": true,
+      "seconds": 0.2765081003308296
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 1,
+      "tcId": 5,
+      "passed": true,
+      "seconds": 0.23939231038093567
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 1,
+      "tcId": 6,
+      "passed": true,
+      "seconds": 0.4513777047395706
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 1,
+      "tcId": 7,
+      "passed": true,
+      "seconds": 0.2335829958319664
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 2,
+      "tcId": 8,
+      "passed": true,
+      "seconds": 0.23384997248649597
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 2,
+      "tcId": 9,
+      "passed": true,
+      "seconds": 0.23555592447519302
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 2,
+      "tcId": 10,
+      "passed": true,
+      "seconds": 0.23255348205566406
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 2,
+      "tcId": 11,
+      "passed": true,
+      "seconds": 0.24357900023460388
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 2,
+      "tcId": 12,
+      "passed": true,
+      "seconds": 0.4559238478541374
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 2,
+      "tcId": 13,
+      "passed": true,
+      "seconds": 0.2377154603600502
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 2,
+      "tcId": 14,
+      "passed": true,
+      "seconds": 0.23500780016183853
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 2,
+      "tcId": 15,
+      "passed": true,
+      "seconds": 0.23409785330295563
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 2,
+      "tcId": 16,
+      "passed": true,
+      "seconds": 0.23222779482603073
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 2,
+      "tcId": 17,
+      "passed": true,
+      "seconds": 0.23977094143629074
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 2,
+      "tcId": 18,
+      "passed": true,
+      "seconds": 0.23909343779087067
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 2,
+      "tcId": 19,
+      "passed": true,
+      "seconds": 0.2410416677594185
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 13,
+      "tcId": 115,
+      "passed": true,
+      "seconds": 0.23593135178089142
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 13,
+      "tcId": 116,
+      "passed": true,
+      "seconds": 0.23364389687776566
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 13,
+      "tcId": 117,
+      "passed": true,
+      "seconds": 0.23159033060073853
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 13,
+      "tcId": 118,
+      "passed": true,
+      "seconds": 0.2347216084599495
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 13,
+      "tcId": 119,
+      "passed": true,
+      "seconds": 0.24530992656946182
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 13,
+      "tcId": 120,
+      "passed": true,
+      "seconds": 0.2722862884402275
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 13,
+      "tcId": 121,
+      "passed": true,
+      "seconds": 0.23435569554567337
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 19,
+      "tcId": 157,
+      "passed": true,
+      "seconds": 5.08574640750885
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 19,
+      "tcId": 158,
+      "passed": true,
+      "seconds": 6.258282318711281
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 19,
+      "tcId": 159,
+      "passed": true,
+      "seconds": 5.538337260484695
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 19,
+      "tcId": 160,
+      "passed": true,
+      "seconds": 5.533378250896931
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 19,
+      "tcId": 161,
+      "passed": true,
+      "seconds": 5.024833053350449
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 19,
+      "tcId": 162,
+      "passed": true,
+      "seconds": 6.6613312140107155
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 19,
+      "tcId": 163,
+      "passed": true,
+      "seconds": 5.6376838311553
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 20,
+      "tcId": 164,
+      "passed": true,
+      "seconds": 5.587806262075901
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 20,
+      "tcId": 165,
+      "passed": true,
+      "seconds": 6.276333898305893
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 20,
+      "tcId": 166,
+      "passed": true,
+      "seconds": 5.123021095991135
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 20,
+      "tcId": 167,
+      "passed": true,
+      "seconds": 5.344413265585899
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 20,
+      "tcId": 168,
+      "passed": true,
+      "seconds": 6.073543541133404
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 20,
+      "tcId": 169,
+      "passed": true,
+      "seconds": 6.297500312328339
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 20,
+      "tcId": 170,
+      "passed": true,
+      "seconds": 5.601618558168411
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 20,
+      "tcId": 171,
+      "passed": true,
+      "seconds": 6.345299087464809
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 20,
+      "tcId": 172,
+      "passed": true,
+      "seconds": 5.085183806717396
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 20,
+      "tcId": 173,
+      "passed": true,
+      "seconds": 6.600490443408489
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 20,
+      "tcId": 174,
+      "passed": true,
+      "seconds": 6.63587261736393
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 20,
+      "tcId": 175,
+      "passed": true,
+      "seconds": 5.500259108841419
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 31,
+      "tcId": 271,
+      "passed": true,
+      "seconds": 7.228804431855679
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 31,
+      "tcId": 272,
+      "passed": true,
+      "seconds": 6.836186580359936
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 31,
+      "tcId": 273,
+      "passed": true,
+      "seconds": 5.454268351197243
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 31,
+      "tcId": 274,
+      "passed": true,
+      "seconds": 7.082852065563202
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 31,
+      "tcId": 275,
+      "passed": true,
+      "seconds": 6.712274149060249
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 31,
+      "tcId": 276,
+      "passed": true,
+      "seconds": 5.089511811733246
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 31,
+      "tcId": 277,
+      "passed": true,
+      "seconds": 6.799870602786541
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 37,
+      "tcId": 313,
+      "passed": true,
+      "seconds": 0.2448965236544609
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 37,
+      "tcId": 314,
+      "passed": true,
+      "seconds": 0.36944784969091415
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 37,
+      "tcId": 315,
+      "passed": true,
+      "seconds": 0.23870103806257248
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 37,
+      "tcId": 316,
+      "passed": true,
+      "seconds": 0.2373061254620552
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 37,
+      "tcId": 317,
+      "passed": true,
+      "seconds": 0.3643502816557884
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 37,
+      "tcId": 318,
+      "passed": true,
+      "seconds": 0.22903479635715485
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 37,
+      "tcId": 319,
+      "passed": true,
+      "seconds": 0.23651956021785736
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 38,
+      "tcId": 320,
+      "passed": true,
+      "seconds": 0.367533378303051
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 38,
+      "tcId": 321,
+      "passed": true,
+      "seconds": 0.3392331153154373
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 38,
+      "tcId": 322,
+      "passed": true,
+      "seconds": 0.2462800368666649
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 38,
+      "tcId": 323,
+      "passed": true,
+      "seconds": 0.2300722450017929
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 38,
+      "tcId": 324,
+      "passed": true,
+      "seconds": 0.25439097732305527
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 38,
+      "tcId": 325,
+      "passed": true,
+      "seconds": 0.3850405067205429
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 38,
+      "tcId": 326,
+      "passed": true,
+      "seconds": 0.36623138189315796
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 38,
+      "tcId": 327,
+      "passed": true,
+      "seconds": 0.2948495224118233
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 38,
+      "tcId": 328,
+      "passed": true,
+      "seconds": 0.3242207244038582
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 38,
+      "tcId": 329,
+      "passed": true,
+      "seconds": 0.5379360318183899
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 38,
+      "tcId": 330,
+      "passed": true,
+      "seconds": 0.3842373862862587
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 38,
+      "tcId": 331,
+      "passed": true,
+      "seconds": 0.37390708923339844
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 49,
+      "tcId": 427,
+      "passed": true,
+      "seconds": 0.31441547721624374
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 49,
+      "tcId": 428,
+      "passed": true,
+      "seconds": 0.36154212057590485
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 49,
+      "tcId": 429,
+      "passed": true,
+      "seconds": 0.3763887658715248
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 49,
+      "tcId": 430,
+      "passed": true,
+      "seconds": 0.26678240299224854
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 49,
+      "tcId": 431,
+      "passed": true,
+      "seconds": 0.2397099882364273
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 49,
+      "tcId": 432,
+      "passed": true,
+      "seconds": 0.3297424167394638
+    },
+    {
+      "operation": "sigGen",
+      "pid": 102,
+      "tgId": 49,
+      "tcId": 433,
+      "passed": true,
+      "seconds": 0.24148805439472198
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 55,
+      "tcId": 469,
+      "passed": true,
+      "seconds": 7.74356584995985
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 55,
+      "tcId": 470,
+      "passed": true,
+      "seconds": 5.231642708182335
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 55,
+      "tcId": 471,
+      "passed": true,
+      "seconds": 7.338725529611111
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 55,
+      "tcId": 472,
+      "passed": true,
+      "seconds": 5.549264416098595
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 55,
+      "tcId": 473,
+      "passed": true,
+      "seconds": 5.0903663113713264
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 55,
+      "tcId": 474,
+      "passed": true,
+      "seconds": 5.166258305311203
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 55,
+      "tcId": 475,
+      "passed": true,
+      "seconds": 4.7712674885988235
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 56,
+      "tcId": 476,
+      "passed": true,
+      "seconds": 4.75387217849493
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 56,
+      "tcId": 477,
+      "passed": true,
+      "seconds": 5.077919237315655
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 56,
+      "tcId": 478,
+      "passed": true,
+      "seconds": 7.740256726741791
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 56,
+      "tcId": 479,
+      "passed": true,
+      "seconds": 7.7223241701722145
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 56,
+      "tcId": 480,
+      "passed": true,
+      "seconds": 6.3519862070679665
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 56,
+      "tcId": 481,
+      "passed": true,
+      "seconds": 5.031745821237564
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 56,
+      "tcId": 482,
+      "passed": true,
+      "seconds": 6.994680553674698
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 56,
+      "tcId": 483,
+      "passed": true,
+      "seconds": 4.866038620471954
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 56,
+      "tcId": 484,
+      "passed": true,
+      "seconds": 7.767615459859371
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 56,
+      "tcId": 485,
+      "passed": true,
+      "seconds": 6.096101358532906
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 56,
+      "tcId": 486,
+      "passed": true,
+      "seconds": 7.7069505751132965
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 56,
+      "tcId": 487,
+      "passed": true,
+      "seconds": 5.28678273409605
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 67,
+      "tcId": 583,
+      "passed": true,
+      "seconds": 7.102854959666729
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 67,
+      "tcId": 584,
+      "passed": true,
+      "seconds": 6.784740820527077
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 67,
+      "tcId": 585,
+      "passed": true,
+      "seconds": 7.655655466020107
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 67,
+      "tcId": 586,
+      "passed": true,
+      "seconds": 5.063101701438427
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 67,
+      "tcId": 587,
+      "passed": true,
+      "seconds": 4.896698392927647
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 67,
+      "tcId": 588,
+      "passed": true,
+      "seconds": 6.038866885006428
+    },
+    {
+      "operation": "sigGen",
+      "pid": 101,
+      "tgId": 67,
+      "tcId": 589,
+      "passed": true,
+      "seconds": 5.486234568059444
+    },
+    {
+      "operation": "sigVer",
+      "pid": 102,
+      "tgId": 1,
+      "tcId": 1,
+      "passed": true,
+      "seconds": 0.00020664185285568237
+    },
+    {
+      "operation": "sigVer",
+      "pid": 102,
+      "tgId": 1,
+      "tcId": 2,
+      "passed": true,
+      "seconds": 0.015079803764820099
+    },
+    {
+      "operation": "sigVer",
+      "pid": 102,
+      "tgId": 1,
+      "tcId": 3,
+      "passed": true,
+      "seconds": 5.2735209465026855e-05
+    },
+    {
+      "operation": "sigVer",
+      "pid": 102,
+      "tgId": 1,
+      "tcId": 4,
+      "passed": true,
+      "seconds": 4.854053258895874e-05
+    },
+    {
+      "operation": "sigVer",
+      "pid": 102,
+      "tgId": 1,
+      "tcId": 5,
+      "passed": true,
+      "seconds": 0.014339618384838104
+    },
+    {
+      "operation": "sigVer",
+      "pid": 102,
+      "tgId": 1,
+      "tcId": 6,
+      "passed": true,
+      "seconds": 0.014195278286933899
+    },
+    {
+      "operation": "sigVer",
+      "pid": 102,
+      "tgId": 1,
+      "tcId": 7,
+      "passed": true,
+      "seconds": 0.014722324907779694
+    },
+    {
+      "operation": "sigVer",
+      "pid": 102,
+      "tgId": 1,
+      "tcId": 8,
+      "passed": true,
+      "seconds": 0.014436960220336914
+    },
+    {
+      "operation": "sigVer",
+      "pid": 102,
+      "tgId": 1,
+      "tcId": 9,
+      "passed": true,
+      "seconds": 0.014844313263893127
+    },
+    {
+      "operation": "sigVer",
+      "pid": 102,
+      "tgId": 1,
+      "tcId": 10,
+      "passed": true,
+      "seconds": 5.0999224185943604e-05
+    },
+    {
+      "operation": "sigVer",
+      "pid": 102,
+      "tgId": 1,
+      "tcId": 11,
+      "passed": true,
+      "seconds": 0.015231333673000336
+    },
+    {
+      "operation": "sigVer",
+      "pid": 102,
+      "tgId": 1,
+      "tcId": 12,
+      "passed": true,
+      "seconds": 0.014774881303310394
+    },
+    {
+      "operation": "sigVer",
+      "pid": 102,
+      "tgId": 1,
+      "tcId": 13,
+      "passed": true,
+      "seconds": 0.01448369026184082
+    },
+    {
+      "operation": "sigVer",
+      "pid": 102,
+      "tgId": 1,
+      "tcId": 14,
+      "passed": true,
+      "seconds": 0.014230296015739441
+    },
+    {
+      "operation": "sigVer",
+      "pid": 102,
+      "tgId": 2,
+      "tcId": 15,
+      "passed": true,
+      "seconds": 0.015224546194076538
+    },
+    {
+      "operation": "sigVer",
+      "pid": 102,
+      "tgId": 2,
+      "tcId": 16,
+      "passed": true,
+      "seconds": 0.014764487743377686
+    },
+    {
+      "operation": "sigVer",
+      "pid": 102,
+      "tgId": 2,
+      "tcId": 17,
+      "passed": true,
+      "seconds": 0.015284083783626556
+    },
+    {
+      "operation": "sigVer",
+      "pid": 102,
+      "tgId": 2,
+      "tcId": 18,
+      "passed": true,
+      "seconds": 0.0001368299126625061
+    },
+    {
+      "operation": "sigVer",
+      "pid": 102,
+      "tgId": 2,
+      "tcId": 19,
+      "passed": true,
+      "seconds": 0.014918893575668335
+    },
+    {
+      "operation": "sigVer",
+      "pid": 102,
+      "tgId": 2,
+      "tcId": 20,
+      "passed": true,
+      "seconds": 0.015553653240203857
+    },
+    {
+      "operation": "sigVer",
+      "pid": 102,
+      "tgId": 2,
+      "tcId": 21,
+      "passed": true,
+      "seconds": 9.809434413909912e-05
+    },
+    {
+      "operation": "sigVer",
+      "pid": 102,
+      "tgId": 2,
+      "tcId": 22,
+      "passed": true,
+      "seconds": 0.00017840415239334106
+    },
+    {
+      "operation": "sigVer",
+      "pid": 102,
+      "tgId": 2,
+      "tcId": 23,
+      "passed": true,
+      "seconds": 0.014312542974948883
+    },
+    {
+      "operation": "sigVer",
+      "pid": 102,
+      "tgId": 2,
+      "tcId": 24,
+      "passed": true,
+      "seconds": 0.01504843682050705
+    },
+    {
+      "operation": "sigVer",
+      "pid": 102,
+      "tgId": 2,
+      "tcId": 25,
+      "passed": true,
+      "seconds": 0.015318900346755981
+    },
+    {
+      "operation": "sigVer",
+      "pid": 102,
+      "tgId": 2,
+      "tcId": 26,
+      "passed": true,
+      "seconds": 0.01429775357246399
+    },
+    {
+      "operation": "sigVer",
+      "pid": 102,
+      "tgId": 2,
+      "tcId": 27,
+      "passed": true,
+      "seconds": 0.014672145247459412
+    },
+    {
+      "operation": "sigVer",
+      "pid": 102,
+      "tgId": 2,
+      "tcId": 28,
+      "passed": true,
+      "seconds": 0.0005112290382385254
+    },
+    {
+      "operation": "sigVer",
+      "pid": 102,
+      "tgId": 13,
+      "tcId": 169,
+      "passed": true,
+      "seconds": 0.014864906668663025
+    },
+    {
+      "operation": "sigVer",
+      "pid": 102,
+      "tgId": 13,
+      "tcId": 170,
+      "passed": true,
+      "seconds": 4.029273986816406e-05
+    },
+    {
+      "operation": "sigVer",
+      "pid": 102,
+      "tgId": 13,
+      "tcId": 171,
+      "passed": true,
+      "seconds": 0.01445683091878891
+    },
+    {
+      "operation": "sigVer",
+      "pid": 102,
+      "tgId": 13,
+      "tcId": 172,
+      "passed": true,
+      "seconds": 0.014676280319690704
+    },
+    {
+      "operation": "sigVer",
+      "pid": 102,
+      "tgId": 13,
+      "tcId": 173,
+      "passed": true,
+      "seconds": 0.014523491263389587
+    },
+    {
+      "operation": "sigVer",
+      "pid": 102,
+      "tgId": 13,
+      "tcId": 174,
+      "passed": true,
+      "seconds": 0.031081490218639374
+    },
+    {
+      "operation": "sigVer",
+      "pid": 102,
+      "tgId": 13,
+      "tcId": 175,
+      "passed": true,
+      "seconds": 0.029551982879638672
+    },
+    {
+      "operation": "sigVer",
+      "pid": 102,
+      "tgId": 13,
+      "tcId": 176,
+      "passed": true,
+      "seconds": 8.783489465713501e-05
+    },
+    {
+      "operation": "sigVer",
+      "pid": 102,
+      "tgId": 13,
+      "tcId": 177,
+      "passed": true,
+      "seconds": 0.030200012028217316
+    },
+    {
+      "operation": "sigVer",
+      "pid": 102,
+      "tgId": 13,
+      "tcId": 178,
+      "passed": true,
+      "seconds": 0.028664089739322662
+    },
+    {
+      "operation": "sigVer",
+      "pid": 102,
+      "tgId": 13,
+      "tcId": 179,
+      "passed": true,
+      "seconds": 8.566677570343018e-05
+    },
+    {
+      "operation": "sigVer",
+      "pid": 102,
+      "tgId": 13,
+      "tcId": 180,
+      "passed": true,
+      "seconds": 7.252395153045654e-05
+    },
+    {
+      "operation": "sigVer",
+      "pid": 102,
+      "tgId": 13,
+      "tcId": 181,
+      "passed": true,
+      "seconds": 0.02970515936613083
+    },
+    {
+      "operation": "sigVer",
+      "pid": 102,
+      "tgId": 13,
+      "tcId": 182,
+      "passed": true,
+      "seconds": 0.028982438147068024
+    },
+    {
+      "operation": "sigVer",
+      "pid": 101,
+      "tgId": 19,
+      "tcId": 253,
+      "passed": true,
+      "seconds": 0.010643377900123596
+    },
+    {
+      "operation": "sigVer",
+      "pid": 101,
+      "tgId": 19,
+      "tcId": 254,
+      "passed": true,
+      "seconds": 0.011553846299648285
+    },
+    {
+      "operation": "sigVer",
+      "pid": 101,
+      "tgId": 19,
+      "tcId": 255,
+      "passed": true,
+      "seconds": 6.570667028427124e-05
+    },
+    {
+      "operation": "sigVer",
+      "pid": 101,
+      "tgId": 19,
+      "tcId": 256,
+      "passed": true,
+      "seconds": 0.010745920240879059
+    },
+    {
+      "operation": "sigVer",
+      "pid": 101,
+      "tgId": 19,
+      "tcId": 257,
+      "passed": true,
+      "seconds": 0.010430760681629181
+    },
+    {
+      "operation": "sigVer",
+      "pid": 101,
+      "tgId": 19,
+      "tcId": 258,
+      "passed": true,
+      "seconds": 4.713982343673706e-05
+    },
+    {
+      "operation": "sigVer",
+      "pid": 101,
+      "tgId": 19,
+      "tcId": 259,
+      "passed": true,
+      "seconds": 0.010683409869670868
+    },
+    {
+      "operation": "sigVer",
+      "pid": 101,
+      "tgId": 19,
+      "tcId": 260,
+      "passed": true,
+      "seconds": 5.441904067993164e-05
+    },
+    {
+      "operation": "sigVer",
+      "pid": 101,
+      "tgId": 19,
+      "tcId": 261,
+      "passed": true,
+      "seconds": 0.01047765463590622
+    },
+    {
+      "operation": "sigVer",
+      "pid": 101,
+      "tgId": 19,
+      "tcId": 262,
+      "passed": true,
+      "seconds": 0.010577701032161713
+    },
+    {
+      "operation": "sigVer",
+      "pid": 101,
+      "tgId": 19,
+      "tcId": 263,
+      "passed": true,
+      "seconds": 0.010433614253997803
+    },
+    {
+      "operation": "sigVer",
+      "pid": 101,
+      "tgId": 19,
+      "tcId": 264,
+      "passed": true,
+      "seconds": 0.010520167648792267
+    },
+    {
+      "operation": "sigVer",
+      "pid": 101,
+      "tgId": 19,
+      "tcId": 265,
+      "passed": true,
+      "seconds": 0.009648710489273071
+    },
+    {
+      "operation": "sigVer",
+      "pid": 101,
+      "tgId": 19,
+      "tcId": 266,
+      "passed": true,
+      "seconds": 5.30928373336792e-05
+    },
+    {
+      "operation": "sigVer",
+      "pid": 101,
+      "tgId": 20,
+      "tcId": 267,
+      "passed": true,
+      "seconds": 0.011254474520683289
+    },
+    {
+      "operation": "sigVer",
+      "pid": 101,
+      "tgId": 20,
+      "tcId": 268,
+      "passed": true,
+      "seconds": 0.00017232447862625122
+    },
+    {
+      "operation": "sigVer",
+      "pid": 101,
+      "tgId": 20,
+      "tcId": 269,
+      "passed": true,
+      "seconds": 0.010800577700138092
+    },
+    {
+      "operation": "sigVer",
+      "pid": 101,
+      "tgId": 20,
+      "tcId": 270,
+      "passed": true,
+      "seconds": 0.00013083964586257935
+    },
+    {
+      "operation": "sigVer",
+      "pid": 101,
+      "tgId": 20,
+      "tcId": 271,
+      "passed": true,
+      "seconds": 0.00020202994346618652
+    },
+    {
+      "operation": "sigVer",
+      "pid": 101,
+      "tgId": 20,
+      "tcId": 272,
+      "passed": true,
+      "seconds": 0.010330840945243835
+    },
+    {
+      "operation": "sigVer",
+      "pid": 101,
+      "tgId": 20,
+      "tcId": 273,
+      "passed": true,
+      "seconds": 0.010519236326217651
+    },
+    {
+      "operation": "sigVer",
+      "pid": 101,
+      "tgId": 20,
+      "tcId": 274,
+      "passed": true,
+      "seconds": 0.010836221277713776
+    },
+    {
+      "operation": "sigVer",
+      "pid": 101,
+      "tgId": 20,
+      "tcId": 275,
+      "passed": true,
+      "seconds": 0.01083499938249588
+    },
+    {
+      "operation": "sigVer",
+      "pid": 101,
+      "tgId": 20,
+      "tcId": 276,
+      "passed": true,
+      "seconds": 0.011075370013713837
+    },
+    {
+      "operation": "sigVer",
+      "pid": 101,
+      "tgId": 20,
+      "tcId": 277,
+      "passed": true,
+      "seconds": 9.860098361968994e-05
+    },
+    {
+      "operation": "sigVer",
+      "pid": 101,
+      "tgId": 20,
+      "tcId": 278,
+      "passed": true,
+      "seconds": 0.010155536234378815
+    },
+    {
+      "operation": "sigVer",
+      "pid": 101,
+      "tgId": 20,
+      "tcId": 279,
+      "passed": true,
+      "seconds": 0.010668493807315826
+    },
+    {
+      "operation": "sigVer",
+      "pid": 101,
+      "tgId": 20,
+      "tcId": 280,
+      "passed": true,
+      "seconds": 0.010817117989063263
+    },
+    {
+      "operation": "sigVer",
+      "pid": 101,
+      "tgId": 31,
+      "tcId": 421,
+      "passed": true,
+      "seconds": 0.010588094592094421
+    },
+    {
+      "operation": "sigVer",
+      "pid": 101,
+      "tgId": 31,
+      "tcId": 422,
+      "passed": true,
+      "seconds": 0.01069745421409607
+    },
+    {
+      "operation": "sigVer",
+      "pid": 101,
+      "tgId": 31,
+      "tcId": 423,
+      "passed": true,
+      "seconds": 0.011218629777431488
+    },
+    {
+      "operation": "sigVer",
+      "pid": 101,
+      "tgId": 31,
+      "tcId": 424,
+      "passed": true,
+      "seconds": 0.011327385902404785
+    },
+    {
+      "operation": "sigVer",
+      "pid": 101,
+      "tgId": 31,
+      "tcId": 425,
+      "passed": true,
+      "seconds": 4.816800355911255e-05
+    },
+    {
+      "operation": "sigVer",
+      "pid": 101,
+      "tgId": 31,
+      "tcId": 426,
+      "passed": true,
+      "seconds": 0.01048947125673294
+    },
+    {
+      "operation": "sigVer",
+      "pid": 101,
+      "tgId": 31,
+      "tcId": 427,
+      "passed": true,
+      "seconds": 0.010275773704051971
+    },
+    {
+      "operation": "sigVer",
+      "pid": 101,
+      "tgId": 31,
+      "tcId": 428,
+      "passed": true,
+      "seconds": 4.392117261886597e-05
+    },
+    {
+      "operation": "sigVer",
+      "pid": 101,
+      "tgId": 31,
+      "tcId": 429,
+      "passed": true,
+      "seconds": 0.010179147124290466
+    },
+    {
+      "operation": "sigVer",
+      "pid": 101,
+      "tgId": 31,
+      "tcId": 430,
+      "passed": true,
+      "seconds": 0.010621808469295502
+    },
+    {
+      "operation": "sigVer",
+      "pid": 101,
+      "tgId": 31,
+      "tcId": 431,
+      "passed": true,
+      "seconds": 5.1684677600860596e-05
+    },
+    {
+      "operation": "sigVer",
+      "pid": 101,
+      "tgId": 31,
+      "tcId": 432,
+      "passed": true,
+      "seconds": 0.010430723428726196
+    },
+    {
+      "operation": "sigVer",
+      "pid": 101,
+      "tgId": 31,
+      "tcId": 433,
+      "passed": true,
+      "seconds": 0.010855674743652344
+    },
+    {
+      "operation": "sigVer",
+      "pid": 101,
+      "tgId": 31,
+      "tcId": 434,
+      "passed": true,
+      "seconds": 7.189810276031494e-05
+    }
+  ],
+  "prehash_scope": "upstream formatting helper plus project internal API"
+}

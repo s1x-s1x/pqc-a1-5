@@ -1,0 +1,19 @@
+{
+  "schema": "a15-cuda-selftest-v1",
+  "created_utc": "2026-10-03T19:40:03.051036+00:00",
+  "passed": true,
+  "mock_checks": 20,
+  "native_calls": 0,
+  "real_timing_samples": 0,
+  "tool_sha256": "183ffa74d53818ab09c341ffdc5afa89cdeb4ba5d8ae11b505f092274d84dd6f",
+  "source_sha256": {
+    "tools/bench_cuda.py": "183ffa74d53818ab09c341ffdc5afa89cdeb4ba5d8ae11b505f092274d84dd6f",
+    "tools/bench_cpu.py": "8ba7ef2516f0e39c04e820f9329099b1a8d239e6d16df797aaf231a6935e14ac",
+    "tools/bench_sm3_harness.c": "ddf61075e429aa8e6f3bae4f3eab63ec364d8567196a4c489165684ff4e141ee",
+    "tools/native.py": "4224da773aa621464be7ec2e9cc922459ad56d321ded4fff83f1bc818e313a63",
+    "tools/signing_budget.py": "48e349af38e7ff2c52813dbe46f6af57049a570e164b502147ce8529e4b69c7e",
+    "tools/count_model.py": "6ac77e6b63e6cf9c03818c0e7d349012e16fafc5d1624e59da960564d97fc419",
+    "reference/sm3.py": "43fb6d92afc803f4842bd06dfb00f813c7ed102f1b68d9115c3e0cd6497c2c8e"
+  },
+  "scope": "mock plan/build/freeze/stats/scopes/full-worker/budget/fixtures/resume/timeout/affinity/environment checks; native libraries, subprocess and real timers blocked"
+}

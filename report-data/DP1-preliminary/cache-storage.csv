@@ -1,0 +1,24 @@
+﻿pid,t,hp,payload_bytes,header_bytes,file_bytes,node_ram_bytes,basis,source,source_sha256,final
+3,0,22,67108864,96,67108960,134217712,calculated node storage; allocator/context overhead excluded,c/src/DESIGN.md,129d2ac96ec1f5d381a70522ea439651c1ef6a0941a176e32024d6baa69288d9,False
+3,1,22,33554432,96,33554528,67108848,calculated node storage; allocator/context overhead excluded,c/src/DESIGN.md,129d2ac96ec1f5d381a70522ea439651c1ef6a0941a176e32024d6baa69288d9,False
+3,2,22,16777216,96,16777312,33554416,calculated node storage; allocator/context overhead excluded,c/src/DESIGN.md,129d2ac96ec1f5d381a70522ea439651c1ef6a0941a176e32024d6baa69288d9,False
+3,3,22,8388608,96,8388704,16777200,calculated node storage; allocator/context overhead excluded,c/src/DESIGN.md,129d2ac96ec1f5d381a70522ea439651c1ef6a0941a176e32024d6baa69288d9,False
+3,4,22,4194304,96,4194400,8388592,calculated node storage; allocator/context overhead excluded,c/src/DESIGN.md,129d2ac96ec1f5d381a70522ea439651c1ef6a0941a176e32024d6baa69288d9,False
+3,5,22,2097152,96,2097248,4194288,calculated node storage; allocator/context overhead excluded,c/src/DESIGN.md,129d2ac96ec1f5d381a70522ea439651c1ef6a0941a176e32024d6baa69288d9,False
+3,6,22,1048576,96,1048672,2097136,calculated node storage; allocator/context overhead excluded,c/src/DESIGN.md,129d2ac96ec1f5d381a70522ea439651c1ef6a0941a176e32024d6baa69288d9,False
+3,7,22,524288,96,524384,1048560,calculated node storage; allocator/context overhead excluded,c/src/DESIGN.md,129d2ac96ec1f5d381a70522ea439651c1ef6a0941a176e32024d6baa69288d9,False
+3,8,22,262144,96,262240,524272,calculated node storage; allocator/context overhead excluded,c/src/DESIGN.md,129d2ac96ec1f5d381a70522ea439651c1ef6a0941a176e32024d6baa69288d9,False
+3,9,22,131072,96,131168,262128,calculated node storage; allocator/context overhead excluded,c/src/DESIGN.md,129d2ac96ec1f5d381a70522ea439651c1ef6a0941a176e32024d6baa69288d9,False
+3,10,22,65536,96,65632,131056,calculated node storage; allocator/context overhead excluded,c/src/DESIGN.md,129d2ac96ec1f5d381a70522ea439651c1ef6a0941a176e32024d6baa69288d9,False
+3,11,22,32768,96,32864,65520,calculated node storage; allocator/context overhead excluded,c/src/DESIGN.md,129d2ac96ec1f5d381a70522ea439651c1ef6a0941a176e32024d6baa69288d9,False
+3,12,22,16384,96,16480,32752,calculated node storage; allocator/context overhead excluded,c/src/DESIGN.md,129d2ac96ec1f5d381a70522ea439651c1ef6a0941a176e32024d6baa69288d9,False
+3,13,22,8192,96,8288,16368,calculated node storage; allocator/context overhead excluded,c/src/DESIGN.md,129d2ac96ec1f5d381a70522ea439651c1ef6a0941a176e32024d6baa69288d9,False
+3,14,22,4096,96,4192,8176,calculated node storage; allocator/context overhead excluded,c/src/DESIGN.md,129d2ac96ec1f5d381a70522ea439651c1ef6a0941a176e32024d6baa69288d9,False
+3,15,22,2048,96,2144,4080,calculated node storage; allocator/context overhead excluded,c/src/DESIGN.md,129d2ac96ec1f5d381a70522ea439651c1ef6a0941a176e32024d6baa69288d9,False
+3,16,22,1024,96,1120,2032,calculated node storage; allocator/context overhead excluded,c/src/DESIGN.md,129d2ac96ec1f5d381a70522ea439651c1ef6a0941a176e32024d6baa69288d9,False
+3,17,22,512,96,608,1008,calculated node storage; allocator/context overhead excluded,c/src/DESIGN.md,129d2ac96ec1f5d381a70522ea439651c1ef6a0941a176e32024d6baa69288d9,False
+3,18,22,256,96,352,496,calculated node storage; allocator/context overhead excluded,c/src/DESIGN.md,129d2ac96ec1f5d381a70522ea439651c1ef6a0941a176e32024d6baa69288d9,False
+3,19,22,128,96,224,240,calculated node storage; allocator/context overhead excluded,c/src/DESIGN.md,129d2ac96ec1f5d381a70522ea439651c1ef6a0941a176e32024d6baa69288d9,False
+3,20,22,64,96,160,112,calculated node storage; allocator/context overhead excluded,c/src/DESIGN.md,129d2ac96ec1f5d381a70522ea439651c1ef6a0941a176e32024d6baa69288d9,False
+3,21,22,32,96,128,48,calculated node storage; allocator/context overhead excluded,c/src/DESIGN.md,129d2ac96ec1f5d381a70522ea439651c1ef6a0941a176e32024d6baa69288d9,False
+3,22,22,16,96,112,16,calculated node storage; allocator/context overhead excluded,c/src/DESIGN.md,129d2ac96ec1f5d381a70522ea439651c1ef6a0941a176e32024d6baa69288d9,False

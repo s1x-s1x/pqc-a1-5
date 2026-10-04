@@ -1,0 +1,35 @@
+{
+  "schema": "a15-native-external-v1",
+  "suite": "xous",
+  "generated_at_utc": "2026-10-03T15:57:26.947422+00:00",
+  "total": 1,
+  "passed": 1,
+  "failed": 0,
+  "workers": 1,
+  "elapsed_seconds": 0.013409703969955444,
+  "counts": {
+    "103/xous-128-24/sigVer": {
+      "total": 1,
+      "passed": 1
+    }
+  },
+  "library_sha256": "b4ea1ead5bd9db46d617a1a51071dc9eb675533ec102021ef1b85f1cf5685083",
+  "sources_sha256": {
+    "third_party/external_vectors/xous/vectors/vec_sphincs-sha2-128-24.txt": "f79b7296471cbcd058f3dd7d772de0c9c065d76f264cc7b80ced3a30e75e7592",
+    "third_party/external_vectors/xous/vectors/sig_sphincs-sha2-128-24.hex": "4346005f49cce9d16aa8c5ff76837739818879854b0a1982b330014b2afa0104"
+  },
+  "results": [
+    {
+      "suite": "xous-128-24",
+      "operation": "sigVer",
+      "pid": 103,
+      "tgId": 1,
+      "tcId": 1,
+      "expected": true,
+      "actual": true,
+      "passed": true,
+      "seconds": 0.0024573206901550293
+    }
+  ],
+  "scope": "Reference backend. Pure mode uses public/internal encoding; prehash uses independently encoded M' and internal ABI."
+}

@@ -1,0 +1,64 @@
+﻿Verifpal 1.4.12 - https://verifpal.com
+ Verifpal * Verification initiated for 'hybrid_auth_classical_only.vp' at 07:26:06 PM.
+     Info . Attacker is configured as active.
+     Info . Running at phase 0.
+     FAIL x confidentiality? m1[precondition[Client -> Server: c1]] (Analysis 12)
+     FAIL x authentication? Server -> Client: sigt1 (Analysis 16)
+     FAIL x authentication? Client -> Server: c1 (Analysis 41)
+
+--------------------------------------------------
+ Verifpal * Verification completed for 'hybrid_auth_classical_only.vp' at 07:26:07 PM in 762ms.
+
+     FAIL x confidentiality? m1[precondition[Client -> Server: c1]]
+            Attack trace:
+            | 1. Attacker constructs PUBKEY(nil).
+            | 2. Attacker replaces ekpq1 (sent by Client to Server) with PUBKEY(nil). (ekpq1 was PUBKEY(dkpq1))
+            | 3. Attacker replaces gy1 (sent by Server to Client) with PUBKEY(nil). (gy1 was PUBKEY(y1))
+            | 4. During Client's run (phase 0), attacker observes AEAD_ENC(HKDF(nil, CONCAT(DH_KEX(gx1, nil), KEM_ENCAP(PUBKEY(dkpq1), r1)|1), labelhs)|1, nil, m1, nil) on the wire.
+            | 5. Attacker observes gx1 on the wire.
+            | 6. During Client's run (phase 0), attacker constructs DH_KEX(gx1, nil).
+            | 7. Attacker observes PUBKEY(dkpq1) on the wire.
+            | 8. Attacker observes KEM_ENCAP(PUBKEY(nil), r1)|2 on the wire.
+            | 9. Attacker opens KEM_ENCAP(PUBKEY(nil), r1)|2 with nil, obtaining r1.
+            | 10. During Client's run (phase 0), attacker constructs KEM_ENCAP(PUBKEY(dkpq1), r1)|1.
+            | 11. During Client's run (phase 0), attacker constructs CONCAT(DH_KEX(gx1, nil), KEM_ENCAP(PUBKEY(dkpq1), r1)|1).
+            | 12. During Client's run (phase 0), attacker constructs HKDF(nil, CONCAT(DH_KEX(gx1, nil), KEM_ENCAP(PUBKEY(dkpq1), r1)|1), labelhs)|1.
+            | 13. During Client's run (phase 0), attacker opens AEAD_ENC(HKDF(nil, CONCAT(DH_KEX(gx1, nil), KEM_ENCAP(PUBKEY(dkpq1), r1)|1), labelhs)|1, nil, m1, nil) with HKDF(nil, CONCAT(DH_KEX(gx1, nil), KEM_ENCAP(PUBKEY(dkpq1), r1)|1), labelhs)|1, nil, obtaining m1.
+            > m1 (m1) is obtained by Attacker.
+            ! Client still sends c1 to Server, so the failure counts.
+     FAIL x authentication? Server -> Client: sigt1
+            Attack trace:
+            | 1. Attacker observes capk on the wire.
+            | 2. Attacker is handed skt by a leaks declaration.
+            | 3. Attacker observes gx1 on the wire.
+            | 4. Attacker observes ekpq1 on the wire.
+            | 5. Attacker observes servercert on the wire.
+            | 6. Attacker constructs HASH(gx1, ekpq1, capk, nil, servercert).
+            | 7. Attacker constructs CONCAT(ctx, HASH(gx1, ekpq1, capk, nil, servercert)).
+            | 8. Attacker constructs SIGN(skt, CONCAT(ctx, HASH(gx1, ekpq1, capk, nil, servercert))).
+            | 9. Attacker replaces gy1, ct1, sigt1 (sent by Server to Client) with capk, nil, SIGN(skt, CONCAT(ctx, HASH(gx1, ekpq1, capk, nil, servercert))). (gy1 was PUBKEY(y1); ct1 was KEM_ENCAP(ekpq1, r1)|2; sigt1 was SIGN(skt, mcv1))
+            | 10. Client's SIGNVERIF(certt1, CONCAT(ctx, HASH(gx1, ekpq1, capk, nil, servercert)), SIGN(skt, CONCAT(ctx, HASH(gx1, ekpq1, capk, nil, servercert))))? passes — the attacker controls one of its inputs.
+            > sigt1 (SIGN(skt, CONCAT(ctx, HASH(gx1, ekpq1, capk, nil, servercert)))), sent by Attacker and not by Server, is successfully used in SIGNVERIF(certt1, mcv_c1, sigt1)? within Client's state.
+     PASS + freshness? key_c1  [search exhausted at 1 session]
+     FAIL x authentication? Client -> Server: c1
+            Attack trace:
+            | 1. Attacker constructs PUBKEY(nil).
+            | 2. Attacker replaces gx1, ekpq1 (sent by Client to Server) with PUBKEY(nil), PUBKEY(nil). (gx1 was PUBKEY(x1); ekpq1 was PUBKEY(dkpq1))
+            | 3. Attacker observes gy1 on the wire.
+            | 4. Attacker constructs DH_KEX(gy1, nil).
+            | 5. Attacker observes KEM_ENCAP(PUBKEY(nil), r1)|2 on the wire.
+            | 6. Attacker opens KEM_ENCAP(PUBKEY(nil), r1)|2 with nil, obtaining KEM_ENCAP(PUBKEY(nil), r1)|1.
+            | 7. Attacker constructs CONCAT(DH_KEX(gy1, nil), KEM_ENCAP(PUBKEY(nil), r1)|1).
+            | 8. Attacker constructs HKDF(nil, CONCAT(DH_KEX(gy1, nil), KEM_ENCAP(PUBKEY(nil), r1)|1), labelhs)|1.
+            | 9. Attacker replaces c1 (sent by Client to Server) with AEAD_ENC(HKDF(nil, CONCAT(DH_KEX(gy1, nil), KEM_ENCAP(PUBKEY(nil), r1)|1), labelhs)|1, nil, nil, nil). (c1 was AEAD_ENC(key_c1, nil, m1, nil))
+            | 10. Server's AEAD_DEC(HKDF(nil, CONCAT(DH_KEX(PUBKEY(nil), y1), KEM_ENCAP(PUBKEY(nil), r1)|1), labelhs)|1, nil, AEAD_ENC(HKDF(nil, CONCAT(DH_KEX(PUBKEY(nil), y1), KEM_ENCAP(PUBKEY(nil), r1)|1), labelhs)|1, nil, nil, nil), nil)? passes — the attacker controls one of its inputs.
+            | 11. Attacker observes c1 on the wire.
+            > c1 (AEAD_ENC(HKDF(nil, CONCAT(DH_KEX(PUBKEY(nil), y1), KEM_ENCAP(PUBKEY(nil), r1)|1), labelhs)|1, nil, nil, nil)), sent by Attacker and not by Client, is successfully used in AEAD_DEC(key1, nil, c1, nil)? within Server's state.
+
+--------------------------------------------------
+     FAIL x 3 of 4 queries failed.
+ Verifpal * Thank you for using Verifpal.
+
+
+// ---- compact result code (verifpal verify --sessions 1 --result-code) ----
+c1a1f0a1

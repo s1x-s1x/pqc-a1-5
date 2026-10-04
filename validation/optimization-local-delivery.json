@@ -1,0 +1,209 @@
+{
+  "schema": "a15-optimization-local-delivery-v1",
+  "created_utc": "2026-10-04T05:51:35.156948+00:00",
+  "passed": true,
+  "classification": "local mirror byte/provenance audit; Linux execution runtime remains on server",
+  "linux_runtime_gate_executed": false,
+  "native_calls": 0,
+  "timing_samples": 0,
+  "real_timing_samples": 0,
+  "formal_performance_started": false,
+  "server_gate_evidence": {
+    "path": "validation/optimization-final-readiness.json",
+    "sha256": "a16ba9e611ac0a6f6402f46e0ad9f4e92f9a73d1745ce74561173866ad78faad",
+    "passed": true,
+    "cpu_gate_passed": true,
+    "cuda_gate_passed": true,
+    "scope": "preserved server readiness; this audit does not rerun Linux runtime gates"
+  },
+  "external_evidence": {
+    "files": 12,
+    "manifest_sha256": "891c49084f533d3976182f03f64912e59233e0f38e1ae7fd1502d0d2b208f93d"
+  },
+  "packages": {
+    "cpu": {
+      "source_files": 71,
+      "frozen_sources": 23,
+      "evidence_files": 21,
+      "package_sha256": "224738028985e2f67a1aa195141072d9ca24a5e026c06c8388c274c373dd50bf",
+      "freeze_sha256": "ed766fa2423e39cddc5f7c585eb4edb19f4e01ee1598a231e996169447d357bf",
+      "files_sha256": {
+        "source.tar.gz": "f349975388fb1b13c9704abf1a5de31850f1d091d8b0a2d7f480be6f10dcb2e5",
+        "source-manifest.json": "8917cd4ec218724890fa012dfd40ac55b9b8f032908289bf9d2d0d4bfd096070",
+        "REVIEW.md": "e0c9eb23e2ef37d40cf3d6eee20f9f8d2f74e7179e726cf63722d74cb151cb63",
+        "freeze.json": "ed766fa2423e39cddc5f7c585eb4edb19f4e01ee1598a231e996169447d357bf"
+      },
+      "correctness_evidence": {
+        "project_files": 21
+      },
+      "release_build_and_plans": {
+        "library_sha256": "346603fc0dd7d08da383b074efd8b965f03b72f6eeab2b14d72f3ac77094df01",
+        "build_record_sha256": "99c9347783b8bb2058f98f77c70b2660affed5e4182132a50b37478a75f806a3",
+        "plans": {
+          "r3": {
+            "cases": 54,
+            "sha256": "25623ef32fd3262cf2dbfc3955d561628454de6c0c3983d2ebf759e3452da2c3"
+          },
+          "r4": {
+            "cases": 207,
+            "sha256": "01f565018f152a25b936f2c8860560403b31155b9daefbc6b8f35c1ed39f2780"
+          },
+          "r5": {
+            "cases": 252,
+            "sha256": "dfcacc373551158742ec9c03491a3ef5e260f847ce209f9bd0e4e47a8ff0efed"
+          }
+        }
+      },
+      "final_mock": {
+        "checks": 26,
+        "passed": true,
+        "native_calls": 0,
+        "real_timing_samples": 0,
+        "tool_sha256": "77de15b25dc7a5da1e90a206dfbc9a675aab709ffeee86e81f20586ac452e232"
+      },
+      "budget_snapshots": []
+    },
+    "cuda": {
+      "source_files": 68,
+      "frozen_sources": 24,
+      "evidence_files": 186,
+      "package_sha256": "feb5f7dbf79c6e35c1c039a0bd7943be7636ef775301f4170ee4db19e370740b",
+      "freeze_sha256": "265caa6d2ddb8a8a7fe6f4482410e667c0edbcaa2ce223ac17f26a5935403e91",
+      "files_sha256": {
+        "source.tar.gz": "3f8205fdf25e3cddccacead95d79fc53f7e71c9c6e1b6b3f1d835c77b4de76ed",
+        "source-manifest.json": "8094bc5f7470a98fecc377b856982528409dffe92ccc6ea8bf7687ea6e316f76",
+        "REVIEW.md": "de88a18fe6f56d61dcb2a7eee653e68d67b615c8a9ad61c627a8aabd49fb11c4",
+        "freeze.json": "265caa6d2ddb8a8a7fe6f4482410e667c0edbcaa2ce223ac17f26a5935403e91"
+      },
+      "correctness_evidence": {
+        "project_files": 174,
+        "external_files": 12
+      },
+      "release_build_and_plans": {
+        "library_sha256": "74773e202e646fcda30bc15d095cc5788fedd1b32eeecc22f8e51dc2e3f8e204",
+        "build_record_sha256": "b3328babe0d3e6aab35b7b074e62025b4a142027c6dc13be3d2298ae843b75a6",
+        "plans": {
+          "cuda_b1": {
+            "cases": 64,
+            "sha256": "c06f9df85fd241bc456259bf8ba644ed6e73c34b3f9f5319feeb95beec38a40b"
+          }
+        }
+      },
+      "final_mock": {
+        "checks": 23,
+        "passed": true,
+        "native_calls": 0,
+        "real_timing_samples": 0,
+        "tool_sha256": "65cd7ba0b848bf1babc944a882abd2811472fa14783232b73f0307095cbfaf3b"
+      },
+      "budget_snapshots": [
+        {
+          "path": "validation/optimization-cuda-final/budget-evidence/budget-0.sqlite",
+          "sha256": "3727f6391ca914e030a6e551399fe1394256d0953aeb974659d40cd8eb3d728b",
+          "sqlite_integrity": "ok",
+          "immutable_read_only": true
+        }
+      ],
+      "release_correctness": {
+        "checks": 14,
+        "passed": true,
+        "device_identity": {
+          "device": 0,
+          "runtime_version": 11050,
+          "driver_version": 12090,
+          "compute_major": 8,
+          "compute_minor": 9,
+          "total_memory": 25250627584,
+          "name": "NVIDIA GeForce RTX 4090"
+        }
+      }
+    }
+  },
+  "local_performance": {
+    "scope": "all local project JSONL files; CPU/CUDA benchmark schemas",
+    "directories": [],
+    "performance_jsonl_files": [],
+    "benchmark_records": 0,
+    "formal_samples": 0,
+    "active_process_check": "not performed by local read-only audit; server readiness is authoritative"
+  },
+  "checks": [
+    {
+      "check": "server_readiness",
+      "passed": true
+    },
+    {
+      "check": "external_evidence_manifest",
+      "passed": true
+    },
+    {
+      "check": "cpu.published_package",
+      "passed": true
+    },
+    {
+      "check": "cpu.archive_exact_members_and_hashes",
+      "passed": true
+    },
+    {
+      "check": "cpu.current_frozen_source_hashes",
+      "passed": true
+    },
+    {
+      "check": "cpu.correctness_evidence",
+      "passed": true
+    },
+    {
+      "check": "cpu.release_build_and_plans",
+      "passed": true
+    },
+    {
+      "check": "cpu.final_mock",
+      "passed": true
+    },
+    {
+      "check": "cpu.budget_snapshots",
+      "passed": true
+    },
+    {
+      "check": "cuda.published_package",
+      "passed": true
+    },
+    {
+      "check": "cuda.archive_exact_members_and_hashes",
+      "passed": true
+    },
+    {
+      "check": "cuda.current_frozen_source_hashes",
+      "passed": true
+    },
+    {
+      "check": "cuda.correctness_evidence",
+      "passed": true
+    },
+    {
+      "check": "cuda.release_build_and_plans",
+      "passed": true
+    },
+    {
+      "check": "cuda.final_mock",
+      "passed": true
+    },
+    {
+      "check": "cuda.budget_snapshots",
+      "passed": true
+    },
+    {
+      "check": "cuda.release_correctness",
+      "passed": true
+    },
+    {
+      "check": "external_manifest_exact_evidence_set",
+      "passed": true
+    },
+    {
+      "check": "local_performance_campaign_not_started",
+      "passed": true
+    }
+  ],
+  "errors": []
+}

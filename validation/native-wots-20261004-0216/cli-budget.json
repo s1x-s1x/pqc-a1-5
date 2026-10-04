@@ -1,0 +1,434 @@
+{
+  "schema": "a15-cli-budget-v1",
+  "timestamp_utc": "2026-10-03T18:23:10.543542+00:00",
+  "total": 23,
+  "passed": 23,
+  "failed": 0,
+  "results": [
+    {
+      "case_id": "concurrent-budget",
+      "attempts": 40,
+      "reserved": 17,
+      "status": {
+        "key_id": "7afc35dc05e751fdeb617a58f7fdfc2ac8f977bcd0f2ea5a47253b66c61bf188",
+        "algorithm": "SLH-DSA-SM3-128-24",
+        "limit": 17,
+        "used": 17,
+        "remaining": 0,
+        "states": {
+          "committed": 11,
+          "reserved": 6
+        },
+        "count_reconciled": true
+      },
+      "passed": true
+    },
+    {
+      "case_id": "keygen",
+      "command": [
+        "keygen",
+        "/tmp/a15-cli-1wlfcabs/key",
+        "--seed-hex",
+        "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f",
+        "--save-cache",
+        "/tmp/a15-cli-1wlfcabs/key.cache",
+        "--cache-level",
+        "5"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "stdout": "{\"command\": \"keygen\", \"pid\": 201, \"backend_requested\": \"auto\", \"backend_selected\": 2, \"threads_requested\": 1, \"library_sha256\": \"6173e3e9be2d407aa8407b1725cf5d81d608fce568675806bb0098497316b7a9\", \"pk_sha256\": \"cae4d118d336117082e7970ea52846657ae027d40971be8f6b2eff05c603eef9\", \"sk_sha256\": \"5d338be87d9ae4188a744a8659220e04ef5d8da08df75818fa9c8b10d02ee2de\", \"pk_bytes\": 32, \"sk_bytes\": 64, \"signature_bytes\": 2320, \"fixture_seeded\": true}\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "case_id": "keygen-overwrite",
+      "command": [
+        "keygen",
+        "/tmp/a15-cli-1wlfcabs/key"
+      ],
+      "returncode": 1,
+      "expected_returncode": 1,
+      "stdout": "",
+      "stderr": "{\"error\": \"FileExistsError: /tmp/a15-cli-1wlfcabs/key.pk\"}\n",
+      "passed": true
+    },
+    {
+      "case_id": "cache-load",
+      "command": [
+        "cache-load",
+        "/tmp/a15-cli-1wlfcabs/key.cache",
+        "/tmp/a15-cli-1wlfcabs/key.pk"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "stdout": "{\"command\": \"cache-load\", \"pid\": 201, \"backend_requested\": \"auto\", \"backend_selected\": 2, \"threads_requested\": 1, \"library_sha256\": \"6173e3e9be2d407aa8407b1725cf5d81d608fce568675806bb0098497316b7a9\", \"cache_valid\": true}\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "case_id": "sign-None",
+      "command": [
+        "sign",
+        "/tmp/a15-cli-1wlfcabs/message.bin",
+        "/tmp/a15-cli-1wlfcabs/key.sk",
+        "/tmp/a15-cli-1wlfcabs/signature-None.bin",
+        "--context-hex",
+        "aabb",
+        "--load-cache",
+        "/tmp/a15-cli-1wlfcabs/key.cache",
+        "--budget-db",
+        "/tmp/a15-cli-1wlfcabs/sign.sqlite"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "stdout": "{\"command\": \"sign\", \"pid\": 201, \"backend_requested\": \"auto\", \"backend_selected\": 2, \"threads_requested\": 1, \"library_sha256\": \"6173e3e9be2d407aa8407b1725cf5d81d608fce568675806bb0098497316b7a9\", \"signature_bytes\": 2320, \"signature_sha256\": \"a0a53eec40fd33f34cd1ad795f11d0bc0f35ff949531476e735a6504a036ac5f\", \"budget_receipt\": \"2ae84032ad17421380f6bff2ac53eadb\", \"mode\": \"pure\"}\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "case_id": "verify-None",
+      "command": [
+        "verify",
+        "/tmp/a15-cli-1wlfcabs/message.bin",
+        "/tmp/a15-cli-1wlfcabs/key.pk",
+        "/tmp/a15-cli-1wlfcabs/signature-None.bin",
+        "--context-hex",
+        "aabb"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "stdout": "{\"command\": \"verify\", \"pid\": 201, \"backend_requested\": \"auto\", \"backend_selected\": 2, \"threads_requested\": 1, \"library_sha256\": \"6173e3e9be2d407aa8407b1725cf5d81d608fce568675806bb0098497316b7a9\", \"valid\": true}\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "case_id": "wrong-context-None",
+      "command": [
+        "verify",
+        "/tmp/a15-cli-1wlfcabs/message.bin",
+        "/tmp/a15-cli-1wlfcabs/key.pk",
+        "/tmp/a15-cli-1wlfcabs/signature-None.bin",
+        "--context-hex",
+        "aabc"
+      ],
+      "returncode": 2,
+      "expected_returncode": 2,
+      "stdout": "{\"command\": \"verify\", \"pid\": 201, \"backend_requested\": \"auto\", \"backend_selected\": 2, \"threads_requested\": 1, \"library_sha256\": \"6173e3e9be2d407aa8407b1725cf5d81d608fce568675806bb0098497316b7a9\", \"valid\": false}\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "case_id": "sign-sm3",
+      "command": [
+        "sign",
+        "/tmp/a15-cli-1wlfcabs/message.bin",
+        "/tmp/a15-cli-1wlfcabs/key.sk",
+        "/tmp/a15-cli-1wlfcabs/signature-sm3.bin",
+        "--context-hex",
+        "aabb",
+        "--load-cache",
+        "/tmp/a15-cli-1wlfcabs/key.cache",
+        "--budget-db",
+        "/tmp/a15-cli-1wlfcabs/sign.sqlite",
+        "--prehash",
+        "sm3"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "stdout": "{\"command\": \"sign\", \"pid\": 201, \"backend_requested\": \"auto\", \"backend_selected\": 2, \"threads_requested\": 1, \"library_sha256\": \"6173e3e9be2d407aa8407b1725cf5d81d608fce568675806bb0098497316b7a9\", \"signature_bytes\": 2320, \"signature_sha256\": \"dc6f2667f11579597c04958560e9b486672b6a57ceb415f69df2fcad96ae4f37\", \"budget_receipt\": \"bad50ed1266a4a5a98778826a04c5edd\", \"mode\": \"sm3\"}\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "case_id": "verify-sm3",
+      "command": [
+        "verify",
+        "/tmp/a15-cli-1wlfcabs/message.bin",
+        "/tmp/a15-cli-1wlfcabs/key.pk",
+        "/tmp/a15-cli-1wlfcabs/signature-sm3.bin",
+        "--context-hex",
+        "aabb",
+        "--prehash",
+        "sm3"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "stdout": "{\"command\": \"verify\", \"pid\": 201, \"backend_requested\": \"auto\", \"backend_selected\": 2, \"threads_requested\": 1, \"library_sha256\": \"6173e3e9be2d407aa8407b1725cf5d81d608fce568675806bb0098497316b7a9\", \"valid\": true}\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "case_id": "wrong-context-sm3",
+      "command": [
+        "verify",
+        "/tmp/a15-cli-1wlfcabs/message.bin",
+        "/tmp/a15-cli-1wlfcabs/key.pk",
+        "/tmp/a15-cli-1wlfcabs/signature-sm3.bin",
+        "--context-hex",
+        "aabc",
+        "--prehash",
+        "sm3"
+      ],
+      "returncode": 2,
+      "expected_returncode": 2,
+      "stdout": "{\"command\": \"verify\", \"pid\": 201, \"backend_requested\": \"auto\", \"backend_selected\": 2, \"threads_requested\": 1, \"library_sha256\": \"6173e3e9be2d407aa8407b1725cf5d81d608fce568675806bb0098497316b7a9\", \"valid\": false}\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "case_id": "sign-sha256",
+      "command": [
+        "sign",
+        "/tmp/a15-cli-1wlfcabs/message.bin",
+        "/tmp/a15-cli-1wlfcabs/key.sk",
+        "/tmp/a15-cli-1wlfcabs/signature-sha256.bin",
+        "--context-hex",
+        "aabb",
+        "--load-cache",
+        "/tmp/a15-cli-1wlfcabs/key.cache",
+        "--budget-db",
+        "/tmp/a15-cli-1wlfcabs/sign.sqlite",
+        "--prehash",
+        "sha256"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "stdout": "{\"command\": \"sign\", \"pid\": 201, \"backend_requested\": \"auto\", \"backend_selected\": 2, \"threads_requested\": 1, \"library_sha256\": \"6173e3e9be2d407aa8407b1725cf5d81d608fce568675806bb0098497316b7a9\", \"signature_bytes\": 2320, \"signature_sha256\": \"025e5d5fe5b4e174713f69986a80c5be0cfec54e04d896e4148e05a937f5b832\", \"budget_receipt\": \"032b67df3a9144379af0a76567c9963f\", \"mode\": \"sha256\"}\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "case_id": "verify-sha256",
+      "command": [
+        "verify",
+        "/tmp/a15-cli-1wlfcabs/message.bin",
+        "/tmp/a15-cli-1wlfcabs/key.pk",
+        "/tmp/a15-cli-1wlfcabs/signature-sha256.bin",
+        "--context-hex",
+        "aabb",
+        "--prehash",
+        "sha256"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "stdout": "{\"command\": \"verify\", \"pid\": 201, \"backend_requested\": \"auto\", \"backend_selected\": 2, \"threads_requested\": 1, \"library_sha256\": \"6173e3e9be2d407aa8407b1725cf5d81d608fce568675806bb0098497316b7a9\", \"valid\": true}\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "case_id": "wrong-context-sha256",
+      "command": [
+        "verify",
+        "/tmp/a15-cli-1wlfcabs/message.bin",
+        "/tmp/a15-cli-1wlfcabs/key.pk",
+        "/tmp/a15-cli-1wlfcabs/signature-sha256.bin",
+        "--context-hex",
+        "aabc",
+        "--prehash",
+        "sha256"
+      ],
+      "returncode": 2,
+      "expected_returncode": 2,
+      "stdout": "{\"command\": \"verify\", \"pid\": 201, \"backend_requested\": \"auto\", \"backend_selected\": 2, \"threads_requested\": 1, \"library_sha256\": \"6173e3e9be2d407aa8407b1725cf5d81d608fce568675806bb0098497316b7a9\", \"valid\": false}\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "case_id": "sign-sha512",
+      "command": [
+        "sign",
+        "/tmp/a15-cli-1wlfcabs/message.bin",
+        "/tmp/a15-cli-1wlfcabs/key.sk",
+        "/tmp/a15-cli-1wlfcabs/signature-sha512.bin",
+        "--context-hex",
+        "aabb",
+        "--load-cache",
+        "/tmp/a15-cli-1wlfcabs/key.cache",
+        "--budget-db",
+        "/tmp/a15-cli-1wlfcabs/sign.sqlite",
+        "--prehash",
+        "sha512"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "stdout": "{\"command\": \"sign\", \"pid\": 201, \"backend_requested\": \"auto\", \"backend_selected\": 2, \"threads_requested\": 1, \"library_sha256\": \"6173e3e9be2d407aa8407b1725cf5d81d608fce568675806bb0098497316b7a9\", \"signature_bytes\": 2320, \"signature_sha256\": \"4883a4d861edb94bb1d1058f1afbbbb19c9c467fe1af3b97b83796d053e0ddad\", \"budget_receipt\": \"824d8f302c7540f582a8c68e8873f2d6\", \"mode\": \"sha512\"}\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "case_id": "verify-sha512",
+      "command": [
+        "verify",
+        "/tmp/a15-cli-1wlfcabs/message.bin",
+        "/tmp/a15-cli-1wlfcabs/key.pk",
+        "/tmp/a15-cli-1wlfcabs/signature-sha512.bin",
+        "--context-hex",
+        "aabb",
+        "--prehash",
+        "sha512"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "stdout": "{\"command\": \"verify\", \"pid\": 201, \"backend_requested\": \"auto\", \"backend_selected\": 2, \"threads_requested\": 1, \"library_sha256\": \"6173e3e9be2d407aa8407b1725cf5d81d608fce568675806bb0098497316b7a9\", \"valid\": true}\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "case_id": "wrong-context-sha512",
+      "command": [
+        "verify",
+        "/tmp/a15-cli-1wlfcabs/message.bin",
+        "/tmp/a15-cli-1wlfcabs/key.pk",
+        "/tmp/a15-cli-1wlfcabs/signature-sha512.bin",
+        "--context-hex",
+        "aabc",
+        "--prehash",
+        "sha512"
+      ],
+      "returncode": 2,
+      "expected_returncode": 2,
+      "stdout": "{\"command\": \"verify\", \"pid\": 201, \"backend_requested\": \"auto\", \"backend_selected\": 2, \"threads_requested\": 1, \"library_sha256\": \"6173e3e9be2d407aa8407b1725cf5d81d608fce568675806bb0098497316b7a9\", \"valid\": false}\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "case_id": "sign-shake128",
+      "command": [
+        "sign",
+        "/tmp/a15-cli-1wlfcabs/message.bin",
+        "/tmp/a15-cli-1wlfcabs/key.sk",
+        "/tmp/a15-cli-1wlfcabs/signature-shake128.bin",
+        "--context-hex",
+        "aabb",
+        "--load-cache",
+        "/tmp/a15-cli-1wlfcabs/key.cache",
+        "--budget-db",
+        "/tmp/a15-cli-1wlfcabs/sign.sqlite",
+        "--prehash",
+        "shake128"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "stdout": "{\"command\": \"sign\", \"pid\": 201, \"backend_requested\": \"auto\", \"backend_selected\": 2, \"threads_requested\": 1, \"library_sha256\": \"6173e3e9be2d407aa8407b1725cf5d81d608fce568675806bb0098497316b7a9\", \"signature_bytes\": 2320, \"signature_sha256\": \"a0e1d4e706e3045ab982656b3dbfe1b81924f13f4309603a5e41867354294f07\", \"budget_receipt\": \"fc96d83d0eb849318cc434deb243b3bc\", \"mode\": \"shake128\"}\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "case_id": "verify-shake128",
+      "command": [
+        "verify",
+        "/tmp/a15-cli-1wlfcabs/message.bin",
+        "/tmp/a15-cli-1wlfcabs/key.pk",
+        "/tmp/a15-cli-1wlfcabs/signature-shake128.bin",
+        "--context-hex",
+        "aabb",
+        "--prehash",
+        "shake128"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "stdout": "{\"command\": \"verify\", \"pid\": 201, \"backend_requested\": \"auto\", \"backend_selected\": 2, \"threads_requested\": 1, \"library_sha256\": \"6173e3e9be2d407aa8407b1725cf5d81d608fce568675806bb0098497316b7a9\", \"valid\": true}\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "case_id": "wrong-context-shake128",
+      "command": [
+        "verify",
+        "/tmp/a15-cli-1wlfcabs/message.bin",
+        "/tmp/a15-cli-1wlfcabs/key.pk",
+        "/tmp/a15-cli-1wlfcabs/signature-shake128.bin",
+        "--context-hex",
+        "aabc",
+        "--prehash",
+        "shake128"
+      ],
+      "returncode": 2,
+      "expected_returncode": 2,
+      "stdout": "{\"command\": \"verify\", \"pid\": 201, \"backend_requested\": \"auto\", \"backend_selected\": 2, \"threads_requested\": 1, \"library_sha256\": \"6173e3e9be2d407aa8407b1725cf5d81d608fce568675806bb0098497316b7a9\", \"valid\": false}\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "case_id": "sign-shake256",
+      "command": [
+        "sign",
+        "/tmp/a15-cli-1wlfcabs/message.bin",
+        "/tmp/a15-cli-1wlfcabs/key.sk",
+        "/tmp/a15-cli-1wlfcabs/signature-shake256.bin",
+        "--context-hex",
+        "aabb",
+        "--load-cache",
+        "/tmp/a15-cli-1wlfcabs/key.cache",
+        "--budget-db",
+        "/tmp/a15-cli-1wlfcabs/sign.sqlite",
+        "--prehash",
+        "shake256"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "stdout": "{\"command\": \"sign\", \"pid\": 201, \"backend_requested\": \"auto\", \"backend_selected\": 2, \"threads_requested\": 1, \"library_sha256\": \"6173e3e9be2d407aa8407b1725cf5d81d608fce568675806bb0098497316b7a9\", \"signature_bytes\": 2320, \"signature_sha256\": \"c4bbf4b5b6629dc6bf807cc2eb693940567d89f989a022d45efd27d66dd013a6\", \"budget_receipt\": \"77d3b21b62f84c28a3e863916c7b8fce\", \"mode\": \"shake256\"}\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "case_id": "verify-shake256",
+      "command": [
+        "verify",
+        "/tmp/a15-cli-1wlfcabs/message.bin",
+        "/tmp/a15-cli-1wlfcabs/key.pk",
+        "/tmp/a15-cli-1wlfcabs/signature-shake256.bin",
+        "--context-hex",
+        "aabb",
+        "--prehash",
+        "shake256"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "stdout": "{\"command\": \"verify\", \"pid\": 201, \"backend_requested\": \"auto\", \"backend_selected\": 2, \"threads_requested\": 1, \"library_sha256\": \"6173e3e9be2d407aa8407b1725cf5d81d608fce568675806bb0098497316b7a9\", \"valid\": true}\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "case_id": "wrong-context-shake256",
+      "command": [
+        "verify",
+        "/tmp/a15-cli-1wlfcabs/message.bin",
+        "/tmp/a15-cli-1wlfcabs/key.pk",
+        "/tmp/a15-cli-1wlfcabs/signature-shake256.bin",
+        "--context-hex",
+        "aabc",
+        "--prehash",
+        "shake256"
+      ],
+      "returncode": 2,
+      "expected_returncode": 2,
+      "stdout": "{\"command\": \"verify\", \"pid\": 201, \"backend_requested\": \"auto\", \"backend_selected\": 2, \"threads_requested\": 1, \"library_sha256\": \"6173e3e9be2d407aa8407b1725cf5d81d608fce568675806bb0098497316b7a9\", \"valid\": false}\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "case_id": "CLI-budget-committed",
+      "status": {
+        "key_id": "2aef9fa093ae3173d67651e37b8f1481509fbf1e3240550b76e385eab82b1ca9",
+        "algorithm": "SLH-DSA-SM3-TOY",
+        "limit": 18446744073709551616,
+        "used": 6,
+        "remaining": 18446744073709551610,
+        "states": {
+          "committed": 6
+        },
+        "count_reconciled": true
+      },
+      "passed": true
+    }
+  ],
+  "library_sha256": "6173e3e9be2d407aa8407b1725cf5d81d608fce568675806bb0098497316b7a9",
+  "sources_sha256": {
+    "tools/cli.py": "7b07659aa4f35097b95d6b937a8cf8e688af295db834855fc3d57ad7fe6805ad",
+    "tools/signing_budget.py": "48e349af38e7ff2c52813dbe46f6af57049a570e164b502147ce8529e4b69c7e",
+    "tools/native.py": "4224da773aa621464be7ec2e9cc922459ad56d321ded4fff83f1bc818e313a63",
+    "tools/check_cli_budget.py": "c68f2293ce542a42921f50bfc253b541878b8274fd5f783db6bdcec7c8b583c4"
+  }
+}

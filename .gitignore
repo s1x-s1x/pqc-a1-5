@@ -1,0 +1,23 @@
+build/
+.venv/
+__pycache__/
+.pytest_cache/
+*.upload-*
+third_party/**/.git/
+runtime/
+*.so
+*.o
+.v9-scratch/
+base_tls/.deps-falcon/
+*.download-*
+.env
+.env.*
+!.env.example
+*.sqlite-wal
+*.sqlite-shm
+*.sqlite-journal
+validation/optimization-tools-budget.sqlite
+validation/**/cache/
+# System compiler/runtime/header bytes are local provenance evidence.
+validation/optimization-external-evidence/*
+!validation/optimization-external-evidence/manifest.json

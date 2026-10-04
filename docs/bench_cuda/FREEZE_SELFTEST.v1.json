@@ -1,0 +1,11 @@
+{
+  "schema": "a15-cuda-freeze-selftest-v1",
+  "passed": true,
+  "mock_checks": 24,
+  "native_calls": 0,
+  "real_timing_samples": 0,
+  "formal_performance_started": false,
+  "tool_sha256": "1e76f07355cee5f04933748f5007c044ee284a9d1d0583a8829f0ab0a2005e29",
+  "release_tool_sha256": "6109a3a3204f3d42cfdffff7c3fcf84b0b4e729257372bea737bddcdf2741e93",
+  "scope": "exact14/eight signatures; six-field stats; persistent SQL; historical archive/library; first-byte binding; canonical publication last"
+}

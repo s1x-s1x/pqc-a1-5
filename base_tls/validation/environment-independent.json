@@ -1,0 +1,173 @@
+{
+  "python": {
+    "version": "3.13.7 (tags/v3.13.7:bcee1c3, Aug 14 2025, 14:15:11) [MSC v.1944 64 bit (AMD64)]",
+    "executable": "E:\\Python\\python.exe",
+    "implementation": "CPython",
+    "compiler": "MSC v.1944 64 bit (AMD64)"
+  },
+  "platform": {
+    "system": "Windows",
+    "release": "11",
+    "version": "10.0.26200",
+    "machine": "AMD64",
+    "processor": "Intel64 Family 6 Model 170 Stepping 4, GenuineIntel"
+  },
+  "environment_variables": {
+    "PYTHONPATH": "D:\\新建文件夹\\TLS_deepseek实现\\hybrid-tls13\\.deps",
+    "PYTHONHASHSEED": null,
+    "PYTHONIOENCODING": null,
+    "PYTHONDONTWRITEBYTECODE": null,
+    "DSH_SANDBOX_PYFIX": null,
+    "DSH_SESSION_ID": "session-bff2d0b5-86c0-4ba9-bce6-1d3f84db5bf3",
+    "TEMP": "D:\\新建文件夹\\TLS_deepseek实现\\hybrid-tls13\\.tmp",
+    "TMP": "D:\\新建文件夹\\TLS_deepseek实现\\hybrid-tls13\\.tmp",
+    "VIRTUAL_ENV": null
+  },
+  "sys_path": [
+    "D:\\新建文件夹\\TLS_deepseek实现\\hybrid-tls13\\tools",
+    "D:\\新建文件夹\\TLS_deepseek实现\\hybrid-tls13\\.deps",
+    "E:\\Python\\python313.zip",
+    "E:\\Python\\DLLs",
+    "E:\\Python\\Lib",
+    "E:\\Python",
+    "C:\\Users\\15168\\AppData\\Roaming\\Python\\Python313\\site-packages",
+    "E:\\Python\\Lib\\site-packages"
+  ],
+  "project_root": "D:\\新建文件夹\\TLS_deepseek实现\\hybrid-tls13",
+  "locks": [
+    {
+      "file": "requirements.lock.txt",
+      "present": true,
+      "sha256": "9b15571e55a438085a1591d7e0806d508eac2dd79ae84483da663add35a43b00",
+      "bytes": 23315
+    },
+    {
+      "file": "requirements-falcon.lock.txt",
+      "present": true,
+      "sha256": "e35b85b3fd3cc9006e2ad6631a58e771e80e41547486b58395ff20a18b2e9a4a",
+      "bytes": 7604
+    }
+  ],
+  "installed_distributions": [
+    {
+      "package": "cryptography",
+      "installed": true,
+      "version": "47.0.0",
+      "location": "E:\\Python\\Lib\\site-packages",
+      "sample_file_hashes": [
+        {
+          "path": "cryptography/__about__.py",
+          "sha256": "60bb1c6d0e3f0bc2ed63f47564029b61"
+        },
+        {
+          "path": "cryptography/__init__.py",
+          "sha256": "ee57d39f691e7548b188475782d76486"
+        },
+        {
+          "path": "cryptography/exceptions.py",
+          "sha256": "f37e445882dcd9fc31c3e83214cae272"
+        },
+        {
+          "path": "cryptography/fernet.py",
+          "sha256": "dc2bf1921d0a2526d7f076e7087bb8c1"
+        },
+        {
+          "path": "cryptography/hazmat/__init__.py",
+          "sha256": "e48c2b2d6ad5a7402312bff815d586fd"
+        }
+      ]
+    },
+    {
+      "package": "pqcrypto",
+      "installed": true,
+      "version": "1.0.0",
+      "location": "D:\\新建文件夹\\TLS_deepseek实现\\hybrid-tls13\\.deps",
+      "sample_file_hashes": [
+        {
+          "path": "pqcrypto/__init__.py",
+          "sha256": "dfb64c8e6eea2d463e52ad0f6ee36f84"
+        },
+        {
+          "path": "pqcrypto/_base.py",
+          "sha256": "0f318a9ec7de32518535b3172addc8dd"
+        },
+        {
+          "path": "pqcrypto/kem/__init__.py",
+          "sha256": "c5335c5f6b7f1c4ed803c9f6bad079f3"
+        },
+        {
+          "path": "pqcrypto/pqcrypto.pyd",
+          "sha256": "c4912c560950614d8a542f83fbaa8d7d"
+        },
+        {
+          "path": "pqcrypto/sign/__init__.py",
+          "sha256": "1726178c074d91ea634f68d7b8f70c43"
+        }
+      ]
+    },
+    {
+      "package": "pytest",
+      "installed": true,
+      "version": "9.1.1",
+      "location": "D:\\新建文件夹\\TLS_deepseek实现\\hybrid-tls13\\.deps",
+      "sample_file_hashes": [
+        {
+          "path": "_pytest/__init__.py",
+          "sha256": "e087512619d6e571b62a568990ec67e7"
+        },
+        {
+          "path": "_pytest/_argcomplete.py",
+          "sha256": "821d299daebaa782d56f60fc493e39eb"
+        },
+        {
+          "path": "_pytest/_code/__init__.py",
+          "sha256": "04a6e8c286100032a300999359d43c49"
+        },
+        {
+          "path": "_pytest/_code/code.py",
+          "sha256": "63ec03d20e61d3ac2a0e9954be71a619"
+        },
+        {
+          "path": "_pytest/_code/source.py",
+          "sha256": "46f3d07f3144e3e05da5aa6c51cb1d2f"
+        }
+      ]
+    }
+  ],
+  "modules": {
+    "cryptography": {
+      "importable": true,
+      "origin": "E:\\Python\\Lib\\site-packages\\cryptography\\__init__.py",
+      "sha256": "ee57d39f691e7548b188475782d76486",
+      "version": "47.0.0"
+    },
+    "pqcrypto": {
+      "importable": true,
+      "origin": "D:\\新建文件夹\\TLS_deepseek实现\\hybrid-tls13\\.deps\\pqcrypto\\__init__.py",
+      "sha256": "dfb64c8e6eea2d463e52ad0f6ee36f84",
+      "version": "1.0.0"
+    },
+    "pqcrypto_pqclean": {
+      "importable": false
+    },
+    "pytest": {
+      "importable": true,
+      "origin": "D:\\新建文件夹\\TLS_deepseek实现\\hybrid-tls13\\.deps\\pytest\\__init__.py",
+      "sha256": "ee37885c9583f843390684dfb496907f",
+      "version": "9.1.1"
+    },
+    "sitecustomize": {
+      "importable": false
+    }
+  },
+  "sandbox_helper": {
+    "file": "tools/sandbox_pyfix/sitecustomize.py",
+    "present": true,
+    "on_pythonpath": false,
+    "would_patch_this_process": false,
+    "note": "the independent verification run must not add this directory to PYTHONPATH; verify its content and hash in a process that has not imported it",
+    "sha256": "69c05c737d9f454094ca7cb91683b5cdd214e0bb3b3b56cbe8a7d7b85985ed2b",
+    "sha256_short": "69c05c737d9f454094ca7cb91683b5cd"
+  },
+  "commands": []
+}

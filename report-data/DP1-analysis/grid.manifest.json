@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-10-03T17:51:25.744847+00:00",
+  "configuration": {
+    "schema_version": 1,
+    "grid_id": "limited-use-analytic-grid-v1",
+    "n_values": [
+      16
+    ],
+    "h_values": [
+      20,
+      22,
+      24,
+      26,
+      28,
+      30,
+      32
+    ],
+    "d_values": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "a_values": [
+      8,
+      10,
+      12,
+      14,
+      16,
+      18,
+      20,
+      22,
+      24
+    ],
+    "k_values": [
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18,
+      20,
+      22,
+      24,
+      26,
+      28,
+      30,
+      32,
+      33,
+      34
+    ],
+    "lgw_values": [
+      2,
+      3,
+      4
+    ],
+    "q": "16777216",
+    "FORS_term_min_exponent": 128,
+    "precision_decimal_digits": 100,
+    "relative_tail": "1e-40",
+    "message_length_internal": 64,
+    "cache_level_rule": "min(12,hp) top-layer only",
+    "constraints": [
+      "h divisible by d",
+      "hp<=24",
+      "h-hp<=64",
+      "k<=35",
+      "a<=24",
+      "k*2^a<=2^32",
+      "ceil(8n/lgw)+floor(log_w(len1*(w-1)))+1<=68",
+      "m=ceil(k*a/8)+ceil((h-hp)/8)+ceil(hp/8)<=49"
+    ],
+    "primary_pareto_minimize": [
+      "signature_bytes",
+      "expected_sign_primitive_calls_no_cache"
+    ],
+    "secondary_pareto_minimize": [
+      "signature_bytes",
+      "expected_sign_primitive_calls_t12"
+    ],
+    "secondary_cache_storage_constraint": "none; each row reports different storage",
+    "screening_scope": "FORS target-coverage term only; does not certify overall security or NIST category",
+    "candidate_status": "analytical candidate; not implemented except exact matches in the fixed C pid table",
+    "lgw3_encoding": "ceil length; final message digit zero-padded on the right (2 data bits then 1 zero bit)",
+    "no_global_optimality_claim": true
+  },
+  "configuration_sha256": "9ad023b534069b67b3dc717373ded69f18ea176011f698dfc53566d7ee2f4a13",
+  "total_candidates": 25704,
+  "structurally_valid": 6822,
+  "term_screened_candidates": 4392,
+  "Pareto_no_cache": 29,
+  "Pareto_t12": 30,
+  "source_hashes": {
+    "SPEC.md": "dec9bcf069153b821972eef683cfca0e71e3713727516143708217962113b005",
+    "c/src/engine.c": "7d767a8b55ba81d62adfb1a29363c6471787cfbdcac335ed0ce5c98484188615",
+    "tools/security_terms.py": "8a1ef5eb04282b3b552c6a72f7a97bb4d47f92e64b4ca933e7e3e7abf2d33cac",
+    "tools/count_model.py": "6ac77e6b63e6cf9c03818c0e7d349012e16fafc5d1624e59da960564d97fc419",
+    "reference/sm3.py": "43fb6d92afc803f4842bd06dfb00f813c7ed102f1b68d9115c3e0cd6497c2c8e",
+    "docs/plans/A1-5_\u8bbe\u8ba1\u62a5\u544a\u6846\u67b6_150\u9875.md": "4eaea9efa63a2d37c63354c6091ff78101e00573823f56fc11a3451ee31202d2",
+    "docs/plans/A1-5_\u5355\u4eba\u5f00\u53d1\u5b9e\u65bd\u8ba1\u5212_v3.md": "773bacc1a62e2df0edc40a52d89c5374c122f26357033d1f9ed6c4e05377b837",
+    "docs/plans/A1-5_\u5206\u5de5\u5b9e\u65bd\u8ba1\u5212_\u56fd\u4e00\u51b2\u523a.md": "b0d85504ba3ee25c68043bffc444b28439fae5408ccf63a2be43cd4e84dc6a45",
+    "report-data/DP1-analysis/sources/NIST.FIPS.205.pdf": "8ef34228276f3386d23cb0da8c14592b8cfb0db3358016bba64df7a004f8d13d",
+    "report-data/DP1-analysis/sources/NIST.SP.800-230.ipd.pdf": "62d092f787a1f79260454bf332b642ff3b5b73dbcce2678a133a1406065e452e",
+    "report-data/DP1-analysis/sources/MANIFEST.json": "e602350875a921fc8e1b14a888a18222f613bb129d237a1deb1f91291bbc45e6",
+    "tools/parameter_grid.py": "293f447acb29827ca84cee0471e40cfd94a1a57bc8b71be2747778765f498fd8"
+  },
+  "not_overall_security_or_global_optimum": true,
+  "final": false,
+  "files": {
+    "grid-config.json": "fb999b67f61e018924a61c21457f37de9634c0789ea830f2c01805a626ef03a0",
+    "grid-all-candidates.csv": "c01bdf4458a9523fcc729eceb54b9d6740d61f7806359add0d155305eda367ce",
+    "grid-Pareto-no-cache.csv": "1eedca965447dcaaf8463eea071054c57bba6494841a9ecbeeab2f129aa01bf3",
+    "grid-Pareto-t12.csv": "790a5941865162e4167762d50d9f259d7f1b60698b5ff3fa990144b90eb2d1d2",
+    "parameter-baselines.csv": "ff2d7defcbf0365d0ff0ccee5b1b250c1315e8c1aecfce0308b9bf8043bfc205",
+    "grid-tables.md": "04b4d556bb971ae43821dcecd9a153a30d68340f659676f8d59e52cd2b2c9306",
+    "wots-uniform-chain-distribution.csv": "de4291a2f846aaa5bc70b26afb666ff6c0d1e7098769a79188f83326c55287dd"
+  }
+}

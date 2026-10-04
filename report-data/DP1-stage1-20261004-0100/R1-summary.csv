@@ -1,0 +1,5 @@
+﻿suite,unit,total,passed,failed,library_sha256,source,source_sha256,report_sections,stage,final_performance
+A/B/C,external operation check,351,351,0,7466b9e92ac09f6a5dd82cc928ebe1ea46d0e74c59f0dd6f937918d132a94618,validation/stage1-20261004-0100/external.summary.json,593ff1172622169b54e03aa492a35e82c184dc0bc7f6d58b0d9a341221c07491,8.2;8.5;8.7,scalar-review,False
+D-complete,complete SM3-128-24 seeded case,3,3,0,7466b9e92ac09f6a5dd82cc928ebe1ea46d0e74c59f0dd6f937918d132a94618,validation/stage1-20261004-0100/complete-128-24.summary.json,653b17e255e9bb11af3e06ea15b20aa91f0543ebca1939b6a289d41a42004920,8.5;8.7,scalar-review,False
+D-toy,complete toy seeded case,1000,1000,0,7466b9e92ac09f6a5dd82cc928ebe1ea46d0e74c59f0dd6f937918d132a94618,validation/stage1-20261004-0100/toy.summary.json,6f2cbf763ca0dcc25e03110ea553fc48de3bf8a5e56043b7f3e38361adcd57bd,8.5;8.7,scalar-review,False
+D-subtree,auxiliary subtree case,1000,1000,0,7466b9e92ac09f6a5dd82cc928ebe1ea46d0e74c59f0dd6f937918d132a94618,validation/stage1-20261004-0100/subtree.summary.json,c8b3aaf14e2e67a1a7b286e38a2de767fc538218152d9d8bba200ad3cc7dd542,6.6;8.5;8.7,scalar-review,False

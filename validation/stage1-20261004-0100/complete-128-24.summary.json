@@ -1,0 +1,22 @@
+{
+  "schema": "a15-differential-summary-v1",
+  "suite": "complete",
+  "upstream_python_commit": "1c859956c0217b04fa5ae76e338e5570aba622c5",
+  "sources_sha256": {
+    "reference/slhdsa.py": "d7412bafb27d9e40b98a10eaf10faf24753007b0585099532fbaf628c717b043",
+    "reference/sm3.py": "43fb6d92afc803f4842bd06dfb00f813c7ed102f1b68d9115c3e0cd6497c2c8e",
+    "reference/differential.py": "1e03de8cc45387f64be391d12577f288ec78569c74d134d64c747831260ace22",
+    "tools/native.py": "6fac9b242a1cbf6976174b48704832ae8cb6b48d07e7f7b10275b06e7760d63a"
+  },
+  "native_library_sha256": "7466b9e92ac09f6a5dd82cc928ebe1ea46d0e74c59f0dd6f937918d132a94618",
+  "workers": 32,
+  "native_threads": 32,
+  "started_at_utc": "2026-10-03T17:02:27.300333+00:00",
+  "total": 3,
+  "passed": 3,
+  "failed": 0,
+  "scope": "independent implementation agreement; not a security proof or final benchmark",
+  "elapsed_seconds": 125.51226685196161,
+  "native_library_unchanged": true,
+  "cases_jsonl_sha256": "8207f1b2a20cd22295c44f3b6725ca45db0b3e99ced07ab4f537ef8425a4ba40"
+}

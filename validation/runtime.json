@@ -1,0 +1,6 @@
+{
+  "uv_version": "0.12.22",
+  "uv_archive_sha256": "b9980552309f09c15172b8be828555e375097f16deb459795ce7bfd200380f0b",
+  "python": "Python 3.13.16",
+  "dependency_policy": "original hashed TLS lock; pycryptodome==3.23.0 reference dependency"
+}

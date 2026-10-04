@@ -1,0 +1,32 @@
+check-like definitions under tls/: 85
+  live from implementation or drivers : 64
+  reached only through an interface   : 13
+  called by a framework               : 8
+  referenced only from tests/         : 0
+  live only via getattr               : 0
+  referenced only through a variable  : 0
+  referenced nowhere                  : 0
+
+interface     tls/classical/signature.py:40 ClassicalSigner.verify  -- called through the configured signer
+interface     tls/classical/signature.py:65 EcdsaP256Sha256.verify  -- called through the configured signer
+interface     tls/classical/signature.py:96 Ed25519.verify  -- called through the configured signer
+interface     tls/credentials.py:36 CertificateAuthority.verify  -- called through the authority held by the connection
+interface     tls/pq/backends.py:59 PqSigner.verify  -- called through the configured signer
+interface     tls/pq/signature.py:91 MlDsa.verify  -- called through the configured signer
+interface     tls/pq/signature.py:137 Falcon.verify  -- called through the configured signer
+interface     tls/pq/signature.py:183 Xmss.verify  -- called through the configured signer
+interface     tls/pq/wots_xmss.py:295 WotsPlus.keygen  -- called by the XMSS backend
+interface     tls/pq/wots_xmss.py:328 WotsPlus.sign  -- called by the XMSS backend
+interface     tls/pq/wots_xmss.py:358 WotsPlus.verify  -- called through the configured signer
+interface     tls/pq/wots_xmss.py:617 XmssSignatureBackend.sign  -- called through the configured signer
+interface     tls/pq/wots_xmss.py:654 XmssSignatureBackend.verify  -- called through the configured signer
+exempt        tls/config.py:56 HybridTLSConfig.__post_init__  -- called by @dataclass after __init__
+exempt        tls/pq/kem.py:58 MlKem.__init__  -- called by the constructor of the class that defines it
+exempt        tls/pq/signature.py:68 MlDsa.__init__  -- called by the constructor of the class that defines it
+exempt        tls/pq/signature.py:108 Falcon.__init__  -- called by the constructor of the class that defines it
+exempt        tls/pq/wots_xmss.py:168 WotsPlus.__init__  -- called by the constructor of the class that defines it
+exempt        tls/pq/wots_xmss.py:426 XmssSecretKey.__post_init__  -- called by @dataclass after __init__
+exempt        tls/pq/wots_xmss.py:482 XmssSignatureBackend.__init__  -- called by the constructor of the class that defines it
+exempt        tls/record/aead.py:78 RecordLayer.__init__  -- called by the constructor of the class that defines it
+
+PASS: every check under tls/ is reachable from the implementation or a declared interface.

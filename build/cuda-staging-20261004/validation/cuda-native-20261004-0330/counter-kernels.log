@@ -1,0 +1,11 @@
+mkdir -p ../build/cuda-native-20261004-0330/counters
+nvcc -std=c++14 -O3 -gencode=arch=compute_86,code=compute_86 -Xcompiler=-fPIC,-fvisibility=hidden,-pthread -Iinclude -Isrc -DSLH_RELEASE_BUILD -c src/sm3_cuda.cu -o ../build/cuda-native-20261004-0330/counters/sm3_cuda.o
+mkdir -p ../build/cuda-native-20261004-0330/counters
+gcc -std=c11 -Wall -Wextra -Wno-misleading-indentation -fPIC -fopenmp -Iinclude -Isrc -I../third_party/slhdsa-c -DSLH_COUNTERS -O3 -DSLH_RELEASE_BUILD -shared src/engine.c src/sm3.c src/sm3x8.c ../third_party/slhdsa-c/sha2_256.c ../third_party/slhdsa-c/sha2_512.c ../third_party/slhdsa-c/sha3_api.c ../third_party/slhdsa-c/sha3_f1600.c ../build/cuda-native-20261004-0330/counters/sm3_cuda.o -L/usr/lib/x86_64-linux-gnu -lcudart -lstdc++ -pthread -o ../build/cuda-native-20261004-0330/counters/libslhdsa_sm3.so
+mkdir -p ../build/cuda-native-20261004-0330/counters
+gcc -std=c11 -Wall -Wextra -Wno-misleading-indentation -fPIC -fopenmp -Iinclude -Isrc -I../third_party/slhdsa-c -DSLH_COUNTERS -O3 src/engine.c src/sm3.c src/sm3x8.c ../third_party/slhdsa-c/sha2_256.c ../third_party/slhdsa-c/sha2_512.c ../third_party/slhdsa-c/sha3_api.c ../third_party/slhdsa-c/sha3_f1600.c tests/test_cuda.c ../build/cuda-native-20261004-0330/counters/sm3_cuda.o -L/usr/lib/x86_64-linux-gnu -lcudart -lstdc++ -pthread -o ../build/cuda-native-20261004-0330/counters/test_cuda
+A15_TEST_CACHE_DIR=../build/cuda-native-20261004-0330/counters ../build/cuda-native-20261004-0330/counters/test_cuda
+{"case":"gpu-sm3","comparisons":7294,"passed":true,"timed":false}
+{"case":"gpu-fors-subtrees-and-hybrid-wots","comparisons":148,"passed":true,"timed":false}
+{"case":"gpu-full-signatures-cache-randomized-inputs-and-guards","comparisons":12,"passed":true,"timed":false}
+{"passed":true,"cuda_available":true,"actual_backend":5,"device":0,"kernel_launches":2770,"device_hashes":395926,"timed":false}

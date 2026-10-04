@@ -1,0 +1,19 @@
+--- a/ref/wots.c
++++ b/ref/wots.c
+@@ -47,13 +47,13 @@
+ {
+     int in = 0;
+     int out = 0;
+-    unsigned char total;
++    unsigned int total = 0;
+     int bits = 0;
+     int consumed;
+ 
+     for (consumed = 0; consumed < out_len; consumed++) {
+-        if (bits == 0) {
+-            total = input[in];
++        while (bits < SPX_WOTS_LOGW) {
++            total = (total << 8) | input[in];
+             in++;
+             bits += 8;
+         }

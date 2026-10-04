@@ -1,0 +1,23 @@
+{
+  "schema": "a15-stage1-report-package-v1",
+  "generated_at_utc": "2026-10-03T17:07:31.862246+00:00",
+  "run_manifest": "validation/stage1-20261004-0100/manifest.json",
+  "run_manifest_sha256": "b5020fbd4ce8cb5b8249a1c1dbe81f7ef8d9cfef78e03e6faa185ac1cb054fa7",
+  "library_sha256": "7466b9e92ac09f6a5dd82cc928ebe1ea46d0e74c59f0dd6f937918d132a94618",
+  "stage1_suite_passed": true,
+  "complete_DP1": false,
+  "final_performance": false,
+  "plan_manifest_sha256": "51ca369d4894f603bc4af9aa6b8868a765e878b05be3c41c574bfd6cdb015a50",
+  "exporter_sha256": "34fcde309c6e67a2ed16bda58a53853ccbad5d51dab8ce602630939413198ea4",
+  "files": {
+    "R1-case-index.csv": "1429026e01ac093421ba8fe215d5425d5f0ab80eb50a2187c4ad456582084e7e",
+    "R1-summary.csv": "bb0d744915c607217c2a0997db5b8933e4a88270fd02abc79af7b221e4f65979",
+    "execution-index.csv": "58576bc986245ee6c3233510bc8529929863380aef560a73af8c59d62a7813d7",
+    "exact-counts.jsonl": "db6e998d9b222d86e512c19a5819bb666e827c721d756b5702ba5a04d24f613f",
+    "exact-counts.summary.json": "b07a92eaf134db58b696e38d7d11ab5079b11c70fd4dfab8751d9ea5c7c964c4",
+    "report-availability.csv": "c41bfb0da773e8699dcda552f63b9ab3a50806996faf731846434d7da63beff5",
+    "R2-exact-counts.csv": "c11ac913067c2d0104e78a78045b08f1b144ab26f2898196decac148066f6855",
+    "vector-manifest.csv": "f5105c98b97a25542a2e1c732845e7823a16ba47ea3a23b6eef4d5b46707e13d",
+    "REVIEW.md": "980184f1dd26519d1e088274969ecf64fb833d04a68c3fee6f00c4ca746df095"
+  }
+}

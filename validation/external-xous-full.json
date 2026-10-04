@@ -1,0 +1,39 @@
+{
+  "schema": "a15-xous-full-v1",
+  "vector_set": "B",
+  "pid": 103,
+  "source_commit": "f239b847d9d864d7ee19651a7d29acd4f7104921",
+  "sources_sha256": {
+    "third_party/external_vectors/xous/vectors/vec_sphincs-sha2-128-24.txt": "f79b7296471cbcd058f3dd7d772de0c9c065d76f264cc7b80ced3a30e75e7592",
+    "third_party/external_vectors/xous/vectors/sig_sphincs-sha2-128-24.hex": "4346005f49cce9d16aa8c5ff76837739818879854b0a1982b330014b2afa0104"
+  },
+  "threads": 32,
+  "generated_at_utc": "2026-10-03T16:23:30.532294+00:00",
+  "results": [
+    {
+      "operation": "keyGen",
+      "pk_equal": true,
+      "sk_equal": true,
+      "passed": true,
+      "seconds": 12.387036457657814,
+      "expected_pk": "808182838485868788898a8b8c8d8e8fa04ad33acb292af0da32f74d3285b014",
+      "actual_pk": "808182838485868788898a8b8c8d8e8fa04ad33acb292af0da32f74d3285b014"
+    },
+    {
+      "operation": "sigGen",
+      "passed": true,
+      "seconds": 3.137705698609352,
+      "expected_signature_sha256": "10975fa5d31e762cc437eaa13901603c2634453e8d655944d1aac103875c3772",
+      "actual_signature_sha256": "10975fa5d31e762cc437eaa13901603c2634453e8d655944d1aac103875c3772"
+    },
+    {
+      "operation": "sigVer",
+      "passed": true
+    }
+  ],
+  "library_sha256": "b4ea1ead5bd9db46d617a1a51071dc9eb675533ec102021ef1b85f1cf5685083",
+  "total": 3,
+  "passed": 3,
+  "failed": 0,
+  "elapsed_seconds": 15.527739197015762
+}

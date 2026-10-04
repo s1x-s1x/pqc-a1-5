@@ -1,0 +1,35 @@
+﻿Verifpal 1.4.12 - https://verifpal.com
+ Verifpal * Verification initiated for 'hybrid_auth_pq_leaked.vp' at 07:26:03 PM.
+     Info . Attacker is configured as active.
+     Info . Running at phase 0.
+     FAIL x authentication? Client -> Server: c1 (Analysis 29)
+
+--------------------------------------------------
+ Verifpal * Verification completed for 'hybrid_auth_pq_leaked.vp' at 07:26:04 PM in 791ms.
+
+     PASS + confidentiality? m1[precondition[Client -> Server: c1]]  [search exhausted at 1 session]
+     PASS + authentication? Server -> Client: sigt1  [search exhausted at 1 session]
+     PASS + authentication? Server -> Client: sigpq1  [search exhausted at 1 session]
+     PASS + freshness? key_c1  [search exhausted at 1 session]
+     FAIL x authentication? Client -> Server: c1
+            Attack trace:
+            | 1. Attacker constructs PUBKEY(nil).
+            | 2. Attacker replaces gx1, ekpq1 (sent by Client to Server) with PUBKEY(nil), PUBKEY(nil). (gx1 was PUBKEY(x1); ekpq1 was PUBKEY(dkpq1))
+            | 3. Attacker observes gy1 on the wire.
+            | 4. Attacker constructs DH_KEX(gy1, nil).
+            | 5. Attacker observes KEM_ENCAP(PUBKEY(nil), r1)|2 on the wire.
+            | 6. Attacker opens KEM_ENCAP(PUBKEY(nil), r1)|2 with nil, obtaining KEM_ENCAP(PUBKEY(nil), r1)|1.
+            | 7. Attacker constructs CONCAT(DH_KEX(gy1, nil), KEM_ENCAP(PUBKEY(nil), r1)|1).
+            | 8. Attacker constructs HKDF(nil, CONCAT(DH_KEX(gy1, nil), KEM_ENCAP(PUBKEY(nil), r1)|1), labelhs)|1.
+            | 9. Attacker replaces c1 (sent by Client to Server) with AEAD_ENC(HKDF(nil, CONCAT(DH_KEX(gy1, nil), KEM_ENCAP(PUBKEY(nil), r1)|1), labelhs)|1, nil, nil, nil). (c1 was AEAD_ENC(key_c1, nil, m1, nil))
+            | 10. Server's AEAD_DEC(HKDF(nil, CONCAT(DH_KEX(PUBKEY(nil), y1), KEM_ENCAP(PUBKEY(nil), r1)|1), labelhs)|1, nil, AEAD_ENC(HKDF(nil, CONCAT(DH_KEX(PUBKEY(nil), y1), KEM_ENCAP(PUBKEY(nil), r1)|1), labelhs)|1, nil, nil, nil), nil)? passes — the attacker controls one of its inputs.
+            | 11. Attacker observes c1 on the wire.
+            > c1 (AEAD_ENC(HKDF(nil, CONCAT(DH_KEX(PUBKEY(nil), y1), KEM_ENCAP(PUBKEY(nil), r1)|1), labelhs)|1, nil, nil, nil)), sent by Attacker and not by Client, is successfully used in AEAD_DEC(key1, nil, c1, nil)? within Server's state.
+
+--------------------------------------------------
+     FAIL x 1 of 5 queries failed.
+ Verifpal * Thank you for using Verifpal.
+
+
+// ---- compact result code (verifpal verify --sessions 1 --result-code) ----
+c0a0a0f0a1

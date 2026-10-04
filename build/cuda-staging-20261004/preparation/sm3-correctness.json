@@ -1,0 +1,41 @@
+{
+  "schema": "a15-sm3-preparation-v1",
+  "created_utc": "2026-10-03T19:26:15.662256+00:00",
+  "passed": true,
+  "native_calls": 257,
+  "real_timing_samples": 0,
+  "check": {
+    "schema": "a15-sm3-check-v1",
+    "passed": true,
+    "known_answer": "SM3 abc",
+    "comparisons": 256,
+    "avx2_available": true,
+    "x8_execution": "AVX2",
+    "real_timing_samples": 0
+  },
+  "native_calls_scope": "native correctness work items: one SM3 known-answer case plus 256 eight-lane compression comparisons; this field does not count nested C function calls",
+  "binary": "/home/guest-experiment/pqc-a1-5/build/cuda-staging-20261004/build/bench_sm3_harness",
+  "binary_sha256": "2034ec80e50346fd9048578cbe7307b5b4b70728cfc97b0e0c8cb14fd32a1199",
+  "command": [
+    "/home/guest-experiment/pqc-a1-5/build/cuda-staging-20261004/build/bench_sm3_harness",
+    "check"
+  ],
+  "sources_sha256": {
+    "tools/bench_sm3_harness.c": "ddf61075e429aa8e6f3bae4f3eab63ec364d8567196a4c489165684ff4e141ee",
+    "c/src/sm3.c": "5b165c63a7747fbad817459e1e4cbff4e884eab53ba5a14539b401a89db2d2dc",
+    "c/src/sm3.h": "a8eb36558ee2680ffb486c81430461406f8a6002a367d3187fa130e3e0d46761",
+    "c/src/sm3x8.c": "6d419a5e838c2402b5021b1bed6f8c4047402848ea2df234555cb210557e8f05",
+    "c/src/sm3x8.h": "94f3bef4ff710d6fff7d3e29633e390778ef0cfd2b4ab90084a01e497da43fc4"
+  },
+  "compiler": {
+    "argv": [
+      "gcc",
+      "--version"
+    ],
+    "returncode": 0,
+    "stdout": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0\nCopyright (C) 2021 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
+    "stderr": ""
+  },
+  "build_command": "gcc -std=c11 -O3 -Wall -Wextra -Ic/src tools/bench_sm3_harness.c c/src/sm3.c c/src/sm3x8.c -o build/bench_sm3_harness",
+  "scope": "known-answer and scalar/x8 final-block correctness; sample command not called"
+}

@@ -1,0 +1,93 @@
+{
+  "schema": "a15-external-sources-v1",
+  "acvp_mirror_commit": "1c859956c0217b04fa5ae76e338e5570aba622c5",
+  "xous_commit": "f239b847d9d864d7ee19651a7d29acd4f7104921",
+  "xous_pull_request": "https://github.com/betrusted-io/xous-core/pull/1002",
+  "note": "The xous vector producer uses SPHINCS+ internal messages; no pure-mode prefix is added.",
+  "files": [
+    {
+      "path": "third_party\\external_vectors\\acvp\\SLH-DSA-keyGen-FIPS205\\prompt.json",
+      "sha256": "fd8d1018bf79c83b2c1143f7abde331da93e17f4751ef2a86498870cc7fa6ae9",
+      "url": "https://raw.githubusercontent.com/mjosaarinen/py-acvp-pqc/1c859956c0217b04fa5ae76e338e5570aba622c5/json-copy/SLH-DSA-keyGen-FIPS205/prompt.json",
+      "origin": "NIST ACVP-Server/gen-val/json-files, pinned public mirror"
+    },
+    {
+      "path": "third_party\\external_vectors\\acvp\\SLH-DSA-keyGen-FIPS205\\expectedResults.json",
+      "sha256": "9d6c45cae724c1776803860c43de78dc1efd8496b0cde6edba2a62e0d7c920c0",
+      "url": "https://raw.githubusercontent.com/mjosaarinen/py-acvp-pqc/1c859956c0217b04fa5ae76e338e5570aba622c5/json-copy/SLH-DSA-keyGen-FIPS205/expectedResults.json",
+      "origin": "NIST ACVP-Server/gen-val/json-files, pinned public mirror"
+    },
+    {
+      "path": "third_party\\external_vectors\\acvp\\SLH-DSA-keyGen-FIPS205\\internalProjection.json",
+      "sha256": "819a03ddb519551f9e7e4b59244cac317bc64b86d6f2f78f55a13344b5991a53",
+      "url": "https://raw.githubusercontent.com/mjosaarinen/py-acvp-pqc/1c859956c0217b04fa5ae76e338e5570aba622c5/json-copy/SLH-DSA-keyGen-FIPS205/internalProjection.json",
+      "origin": "NIST ACVP-Server/gen-val/json-files, pinned public mirror"
+    },
+    {
+      "path": "third_party\\external_vectors\\acvp\\SLH-DSA-sigGen-FIPS205\\prompt.json",
+      "sha256": "646fc260ee78f5a288f449e72dc729786fd54edb5d8f2a37a7f895e612910195",
+      "url": "https://raw.githubusercontent.com/mjosaarinen/py-acvp-pqc/1c859956c0217b04fa5ae76e338e5570aba622c5/json-copy/SLH-DSA-sigGen-FIPS205/prompt.json",
+      "origin": "NIST ACVP-Server/gen-val/json-files, pinned public mirror"
+    },
+    {
+      "path": "third_party\\external_vectors\\acvp\\SLH-DSA-sigGen-FIPS205\\expectedResults.json",
+      "sha256": "910ba52aae05518068f2997fb136b2e4d620fb417ea5ca412b334ce797417092",
+      "url": "https://raw.githubusercontent.com/mjosaarinen/py-acvp-pqc/1c859956c0217b04fa5ae76e338e5570aba622c5/json-copy/SLH-DSA-sigGen-FIPS205/expectedResults.json",
+      "origin": "NIST ACVP-Server/gen-val/json-files, pinned public mirror"
+    },
+    {
+      "path": "third_party\\external_vectors\\acvp\\SLH-DSA-sigGen-FIPS205\\internalProjection.json",
+      "sha256": "db199e7d68034910e51a1497785b0be57fcef57edb177acc994e6ddce0d9c721",
+      "url": "https://raw.githubusercontent.com/mjosaarinen/py-acvp-pqc/1c859956c0217b04fa5ae76e338e5570aba622c5/json-copy/SLH-DSA-sigGen-FIPS205/internalProjection.json",
+      "origin": "NIST ACVP-Server/gen-val/json-files, pinned public mirror"
+    },
+    {
+      "path": "third_party\\external_vectors\\acvp\\SLH-DSA-sigVer-FIPS205\\prompt.json",
+      "sha256": "8553cabe7df8d93bf52c794c27010f2c8448f157f886753d5d09e9a08b6347b1",
+      "url": "https://raw.githubusercontent.com/mjosaarinen/py-acvp-pqc/1c859956c0217b04fa5ae76e338e5570aba622c5/json-copy/SLH-DSA-sigVer-FIPS205/prompt.json",
+      "origin": "NIST ACVP-Server/gen-val/json-files, pinned public mirror"
+    },
+    {
+      "path": "third_party\\external_vectors\\acvp\\SLH-DSA-sigVer-FIPS205\\expectedResults.json",
+      "sha256": "fb4b087f3705f68902c0fd1b58d2d4f8a6d24e1c4f65cd3cf3c3629a7ed197b3",
+      "url": "https://raw.githubusercontent.com/mjosaarinen/py-acvp-pqc/1c859956c0217b04fa5ae76e338e5570aba622c5/json-copy/SLH-DSA-sigVer-FIPS205/expectedResults.json",
+      "origin": "NIST ACVP-Server/gen-val/json-files, pinned public mirror"
+    },
+    {
+      "path": "third_party\\external_vectors\\acvp\\SLH-DSA-sigVer-FIPS205\\internalProjection.json",
+      "sha256": "a777f9684460845998e7e89babd8d98f4047c064d1366f364ab034f19b859e52",
+      "url": "https://raw.githubusercontent.com/mjosaarinen/py-acvp-pqc/1c859956c0217b04fa5ae76e338e5570aba622c5/json-copy/SLH-DSA-sigVer-FIPS205/internalProjection.json",
+      "origin": "NIST ACVP-Server/gen-val/json-files, pinned public mirror"
+    },
+    {
+      "path": "third_party\\external_vectors\\xous\\vectors\\vec_sphincs-sha2-128-24.txt",
+      "sha256": "f79b7296471cbcd058f3dd7d772de0c9c065d76f264cc7b80ced3a30e75e7592",
+      "url": "https://raw.githubusercontent.com/betrusted-io/xous-core/f239b847d9d864d7ee19651a7d29acd4f7104921/bao1x-boot/slh-dsa-kat/vectors/vec_sphincs-sha2-128-24.txt"
+    },
+    {
+      "path": "third_party\\external_vectors\\xous\\vectors\\sig_sphincs-sha2-128-24.hex",
+      "sha256": "4346005f49cce9d16aa8c5ff76837739818879854b0a1982b330014b2afa0104",
+      "url": "https://raw.githubusercontent.com/betrusted-io/xous-core/f239b847d9d864d7ee19651a7d29acd4f7104921/bao1x-boot/slh-dsa-kat/vectors/sig_sphincs-sha2-128-24.hex"
+    },
+    {
+      "path": "third_party\\external_vectors\\xous\\slh_kat.c",
+      "sha256": "3a57858ecf9b1937fe56e21095fc0a6e95f4641222785d43828ef6183ecbeedc",
+      "url": "https://raw.githubusercontent.com/betrusted-io/xous-core/f239b847d9d864d7ee19651a7d29acd4f7104921/bao1x-boot/slh-dsa-kat/slh_kat.c"
+    },
+    {
+      "path": "third_party\\external_vectors\\xous\\params\\params-sphincs-sha2-128-24.h",
+      "sha256": "58f56c9ababe272650babf715cc5bafa0d4be03a11ef6f2c5b7a59dd37d7c6e0",
+      "url": "https://raw.githubusercontent.com/betrusted-io/xous-core/f239b847d9d864d7ee19651a7d29acd4f7104921/bao1x-boot/slh-dsa-kat/params/params-sphincs-sha2-128-24.h"
+    },
+    {
+      "path": "third_party\\external_vectors\\xous\\build_vectors.sh",
+      "sha256": "9068d8dfc2e7995d1c3e51a46c67a9965cb0bc8c1c1cd51e9e352e69b54a35a2",
+      "url": "https://raw.githubusercontent.com/betrusted-io/xous-core/f239b847d9d864d7ee19651a7d29acd4f7104921/bao1x-boot/slh-dsa-kat/build_vectors.sh"
+    },
+    {
+      "path": "third_party\\external_vectors\\xous\\base_2b.patch",
+      "sha256": "b0c693312ab885aa849f4f8a71c0af8c6d1753d855464365a3355288657c811f",
+      "url": "https://raw.githubusercontent.com/betrusted-io/xous-core/f239b847d9d864d7ee19651a7d29acd4f7104921/bao1x-boot/slh-dsa-kat/base_2b.patch"
+    }
+  ]
+}

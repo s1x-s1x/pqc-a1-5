@@ -1,0 +1,124 @@
+﻿id,title,report_section,planned_source,plan_line,status,final
+图1-1,量子计算对签名的威胁与迁移时间线,1.1,示意；FIPS 203/204/205、IR 8547 ipd,854,pending,False
+图1-2,三个问题之间的牵制关系,1.2,示意；按参数计算的例子,855,pending,False
+图1-3,报告结构与主线,1.5,示意,856,pending,False
+图2-1,后量子签名标准化时间线,2.1,示意；文献,857,pending,False
+图2-2,各类后量子签名的公钥与签名尺寸（对数坐标）,2.2,数据图；规格文档,858,pending,False
+图2-3,SLH-DSA 的超树结构,2.3,示意；FIPS 205,859,pending,False
+图2-4,WOTS+ 链与 FORS 树,2.3,示意；FIPS 205,860,pending,False
+图2-5,SM3 压缩函数,2.5,示意；GB/T 32905,861,pending,False
+图3-1,五层总体架构,3.1,示意；v2 §4,862,pending,False
+图3-2,运行平台硬件框图,3.2,示意；DP2 平台信息,863,pending,False
+图3-3,部署形态框图,3.2,示意；v2 §8.1,864,pending,False
+图3-4,密钥生成流程,3.3,流程图；v2 §4,865,pending,False
+图3-5,签名流程,3.3,流程图；v2 §4、附录 A.2,866,pending,False
+图3-6,验签流程,3.3,流程图,867,pending,False
+图3-7,缓存的构建、保存、加载与校验流程,3.3,流程图,868,pending,False
+图4-1,六个杂凑函数在签名中的调用关系,4.2,示意；SPEC,869,pending,False
+图4-2,地址压缩与 midstate 预压缩,4.3,示意；SPEC,870,pending,False
+图5-1,128-24 签名代价分解（无缓存与 t=12）,5.3,数据图；count.py（DP1）,871,pending,False
+图5-2,参数空间与 Pareto 前沿,5.5,数据图；count.py --grid（DP1）,872,pending,False
+图5-3,缓存层取舍曲线,5.6,数据图；count.py（DP1）,873,pending,False
+图6-1,优化路线,6.1,示意；v3 §3,874,pending,False
+图6-2,预压缩与单分组压缩,6.2,示意；LOG.md,875,pending,False
+图6-3,子树接口与各后端,6.3,示意；v2 §4.3,876,pending,False
+图6-4,子树任务切分,6.4,示意；v3 §3.2,877,pending,False
+图6-5,任务并行与主机合并,6.4,示意,878,pending,False
+图6-6,缓存文件格式与校验,6.5,示意；v2 §4.1,879,pending,False
+图6-7,8 路 SIMD 的数据布局,6.6,示意；LOG.md,880,pending,False
+图6-8,层内批处理,6.6,示意；LOG.md,881,pending,False
+图6-9,GPU 任务映射（B1 没做时为设计图）,6.7,示意；LOG.md,882,pending,False
+图6-10,签后自验流程,6.8,流程图,883,pending,False
+图7-1,八维安全分析框架,7.1,示意,884,pending,False
+图7-2,超用曲线,7.4,数据图；overuse.py（DP1）,885,pending,False
+图7-3,故障攻击路径与防护点,7.6,示意,886,pending,False
+图7-4,协议层攻击面,7.9,示意,887,pending,False
+图8-1,测试层次,8.1,示意,888,pending,False
+图8-2,钳形论证,8.3,示意,889,pending,False
+图8-3,五层防线,8.4,示意,890,pending,False
+图9-1,存储需求对比,9.2,数据图；按参数计算与规格文档,891,pending,False
+图9-2,签名尺寸与证书链增量,9.3,数据图；按参数计算、E1,892,pending,False
+图9-3,REF 与 AVX2 的单线程性能,9.5,数据图；R3,893,pending,False
+图9-4,缓存取舍：实测时间与理论调用数,9.6,数据图；R4,894,pending,False
+图9-5,多核扩展曲线,9.7,数据图；R5,895,pending,False
+图9-6,逐项优化的瀑布图,9.8,数据图；R3–R5,896,pending,False
+图9-7,同引擎 SHA2 与 SM3 对比,9.9,数据图；R3,897,pending,False
+图9-8,性能模型与实测,9.11,数据图；R3、附录 B,898,pending,False
+图10-1,应用场景,10.1,示意,899,pending,False
+图10-2,证书 profile 与扩展布局,10.3,示意；v2 §8.1,900,pending,False
+图10-3,preTBS 的构造,10.3,示意；X.509（2019）,901,pending,False
+图10-4,五步签发流程,10.4,流程图；v2 §8.2,902,pending,False
+图10-5,验证流程,10.5,流程图；v2 §8.3,903,pending,False
+图10-6,各 profile 的服务器首轮字节与初始拥塞窗口,10.7,数据图；R6（E1、E2）,904,pending,False
+图10-7,握手时延对比,10.7,数据图；R6（E3）,905,pending,False
+图11-1,M1 与 M2 的消息流,11.2–11.3,示意；模型文件,906,pending,False
+表1-1,三个问题与按参数计算的例子,1.2,按参数计算,912,pending,False
+表1-2,设计目标与技术指标,1.3,按参数计算；DP3,913,pending,False
+表1-3,主要工作与创新点,1.4,§3.2；DP3,914,pending,False
+表2-1,后量子签名标准化进展,2.1,文献,915,pending,False
+表2-2,后量子签名算法族比较,2.2,规格文档,916,pending,False
+表2-3,SP 800-230 草案参数与 FIPS 205 参数,2.4,ipd 原文 Table 1,917,pending,False
+表2-4,SM3 与 SHA-256 对比,2.5,标准文本,918,pending,False
+表2-5,相关工作对比,2.6,文献,919,pending,False
+表3-1,各层职责与对应章节,3.1,v2 §4,920,pending,False
+表3-2,功能清单,3.4,头文件（DP1）,921,pending,False
+表3-3,命令行工具用法与示例输出,3.4,实际运行输出,922,pending,False
+表3-4,模块划分与接口,3.5,v2 §4.6,923,pending,False
+表3-5,运行环境,3.6,DP2、DP3 平台信息,924,pending,False
+表4-1,六个杂凑函数的 SHA2 与 SM3 定义对照,4.2,SPEC v1.0,925,pending,False
+表4-2,各函数的输入长度与压缩次数,4.3,SPEC；按参数计算,926,pending,False
+表4-3,消息编码与 OID,4.4,SPEC；GM/T 0006,927,pending,False
+表5-1,参数集与尺寸,5.1,v2 附录 A.1；ipd 原文,928,pending,False
+表5-2,三个参数集的比较,5.2,按参数计算,929,pending,False
+表5-3,计数公式,5.3,v2 附录 A.2,930,pending,False
+表5-4,精确调用数与压缩数,5.3,count.py（DP1）,931,pending,False
+表5-5,Pareto 前沿附近的候选参数,5.5,count.py --grid（DP1）,932,pending,False
+表5-6,缓存层取舍,5.6,v2 附录 A.3；count.py,933,pending,False
+表6-1,优化手段与针对的代价,6.1,v3 §3,934,pending,False
+表6-2,三种场景的任务切分,6.4,v3 §3.2,935,pending,False
+表6-3,缓存文件格式,6.5,v2 §4.1,936,pending,False
+表6-4,SIMD 覆盖范围,6.6,LOG.md；R3,937,pending,False
+表6-5,错误码与标志,6.9,头文件（DP1）,938,pending,False
+表7-1,八个维度的敌手能力、目标与方法,7.1,v2 甲6,939,pending,False
+表7-2,SHA2 与 SM3 实例化的安全性对照,7.2,FIPS 205；文献,940,pending,False
+表7-3,安全归约所需的性质,7.3,[18]；SPHINCS+ 论文,941,pending,False
+表7-4,超用下的安全强度（R8）,7.4,overuse.py（DP1）,942,pending,False
+表7-5,故障注入测试结果,7.6,S12（DP3）,943,pending,False
+表7-6,安全参数总表（R7）,7.11,overuse.py（DP1）,944,pending,False
+表8-1,交叉验证矩阵,8.2,R1,945,pending,False
+表8-2,共模错误与防线,8.4,v3 §4,946,pending,False
+表8-3,单元测试与边界用例,8.5,测试代码；R1,947,pending,False
+表8-4,证书链与 TLS 测试,8.6,R1,948,pending,False
+表8-5,测试结果汇总（R1）,8.7,R1,949,pending,False
+表9-1,测试平台,9.1,DP3 平台信息,950,pending,False
+表9-2,测量方法,9.1,v2 §9.3,951,pending,False
+表9-3,存储需求,9.2,按参数计算；DP3,952,pending,False
+表9-4,通信开销,9.3,按参数计算；E1、R6,953,pending,False
+表9-5,杂凑调用计数验证（R2）,9.4,R2,954,pending,False
+表9-6,单线程性能（R3）,9.5,R3,955,pending,False
+表9-7,缓存取舍实测（R4）,9.6,R4,956,pending,False
+表9-8,多核扩展（R5）,9.7,R5,957,pending,False
+表9-9,同引擎 SHA2 与 SM3 对比,9.9,R3,958,pending,False
+表9-10,指标达成情况,9.12,DP3,959,pending,False
+表10-1,CA 场景需求与 128-24 性质的对应,10.1,v2 §8,960,pending,False
+表10-2,既有工作与本作品新增内容,10.2,v2 §2,961,pending,False
+表10-3,三个扩展的编码与尺寸,10.3,v2 §8.1；按参数计算,962,pending,False
+表10-4,两种验证策略与 E5 负例,10.5,v2 §8.3；E5,963,pending,False
+表10-5,实验设计 E1–E5,10.6,v2 §8.4、§8.5,964,pending,False
+表10-6,证书链与 TLS 实验结果（R6）,10.7,R6,965,pending,False
+表11-1,建模假设,11.1,模型文件,966,pending,False
+表11-2,M1 与 M2 的查询结果,11.4,Verifpal 首跑输出,967,pending,False
+表12-1,题目要求与问题的落实情况,12.1,全文；DP3,968,pending,False
+表A-1,全部参数集,附录 A,v2 附录 A,969,pending,False
+表A-2,精确计数与完整的缓存取舍,附录 A,count.py,970,pending,False
+表B-1,单核时间估算,附录 B,附录 A；R3,971,pending,False
+表C-1,API 参考,附录 C,头文件,972,pending,False
+表D-1,复现步骤,附录 D,README；run_matrix.sh,973,pending,False
+表E-1,第三方组件、既有工作与差异清单,附录 E,THIRD_PARTY；差异清单,974,pending,False
+表F-1,术语表,附录 F,—,975,pending,False
+算法框 4-1,带 midstate 的 F、H、PRF 计算,4.2,SPEC v1.0,981,pending,False
+算法框 6-1,slh_subtree,6.3,v2 §4.3,982,pending,False
+算法框 6-2,缓存的加载与校验,6.5,v2 §4.1、§4.2,983,pending,False
+算法框 6-3,FORS 的 x8 批处理,6.6,LOG.md；v3 §3.1,984,pending,False
+算法框 6-4,签后自验,6.8,v2 §4.2,985,pending,False
+算法框 10-1,五步签发,10.4,v2 §8.2,986,pending,False

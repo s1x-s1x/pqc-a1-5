@@ -1,0 +1,628 @@
+--- PDF page 1 ---
+ 
+1 
+2 
+3 
+4 
+5 
+6 
+7 
+8 
+9 
+10 
+NIST Special Publication 800 
+NIST SP 800-230 ipd 
+Additional SLH-DSA Parameter Sets 
+for Limited-Signature Use Cases 
+Initial Public Draft 
+Quynh Dang 
+Dustin Moody 
+This publication is available free of charge from: 
+https://doi.org/10.6028/NIST.SP.800-230.ipd 
+
+
+--- PDF page 2 ---
+11 
+12 
+13 
+14 
+15 
+16 
+17 
+18 
+19 
+20 
+21 
+22 
+23 
+24 
+NIST Special Publication 800 
+NIST SP 800-230 ipd 
+Additional SLH-DSA Parameter Sets 
+for Limited-Signature Use Cases 
+Initial Public Draft 
+Quynh Dang
+ 1, Dustin Moody 1 
+1 Computer Security Division, Information Technology Laboratory, NIST, Gaithersburg, Maryland, USA 
+This publication is available free of charge from: 
+https://doi.org/10.6028/NIST.SP.800-230.ipd 
+April 2026 
+U.S. Department of Commerce 
+Howard Lutnick, Secretary 
+National Institute of Standards and Technology 
+Craig Burkhardt, Acting Under Secretary of Commerce for Standards and Technology and Acting NIST Director 
+
+--- PDF page 3 ---
+ 
+ 
+ 
+ 
+              
+              
+                
+             
+            
+               
+               
+               
+               
+              
+                 
+                
+             
+               
+            
+             
+           
+               
+               
+             
+               
+            
+             
+              
+               
+NIST SP 800-230 ipd (Initial Public Draft) Additional SLH-DSA Parameter Sets 
+April 2026 for Limited-Signature Use Cases 
+25 
+26 
+27 
+28 
+29 
+30 
+31 
+32 
+33 
+34 
+35 
+36 
+37 
+38 
+39 
+40 
+41 
+42 
+43 
+44 
+45 
+46 
+47 
+48 
+49 
+50 
+51 
+52 
+53 
+54 
+55 
+56 
+57 
+58 
+59 
+60 
+NIST Technical Series Publications: https://www.nist.gov/nist-research-library/nist-publications 
+SP 800 Series 
+The Special Publication 800-series reports on ITL’s research, guidelines, and outreach efforts in information 
+system security, and its collaborative activities with industry, government, and academic organizations. 
+Authority 
+This publication has been developed by NIST in accordance with its statutory responsibilities under 
+the Federal Information Security Modernization Act (FISMA) of 2014, 44 U.S.C § 3551 et seq., Public 
+Law (P.L.) 113-283. NIST is responsible for developing information security standards and guidelines, 
+including minimum requirements for federal information systems, but such standards and guidelines 
+shall not apply to national security systems without the express approval of appropriate federal officials 
+exercising policy authority over such systems. This guideline is consistent with the requirements of the 
+Office of Management and Budget (OMB) Circular A-130. 
+Nothing in this publication should be taken to contradict the standards and guidelines made mandatory 
+and binding on federal agencies by the Secretary of Commerce under statutory authority. Nor should 
+these guidelines be interpreted as altering or superseding the existing authorities of the Secretary 
+of Commerce,  Director of the OMB, or any other federal official. This publication may be used by 
+nongovernmental organizations on a voluntary basis and is not subject to copyright in the United States. 
+Attribution would, however, be appreciated by NIST. 
+Reports on Computer Systems Technology 
+The Information Technology Laboratory (ITL) at the National Institute of Standards and Technology 
+(NIST) promotes the U.S. economy and public welfare by providing technical leadership for the Nation’s 
+measurement and standards infrastructure. ITL develops tests, test methods, reference data, proof 
+of concept  implementations, and technical analyses to advance the development and productive use 
+of information technology. ITL’s responsibilities include the development of management, administrative, 
+technical, and physical standards and guidelines for the cost-effective security and privacy of other than 
+national security-related information in federal information systems. 
+References to Other Publications 
+There may be references in this publication to other publications currently under development by NIST 
+in accordance with its assigned statutory responsibilities. The information in this publication, including 
+concepts and methodologies, may be used by federal agencies even before the completion of such 
+companion publications. Thus, until each publication is completed, current requirements, guidelines, and 
+procedures, where they exist, remain operative. For planning and transition purposes, federal agencies 
+may wish to closely follow the development of these new publications by NIST. 
+Organizations are encouraged to review all draft publications during public comment periods and provide 
+feedback to  NIST. Many NIST cybersecurity publications, other than the ones noted above, are available 
+at https://csrc.nist.gov/publications 
+
+--- PDF page 4 ---
+           
+               
+                 
+                
+              
+              
+              
+                
+                  
+                  
+               
+                
+            
+           
+                
+               
+               
+                
+                
+65 
+70 
+75 
+80 
+85 
+61 
+62 
+63 
+64 
+66 
+67 
+68 
+69 
+71 
+72 
+73 
+74 
+76 
+77 
+78 
+79 
+81 
+82 
+83 
+84 
+86 
+87 
+88 
+89 
+90 
+91 
+Non-Endorsement Disclaimer 
+Certain equipment, instruments, software, or materials, commercial or non-commercial, are identified 
+in this paper in order to specify the experimental procedure adequately. Such identification does not 
+imply recommendation or endorsement of any product or service by NIST, nor does it imply that the 
+materials or equipment identified are necessarily the best available for the purpose. 
+Call for Patent Claims 
+This public review includes a call for information on essential patent claims (claims whose use would 
+be required for compliance with the guidance or requirements in this Information Technology Laboratory 
+(ITL) draft publication). Such guidance and/or requirements may be directly stated in this ITL 
+Publication or by reference to another publication. This call also includes disclosure, where known, 
+of the  existence of pending U.S. or foreign patent applications relating to this ITL draft publication 
+and of any relevant unexpired U.S. or foreign patents. 
+ITL may require from the patent holder, or a party authorized to make assurances on its behalf, in 
+written or electronic form, either: 
+1. assurance in the form of a general disclaimer to the effect that such party does not hold and 
+does not currently intend holding any essential patent claim(s); or 
+2. assurance that a license to such essential patent claim(s) will be made available to applicants 
+desiring to utilize the license for the purpose of complying with the guidance or requirements in 
+this ITL draft publication either: 
+(a) under reasonable terms and conditions that are demonstrably free of any unfair discrimi­
+nation; or 
+(b) without compensation and under reasonable terms and conditions that are demonstrably 
+free of any unfair discrimination. 
+Such assurance shall indicate that the patent holder (or third party authorized to make assurances on 
+its behalf) will include in any documents transferring ownership of patents subject to the assurance, 
+provisions sufficient  to ensure that the commitments in the assurance are binding on the transferee, 
+and that the transferee will similarly include appropriate provisions in the event of future transfers with 
+the goal of binding each successor-in-interest. 
+The assurance shall also indicate that it is intended to be binding on successors-in-interest regardless of 
+whether such provisions are included in the relevant transfer documents. 
+Such statements should be addressed to: SP800-230-comments@nist.gov  
+D 
+
+--- PDF page 5 ---
+ 
+ 
+ 
+ 
+             
+            
+ 
+NIST SP 800-230 ipd (Initial Public Draft) Additional SLH-DSA Parameter Sets 
+April 2026 for Limited-Signature Use Cases 
+92 
+93 
+94 
+95 
+96 
+97 
+98 
+99 
+100 
+Publication History 
+Approved by the NIST Editorial Review Board on YYYY-MM-DD [Will be added to final publication.]. 
+Suggested Citation 
+Quynh Dang, Dustin Moody (2026). Additional SLH-DSA Parameter Sets 
+for Limited-Signature Use Cases. (National Institute of Standards and Technology, Gaithersburg, MD) NIST 
+Special Publication 800 (SP) NIST 800-230 ipd (Initial Public Draft). DOI:10.6028/NIST.SP.800-230.ipd 
+Author Names and ORCID Identifiers 
+Quynh Dang (0009-0005-9801-6805); Dustin Moody (0000-0002-4868-6684). 
+101 
+102 
+103 
+104 
+105 
+106 
+Additional Information 
+Additional information about this publication, including related content, potential updates, and document 
+history, is available at https://csrc.nist.gov/pubs/sp/800/230/ipd. 
+Public Comments Period: April 13, 2026 – June 12, 2026 
+Public Comments Contact: SP800-230-comments@nist.gov 
+All comments are subject to release under the Freedom of Information Act (FOIA) 
+
+--- PDF page 6 ---
+ 
+ 
+ 
+ 
+NIST SP 800-230 ipd (Initial Public Draft) Additional SLH-DSA Parameter Sets 
+April 2026 for Limited-Signature Use Cases 
+107 Abstract 
+108 
+109 
+110 
+111 
+112 
+113 
+114 
+115 
+116 
+117 
+118 
+This  Special  Publication  serves  as  a  technical  extension  of  FIPS  205,  the  specification  for  
+the  Stateless  Hash-based  Digital  Signature  Algorithm  (SLH-DSA).  While  standard  SLH-DSA  
+parameter  sets  are  designed  to  maintain  full  security  for  up  to  264  signatures,  the  resulting  
+signature  sizes  and/or  verification  times  are  undesirable  or  prohibitive  for  certain  applications.  
+To  address  these  performance  constraints,  this  document  specifies  six  additional  SLH-DSA  
+parameter  sets  for  security  levels  1,  3,  and  5.  These  new  variants  are  specifically  tailored  for  
+use  cases  that  require  fast  verification  and  reduced  signature  sizes,  such  as  the  signing  of  
+software,  firmware,  and  digital  certificates.  These  optimizations  are  achieved  by  establishing  a  
+strict  limit  of  224  signatures  per  signing  key.  Because  of  this  operational  limit,  these  parameter  
+sets  are  not  approved  for  general-purpose  use,  and  users  must  perform  a  thorough  evaluation  
+to ensure that the signature limit is never exceeded during any signing key’s lifetime. 
+119 
+120 
+121 
+122 
+Keywords 
+cryptography;  digital  signatures;  FIPS  205;  hash-based  signatures;  post-quantum;  post-
+quantum digital signatures; public-key cryptography; SLH-DSA; SPHINCS+; stateless hash-
+based signatures. 
+i 
+
+--- PDF page 7 ---
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+             
+             
+            
+               
+             
+            
+            
+NIST SP 800-230 ipd (Initial Public Draft) Additional SLH-DSA Parameter Sets 
+April 2026 for Limited-Signature Use Cases 
+123 
+124 
+125 
+126 
+127 
+128 
+129 
+130 
+131 
+132 
+133 
+134 
+135 
+136 
+137 
+138 
+139 
+140 
+141 
+142 
+143 
+144 
+Table of Contents 
+Abstract . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . i 
+List of Tables . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ii 
+Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ii 
+Note to the Reviewers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ii 
+1. Introduction 1 
+2. Six A dditional SLH-DSA Parameter Sets 1 
+2.1. SLH-DSA Parameter Sets at 224 Signatures Limit Per Signing Key . . . . . 2 
+3. Usage and Security Requirements 3 
+References 3  
+Appendix A. A cronyms 4 
+List of Tables 
+Table 1. SLH-DSA parameter sets at 224 signature limit per signing key. The 
+parameters 𝑛, ℎ, 𝑑, ℎ′, 𝑎, 𝑘, 𝑙𝑔𝑤, 𝑚 are defined in Section 11 of FIPS 205. . . . 2 
+Acknowledgments 
+The authors thank the cryptographic community for their insights regarding the design and 
+security analysis of these limited-signature SLH-DSA parameter sets. The authors also thank 
+the other NIST PQC team members for their input and specially John Kelsey for his insights. 
+Note to the Reviewers 
+NIST requests feedback on the suitability of these six additional SLH-DSA parameter sets. 
+These variants are specifically tailored for applications that require fast verification and 
+reduced signature  sizes, such as signing software, firmware, and digital certificates. While 
+ii 
+
+--- PDF page 8 ---
+ 
+ 
+ 
+ 
+              
+              
+NIST SP 800-230 ipd (Initial Public Draft) Additional SLH-DSA Parameter Sets 
+April 2026 for Limited-Signature Use Cases 
+145 
+146 
+147 
+148 
+149 
+these optimizations are achieved by establishing a strict limit of 224 signatures per signing 
+key, they offer significant performance advantages for those specific use cases. 
+Reviewers are encouraged to evaluate whether the operational requirements (e.g., assessing 
+the number of signing devices and the frequency of signature generation) are sufficient to 
+prevent exceeding the limit during any signing key’s lifetime. 
+iii 
+
+--- PDF page 9 ---
+ 
+ 
+ 
+ 
+   
+        
+              
+NIST SP 800-230 ipd (Initial Public Draft) Additional SLH-DSA Parameter Sets 
+April 2026 for Limited-Signature Use Cases 
+150 1. Introduction 
+151 
+152 
+153 
+154 
+155 
+156 
+157 
+158 
+159 
+160 
+161 
+162 
+163 
+164 
+165 
+166 
+167 
+168 
+169 
+170 
+171 
+172 
+173 
+174 
+175 
+176 
+177 
+178 
+179 
+180 
+Federal  Information  Processing  Standards  Publication  (FIPS)  205  [1]  specifies  the  Stateless  
+Hash-based  Digital  Signature  Algorithm  (SLH-DSA),  which  is  a  mechanism  derived  from  the  
+SPHINCS+  submission  to  the  NIST  Post-Quantum  Cryptography  (PQC)  Standardization  
+Project.  SLH-DSA  is  designed  to  provide  digital  signatures  that  are  secure  against  potential  
+future  attacks  by  quantum  computers,  which  would  render  many  current  public-key  algorithms  
+obsolete. 
+One  of  the  primary  advantages  of  SLH-DSA  is  that  it  is  “stateless,”  meaning  it  does  not  
+require  the  signer  to  maintain  a  record  of  the  number  of  previously  generated  signatures  to  
+ensure  security.  To  achieve  this  while  maintaining  full  security  for  up  to  264  signatures  per  
+private  key,  the  algorithm  utilizes  a  large  number  of  few-time  signature  keys.  However,  this  
+high  signature  capacity  results  in  significant  performance  trade-offs;  for  instance,  the  smallest  
+signature  sizes  for  security  levels  1,  3,  and  5  in  the  standard  are  7, 856,  16, 224,  and  29, 792 
+bytes, respectively. 
+For  many  use  cases  of  transmitting  and  verifying  the  digital  signatures  of  firmware,  software,  
+and  digital  certificates,  those  signature  sizes  and/or  their  associated  verification  times  are  
+highly  undesirable.  This  Special  Publication  (SP)  addresses  these  constraints  by  specifying  
+six  new  variants  of  SLH-DSA  that  are  optimized  for  fast  verification  and  reduced  signature  
+sizes.  These  improvements  are  made  possible  by  establishing  a  lower  limit  of  224  signatures  
+per signing key. 
+The  plan  to  standardize  these  six  parameter  sets  is  based  on  extensive  research  and  community  
+feedback  [2–5].  Because  of  the  224  signature  limit,  these  parameter  sets  are  specifically  
+tailored for signing software, firmware, and certificates. To ensure the continued security of 
+these  variants,  users  must  perform  a  thorough  evaluation  of  their  specific  use  case  to  ensure  
+that  the  limit  is  never  exceeded  while  considering  additional  factors,  such  as  the  number  of  
+devices  sharing  a  signing  key,  signature  generation  frequency,  and  the  intended  operational  
+lifespan of the key. 
+NIST may specify more parameter sets in the future if new needs arise. 
+2. Six Additional SLH-DSA Parameter Sets 
+This section introduces and approves six additional SLH-DSA parameter sets categorized 
+across three distinct security categories: 1, 3, and 5. These parameter sets are specifically 
+1 
+
+--- PDF page 10 ---
+ 
+ 
+ 
+ 
+   
+   
+ 
+ 
+ 
+ 
+ 
+ 
+              
+NIST SP 800-230 ipd (Initial Public Draft) Additional SLH-DSA Parameter Sets 
+April 2026 for Limited-Signature Use Cases 
+181 
+182 
+183 
+184 
+185 
+186 
+187 
+188 
+189 
+190 
+191 
+192 
+193 
+194 
+195 
+196 
+197 
+198 
+199 
+200 
+designed  for  environments  in  which  a  signature  limit  of  224  per  signing  key  is  acceptable.  To  
+achieve  the  desired  performance  optimizations  for  these  use  cases,  this  publication  expands  
+upon  the  parameter  definitions  found  in  Section  11  of  FIPS  205.  Specifically,  the  Winternitz  
+parameter  𝑤  is  adjusted  such  that  𝑤 = 4  (𝑙𝑔𝑤 = 2)  for  security  levels  1  and  5,  and  𝑤 = 8 
+(𝑙𝑔𝑤 = 3)  for  security  level  3,  which  differs  from  𝑤 = 16  (𝑙𝑔𝑤 = 4)  utilized  in  FIPS  205.  
+These  modifications  allow  for  a  strategic  balance  between  signature  size  and  verification  
+speed. 
+2.1. SLH-DSA  Parameter  Sets  at  224  Signatures  Limit  Per  Signing  
+Key 
+The  following  six  SLH-DSA  parameter  sets  listed  in  Table  1  provide  a  specialized  alternative  
+to  the  parameter  sets  found  in  Section  11  of  FIPS  205.  These  optimized  variants  achieve  
+their  performance  gains  by  restricting  the  total  number  of  signatures  generated  by  a  single  
+private key to a maximum of 224 signatures. 
+The  trade-off  for  these  performance  benefits  is  a  relatively  slower  signing  process  compared  to  
+the  FIPS  205  parameter  sets.  Consequently,  these  parameters  are  best  suited  for  ”sign-once,  
+verify-many”  and  other  scenarios  in  which  the  computational  cost  of  signing  is  less  critical  than  
+the  efficiency  of  the  verification  on  end-user  devices.  Each  parameter  set  is  categorized  into  
+security  levels  1,  3,  or  5  to  match  the  security  strength  requirements  of  different  applications.  
+Implementers  should  note  that  these  specific  configurations  utilize  adjusted  Winternitz  values,  
+specifically 𝑤 = 4 or 𝑤 = 8. 
+Table 1: SLH-DSA parameter sets at 224 signature limit per signing key. The parameters 
+𝑛, ℎ, 𝑑, ℎ′, 𝑎, 𝑘, 𝑙𝑔𝑤, 𝑚 are defined in Section 11 of FIPS 205. 
+security pk sig
+𝑛 ℎ 𝑑 ℎ′ 𝑎 𝑘 𝑙𝑔𝑤 𝑚 category bytes bytes 
+SLH-DSA-SHA2-128-24
+ 
+SLH-DSA-SHAKE-128-24 16 22 1 22 24 6 2 21 1 32 3,856 
+SLH-DSA-SHA2-192-24 
+SLH-DSA-SHAKE-192-24 24 21 1 21 25 9 3 32 3 48 7,752 
+SLH-DSA-SHA2-256-24 
+SLH-DSA-SHAKE-256-24 32 21 1 21 25 12 2 41 5 64 14,944 
+2 
+
+--- PDF page 11 ---
+ 
+ 
+ 
+ 
+NIST SP 800-230 ipd (Initial Public Draft) Additional SLH-DSA Parameter Sets 
+April 2026 for Limited-Signature Use Cases 
+201 
+202 
+203 
+204 
+205 
+206 
+207 
+208 
+209 
+210 
+211 
+212 
+213 
+214 
+215 
+216 
+217 
+218 References 
+3. Usage and Security Requirements 
+The  six  parameter  sets  specified  in  this  publication  are  specifically  designed  for  applications  
+that  require  high-performance  verification  and/or  reduced  signature  sizes,  such  as  signing  
+software,  firmware,  and  digital  certificates.  These  optimizations  are  achieved  by  establishing  a  
+restricted  signature  limit.  To  maintain  the  intended  security  strength,  it  is  a  strict  requirement  
+that  no  more  than  224  signatures  are  generated  using  a  single  signing  key.  Because  the  
+security  of  these  parameters  depends  entirely  on  adhering  to  this  limit,  users  must  perform  a  
+rigorous  and  complete  evaluation  of  the  operational  environment  for  each  signing  key.  This  
+assessment  should  account  for  several  critical  factors,  including  the  number  of  physical  or  
+virtual  devices  that  share  the  same  signing  key,  the  maximum  potential  speed  of  each  signing  
+operation,  the  projected  frequency  of  signature  generation  across  all  devices,  and  the  total  
+anticipated  operational  lifespan  of  the  key.  If  an  application’s  requirements  or  operational  
+controls  cannot  guarantee  that  the  224  signature  limit  will  be  respected,  the  parameter  sets  
+specified in this document must not be used. 
+To  improve  signing  performance,  an  implementation  may  optionally  cache  some  specific  levels  
+(a  part)  of  the  SLH-DSA  hypertree  or  the  whole  hypertree.  The  storage  of  these  cached  
+values is permissible and does not affect the security properties of the algorithm. 
+[1] National  Institute  of  Standards  and  Technology  (2024)  Stateless  hash-based  digital  sig­
+nature  standard,  (U.S.  Department  of  Commerce,  Washington,  DC),  Federal  Information  
+Processing Standards Publication (FIPS) 205. https://doi.org/10.6028/NIST.FIPS.205. 
+[2] Kölbl  S,  Philipoom  J  (2022)  A  note  on  SPHINCS+  parameter  sets,  Cryptology  ePrint  
+Archive, Paper 2022/1725. Available at https://eprint.iacr.org/2022/1725. 
+[3] Fluhrer  S,  Dang  Q  (2024)  Smaller  sphincs+ ,  Cryptology  ePrint  Archive,  Paper  2024/018.  
+Available at https://eprint.iacr.org/2024/018. 
+[4] Fenner  C  (2025)  NIST  requests  feedback  on  additional  SLH-DSA  (Sphincs+)  parameter  
+set(s),  NIST  PQC  Forum  (Google  Group).  Accessed:  2026-03-16  Available  at  https: 
+//groups.google.com/a/list.nist.gov/g/pqc-forum/c/vtMTuE_3u-0/m/ZRjih8F9DAAJ. 
+[5] Fenner  C  (2025)  slh-dsa-rls:  Tool  to  search  the  parameter  space  for  SLH-DSA,  A  
+Github.com  repository.  Accessed:  2026-03-16  Available  at  https://github.com/chrisfenn 
+er/slh-dsa-rls. 
+3 
+
+--- PDF page 12 ---
+ 
+ 
+ 
+ 
+NIST SP 800-230 ipd (Initial Public Draft) 
+April 2026 
+219 
+220 
+221 
+222 
+223 
+224 
+Appendix A Acronyms 
+SLH-DSA: stateless hash-based digital signature algorithm 
+FIPS: Federal Information Processing Standards 
+SP: Special Publication 
+Additional SLH-DSA Parameter Sets 
+for Limited-Signature Use Cases 
++SPHINCS : Stateless Practical Hash-based Incredibly Nice Cryptographic Signature Plus 
+4 

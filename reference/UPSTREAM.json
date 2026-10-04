@@ -1,0 +1,10 @@
+{
+  "repository": "https://github.com/mjosaarinen/py-acvp-pqc",
+  "commit": "1c859956c0217b04fa5ae76e338e5570aba622c5",
+  "license": "Unlicense",
+  "license_sha256": "436a6d536138f203ac333858cff92a568be62797752b3adb94bcaa0f6ffe7ef6",
+  "adapted_fips205_sha256": "edb662306b0ccac88ee9669aed6256c27a547d9084e6e9cc2180ce92e9da3a22",
+  "upstream_edit": "Move the test_slhdsa import into the __main__ block to avoid loading test data on library import.",
+  "algorithm_changes": "None inside upstream fips205.py. The project subclass adds parameter and hashing adaptations and parallel subtrees.",
+  "independence": "The project C implementation was not inspected during reference-model implementation."
+}

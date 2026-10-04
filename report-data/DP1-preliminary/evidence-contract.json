@@ -1,0 +1,1221 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-10-03T16:55:41.917973+00:00",
+  "report_plan": "docs\\plans\\A1-5_设计报告框架_150页.md",
+  "report_plan_sha256": "4eaea9efa63a2d37c63354c6091ff78101e00573823f56fc11a3451ee31202d2",
+  "source_commit": null,
+  "final": false,
+  "publication_rule": "DP3 numeric claims require raw source line, source hash, script hash, and matching gate3 code. Analytical outputs must be labeled separately.",
+  "families": {
+    "R1": {
+      "meaning": "correctness and boundary checks",
+      "required": [
+        "case_id",
+        "input_source",
+        "implementation_hashes",
+        "result",
+        "coverage_scope"
+      ]
+    },
+    "R2": {
+      "meaning": "exact native primitive/compression counters",
+      "required": [
+        "pid",
+        "operation",
+        "message_encoding",
+        "cache_t",
+        "input_hash",
+        "predicted",
+        "observed",
+        "counter_build_hash"
+      ]
+    },
+    "R3": {
+      "meaning": "single-thread performance and same-engine SHA2/SM3",
+      "required": [
+        "pid",
+        "backend",
+        "cache_t",
+        "commit",
+        "build_flags",
+        "affinity",
+        "clock_policy",
+        "samples",
+        "dispersion"
+      ]
+    },
+    "R4": {
+      "meaning": "cache tradeoffs",
+      "required": [
+        "cache_t",
+        "payload_bytes",
+        "file_bytes",
+        "ram_bytes",
+        "build_seconds",
+        "load_seconds",
+        "sign_seconds",
+        "amortization",
+        "R3_metadata"
+      ]
+    },
+    "R5": {
+      "meaning": "parallel scaling and optimization ablations",
+      "required": [
+        "threads",
+        "numa",
+        "affinity",
+        "backend",
+        "cache_t",
+        "samples",
+        "dispersion",
+        "R3_metadata"
+      ]
+    },
+    "R6": {
+      "meaning": "real DER chains and TCP experiments E1-E5",
+      "required": [
+        "profile",
+        "chain_der_bytes",
+        "first_flight_bytes",
+        "MSS",
+        "initcwnd",
+        "rtt",
+        "pcap_source",
+        "validation_policy",
+        "negative_cases"
+      ]
+    },
+    "R7": {
+      "meaning": "parameter assumptions and security boundaries",
+      "required": [
+        "standard_status",
+        "parameter_source",
+        "max_signatures",
+        "attack_term_label",
+        "assumptions"
+      ]
+    },
+    "R8": {
+      "meaning": "FORS probability term as use-count varies",
+      "required": [
+        "q",
+        "h",
+        "a",
+        "k",
+        "negative_log2_probability",
+        "numerical_method",
+        "tail_bound",
+        "not_full_EUF_CMA"
+      ]
+    }
+  },
+  "assets": [
+    {
+      "id": "图1-1",
+      "title": "量子计算对签名的威胁与迁移时间线",
+      "report_section": "1.1",
+      "planned_source": "示意；FIPS 203/204/205、IR 8547 ipd",
+      "plan_line": 854,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图1-2",
+      "title": "三个问题之间的牵制关系",
+      "report_section": "1.2",
+      "planned_source": "示意；按参数计算的例子",
+      "plan_line": 855,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图1-3",
+      "title": "报告结构与主线",
+      "report_section": "1.5",
+      "planned_source": "示意",
+      "plan_line": 856,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图2-1",
+      "title": "后量子签名标准化时间线",
+      "report_section": "2.1",
+      "planned_source": "示意；文献",
+      "plan_line": 857,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图2-2",
+      "title": "各类后量子签名的公钥与签名尺寸（对数坐标）",
+      "report_section": "2.2",
+      "planned_source": "数据图；规格文档",
+      "plan_line": 858,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图2-3",
+      "title": "SLH-DSA 的超树结构",
+      "report_section": "2.3",
+      "planned_source": "示意；FIPS 205",
+      "plan_line": 859,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图2-4",
+      "title": "WOTS+ 链与 FORS 树",
+      "report_section": "2.3",
+      "planned_source": "示意；FIPS 205",
+      "plan_line": 860,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图2-5",
+      "title": "SM3 压缩函数",
+      "report_section": "2.5",
+      "planned_source": "示意；GB/T 32905",
+      "plan_line": 861,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图3-1",
+      "title": "五层总体架构",
+      "report_section": "3.1",
+      "planned_source": "示意；v2 §4",
+      "plan_line": 862,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图3-2",
+      "title": "运行平台硬件框图",
+      "report_section": "3.2",
+      "planned_source": "示意；DP2 平台信息",
+      "plan_line": 863,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图3-3",
+      "title": "部署形态框图",
+      "report_section": "3.2",
+      "planned_source": "示意；v2 §8.1",
+      "plan_line": 864,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图3-4",
+      "title": "密钥生成流程",
+      "report_section": "3.3",
+      "planned_source": "流程图；v2 §4",
+      "plan_line": 865,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图3-5",
+      "title": "签名流程",
+      "report_section": "3.3",
+      "planned_source": "流程图；v2 §4、附录 A.2",
+      "plan_line": 866,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图3-6",
+      "title": "验签流程",
+      "report_section": "3.3",
+      "planned_source": "流程图",
+      "plan_line": 867,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图3-7",
+      "title": "缓存的构建、保存、加载与校验流程",
+      "report_section": "3.3",
+      "planned_source": "流程图",
+      "plan_line": 868,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图4-1",
+      "title": "六个杂凑函数在签名中的调用关系",
+      "report_section": "4.2",
+      "planned_source": "示意；SPEC",
+      "plan_line": 869,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图4-2",
+      "title": "地址压缩与 midstate 预压缩",
+      "report_section": "4.3",
+      "planned_source": "示意；SPEC",
+      "plan_line": 870,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图5-1",
+      "title": "128-24 签名代价分解（无缓存与 t=12）",
+      "report_section": "5.3",
+      "planned_source": "数据图；count.py（DP1）",
+      "plan_line": 871,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图5-2",
+      "title": "参数空间与 Pareto 前沿",
+      "report_section": "5.5",
+      "planned_source": "数据图；count.py --grid（DP1）",
+      "plan_line": 872,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图5-3",
+      "title": "缓存层取舍曲线",
+      "report_section": "5.6",
+      "planned_source": "数据图；count.py（DP1）",
+      "plan_line": 873,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图6-1",
+      "title": "优化路线",
+      "report_section": "6.1",
+      "planned_source": "示意；v3 §3",
+      "plan_line": 874,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图6-2",
+      "title": "预压缩与单分组压缩",
+      "report_section": "6.2",
+      "planned_source": "示意；LOG.md",
+      "plan_line": 875,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图6-3",
+      "title": "子树接口与各后端",
+      "report_section": "6.3",
+      "planned_source": "示意；v2 §4.3",
+      "plan_line": 876,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图6-4",
+      "title": "子树任务切分",
+      "report_section": "6.4",
+      "planned_source": "示意；v3 §3.2",
+      "plan_line": 877,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图6-5",
+      "title": "任务并行与主机合并",
+      "report_section": "6.4",
+      "planned_source": "示意",
+      "plan_line": 878,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图6-6",
+      "title": "缓存文件格式与校验",
+      "report_section": "6.5",
+      "planned_source": "示意；v2 §4.1",
+      "plan_line": 879,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图6-7",
+      "title": "8 路 SIMD 的数据布局",
+      "report_section": "6.6",
+      "planned_source": "示意；LOG.md",
+      "plan_line": 880,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图6-8",
+      "title": "层内批处理",
+      "report_section": "6.6",
+      "planned_source": "示意；LOG.md",
+      "plan_line": 881,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图6-9",
+      "title": "GPU 任务映射（B1 没做时为设计图）",
+      "report_section": "6.7",
+      "planned_source": "示意；LOG.md",
+      "plan_line": 882,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图6-10",
+      "title": "签后自验流程",
+      "report_section": "6.8",
+      "planned_source": "流程图",
+      "plan_line": 883,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图7-1",
+      "title": "八维安全分析框架",
+      "report_section": "7.1",
+      "planned_source": "示意",
+      "plan_line": 884,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图7-2",
+      "title": "超用曲线",
+      "report_section": "7.4",
+      "planned_source": "数据图；overuse.py（DP1）",
+      "plan_line": 885,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图7-3",
+      "title": "故障攻击路径与防护点",
+      "report_section": "7.6",
+      "planned_source": "示意",
+      "plan_line": 886,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图7-4",
+      "title": "协议层攻击面",
+      "report_section": "7.9",
+      "planned_source": "示意",
+      "plan_line": 887,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图8-1",
+      "title": "测试层次",
+      "report_section": "8.1",
+      "planned_source": "示意",
+      "plan_line": 888,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图8-2",
+      "title": "钳形论证",
+      "report_section": "8.3",
+      "planned_source": "示意",
+      "plan_line": 889,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图8-3",
+      "title": "五层防线",
+      "report_section": "8.4",
+      "planned_source": "示意",
+      "plan_line": 890,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图9-1",
+      "title": "存储需求对比",
+      "report_section": "9.2",
+      "planned_source": "数据图；按参数计算与规格文档",
+      "plan_line": 891,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图9-2",
+      "title": "签名尺寸与证书链增量",
+      "report_section": "9.3",
+      "planned_source": "数据图；按参数计算、E1",
+      "plan_line": 892,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图9-3",
+      "title": "REF 与 AVX2 的单线程性能",
+      "report_section": "9.5",
+      "planned_source": "数据图；R3",
+      "plan_line": 893,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图9-4",
+      "title": "缓存取舍：实测时间与理论调用数",
+      "report_section": "9.6",
+      "planned_source": "数据图；R4",
+      "plan_line": 894,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图9-5",
+      "title": "多核扩展曲线",
+      "report_section": "9.7",
+      "planned_source": "数据图；R5",
+      "plan_line": 895,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图9-6",
+      "title": "逐项优化的瀑布图",
+      "report_section": "9.8",
+      "planned_source": "数据图；R3–R5",
+      "plan_line": 896,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图9-7",
+      "title": "同引擎 SHA2 与 SM3 对比",
+      "report_section": "9.9",
+      "planned_source": "数据图；R3",
+      "plan_line": 897,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图9-8",
+      "title": "性能模型与实测",
+      "report_section": "9.11",
+      "planned_source": "数据图；R3、附录 B",
+      "plan_line": 898,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图10-1",
+      "title": "应用场景",
+      "report_section": "10.1",
+      "planned_source": "示意",
+      "plan_line": 899,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图10-2",
+      "title": "证书 profile 与扩展布局",
+      "report_section": "10.3",
+      "planned_source": "示意；v2 §8.1",
+      "plan_line": 900,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图10-3",
+      "title": "preTBS 的构造",
+      "report_section": "10.3",
+      "planned_source": "示意；X.509（2019）",
+      "plan_line": 901,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图10-4",
+      "title": "五步签发流程",
+      "report_section": "10.4",
+      "planned_source": "流程图；v2 §8.2",
+      "plan_line": 902,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图10-5",
+      "title": "验证流程",
+      "report_section": "10.5",
+      "planned_source": "流程图；v2 §8.3",
+      "plan_line": 903,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图10-6",
+      "title": "各 profile 的服务器首轮字节与初始拥塞窗口",
+      "report_section": "10.7",
+      "planned_source": "数据图；R6（E1、E2）",
+      "plan_line": 904,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图10-7",
+      "title": "握手时延对比",
+      "report_section": "10.7",
+      "planned_source": "数据图；R6（E3）",
+      "plan_line": 905,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "图11-1",
+      "title": "M1 与 M2 的消息流",
+      "report_section": "11.2–11.3",
+      "planned_source": "示意；模型文件",
+      "plan_line": 906,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表1-1",
+      "title": "三个问题与按参数计算的例子",
+      "report_section": "1.2",
+      "planned_source": "按参数计算",
+      "plan_line": 912,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表1-2",
+      "title": "设计目标与技术指标",
+      "report_section": "1.3",
+      "planned_source": "按参数计算；DP3",
+      "plan_line": 913,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表1-3",
+      "title": "主要工作与创新点",
+      "report_section": "1.4",
+      "planned_source": "§3.2；DP3",
+      "plan_line": 914,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表2-1",
+      "title": "后量子签名标准化进展",
+      "report_section": "2.1",
+      "planned_source": "文献",
+      "plan_line": 915,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表2-2",
+      "title": "后量子签名算法族比较",
+      "report_section": "2.2",
+      "planned_source": "规格文档",
+      "plan_line": 916,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表2-3",
+      "title": "SP 800-230 草案参数与 FIPS 205 参数",
+      "report_section": "2.4",
+      "planned_source": "ipd 原文 Table 1",
+      "plan_line": 917,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表2-4",
+      "title": "SM3 与 SHA-256 对比",
+      "report_section": "2.5",
+      "planned_source": "标准文本",
+      "plan_line": 918,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表2-5",
+      "title": "相关工作对比",
+      "report_section": "2.6",
+      "planned_source": "文献",
+      "plan_line": 919,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表3-1",
+      "title": "各层职责与对应章节",
+      "report_section": "3.1",
+      "planned_source": "v2 §4",
+      "plan_line": 920,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表3-2",
+      "title": "功能清单",
+      "report_section": "3.4",
+      "planned_source": "头文件（DP1）",
+      "plan_line": 921,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表3-3",
+      "title": "命令行工具用法与示例输出",
+      "report_section": "3.4",
+      "planned_source": "实际运行输出",
+      "plan_line": 922,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表3-4",
+      "title": "模块划分与接口",
+      "report_section": "3.5",
+      "planned_source": "v2 §4.6",
+      "plan_line": 923,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表3-5",
+      "title": "运行环境",
+      "report_section": "3.6",
+      "planned_source": "DP2、DP3 平台信息",
+      "plan_line": 924,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表4-1",
+      "title": "六个杂凑函数的 SHA2 与 SM3 定义对照",
+      "report_section": "4.2",
+      "planned_source": "SPEC v1.0",
+      "plan_line": 925,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表4-2",
+      "title": "各函数的输入长度与压缩次数",
+      "report_section": "4.3",
+      "planned_source": "SPEC；按参数计算",
+      "plan_line": 926,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表4-3",
+      "title": "消息编码与 OID",
+      "report_section": "4.4",
+      "planned_source": "SPEC；GM/T 0006",
+      "plan_line": 927,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表5-1",
+      "title": "参数集与尺寸",
+      "report_section": "5.1",
+      "planned_source": "v2 附录 A.1；ipd 原文",
+      "plan_line": 928,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表5-2",
+      "title": "三个参数集的比较",
+      "report_section": "5.2",
+      "planned_source": "按参数计算",
+      "plan_line": 929,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表5-3",
+      "title": "计数公式",
+      "report_section": "5.3",
+      "planned_source": "v2 附录 A.2",
+      "plan_line": 930,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表5-4",
+      "title": "精确调用数与压缩数",
+      "report_section": "5.3",
+      "planned_source": "count.py（DP1）",
+      "plan_line": 931,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表5-5",
+      "title": "Pareto 前沿附近的候选参数",
+      "report_section": "5.5",
+      "planned_source": "count.py --grid（DP1）",
+      "plan_line": 932,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表5-6",
+      "title": "缓存层取舍",
+      "report_section": "5.6",
+      "planned_source": "v2 附录 A.3；count.py",
+      "plan_line": 933,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表6-1",
+      "title": "优化手段与针对的代价",
+      "report_section": "6.1",
+      "planned_source": "v3 §3",
+      "plan_line": 934,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表6-2",
+      "title": "三种场景的任务切分",
+      "report_section": "6.4",
+      "planned_source": "v3 §3.2",
+      "plan_line": 935,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表6-3",
+      "title": "缓存文件格式",
+      "report_section": "6.5",
+      "planned_source": "v2 §4.1",
+      "plan_line": 936,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表6-4",
+      "title": "SIMD 覆盖范围",
+      "report_section": "6.6",
+      "planned_source": "LOG.md；R3",
+      "plan_line": 937,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表6-5",
+      "title": "错误码与标志",
+      "report_section": "6.9",
+      "planned_source": "头文件（DP1）",
+      "plan_line": 938,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表7-1",
+      "title": "八个维度的敌手能力、目标与方法",
+      "report_section": "7.1",
+      "planned_source": "v2 甲6",
+      "plan_line": 939,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表7-2",
+      "title": "SHA2 与 SM3 实例化的安全性对照",
+      "report_section": "7.2",
+      "planned_source": "FIPS 205；文献",
+      "plan_line": 940,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表7-3",
+      "title": "安全归约所需的性质",
+      "report_section": "7.3",
+      "planned_source": "[18]；SPHINCS+ 论文",
+      "plan_line": 941,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表7-4",
+      "title": "超用下的安全强度（R8）",
+      "report_section": "7.4",
+      "planned_source": "overuse.py（DP1）",
+      "plan_line": 942,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表7-5",
+      "title": "故障注入测试结果",
+      "report_section": "7.6",
+      "planned_source": "S12（DP3）",
+      "plan_line": 943,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表7-6",
+      "title": "安全参数总表（R7）",
+      "report_section": "7.11",
+      "planned_source": "overuse.py（DP1）",
+      "plan_line": 944,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表8-1",
+      "title": "交叉验证矩阵",
+      "report_section": "8.2",
+      "planned_source": "R1",
+      "plan_line": 945,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表8-2",
+      "title": "共模错误与防线",
+      "report_section": "8.4",
+      "planned_source": "v3 §4",
+      "plan_line": 946,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表8-3",
+      "title": "单元测试与边界用例",
+      "report_section": "8.5",
+      "planned_source": "测试代码；R1",
+      "plan_line": 947,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表8-4",
+      "title": "证书链与 TLS 测试",
+      "report_section": "8.6",
+      "planned_source": "R1",
+      "plan_line": 948,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表8-5",
+      "title": "测试结果汇总（R1）",
+      "report_section": "8.7",
+      "planned_source": "R1",
+      "plan_line": 949,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表9-1",
+      "title": "测试平台",
+      "report_section": "9.1",
+      "planned_source": "DP3 平台信息",
+      "plan_line": 950,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表9-2",
+      "title": "测量方法",
+      "report_section": "9.1",
+      "planned_source": "v2 §9.3",
+      "plan_line": 951,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表9-3",
+      "title": "存储需求",
+      "report_section": "9.2",
+      "planned_source": "按参数计算；DP3",
+      "plan_line": 952,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表9-4",
+      "title": "通信开销",
+      "report_section": "9.3",
+      "planned_source": "按参数计算；E1、R6",
+      "plan_line": 953,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表9-5",
+      "title": "杂凑调用计数验证（R2）",
+      "report_section": "9.4",
+      "planned_source": "R2",
+      "plan_line": 954,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表9-6",
+      "title": "单线程性能（R3）",
+      "report_section": "9.5",
+      "planned_source": "R3",
+      "plan_line": 955,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表9-7",
+      "title": "缓存取舍实测（R4）",
+      "report_section": "9.6",
+      "planned_source": "R4",
+      "plan_line": 956,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表9-8",
+      "title": "多核扩展（R5）",
+      "report_section": "9.7",
+      "planned_source": "R5",
+      "plan_line": 957,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表9-9",
+      "title": "同引擎 SHA2 与 SM3 对比",
+      "report_section": "9.9",
+      "planned_source": "R3",
+      "plan_line": 958,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表9-10",
+      "title": "指标达成情况",
+      "report_section": "9.12",
+      "planned_source": "DP3",
+      "plan_line": 959,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表10-1",
+      "title": "CA 场景需求与 128-24 性质的对应",
+      "report_section": "10.1",
+      "planned_source": "v2 §8",
+      "plan_line": 960,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表10-2",
+      "title": "既有工作与本作品新增内容",
+      "report_section": "10.2",
+      "planned_source": "v2 §2",
+      "plan_line": 961,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表10-3",
+      "title": "三个扩展的编码与尺寸",
+      "report_section": "10.3",
+      "planned_source": "v2 §8.1；按参数计算",
+      "plan_line": 962,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表10-4",
+      "title": "两种验证策略与 E5 负例",
+      "report_section": "10.5",
+      "planned_source": "v2 §8.3；E5",
+      "plan_line": 963,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表10-5",
+      "title": "实验设计 E1–E5",
+      "report_section": "10.6",
+      "planned_source": "v2 §8.4、§8.5",
+      "plan_line": 964,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表10-6",
+      "title": "证书链与 TLS 实验结果（R6）",
+      "report_section": "10.7",
+      "planned_source": "R6",
+      "plan_line": 965,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表11-1",
+      "title": "建模假设",
+      "report_section": "11.1",
+      "planned_source": "模型文件",
+      "plan_line": 966,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表11-2",
+      "title": "M1 与 M2 的查询结果",
+      "report_section": "11.4",
+      "planned_source": "Verifpal 首跑输出",
+      "plan_line": 967,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表12-1",
+      "title": "题目要求与问题的落实情况",
+      "report_section": "12.1",
+      "planned_source": "全文；DP3",
+      "plan_line": 968,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表A-1",
+      "title": "全部参数集",
+      "report_section": "附录 A",
+      "planned_source": "v2 附录 A",
+      "plan_line": 969,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表A-2",
+      "title": "精确计数与完整的缓存取舍",
+      "report_section": "附录 A",
+      "planned_source": "count.py",
+      "plan_line": 970,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表B-1",
+      "title": "单核时间估算",
+      "report_section": "附录 B",
+      "planned_source": "附录 A；R3",
+      "plan_line": 971,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表C-1",
+      "title": "API 参考",
+      "report_section": "附录 C",
+      "planned_source": "头文件",
+      "plan_line": 972,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表D-1",
+      "title": "复现步骤",
+      "report_section": "附录 D",
+      "planned_source": "README；run_matrix.sh",
+      "plan_line": 973,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表E-1",
+      "title": "第三方组件、既有工作与差异清单",
+      "report_section": "附录 E",
+      "planned_source": "THIRD_PARTY；差异清单",
+      "plan_line": 974,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "表F-1",
+      "title": "术语表",
+      "report_section": "附录 F",
+      "planned_source": "—",
+      "plan_line": 975,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "算法框 4-1",
+      "title": "带 midstate 的 F、H、PRF 计算",
+      "report_section": "4.2",
+      "planned_source": "SPEC v1.0",
+      "plan_line": 981,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "算法框 6-1",
+      "title": "slh_subtree",
+      "report_section": "6.3",
+      "planned_source": "v2 §4.3",
+      "plan_line": 982,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "算法框 6-2",
+      "title": "缓存的加载与校验",
+      "report_section": "6.5",
+      "planned_source": "v2 §4.1、§4.2",
+      "plan_line": 983,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "算法框 6-3",
+      "title": "FORS 的 x8 批处理",
+      "report_section": "6.6",
+      "planned_source": "LOG.md；v3 §3.1",
+      "plan_line": 984,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "算法框 6-4",
+      "title": "签后自验",
+      "report_section": "6.8",
+      "planned_source": "v2 §4.2",
+      "plan_line": 985,
+      "status": "pending",
+      "final": false
+    },
+    {
+      "id": "算法框 10-1",
+      "title": "五步签发",
+      "report_section": "10.4",
+      "planned_source": "v2 §8.2",
+      "plan_line": 986,
+      "status": "pending",
+      "final": false
+    }
+  ]
+}

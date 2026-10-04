@@ -1,0 +1,40 @@
+{
+  "schema": "a15-sm3-preparation-v1",
+  "created_utc": "2026-10-03T18:45:44.010338+00:00",
+  "passed": true,
+  "native_calls": 257,
+  "real_timing_samples": 0,
+  "check": {
+    "schema": "a15-sm3-check-v1",
+    "passed": true,
+    "known_answer": "SM3 abc",
+    "comparisons": 256,
+    "avx2_available": true,
+    "x8_execution": "AVX2",
+    "real_timing_samples": 0
+  },
+  "binary": "C:\\Users\\23380\\Desktop\\密码比赛\\pqc-a1-5\\build\\sm3-throughput-prep-20261004\\bench_sm3_harness.exe",
+  "binary_sha256": "f52e184714d18a192e64346cf4cc6f055c4fda7cf590d7470c5827aa74792fec",
+  "command": [
+    "C:\\Users\\23380\\Desktop\\密码比赛\\pqc-a1-5\\build\\sm3-throughput-prep-20261004\\bench_sm3_harness.exe",
+    "check"
+  ],
+  "sources_sha256": {
+    "tools/bench_sm3_harness.c": "223703c5a0bea1df86258f575e2f776e87d3fbf6617ec646a4d2e134ce4829c2",
+    "c/src/sm3.c": "5b165c63a7747fbad817459e1e4cbff4e884eab53ba5a14539b401a89db2d2dc",
+    "c/src/sm3.h": "a8eb36558ee2680ffb486c81430461406f8a6002a367d3187fa130e3e0d46761",
+    "c/src/sm3x8.c": "6d419a5e838c2402b5021b1bed6f8c4047402848ea2df234555cb210557e8f05",
+    "c/src/sm3x8.h": "94f3bef4ff710d6fff7d3e29633e390778ef0cfd2b4ab90084a01e497da43fc4"
+  },
+  "compiler": {
+    "argv": [
+      "C:/msys64/ucrt64/bin/gcc.exe",
+      "--version"
+    ],
+    "returncode": 0,
+    "stdout": "gcc.exe (Rev3, Built by MSYS2 project) 16.2.0\nCopyright (C) 2026 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
+    "stderr": ""
+  },
+  "build_command": "gcc -std=c11 -O3 -Wall -Wextra -Ic/src tools/bench_sm3_harness.c c/src/sm3.c c/src/sm3x8.c -o build/sm3-throughput-prep-20261004/bench_sm3_harness.exe",
+  "scope": "known-answer and scalar/x8 final-block correctness; sample command not called"
+}

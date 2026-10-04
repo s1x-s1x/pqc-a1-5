@@ -1,0 +1,19 @@
+{
+  "schema": "a15-cuda-selftest-v1",
+  "created_utc": "2026-10-03T19:00:54.867429+00:00",
+  "passed": true,
+  "mock_checks": 10,
+  "native_calls": 0,
+  "real_timing_samples": 0,
+  "tool_sha256": "48f283d86a6d04a3d04b6343c3612f152a6a6559ce03e203707a6d487ebd16fc",
+  "source_sha256": {
+    "tools/bench_cuda.py": "48f283d86a6d04a3d04b6343c3612f152a6a6559ce03e203707a6d487ebd16fc",
+    "tools/bench_cpu.py": "b2164fdba28b7317f9e7bcdec4eca7ea15bb2b31bd5c75536913f5e22afb8b88",
+    "tools/bench_sm3_harness.c": "223703c5a0bea1df86258f575e2f776e87d3fbf6617ec646a4d2e134ce4829c2",
+    "tools/native.py": "4224da773aa621464be7ec2e9cc922459ad56d321ded4fff83f1bc818e313a63",
+    "tools/signing_budget.py": "48e349af38e7ff2c52813dbe46f6af57049a570e164b502147ce8529e4b69c7e",
+    "tools/count_model.py": "6ac77e6b63e6cf9c03818c0e7d349012e16fafc5d1624e59da960564d97fc419",
+    "reference/sm3.py": "43fb6d92afc803f4842bd06dfb00f813c7ed102f1b68d9115c3e0cd6497c2c8e"
+  },
+  "scope": "mock plan/build/freeze/stats/event scope checks; native libraries, subprocess and real timers blocked"
+}

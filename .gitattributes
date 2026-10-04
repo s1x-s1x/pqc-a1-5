@@ -1,0 +1,2 @@
+# Preserve exact bytes for frozen source, evidence and archive SHA256 checks.
+* -text

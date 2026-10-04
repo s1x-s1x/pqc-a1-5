@@ -1,0 +1,46 @@
+// Probe 1: hybrid key exchange only (ECDHE + KEM), no signatures, no certificates.
+// If this panics the construct is in the key schedule; if it passes, the fault is
+// in the authentication half.
+
+attacker[active]
+
+principal Client[
+    knows public labelHs, labelAp
+    generates x, dkPQ
+    gx = PUBKEY(x)
+    ekPQ = PUBKEY(dkPQ)
+]
+
+Client -> Server: gx, ekPQ
+
+principal Server[
+    knows public labelHs, labelAp
+    generates y, r_kem
+    gy = PUBKEY(y)
+    ss_pq, ct = KEM_ENCAP(ekPQ, r_kem)
+    z_ecdh = DH_KEX(gx, y)
+    z_hybrid = CONCAT(z_ecdh, ss_pq)
+    k = HKDF(nil, z_hybrid, labelHs)
+]
+
+Server -> Client: gy, ct
+
+principal Client[
+    z_ecdh_c = DH_KEX(gy, x)
+    ss_pq_c = KEM_DECAP(dkPQ, ct)
+    z_hybrid_c = CONCAT(z_ecdh_c, ss_pq_c)
+    k_c = HKDF(nil, z_hybrid_c, labelHs)
+    generates m
+    c = AEAD_ENC(k_c, nil, m, nil)
+]
+
+Client -> Server: c
+
+principal Server[
+    m_s = AEAD_DEC(k, nil, c, nil)?
+]
+
+queries[
+    confidentiality? m
+    freshness? k_c
+]

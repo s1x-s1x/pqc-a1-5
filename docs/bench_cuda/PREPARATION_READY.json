@@ -1,0 +1,86 @@
+{
+  "schema": "a15-cuda-preparation-v1",
+  "created_utc": "2026-10-04T05:25:54.101648+00:00",
+  "status": "PREPARATION_READY",
+  "passed": true,
+  "native_calls": 0,
+  "real_timing_samples": 0,
+  "scope": "CUDA B1 checked build/plan/freeze/run/worker implemented and 23 mock checks passed; no native GPU calls in this preparation subtask",
+  "tool_sha256": "65cd7ba0b848bf1babc944a882abd2811472fa14783232b73f0307095cbfaf3b",
+  "source_sha256": {
+    "tools/bench_cuda.py": "65cd7ba0b848bf1babc944a882abd2811472fa14783232b73f0307095cbfaf3b",
+    "tools/bench_cpu.py": "77de15b25dc7a5da1e90a206dfbc9a675aab709ffeee86e81f20586ac452e232",
+    "tools/bench_sm3_harness.c": "ddf61075e429aa8e6f3bae4f3eab63ec364d8567196a4c489165684ff4e141ee",
+    "tools/native.py": "4224da773aa621464be7ec2e9cc922459ad56d321ded4fff83f1bc818e313a63",
+    "tools/signing_budget.py": "48e349af38e7ff2c52813dbe46f6af57049a570e164b502147ce8529e4b69c7e",
+    "tools/count_model.py": "6ac77e6b63e6cf9c03818c0e7d349012e16fafc5d1624e59da960564d97fc419",
+    "reference/sm3.py": "43fb6d92afc803f4842bd06dfb00f813c7ed102f1b68d9115c3e0cd6497c2c8e"
+  },
+  "mock": {
+    "path": "docs/bench_cuda/SELFTEST.v7.json",
+    "sha256": "7a38f72330c7d65c59ea67a891928ed446e24a794e19917483701fe231d2b366",
+    "passed": true,
+    "native_calls": 0,
+    "real_timing_samples": 0,
+    "mock_checks": 23,
+    "tool_sha256": "65cd7ba0b848bf1babc944a882abd2811472fa14783232b73f0307095cbfaf3b"
+  },
+  "plan": {
+    "path": "docs/bench_cuda/CUDA_B1.v2.plan.json",
+    "sha256": "c06f9df85fd241bc456259bf8ba644ed6e73c34b3f9f5319feeb95beec38a40b",
+    "suite": "cuda_b1",
+    "normative": true,
+    "cases": 64,
+    "planned_timed_calls": 3155,
+    "planned_signatures_including_warmups": 3073,
+    "threads": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      32,
+      64
+    ],
+    "pid": [
+      1,
+      2,
+      3
+    ]
+  },
+  "interfaces": [
+    "build",
+    "plan",
+    "self-test",
+    "validate",
+    "run",
+    "worker"
+  ],
+  "runner_features": [
+    "persistent signing budget (warmup/fixture/timed attempts)",
+    "immutable input fixtures",
+    "append/fsync JSONL",
+    "end-to-end and kernel raw samples/type7 medianQ1Q3IQR",
+    "partial resume/completed skip integrity",
+    "process timeout/output lock",
+    "physical core affinity/OpenMP placement",
+    "GPU UUID/PCI/device/driver/power-policy identity checks",
+    "independent REF signature/subtree validation"
+  ],
+  "runtime_acceptance": "root-managed independent CPU/CUDA correctness and final freezes; actual timing launch deferred",
+  "documents": [
+    {
+      "path": "docs/bench_cuda/PREPARATION.md",
+      "sha256": "fa8257af8d4ede886e92120cc17dc6339fac83183f47d7642528d0e74ed4973c"
+    },
+    {
+      "path": "docs/bench_cpu/FREEZE.example.json",
+      "sha256": "b9cb54f6c9fe2fa724fe1287958c34449788cf89a0244240feda095c9344e6a5"
+    },
+    {
+      "path": "docs/bench_cuda/FREEZE.example.json",
+      "sha256": "884f229bc96b8bebdda935e9b7be95602429a18214e12f24f7f9f541d4e03df0"
+    }
+  ],
+  "formal_performance_started": false
+}

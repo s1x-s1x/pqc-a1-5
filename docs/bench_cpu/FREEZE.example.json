@@ -1,0 +1,15 @@
+{
+  "schema": "a15-cpu-freeze-v1",
+  "final": false,
+  "correctness_passed": false,
+  "library_sha256": "REPLACE_WITH_FINAL_LIBRARY_SHA256",
+  "build_record_sha256": "REPLACE_WITH_CHECKED_BUILD_RECORD_SHA256",
+  "source_sha256": {},
+  "correctness_evidence": {},
+  "plans": {
+    "r3": {"path": "docs/bench_cpu/R3.plan.json", "sha256": "REPLACE_WITH_PLAN_SHA256"},
+    "r4": {"path": "docs/bench_cpu/R4.plan.json", "sha256": "REPLACE_WITH_PLAN_SHA256"},
+    "r5": {"path": "docs/bench_cpu/R5.pow2.plan.json", "sha256": "REPLACE_WITH_PLAN_SHA256"}
+  },
+  "note": "Example only: the root task supplies complete hashes(BUILD_FILES + TOOL_FILES), exact checked build-record/plan hashes and reviewed correctness evidence before final=true. Parent and worker gate runtime plan suite+digest before native/affinity work. This file intentionally fails the formal timing gate."
+}
