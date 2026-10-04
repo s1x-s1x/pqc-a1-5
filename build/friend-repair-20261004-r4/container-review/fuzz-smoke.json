@@ -1,0 +1,13 @@
+{
+  "schema": "a15-parser-fuzz-smoke-v1",
+  "passed": true,
+  "seed": 20261004,
+  "parser_inputs": 1008,
+  "native_cache_mutations": 0,
+  "script_sha256": "961b4b1bd4c31db63dc7a390ffb64a8a3073cfd05c042616f0fdc4992bfab90d",
+  "library_sha256": null,
+  "created_utc": "2026-10-04T16:26:54.916152+00:00",
+  "formal_performance_started": false,
+  "real_timing_samples": 0,
+  "scope": "Bounded deterministic mutations; receiver callbacks inert; optional real toy cache rejection/state preservation. No exhaustive fuzz claim."
+}

@@ -14,6 +14,7 @@ NAMES = {
     "SLH-DSA-SM3-TOY": 201,
 }
 PREHASH = {"sha256": 1, "sha512": 2, "shake128": 3, "shake256": 4, "sm3": 5}
+PREHASH_BYTES = {1: 32, 2: 64, 3: 32, 4: 64, 5: 32}
 ABI_VERSION = 0x00010001
 PARAM_SHAPES = {1: (9, 12, 14, 7856), 2: (3, 6, 33, 17088),
                 3: (22, 24, 6, 3856), 101: (9, 12, 14, 7856),
@@ -276,8 +277,15 @@ class NativeSlhDsa:
         data, context = _bytes(data, "message/digest"), _bytes(context, "context")
         if len(context) > 255:
             raise ValueError("context must contain at most 255 bytes")
-        if ending == "digest" and len(data) != (64 if algorithm == 2 else 32):
-            raise ValueError("digest length does not match prehash algorithm")
+        if ending == "digest":
+            expected = PREHASH_BYTES[algorithm]
+            if len(data) != expected:
+                raise ValueError("digest length does not match prehash algorithm")
+            # Older optional-query ABIs keep the explicit five-algorithm contract.
+            # A present query must agree before any signing/verification is called.
+            query = getattr(self.lib, "slh_prehash_bytes", None)
+            if query is not None and query(algorithm) != expected:
+                raise RuntimeError("native prehash length contract mismatch")
         signing = sk is not None
         name = "slh_" + ("sign_" if signing else "verify_") + ending + ("_checked" if signing else "")
         function = getattr(self.lib, name, None)

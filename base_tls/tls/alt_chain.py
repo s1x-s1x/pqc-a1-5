@@ -199,9 +199,14 @@ def issue_alt_certificate(*, name: str, signer, secret_key, issuer_public_key: b
                                                                          bit_string(signature))], **issue)
         if pre_tbs(final.tbs_certificate_bytes) != to_sign:
             raise ValueError("preTBS changed during final certificate assembly")
-    except BaseException:
+    except BaseException as original:
         if receipt is not None:
-            after_sign(receipt, None)
+            try:
+                after_sign(receipt, None)
+            except Exception as finalization:
+                # The reservation remains charged even when its finalizer fails.
+                # Preserve the signing/assembly error for callers and traceback.
+                original.add_note("CA budget finalization also failed: " + str(finalization))
         raise
     if receipt is not None:
         after_sign(receipt, signature)

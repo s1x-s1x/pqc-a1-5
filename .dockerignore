@@ -1,0 +1,16 @@
+.git
+build
+runtime
+.repro-artifacts
+.venv
+**/__pycache__
+**/.pytest_cache
+**/.deps-falcon
+**/.deps
+**/.deps-falcon-*
+validation
+report-data
+bench-out
+*.sqlite
+.env
+.env.*

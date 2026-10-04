@@ -748,10 +748,18 @@ class ParallelChecks(unittest.TestCase):
         database, ledger = self.real_ledger()
         statuses = ledger.status()
         with closing(sqlite3.connect(database)) as db:
+            # The managed ledger now rejects direct writes. Remove and restore
+            # the guards only to model corruption in an external DB editor;
+            # the settlement must still reject the corrupted full history.
+            triggers = db.execute("SELECT name,sql FROM sqlite_master WHERE type='trigger' AND tbl_name='reservations'").fetchall()
+            for name, _ in triggers:
+                db.execute(f"DROP TRIGGER {name}")
             db.execute("UPDATE reservations SET ordinal_text='4' WHERE ordinal_text='1'")
+            for _, definition in triggers:
+                db.execute(definition)
             db.commit()
         with patch.object(pc, "SigningBudget", REAL_BUDGET):
-            with self.assertRaisesRegex(ValueError, "ordinal reconciliation failed"):
+            with self.assertRaisesRegex((ValueError, RuntimeError), "ordinal reconciliation failed"):
                 REAL_SETTLE(database, self.fixture.root / "wrong-ordinal.sqlite", ledger.ledger_uuid, statuses)
 
 

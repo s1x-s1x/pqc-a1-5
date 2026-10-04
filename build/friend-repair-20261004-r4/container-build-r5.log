@@ -1,0 +1,90 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.33kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/a15-python-base:locked-5024f48b
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 213B done
+#3 DONE 0.0s
+
+#4 [1/8] FROM docker.io/library/a15-python-base:locked-5024f48b
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 183.37kB 0.1s done
+#5 DONE 0.1s
+
+#6 [2/8] RUN rm -f /etc/apt/sources.list.d/debian.sources &&     printf '%s\n' 'deb [check-valid-until=no] https://snapshot.debian.org/archive/debian/20261003T000000Z/ bookworm main' > /etc/apt/sources.list &&     apt-get update && apt-get install -y --no-install-recommends gcc g++ make libc6-dev binutils ca-certificates &&     rm -rf /var/lib/apt/lists/*
+#6 CACHED
+
+#7 [3/8] WORKDIR /work/pqc-a1-5
+#7 CACHED
+
+#8 [4/8] COPY base_tls/requirements.lock.txt /tmp/tls.lock
+#8 CACHED
+
+#9 [5/8] COPY reference/requirements.lock.txt /tmp/reference.lock
+#9 CACHED
+
+#10 [6/8] RUN python -m pip install --no-cache-dir --require-hashes -r /tmp/tls.lock &&     python -m pip install --no-cache-dir --require-hashes -r /tmp/reference.lock
+#10 CACHED
+
+#11 [7/8] COPY . .
+#11 DONE 1.1s
+
+#12 [8/8] RUN python tools/install_falcon_provider.py &&     OMP_NUM_THREADS=2 OMP_DYNAMIC=FALSE make -C c OUT=../build/container-native CFLAGS=-O3 all test repair-test prehash-test guard-test cuda-cleanup-host-test
+#12 22.55 {"passed": true, "provider": "/work/pqc-a1-5/base_tls/.deps-falcon", "checks": 2}
+#12 22.56 make: Entering directory '/work/pqc-a1-5/c'
+#12 22.57 mkdir -p ../build/container-native
+#12 22.57 rm -f ../build/container-native/.a15-config-*
+#12 22.58 touch ../build/container-native/.a15-config-a556e00456b706c2811361d9baf82229544bd41b868c9258c8487b9662c17aa7
+#12 22.58 mkdir -p ../build/container-native
+#12 22.58 cc -std=c11 -Wall -Wextra -Wno-misleading-indentation -fPIC -fopenmp -Iinclude -Isrc -I../third_party/slhdsa-c -O3 -DSLH_RELEASE_BUILD -shared src/engine.c src/sm3.c src/sm3x8.c ../third_party/slhdsa-c/sha2_256.c ../third_party/slhdsa-c/sha2_512.c ../third_party/slhdsa-c/sha3_api.c ../third_party/slhdsa-c/sha3_f1600.c src/sm3_cuda_stub.c   -o ../build/container-native/libslhdsa_sm3.so
+#12 25.01 mkdir -p ../build/container-native
+#12 25.01 cc -std=c11 -Wall -Wextra -Wno-misleading-indentation -fPIC -fopenmp -Iinclude -Isrc -I../third_party/slhdsa-c -O3 src/engine.c src/sm3.c src/sm3x8.c ../third_party/slhdsa-c/sha2_256.c ../third_party/slhdsa-c/sha2_512.c ../third_party/slhdsa-c/sha3_api.c ../third_party/slhdsa-c/sha3_f1600.c src/sm3_cuda_stub.c tests/test_native.c   -o ../build/container-native/test_native
+#12 27.51 A15_TEST_CACHE=../build/container-native/test.cache ../build/container-native/test_native
+#12 28.32 native argument guards PASS
+#12 28.32 pid 201 native checks PASS
+#12 28.32 pid 101 native checks PASS
+#12 28.32 pid 102 native checks PASS
+#12 28.32 native tests PASS
+#12 28.32 mkdir -p ../build/container-native
+#12 28.32 cc -std=c11 -Wall -Wextra -Wno-misleading-indentation -fPIC -fopenmp -Iinclude -Isrc -I../third_party/slhdsa-c -O3 src/sm3.c src/sm3x8.c ../third_party/slhdsa-c/sha2_256.c ../third_party/slhdsa-c/sha2_512.c ../third_party/slhdsa-c/sha3_api.c ../third_party/slhdsa-c/sha3_f1600.c src/sm3_cuda_stub.c tests/test_repair.c   -o ../build/container-native/test_repair
+#12 30.93 ../build/container-native/test_repair ../build/container-native/repair.cache
+#12 31.08 repair midstate full256/boundaries/thread-copy: 224 comparisons PASS
+#12 31.08 repair capacities/private-publication/reordered-tasks/changing-cache/failure-wipes: PASS; 169647 observed wipes
+#12 31.08 mkdir -p ../build/container-native
+#12 31.08 cc -std=c11 -Wall -Wextra -Wno-misleading-indentation -fPIC -fopenmp -Iinclude -Isrc -I../third_party/slhdsa-c -O3 src/engine.c src/sm3.c src/sm3x8.c ../third_party/slhdsa-c/sha2_256.c ../third_party/slhdsa-c/sha2_512.c ../third_party/slhdsa-c/sha3_api.c ../third_party/slhdsa-c/sha3_f1600.c src/sm3_cuda_stub.c tests/test_prehash.c   -o ../build/container-native/test_prehash
+#12 33.63 ../build/container-native/test_prehash
+#12 35.09 five prehash abc known answers/lengths PASS
+#12 35.09 prehash id=1 backend=1 message/digest/DER/internal/mode/context/length/counters PASS
+#12 35.09 prehash id=2 backend=1 message/digest/DER/internal/mode/context/length/counters PASS
+#12 35.09 prehash id=3 backend=1 message/digest/DER/internal/mode/context/length/counters PASS
+#12 35.09 prehash id=4 backend=1 message/digest/DER/internal/mode/context/length/counters PASS
+#12 35.09 prehash id=5 backend=1 message/digest/DER/internal/mode/context/length/counters PASS
+#12 35.09 prehash id=1 backend=2 message/digest/DER/internal/mode/context/length/counters PASS
+#12 35.09 prehash id=2 backend=2 message/digest/DER/internal/mode/context/length/counters PASS
+#12 35.09 prehash id=3 backend=2 message/digest/DER/internal/mode/context/length/counters PASS
+#12 35.09 prehash id=4 backend=2 message/digest/DER/internal/mode/context/length/counters PASS
+#12 35.09 prehash id=5 backend=2 message/digest/DER/internal/mode/context/length/counters PASS
+#12 35.09 native prehash checks PASS
+#12 35.10 python3 ../tools/check_native_guards.py --cc 'cc' --library ../build/container-native/libslhdsa_sm3.so
+#12 36.12 native guard source checks PASS: two-macro test gate, release exclusion, five calculation sites
+#12 36.12 native guard compiler checks PASS: release code erased; four bad builds rejected; release symbols clean
+#12 36.14 mkdir -p ../build/container-native
+#12 36.14 g++ -std=c++14 -O2 -Wall -Wextra -Isrc tests/test_cuda_cleanup_host.cpp -o ../build/container-native/test_cuda_cleanup_host
+#12 36.80 ../build/container-native/test_cuda_cleanup_host
+#12 36.80 CUDA cleanup host fake-driver: 17 policy cases PASS; cryptographic_abi_calls=0; real_timing_samples=0; real GPU fault behavior untested
+#12 36.80 make: Leaving directory '/work/pqc-a1-5/c'
+#12 DONE 37.0s
+
+#13 exporting to image
+#13 exporting layers
+#13 exporting layers 1.7s done
+#13 writing image sha256:95ac0e5eeadb3b5e32af2d1b393b3497629c24b326ecd2dcfc73b6add676079e done
+#13 naming to docker.io/library/a15-friend-correctness done
+#13 DONE 1.7s

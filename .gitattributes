@@ -2,3 +2,15 @@
 * -text
 # Frozen compiler output, historical sources and raw logs keep their original whitespace.
 build/repair-staging-20261004-*/** -whitespace
+# These copies preserve the exact original milestone/report bytes.
+docs/history/** -whitespace
+# NVCC intermediates preserved as evidence are compiler output, not authored C++.
+**/cuda-resources/*.cudafe1.cpp linguist-generated=true
+**/cuda-resources/*.cudafe1.stub.c linguist-generated=true
+**/cuda-resources/*.fatbin.c linguist-generated=true
+**/cuda-resources/** -whitespace
+# Locked dependency records keep CRLF bytes for their recorded hashes.
+reference/requirements.lock.txt whitespace=cr-at-eol
+# Development evidence and first-failure logs retain their captured bytes.
+build/friend-repair-20261004/** -whitespace
+build/friend-repair-20261004-r4/** -whitespace

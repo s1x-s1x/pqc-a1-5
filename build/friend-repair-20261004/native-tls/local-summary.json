@@ -1,0 +1,26 @@
+{
+  "schema": "a15-friend-native-tls-repair-local-v1",
+  "formal_performance_samples": 0,
+  "native_slh_library_loaded": false,
+  "historical_freezes_changed": false,
+  "mock-ca-flight": {
+    "tests": 44,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0
+  },
+  "streaming-functional": {
+    "tests": 18,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0
+  },
+  "adapter": {
+    "scope": "mock ABI adapter regression, no native library or crypto operations",
+    "tests": 10,
+    "passed": true,
+    "failures": [],
+    "errors": [],
+    "formal_performance_samples": 0
+  }
+}

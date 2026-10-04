@@ -1,0 +1,41 @@
+usage: python.exe -m unittest [-h] [--output OUTPUT]
+python.exe -m unittest: error: unrecognized arguments: discover -s ops -p test_*.py
+.....................................................................................................................................E...........E
+======================================================================
+ERROR: test_real_sqlite_settlement_rejects_nonconsecutive_charge_ordinal (test_parallel_correctness.ParallelChecks.test_real_sqlite_settlement_rejects_nonconsecutive_charge_ordinal)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\23380\Desktop\�������\pqc-a1-5\ops\test_parallel_correctness.py", line 751, in test_real_sqlite_settlement_rejects_nonconsecutive_charge_ordinal
+    db.execute("UPDATE reservations SET ordinal_text='4' WHERE ordinal_text='1'")
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such function: _a15_step
+
+======================================================================
+ERROR: test_project_repair_audit (unittest.loader._FailedTest.test_project_repair_audit)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_project_repair_audit
+Traceback (most recent call last):
+  File "C:\Users\23380\AppData\Local\Programs\Python\Python313\Lib\unittest\loader.py", line 403, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "C:\Users\23380\AppData\Local\Programs\Python\Python313\Lib\unittest\loader.py", line 346, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "C:\Users\23380\Desktop\�������\pqc-a1-5\ops\test_project_repair_audit.py", line 281, in <module>
+    output = parser.parse_args().output
+             ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\23380\AppData\Local\Programs\Python\Python313\Lib\argparse.py", line 1930, in parse_args
+    self.error(msg)
+    ~~~~~~~~~~^^^^^
+  File "C:\Users\23380\AppData\Local\Programs\Python\Python313\Lib\argparse.py", line 2686, in error
+    self.exit(2, _('%(prog)s: error: %(message)s\n') % args)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\23380\AppData\Local\Programs\Python\Python313\Lib\argparse.py", line 2673, in exit
+    _sys.exit(status)
+    ~~~~~~~~~^^^^^^^^
+SystemExit: 2
+
+
+----------------------------------------------------------------------
+Ran 146 tests in 53.021s
+
+FAILED (errors=2)

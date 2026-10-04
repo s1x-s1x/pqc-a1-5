@@ -1,0 +1,43 @@
+check-like definitions under tls/: 117
+  live from implementation or drivers : 89
+  reached only through an interface   : 18
+  called by a framework               : 10
+  referenced only from tests/         : 0
+  live only via getattr               : 0
+  live only via an undeclared getattr : 0
+  referenced only through a variable  : 0
+  referenced only from unreachable code: 0
+  referenced nowhere                  : 0
+  declared entries / reachable functions: 8 / 273
+  of those: sole-implementation variable calls : 0
+
+interface     tls/classical/ecdh.py:71 EcdheKeyPair.exchange  -- configured ECDHE key pair in client/server
+interface     tls/config.py:111 HybridTLSConfig.cipher_suite_id  -- configured suite property in client/server
+interface     tls/handshake/client.py:148 HybridClient.receive_server_hello  -- client driver consumes the server hello
+interface     tls/handshake/client.py:270 HybridClient.receive_server_flight  -- client driver consumes authenticated records
+interface     tls/handshake/client.py:604 HybridClient.send_client_finished  -- connection driver completes the client flight
+interface     tls/handshake/server.py:66 HybridServer.receive_client_hello  -- server driver consumes the client hello
+interface     tls/handshake/server.py:186 HybridServer.send_authenticated_flight  -- server driver emits authenticated records
+interface     tls/handshake/server.py:282 HybridServer.receive_client_finished  -- connection driver verifies client Finished
+interface     tls/handshake/state.py:110 HandshakeState.exporter_secret  -- connection driver exports negotiated key material
+interface     tls/pq/slhdsa_sm3.py:60 SlhDsaSm3.keygen  -- configured SLH signer key generation through a variable receiver
+interface     tls/pq/slhdsa_sm3.py:70 SlhDsaSm3.sign  -- configured SLH signer signing through a variable receiver
+interface     tls/pq/wots_xmss.py:295 WotsPlus.keygen  -- called by the XMSS backend
+interface     tls/pq/wots_xmss.py:328 WotsPlus.sign  -- called by the XMSS backend
+interface     tls/pq/wots_xmss.py:631 XmssSignatureBackend.sign  -- called through the configured signer
+interface     tls/record/aead.py:50 AeadSuite.new  -- transcript instantiates the configured AEAD suite
+interface     tls/record/aead.py:135 RecordLayer.seal  -- configured record layer protects handshake/application fragments
+interface     tls/record/aead.py:146 RecordLayer.open  -- connection/handshake decrypts incoming records
+interface     tls/wire.py:151 Reader.expect_end  -- wire decoders enforce exact consumption
+exempt        tls/config.py:68 HybridTLSConfig.__post_init__  -- called by @dataclass after __init__
+exempt        tls/credentials.py:46 ServerCredentials.__init__  -- called by the constructor of the class that defines it
+exempt        tls/pq/kem.py:58 MlKem.__init__  -- called by the constructor of the class that defines it
+exempt        tls/pq/signature.py:70 MlDsa.__init__  -- called by the constructor of the class that defines it
+exempt        tls/pq/signature.py:110 Falcon.__init__  -- called by the constructor of the class that defines it
+exempt        tls/pq/slhdsa_sm3.py:27 SlhDsaSm3.__init__  -- called by the constructor of the class that defines it
+exempt        tls/pq/wots_xmss.py:168 WotsPlus.__init__  -- called by the constructor of the class that defines it
+exempt        tls/pq/wots_xmss.py:426 XmssSecretKey.__post_init__  -- called by @dataclass after __init__
+exempt        tls/pq/wots_xmss.py:482 XmssSignatureBackend.__init__  -- called by the constructor of the class that defines it
+exempt        tls/record/aead.py:79 RecordLayer.__init__  -- called by the constructor of the class that defines it
+
+PASS: every check under tls/ is reachable from a declared entry, a reviewed interface binding, or a validated dispatch site (limited static analysis; see the docstring).

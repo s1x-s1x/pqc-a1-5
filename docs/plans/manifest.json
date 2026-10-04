@@ -15,9 +15,13 @@
   },
   {
     "file": "A1-5_设计报告框架_150页.md",
-    "sha256": "4eaea9efa63a2d37c63354c6091ff78101e00573823f56fc11a3451ee31202d2",
-    "bytes": 155781,
-    "origin": "user workspace",
-    "snapshot_utc": "2026-10-03T16:20:11.403850+00:00"
+    "sha256": "9ea5e2901df2f5586e7c8cbfc1b81cff1f106a4b29a53bbb93e7d96c36c2bcb3",
+    "bytes": 4231,
+    "origin": "project-aligned revision; original snapshot preserved in docs/history",
+    "snapshot_utc": "2026-10-03T16:20:11.403850+00:00",
+    "historical_file": "../history/A1-5_设计报告框架_150页_20261003原稿.md",
+    "historical_sha256": "4eaea9efa63a2d37c63354c6091ff78101e00573823f56fc11a3451ee31202d2",
+    "historical_bytes": 155781,
+    "revision_date": "2026-10-04"
   }
 ]

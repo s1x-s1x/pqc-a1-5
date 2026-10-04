@@ -69,7 +69,11 @@ def main():
         base = ["make", "CC=gcc", "NVCC=nvcc", "CUDA_ARCH=compute_86", "CFLAGS=-O3"]
         prefix = "../build/" + out.name + "/"
         run("release-kernels-faults-guards", [*base, "CUDA=1", "OUT=" + prefix + "release",
-             "all", "repair-test", "cuda-test", "cuda-fault-test", "guard-test", "cuda-resource-report"], ROOT / "c")
+             "all", "repair-test", "cuda-test", "cuda-fault-test", "cuda-cleanup-host-test", "guard-test", "cuda-resource-report"], ROOT / "c")
+        manifest["cleanup_fault_scope"] = {
+            "driver": "deterministic host callbacks exercising the production ownership policy",
+            "real_gpu_driver_faults_injected": False,
+            "policy": "checked destructor retry; persistent wipe/sync/free failure retains allocation and poisons subsequent GPU work until process exit; no device reset"}
         counter_log = run("counter-kernels", [*base, "CUDA=1", "COUNTERS=1", "OUT=" + prefix + "counters",
              "all", "cuda-test"], ROOT / "c")
         lines = counter_log.read_text(encoding="utf8").splitlines()

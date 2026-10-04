@@ -1,0 +1,9 @@
+mkdir -p ../build/friend-cuda-native-20261004-r5/disabled
+rm -f ../build/friend-cuda-native-20261004-r5/disabled/.a15-config-*
+touch ../build/friend-cuda-native-20261004-r5/disabled/.a15-config-242ede072258ff709130491ee91e1eff52bbe0d7d9005af37eea654fec9166b8
+mkdir -p ../build/friend-cuda-native-20261004-r5/disabled
+gcc -std=c11 -Wall -Wextra -Wno-misleading-indentation -fPIC -fopenmp -Iinclude -Isrc -I../third_party/slhdsa-c -DSLH_COUNTERS -O3 -DSLH_RELEASE_BUILD -shared src/engine.c src/sm3.c src/sm3x8.c ../third_party/slhdsa-c/sha2_256.c ../third_party/slhdsa-c/sha2_512.c ../third_party/slhdsa-c/sha3_api.c ../third_party/slhdsa-c/sha3_f1600.c src/sm3_cuda_stub.c   -o ../build/friend-cuda-native-20261004-r5/disabled/libslhdsa_sm3.so
+mkdir -p ../build/friend-cuda-native-20261004-r5/disabled
+gcc -std=c11 -Wall -Wextra -Wno-misleading-indentation -fPIC -fopenmp -Iinclude -Isrc -I../third_party/slhdsa-c -DSLH_COUNTERS -O3 src/engine.c src/sm3.c src/sm3x8.c ../third_party/slhdsa-c/sha2_256.c ../third_party/slhdsa-c/sha2_512.c ../third_party/slhdsa-c/sha3_api.c ../third_party/slhdsa-c/sha3_f1600.c src/sm3_cuda_stub.c tests/test_cuda.c   -o ../build/friend-cuda-native-20261004-r5/disabled/test_cuda
+A15_TEST_CACHE_DIR=../build/friend-cuda-native-20261004-r5/disabled ../build/friend-cuda-native-20261004-r5/disabled/test_cuda
+{"passed":true,"cuda_available":false,"scope":"explicit-rejection-only","timed":false}

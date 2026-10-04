@@ -1,0 +1,114 @@
+{"phase": "fresh-native-cpu"}
+{"phase": "native-sanitizers"}
+{"phase": "native-adapter"}
+{"phase": "budget"}
+{"phase": "review-matrix"}
+{"phase": "bench-resume"}
+{"phase": "cpu-mock"}
+{"phase": "cuda-mock"}
+{"phase": "operations-test_audit_parallel_correctness"}
+{"phase": "operations-test_audit_repair_delivery"}
+{"phase": "operations-test_package_project_repair"}
+lean_unpack_without_residue)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/work/pqc-a1-5/ops/test_package_project_repair.py", line 76, in setUp
+    subprocess.run(['git','init','-q'],cwd=self.root,check=True,capture_output=True)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/subprocess.py", line 555, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/subprocess.py", line 1040, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        pass_fds, cwd, env,
+                        ^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+                        gid, gids, uid, umask,
+                        ^^^^^^^^^^^^^^^^^^^^^^
+                        start_new_session, process_group)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/subprocess.py", line 1992, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'git'
+
+======================================================================
+ERROR: test_windows_absolute_external_rejected (__main__.PackageRepair.test_windows_absolute_external_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/work/pqc-a1-5/ops/test_package_project_repair.py", line 76, in setUp
+    subprocess.run(['git','init','-q'],cwd=self.root,check=True,capture_output=True)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/subprocess.py", line 555, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/subprocess.py", line 1040, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        pass_fds, cwd, env,
+                        ^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+                        gid, gids, uid, umask,
+                        ^^^^^^^^^^^^^^^^^^^^^^
+                        start_new_session, process_group)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/subprocess.py", line 1992, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'git'
+
+======================================================================
+ERROR: test_wrong_external_hash_rejected (__main__.PackageRepair.test_wrong_external_hash_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/work/pqc-a1-5/ops/test_package_project_repair.py", line 76, in setUp
+    subprocess.run(['git','init','-q'],cwd=self.root,check=True,capture_output=True)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/subprocess.py", line 555, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/subprocess.py", line 1040, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        pass_fds, cwd, env,
+                        ^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+                        gid, gids, uid, umask,
+                        ^^^^^^^^^^^^^^^^^^^^^^
+                        start_new_session, process_group)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/subprocess.py", line 1992, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'git'
+
+======================================================================
+ERROR: test_wrong_external_size_rejected (__main__.PackageRepair.test_wrong_external_size_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/work/pqc-a1-5/ops/test_package_project_repair.py", line 76, in setUp
+    subprocess.run(['git','init','-q'],cwd=self.root,check=True,capture_output=True)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/subprocess.py", line 555, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/subprocess.py", line 1040, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        pass_fds, cwd, env,
+                        ^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+                        gid, gids, uid, umask,
+                        ^^^^^^^^^^^^^^^^^^^^^^
+                        start_new_session, process_group)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/subprocess.py", line 1992, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'git'
+
+----------------------------------------------------------------------
+Ran 19 tests in 0.136s
+
+FAILED (errors=19)
+
+{"schema": "a15-offline-package-repair-synthetic-v1", "passed": false, "tests": 19, "failures": 0, "errors": 19, "source_sha256": "3d47ccbdea1bee0a03ce7bfcc57919bcaec82352f6faaaa3116d462f98c4b7d6", "native_calls": 0, "real_timing_samples": 0, "actual_project_acceptance": false, "notes": "Real temporary Git repositories and a synthetic read-only hash audit. No real package is published."}
+
+{"passed": false, "steps": 11, "error": "ValueError: Review check failed: operations-test_package_project_repair", "real_timing_samples": 0}

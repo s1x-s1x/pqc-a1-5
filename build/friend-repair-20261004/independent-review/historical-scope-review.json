@@ -1,0 +1,103 @@
+{
+  "schema": "a15-historical-matrix-scope-review-v1",
+  "native_calls": 0,
+  "real_timing_samples": 0,
+  "rows": [
+    {
+      "backend": "cpu",
+      "historical_planned_cases": 3471,
+      "historical_records": 4433,
+      "original_project_commit": "808d34c938725cf9b1edb7b2452d550afa396455",
+      "historical_artifacts_sha256": {
+        "build/repair-staging-20261004-r3/validation/cpu-full-repair-r3/summary.json": "de4533db7d9b7d7b926ca690c0ad29206802a5807ce2462fa18d6b78a56da288",
+        "build/repair-staging-20261004-r3/validation/cpu-full-repair-r3/cases.jsonl": "efe851cc4fa6b2cdfb0c908cca669fbca2496590800a69d838379162f1ccccde",
+        "build/repair-staging-20261004-r3/validation/cpu-full-repair-r3/manifest.json": "15bd299d2e78a5674ae396b8e1070130e65eddff2ecb2c3151fc40e7578538b1"
+      },
+      "recorded_libraries": {
+        "lib0-ebc18f682915": {
+          "path": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/build/native-repair-r3/counters/libslhdsa_sm3.so",
+          "sha256": "ebc18f6829157cbd04feed9f831d271f661124dde5d05cebe5ddaf01ba0d2ea8"
+        }
+      },
+      "changed_sources": {
+        "c/Makefile": {
+          "historical_sha256": "ceb01df11af00548d41cfb313878ca5bd52f08336dd2647d8e04adaddade9b1f",
+          "current_sha256": "11e658ff0dea28d4c9fc50f8c8dd7321414cb29d98a66b956cab75bafb6f14f2"
+        },
+        "tools/native.py": {
+          "historical_sha256": "2bd269ee8f4b091d6da86e73e5a18e6c0e091800c904329fb91f34f16a892fd9",
+          "current_sha256": "9e2635db014b9fccb5ea1bff5eeb0b5f003a81964a31233a7248e13d8b0be5eb"
+        },
+        "tools/signing_budget.py": {
+          "historical_sha256": "db3fe3982dd66bbef74dedbb273e1bfd136213563d324ba5807c13871e205d1f",
+          "current_sha256": "8ff1cad39a5d27e37784b16333d14f5b50c24b57640c4c72d907fdc609d10f86"
+        }
+      },
+      "native_sources_compared": 13,
+      "changed_native_sources": {
+        "c/Makefile": {
+          "historical_sha256": "ceb01df11af00548d41cfb313878ca5bd52f08336dd2647d8e04adaddade9b1f",
+          "current_sha256": "11e658ff0dea28d4c9fc50f8c8dd7321414cb29d98a66b956cab75bafb6f14f2"
+        }
+      },
+      "native_core_hash_match": false,
+      "full_matrix_rerun": false,
+      "scope": "Historical native core may be inherited only when its exact recorded source/build/library identity matches; changed Python/TLS/runner require separate new evidence. No current full-source matrix claim."
+    },
+    {
+      "backend": "cuda",
+      "historical_planned_cases": 1789,
+      "historical_records": 2541,
+      "original_project_commit": "808d34c938725cf9b1edb7b2452d550afa396455",
+      "historical_artifacts_sha256": {
+        "build/repair-staging-20261004-r3/validation/cuda-full-repair-r3/summary.json": "08e3a20e5879ed67d555b72bc43cc7563f28a466e44d72338fae85adaeb06c75",
+        "build/repair-staging-20261004-r3/validation/cuda-full-repair-r3/cases.jsonl": "c7d8f8624c7c92512710eb3529c918d72a9eda830b451f059b4616225185078a",
+        "build/repair-staging-20261004-r3/validation/cuda-full-repair-r3/manifest.json": "e18db7baf8836f29f5b62413b7fe0807ab971de90d96467f302d58f56a40dba2"
+      },
+      "recorded_libraries": {
+        "cuda-0-cf70d53e312f": {
+          "path": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/build/cuda-native-repair-r3/counters/libslhdsa_sm3.so",
+          "sha256": "cf70d53e312f7f4cad2dd3954f1f013a3a5bf9d2a1478abf35f205f85e6ebe38",
+          "role": "cuda"
+        },
+        "disabled-1-ebc18f682915": {
+          "path": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/build/cuda-native-repair-r3/disabled/libslhdsa_sm3.so",
+          "sha256": "ebc18f6829157cbd04feed9f831d271f661124dde5d05cebe5ddaf01ba0d2ea8",
+          "role": "disabled"
+        }
+      },
+      "changed_sources": {
+        "c/Makefile": {
+          "historical_sha256": "ceb01df11af00548d41cfb313878ca5bd52f08336dd2647d8e04adaddade9b1f",
+          "current_sha256": "11e658ff0dea28d4c9fc50f8c8dd7321414cb29d98a66b956cab75bafb6f14f2"
+        },
+        "tools/native.py": {
+          "historical_sha256": "2bd269ee8f4b091d6da86e73e5a18e6c0e091800c904329fb91f34f16a892fd9",
+          "current_sha256": "9e2635db014b9fccb5ea1bff5eeb0b5f003a81964a31233a7248e13d8b0be5eb"
+        },
+        "tools/signing_budget.py": {
+          "historical_sha256": "db3fe3982dd66bbef74dedbb273e1bfd136213563d324ba5807c13871e205d1f",
+          "current_sha256": "8ff1cad39a5d27e37784b16333d14f5b50c24b57640c4c72d907fdc609d10f86"
+        },
+        "c/src/sm3_cuda.cu": {
+          "historical_sha256": "97b2d7f9a4ca92eb412bc94b0636cc47b8bcf89c8db3dfdbd56b234dbc3c1d25",
+          "current_sha256": "9f7cbfedc974060cc70e30c9a1c99c8a5f290e73abd8695b18a8822634f90309"
+        }
+      },
+      "native_sources_compared": 21,
+      "changed_native_sources": {
+        "c/Makefile": {
+          "historical_sha256": "ceb01df11af00548d41cfb313878ca5bd52f08336dd2647d8e04adaddade9b1f",
+          "current_sha256": "11e658ff0dea28d4c9fc50f8c8dd7321414cb29d98a66b956cab75bafb6f14f2"
+        },
+        "c/src/sm3_cuda.cu": {
+          "historical_sha256": "97b2d7f9a4ca92eb412bc94b0636cc47b8bcf89c8db3dfdbd56b234dbc3c1d25",
+          "current_sha256": "9f7cbfedc974060cc70e30c9a1c99c8a5f290e73abd8695b18a8822634f90309"
+        }
+      },
+      "native_core_hash_match": false,
+      "full_matrix_rerun": false,
+      "scope": "Historical native core may be inherited only when its exact recorded source/build/library identity matches; changed Python/TLS/runner require separate new evidence. No current full-source matrix claim."
+    }
+  ]
+}

@@ -57,8 +57,22 @@ class HybridTLSConfig:
     require_alt_chain: bool = False
     alt_fixture: str | None = None
     extra: dict[str, object] = field(default_factory=dict)
+    #: Receiver resource budgets are independent of each message's 1 MiB cap
+    #: and the transport deadline. Defaults accommodate all current profiles
+    #: while bounding tiny or heavily padded authenticated fragments.
+    server_flight_max_records: int = 4096
+    server_flight_max_plaintext_bytes: int = 4 << 20
+    server_flight_max_ciphertext_bytes: int = 5 << 20
+    server_flight_max_audit_entries: int = 4096
 
     def __post_init__(self) -> None:
+        for name in (
+            "server_flight_max_records", "server_flight_max_plaintext_bytes",
+            "server_flight_max_ciphertext_bytes", "server_flight_max_audit_entries",
+        ):
+            value = getattr(self, name)
+            if type(value) is not int or value <= 0:
+                raise ValueError(f"{name} must be a positive integer")
         if self.pq_signer == "slh-dsa-sm3-128-24":
             raise ValueError("limited-use 128-24 is reserved for offline CA signing")
         if (self.alt_chain is not None or self.require_alt_chain or self.alt_fixture is not None) and not self.x509:
@@ -127,4 +141,8 @@ class HybridTLSConfig:
             "x509": str(self.x509).lower(),
             "alt_chain": self.alt_chain or "(none)",
             "require_alt_chain": str(self.require_alt_chain).lower(),
+            "server_flight_max_records": str(self.server_flight_max_records),
+            "server_flight_max_plaintext_bytes": str(self.server_flight_max_plaintext_bytes),
+            "server_flight_max_ciphertext_bytes": str(self.server_flight_max_ciphertext_bytes),
+            "server_flight_max_audit_entries": str(self.server_flight_max_audit_entries),
         }

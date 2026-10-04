@@ -1,0 +1,19 @@
+{
+  "schema": "a15-bench-resume-repair-tests-v1",
+  "passed": true,
+  "checks": 42,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 1,
+  "sources_unchanged_during_run": true,
+  "scope": "real temporary SQLite; fake ABI, fake CUDA stats, fixed clock; subtest metadata matrices",
+  "native_loads": 0,
+  "cryptographic_operations": 0,
+  "formal_performance_samples": 0,
+  "source_sha256": {
+    "tools/bench_cpu.py": "9dc804d250e526ccffaf0d429a5a377848b56b685f0388853dee73cea3994d61",
+    "tools/bench_cuda.py": "81d0b8874bc8ea73a1265348ee93d295cca9971bbf74a0f2aa2be191e5b82352",
+    "tools/signing_budget.py": "8ff1cad39a5d27e37784b16333d14f5b50c24b57640c4c72d907fdc609d10f86",
+    "tools/test_bench_resume_repair.py": "5fb1a4324fda221f82b91a9692fdedd4c7b7e6c6af8c312e08555380c5b6d418"
+  }
+}

@@ -1,0 +1,68 @@
+test_all_samples_present_only_summary_added_without_operations (__main__.ResumeRepair.test_all_samples_present_only_summary_added_without_operations) ... ok
+test_campaign_metadata_tamper_parent_and_worker (__main__.ResumeRepair.test_campaign_metadata_tamper_parent_and_worker) ... ok
+test_complete_skip_revalidates_without_operations (__main__.ResumeRepair.test_complete_skip_revalidates_without_operations) ... ok
+test_completion_and_sample_data_tampering_rejected (__main__.ResumeRepair.test_completion_and_sample_data_tampering_rejected) ... ok
+test_crash_after_finish_before_result_retains_committed_charge (__main__.ResumeRepair.test_crash_after_finish_before_result_retains_committed_charge) ... ERROR
+test_crash_after_reservation_retains_reserved_charge (__main__.ResumeRepair.test_crash_after_reservation_retains_reserved_charge) ... ok
+test_cross_case_receipt_reuse_rejected_even_with_consistent_local_binding (__main__.ResumeRepair.test_cross_case_receipt_reuse_rejected_even_with_consistent_local_binding) ... ok
+test_failed_sample_stays_charged_and_missing_index_retries (__main__.ResumeRepair.test_failed_sample_stays_charged_and_missing_index_retries) ... ok
+test_failed_warmup_stays_charged_and_full_warmup_restarts (__main__.ResumeRepair.test_failed_warmup_stays_charged_and_full_warmup_restarts) ... ok
+test_fixture_receipt_shared_as_input_is_valid_not_as_operation (__main__.ResumeRepair.test_fixture_receipt_shared_as_input_is_valid_not_as_operation) ... ok
+test_legacy_v1_preserved_unchanged_and_not_migrated (__main__.ResumeRepair.test_legacy_v1_preserved_unchanged_and_not_migrated) ... ok
+test_metadata_mutation_each_bound_kind_rejected_before_native (__main__.ResumeRepair.test_metadata_mutation_each_bound_kind_rejected_before_native) ... ok
+test_operation_structure_corruption_rejected (__main__.ResumeRepair.test_operation_structure_corruption_rejected) ... ok
+test_partial_bad_sample_rejected_before_native (__main__.ResumeRepair.test_partial_bad_sample_rejected_before_native) ... ok
+test_partial_resume_rewarms_every_new_segment (__main__.ResumeRepair.test_partial_resume_rewarms_every_new_segment) ... ok
+test_unselected_case_bad_evidence_is_audited (__main__.ResumeRepair.test_unselected_case_bad_evidence_is_audited) ... ok
+test_zero_warmup_resume_has_no_added_warmups (__main__.ResumeRepair.test_zero_warmup_resume_has_no_added_warmups) ... ok
+test_all_samples_present_only_summary_added_without_operations (__main__.CudaResumeRepair.test_all_samples_present_only_summary_added_without_operations) ... ok
+test_campaign_metadata_tamper_parent_and_worker (__main__.CudaResumeRepair.test_campaign_metadata_tamper_parent_and_worker) ... ok
+test_complete_skip_revalidates_without_operations (__main__.CudaResumeRepair.test_complete_skip_revalidates_without_operations) ... ok
+test_completion_and_sample_data_tampering_rejected (__main__.CudaResumeRepair.test_completion_and_sample_data_tampering_rejected) ... ok
+test_crash_after_finish_before_result_retains_committed_charge (__main__.CudaResumeRepair.test_crash_after_finish_before_result_retains_committed_charge) ... ERROR
+test_crash_after_reservation_retains_reserved_charge (__main__.CudaResumeRepair.test_crash_after_reservation_retains_reserved_charge) ... ok
+test_cross_case_receipt_reuse_rejected_even_with_consistent_local_binding (__main__.CudaResumeRepair.test_cross_case_receipt_reuse_rejected_even_with_consistent_local_binding) ... ok
+test_failed_sample_stays_charged_and_missing_index_retries (__main__.CudaResumeRepair.test_failed_sample_stays_charged_and_missing_index_retries) ... ok
+test_failed_warmup_stays_charged_and_full_warmup_restarts (__main__.CudaResumeRepair.test_failed_warmup_stays_charged_and_full_warmup_restarts) ... ok
+test_fixture_receipt_shared_as_input_is_valid_not_as_operation (__main__.CudaResumeRepair.test_fixture_receipt_shared_as_input_is_valid_not_as_operation) ... ERROR
+test_legacy_v1_preserved_unchanged_and_not_migrated (__main__.CudaResumeRepair.test_legacy_v1_preserved_unchanged_and_not_migrated) ... ok
+test_metadata_mutation_each_bound_kind_rejected_before_native (__main__.CudaResumeRepair.test_metadata_mutation_each_bound_kind_rejected_before_native) ... ok
+test_operation_structure_corruption_rejected (__main__.CudaResumeRepair.test_operation_structure_corruption_rejected) ... ok
+test_partial_bad_sample_rejected_before_native (__main__.CudaResumeRepair.test_partial_bad_sample_rejected_before_native) ... ok
+test_partial_resume_rewarms_every_new_segment (__main__.CudaResumeRepair.test_partial_resume_rewarms_every_new_segment) ... ok
+test_unselected_case_bad_evidence_is_audited (__main__.CudaResumeRepair.test_unselected_case_bad_evidence_is_audited) ... ok
+test_zero_warmup_resume_has_no_added_warmups (__main__.CudaResumeRepair.test_zero_warmup_resume_has_no_added_warmups) ... ok
+
+======================================================================
+ERROR: test_crash_after_finish_before_result_retains_committed_charge (__main__.ResumeRepair.test_crash_after_finish_before_result_retains_committed_charge)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\23380\Desktop\密码比赛\pqc-a1-5\tools\test_bench_resume_repair.py", line 250, in test_crash_after_finish_before_result_retains_committed_charge
+    self.assertEqual(p.budget.status()[0]["states"]["reserved"], 0)
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'reserved'
+
+======================================================================
+ERROR: test_crash_after_finish_before_result_retains_committed_charge (__main__.CudaResumeRepair.test_crash_after_finish_before_result_retains_committed_charge)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\23380\Desktop\密码比赛\pqc-a1-5\tools\test_bench_resume_repair.py", line 250, in test_crash_after_finish_before_result_retains_committed_charge
+    self.assertEqual(p.budget.status()[0]["states"]["reserved"], 0)
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'reserved'
+
+======================================================================
+ERROR: test_fixture_receipt_shared_as_input_is_valid_not_as_operation (__main__.CudaResumeRepair.test_fixture_receipt_shared_as_input_is_valid_not_as_operation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\23380\Desktop\密码比赛\pqc-a1-5\tools\test_bench_resume_repair.py", line 327, in test_fixture_receipt_shared_as_input_is_valid_not_as_operation
+    p.worker(p.args); baseline = p.rows(); p.audit(baseline)
+    ~~~~~~~~^^^^^^^^
+  File "C:\Users\23380\Desktop\密码比赛\pqc-a1-5\tools\bench_cuda.py", line 445, in worker
+    raise ValueError("CUDA OpenMP placement must be set before worker/native startup")
+ValueError: CUDA OpenMP placement must be set before worker/native startup
+
+----------------------------------------------------------------------
+Ran 34 tests in 101.800s
+
+FAILED (errors=3)

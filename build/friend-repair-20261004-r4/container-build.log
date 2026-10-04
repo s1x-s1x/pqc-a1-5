@@ -1,0 +1,19 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.28kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/python:3.13-slim-bookworm@sha256:5024f48ba9441d4b13a95d3945abc6365538e3a31109833367a1923523c6efed
+#2 ERROR: unexpected status from HEAD request to https://docker.xuanyuan.me/v2/library/python/manifests/sha256:5024f48ba9441d4b13a95d3945abc6365538e3a31109833367a1923523c6efed?ns=docker.io: 403 Forbidden
+------
+ > [internal] load metadata for docker.io/library/python:3.13-slim-bookworm@sha256:5024f48ba9441d4b13a95d3945abc6365538e3a31109833367a1923523c6efed:
+------
+Dockerfile:2
+--------------------
+   1 |     # New-environment CPU correctness recipe; not a replica of historical CUDA bytes.
+   2 | >>> FROM python:3.13-slim-bookworm@sha256:5024f48ba9441d4b13a95d3945abc6365538e3a31109833367a1923523c6efed
+   3 |     RUN rm -f /etc/apt/sources.list.d/debian.sources && \
+   4 |         printf '%s\n' 'deb [check-valid-until=no] https://snapshot.debian.org/archive/debian/20261003T000000Z/ bookworm main' > /etc/apt/sources.list && \
+--------------------
+ERROR: failed to build: failed to solve: python:3.13-slim-bookworm@sha256:5024f48ba9441d4b13a95d3945abc6365538e3a31109833367a1923523c6efed: failed to resolve source metadata for docker.io/library/python:3.13-slim-bookworm@sha256:5024f48ba9441d4b13a95d3945abc6365538e3a31109833367a1923523c6efed: unexpected status from HEAD request to https://docker.xuanyuan.me/v2/library/python/manifests/sha256:5024f48ba9441d4b13a95d3945abc6365538e3a31109833367a1923523c6efed?ns=docker.io: 403 Forbidden

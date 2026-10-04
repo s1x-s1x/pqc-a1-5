@@ -1,0 +1,62 @@
+test_merge_budget_count_unreconciled_rejected (__main__.ParallelChecks.test_merge_budget_count_unreconciled_rejected) ... ok
+test_merge_cache_record_snapshot_changed_rejected (__main__.ParallelChecks.test_merge_cache_record_snapshot_changed_rejected) ... ok
+test_merge_case_payload_mismatch_rejected (__main__.ParallelChecks.test_merge_case_payload_mismatch_rejected) ... ok
+test_merge_charged_receipt_reused_across_distinct_sign_cases_rejected (__main__.ParallelChecks.test_merge_charged_receipt_reused_across_distinct_sign_cases_rejected) ... ok
+test_merge_copied_cache_changed_after_proof_rejected (__main__.ParallelChecks.test_merge_copied_cache_changed_after_proof_rejected) ... ok
+test_merge_duplicate_input_directories_rejected (__main__.ParallelChecks.test_merge_duplicate_input_directories_rejected) ... ok
+test_merge_empty_input_list_rejected (__main__.ParallelChecks.test_merge_empty_input_list_rejected) ... ok
+test_merge_false_check_with_passed_status_rejected (__main__.ParallelChecks.test_merge_false_check_with_passed_status_rejected) ... ok
+test_merge_formal_performance_row_rejected (__main__.ParallelChecks.test_merge_formal_performance_row_rejected) ... ok
+test_merge_input_fingerprint_not_matching_vector_rejected (__main__.ParallelChecks.test_merge_input_fingerprint_not_matching_vector_rejected) ... ok
+test_merge_input_hash_mismatch_rejected (__main__.ParallelChecks.test_merge_input_hash_mismatch_rejected) ... ok
+test_merge_input_manifest_identity_mismatch_rejected (__main__.ParallelChecks.test_merge_input_manifest_identity_mismatch_rejected) ... ok
+test_merge_input_manifest_plan_change_rejected (__main__.ParallelChecks.test_merge_input_manifest_plan_change_rejected) ... ok
+test_merge_library_bytes_changed_rejected (__main__.ParallelChecks.test_merge_library_bytes_changed_rejected) ... ok
+test_merge_missing_counter_field_rejected (__main__.ParallelChecks.test_merge_missing_counter_field_rejected) ... ok
+test_merge_missing_generated_verification_rejected (__main__.ParallelChecks.test_merge_missing_generated_verification_rejected) ... ok
+test_merge_missing_input_cases_rejected (__main__.ParallelChecks.test_merge_missing_input_cases_rejected) ... ok
+test_merge_missing_input_manifest_rejected (__main__.ParallelChecks.test_merge_missing_input_manifest_rejected) ... ok
+test_merge_missing_planned_case_rejected (__main__.ParallelChecks.test_merge_missing_planned_case_rejected) ... ok
+test_merge_missing_receipt_rejected (__main__.ParallelChecks.test_merge_missing_receipt_rejected) ... ok
+test_merge_missing_required_check_name_rejected (__main__.ParallelChecks.test_merge_missing_required_check_name_rejected) ... ok
+test_merge_missing_scalar_subtree_reference_rejected (__main__.ParallelChecks.test_merge_missing_scalar_subtree_reference_rejected) ... ok
+test_merge_occupied_output_rejected_and_original_bytes_preserved (__main__.ParallelChecks.test_merge_occupied_output_rejected_and_original_bytes_preserved) ... ok
+test_merge_original_manifest_plan_change_rejected (__main__.ParallelChecks.test_merge_original_manifest_plan_change_rejected) ... ok
+test_merge_original_source_identity_stale_rejected (__main__.ParallelChecks.test_merge_original_source_identity_stale_rejected) ... ok
+test_merge_preserves_copied_cache_and_record_snapshot_bytes (__main__.ParallelChecks.test_merge_preserves_copied_cache_and_record_snapshot_bytes) ... ok
+test_merge_receipt_wrong_message_rejected (__main__.ParallelChecks.test_merge_receipt_wrong_message_rejected) ... ok
+test_merge_receipt_wrong_public_key_rejected (__main__.ParallelChecks.test_merge_receipt_wrong_public_key_rejected) ... ok
+test_merge_receipt_wrong_signature_rejected (__main__.ParallelChecks.test_merge_receipt_wrong_signature_rejected) ... ok
+test_merge_receipt_wrong_status_rejected (__main__.ParallelChecks.test_merge_receipt_wrong_status_rejected) ... ok
+test_merge_record_checksum_mismatch_rejected (__main__.ParallelChecks.test_merge_record_checksum_mismatch_rejected) ... ok
+test_merge_result_hash_mismatch_rejected (__main__.ParallelChecks.test_merge_result_hash_mismatch_rejected) ... ok
+test_merge_row_library_identity_mismatch_rejected (__main__.ParallelChecks.test_merge_row_library_identity_mismatch_rejected) ... ok
+test_merge_row_schema_mismatch_rejected (__main__.ParallelChecks.test_merge_row_schema_mismatch_rejected) ... ok
+test_merge_row_source_identity_mismatch_rejected (__main__.ParallelChecks.test_merge_row_source_identity_mismatch_rejected) ... ok
+test_merge_settlement_failure_cleans_new_aggregate (__main__.ParallelChecks.test_merge_settlement_failure_cleans_new_aggregate) ... ok
+test_merge_seven_field_count_mismatch_rejected (__main__.ParallelChecks.test_merge_seven_field_count_mismatch_rejected) ... ok
+test_merge_sign_row_without_receipt_rejected (__main__.ParallelChecks.test_merge_sign_row_without_receipt_rejected) ... ok
+test_merge_subtree_reference_result_conflict_rejected (__main__.ParallelChecks.test_merge_subtree_reference_result_conflict_rejected) ... ok
+test_merge_unknown_auxiliary_shape_rejected (__main__.ParallelChecks.test_merge_unknown_auxiliary_shape_rejected) ... ok
+test_merge_valid_shards_preserves_input_and_original_manifest (__main__.ParallelChecks.test_merge_valid_shards_preserves_input_and_original_manifest) ... ok
+test_merge_vector_file_changed_rejected (__main__.ParallelChecks.test_merge_vector_file_changed_rejected) ... ok
+test_real_sqlite_settlement_preserves_all_charges_and_immutable_uuid (__main__.ParallelChecks.test_real_sqlite_settlement_preserves_all_charges_and_immutable_uuid) ... ok
+test_real_sqlite_settlement_rejects_nonconsecutive_charge_ordinal (__main__.ParallelChecks.test_real_sqlite_settlement_rejects_nonconsecutive_charge_ordinal) ... ok
+test_real_sqlite_settlement_rejects_unfinished_reserved_attempt (__main__.ParallelChecks.test_real_sqlite_settlement_rejects_unfinished_reserved_attempt) ... ok
+test_real_sqlite_settlement_rejects_wrong_uuid (__main__.ParallelChecks.test_real_sqlite_settlement_rejects_wrong_uuid) ... ok
+test_worker_duplicate_ids_rejected_without_execution (__main__.ParallelChecks.test_worker_duplicate_ids_rejected_without_execution) ... ok
+test_worker_empty_selection_rejected (__main__.ParallelChecks.test_worker_empty_selection_rejected) ... ok
+test_worker_failed_case_never_reports_final_acceptance (__main__.ParallelChecks.test_worker_failed_case_never_reports_final_acceptance) ... ok
+test_worker_non_array_selection_rejected (__main__.ParallelChecks.test_worker_non_array_selection_rejected) ... ok
+test_worker_non_probe_selection_preserves_requested_order (__main__.ParallelChecks.test_worker_non_probe_selection_preserves_requested_order) ... ok
+test_worker_non_string_case_id_rejected (__main__.ParallelChecks.test_worker_non_string_case_id_rejected) ... ok
+test_worker_occupied_output_rejected (__main__.ParallelChecks.test_worker_occupied_output_rejected) ... ok
+test_worker_unknown_id_rejected_without_execution (__main__.ParallelChecks.test_worker_unknown_id_rejected_without_execution) ... ok
+test_worker_whitelist_and_plan_execution_order (__main__.ParallelChecks.test_worker_whitelist_and_plan_execution_order) ... ok
+
+----------------------------------------------------------------------
+Ran 55 tests in 0.428s
+
+OK
+
+{"schema": "a15-parallel-correctness-selftest-v1", "passed": true, "mock_checks": 55, "failures": 0, "errors": 0, "native_calls": 0, "real_timing_samples": 0, "formal_performance_started": false, "actual_matrix_acceptance": false, "tool_sha256": "4fc4ef5821b5a06f21e787feb9cdfe9972a8513cda620d1ac5be7c8d8db86e27", "test_tool_sha256": "7ca6d6c45f44113fc6c31f014a4c1b19b4c24000bf0d9f85ed4af10a60d1f972", "scope": "Temporary synthetic source/library/vector files, strict stub Runner/ledger, row hashes and original-byte provenance; no native or performance calls"}

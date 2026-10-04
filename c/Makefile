@@ -39,11 +39,11 @@ $(CONFIG_STAMP):
 	mkdir -p $(OUT)
 	rm -f $(OUT)/.a15-config-*
 	touch $@
-.PHONY: all test review-test repair-test avx2-test wots-test prehash-test sanitizer fault-test guard-test clean cuda-test cuda-fault-test cuda-resource-report
-$(OUT)/sm3_cuda.o: src/sm3_cuda.cu src/sm3_cuda.h src/sm3_cuda_device.cuh include/slhdsa_sm3.h $(CONFIG_STAMP)
+.PHONY: all test review-test repair-test avx2-test wots-test prehash-test sanitizer fault-test guard-test clean cuda-test cuda-fault-test cuda-cleanup-host-test cuda-resource-report
+$(OUT)/sm3_cuda.o: src/sm3_cuda.cu src/sm3_cuda.h src/sm3_cuda_device.cuh src/cuda_cleanup.h include/slhdsa_sm3.h $(CONFIG_STAMP)
 	mkdir -p $(OUT)
 	$(NVCC) $(CUDA_BASE) -DSLH_RELEASE_BUILD -c $< -o $@
-$(OUT)/sm3_cuda_fault_%.o: src/sm3_cuda.cu src/sm3_cuda.h src/sm3_cuda_device.cuh include/slhdsa_sm3.h $(CONFIG_STAMP)
+$(OUT)/sm3_cuda_fault_%.o: src/sm3_cuda.cu src/sm3_cuda.h src/sm3_cuda_device.cuh src/cuda_cleanup.h include/slhdsa_sm3.h $(CONFIG_STAMP)
 	mkdir -p $(OUT)
 	$(NVCC) $(CUDA_BASE) -DSLH_TEST_BUILD -DSLH_TEST_FAULT_POINT=$* -c $< -o $@
 all: $(OUT)/libslhdsa_sm3.so
@@ -88,6 +88,11 @@ $(OUT)/test_cuda: $(SOURCES) $(HEADERS) tests/test_cuda.c $(CUDA_OBJECT) $(CONFI
 	$(CC) $(BASE) $(CFLAGS) $(SOURCES) tests/test_cuda.c $(CUDA_OBJECT) $(CUDA_LIBS) -o $@
 cuda-test: $(OUT)/test_cuda
 	A15_TEST_CACHE_DIR=$(OUT) $(OUT)/test_cuda
+$(OUT)/test_cuda_cleanup_host: tests/test_cuda_cleanup_host.cpp src/cuda_cleanup.h
+	mkdir -p $(OUT)
+	$(CXX) -std=c++14 -O2 -Wall -Wextra -Isrc $< -o $@
+cuda-cleanup-host-test: $(OUT)/test_cuda_cleanup_host
+	$(OUT)/test_cuda_cleanup_host
 # Compile device SASS for measured register/shared/spill evidence. No kernels,
 # events, timing or GPU execution are performed by this target.
 cuda-resource-report:

@@ -1,3 +1,5 @@
+> 历史阶段文档：以下“当前/已就绪/未修改”均指本轮朋友复审修补之前的绑定版本。2026-10-04 最新工程状态见 [FRIEND_REPAIR_20261004.md](../FRIEND_REPAIR_20261004.md) 与最终 `validation/friend-repair-20261004/checkpoint.json`；旧冻结保持原身份。
+
 # CUDA B1 性能准备接口
 
 正式发布的 CPU/CUDA 冻结包已完成；当前启动路径与停止状态见

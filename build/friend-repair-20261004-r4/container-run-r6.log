@@ -1,0 +1,22 @@
+{"phase": "fresh-native-cpu"}
+{"phase": "native-sanitizers"}
+{"phase": "native-adapter"}
+{"phase": "budget"}
+{"phase": "review-matrix"}
+{"phase": "bench-resume"}
+{"phase": "cpu-mock"}
+{"phase": "cuda-mock"}
+{"phase": "operations-test_audit_parallel_correctness"}
+{"phase": "operations-test_audit_repair_delivery"}
+{"phase": "operations-test_package_project_repair"}
+{"phase": "operations-test_parallel_correctness"}
+{"phase": "operations-test_project_repair_audit"}
+{"phase": "freeze-mock"}
+{"phase": "tls-full"}
+{"phase": "tls-live"}
+{"phase": "dependency-lock"}
+{"phase": "native-source-guards"}
+{"phase": "parser-fuzz-smoke"}
+{"phase": "native-prehash"}
+{"phase": "native-cache-fuzz"}
+{"passed": true, "steps": 21, "error": null, "real_timing_samples": 0}

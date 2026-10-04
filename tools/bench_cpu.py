@@ -32,7 +32,7 @@ from native import NativeSlhDsa, NAMES, _buffer
 from signing_budget import SigningBudget, canonical_algorithm
 canonical_key_id = SigningBudget.key_id
 
-SCHEMA = "a15-cpu-bench-v1"
+SCHEMA = "a15-cpu-bench-v2"
 ALGORITHMS = {pid: name for name, pid in NAMES.items()}
 BACKENDS = {"REF": 1, "AVX2": 2}
 HP = {1: 9, 2: 3, 3: 22, 101: 9, 102: 3, 103: 22, 201: 10}
@@ -324,24 +324,41 @@ def validate_preserved_budget(existing, case, budget):
                 or binding.get("public_key_sha256") != ready[0]["input_hashes"].get("pk")
                 or any(row.get("budget_binding") != binding for row in ready)):
             raise ValueError("preserved input budget binding differs")
+    requests = []
+    for row in existing:
+        if row.get("kind") in ("operation_start", "sample", "warmup"):
+            if row.get("receipt"):
+                requests.append({"receipt": row["receipt"], "statuses": ("committed", "failed", "reserved")})
+            token = (row.get("validation") or {}).get("rng_validation_receipt")
+            if token:
+                requests.append({"receipt": token})
+    live = ({value["receipt"]: value for value in budget.validate_receipts(requests)}
+            if hasattr(budget, "validate_receipts") else
+            {request["receipt"]: budget.validate_receipt(**request) for request in requests})
     seen = set()
     for row in existing:
-        if row.get("kind") not in ("sample", "warmup"):
+        if row.get("kind") not in ("operation_start", "sample", "warmup"):
             continue
         receipt = row.get("receipt")
         if case["op"] == "sign":
             if not receipt or binding is None:
                 raise ValueError("preserved signing operation lacks receipt/input binding")
             evidence = row.get("budget_evidence")
-            if not isinstance(evidence, dict) or any(evidence.get(k) != v for k, v in binding.items()):
+            if not isinstance(evidence, dict) or evidence.get("receipt") != receipt or any(evidence.get(k) != v for k, v in binding.items()):
                 raise ValueError("preserved receipt key/message/ledger binding differs")
+            if row.get("kind") == "operation_start":
+                if evidence.get("status") != "reserved" or evidence.get("signature_sha256") is not None:
+                    raise ValueError("preserved reservation evidence is not a fresh charged attempt")
+                if any(live[receipt].get(k) != v for k, v in binding.items()) or live[receipt].get("receipt") != receipt:
+                    raise ValueError("live reservation identity differs")
+                continue  # A killed attempt may remain reserved or finish before result emission.
             if row.get("passed", True) and (evidence.get("status") != "committed" or
                     (row.get("kind") == "sample" and evidence.get("signature_sha256") != row.get("result_sha256"))):
                 raise ValueError("passed signing sample receipt/signature differs")
             if receipt in seen:
                 raise ValueError("preserved signing receipt reused across operations")
             seen.add(receipt)
-            if receipt_evidence(budget, receipt) != evidence:
+            if live[receipt] != evidence:
                 raise ValueError("live receipt differs from preserved operation")
         elif receipt is not None:
             raise ValueError("non-signing operation has a signing receipt")
@@ -354,12 +371,255 @@ def validate_preserved_budget(existing, case, budget):
                     or evidence.get("message_sha256") != binding["message_sha256"]
                     or evidence.get("public_key_sha256") != validation.get("public_key_sha256")
                     or evidence.get("status") != "committed" or rng_receipt in seen
-                    or budget.validate_receipt(rng_receipt) != evidence):
+                    or live[rng_receipt] != evidence):
                 raise ValueError("RNG validation receipt differs from live ledger")
             seen.add(rng_receipt)
 
 
-def validate_completed(existing, case, fixtures, budget=None):
+def execution_binding(case, prov, identity, ledger_uuid, plan_digest, schema=SCHEMA):
+    """Identity shared by every record of a case, including failed attempts."""
+    keys = ("source_sha256", "library_sha256", "build_record_sha256", "freeze_sha256", "final", "classification")
+    return {"schema": schema, "case": case, "plan_sha256": plan_digest,
+            "provenance": {key: prov.get(key) for key in keys},
+            "environment_identity": identity, "ledger_uuid": ledger_uuid}
+
+
+def binding_fields(binding):
+    case, prov = binding["case"], binding["provenance"]
+    backend = 5 if case["backend"] == "CUDA" else BACKENDS[case["backend"]]
+    return {"case_id": case["case_id"], "pid": case["pid"], "op": case["op"],
+            "backend": case["backend"], "actual_backend": backend, "threads": case["threads"],
+            "cores": case["threads"], "requested_cache_t": case.get("cache"),
+            "cache_t": case.get("cache_t"), "keygen_mode": case.get("keygen_mode"),
+            "family": case.get("family"), "final": prov["final"], "classification": prov["classification"],
+            "ledger_uuid": binding["ledger_uuid"], "execution_binding": binding}
+
+
+def emit_bound(emit, path, binding, segment_id, row):
+    fields = binding_fields(binding)
+    if any(key in row and row[key] != value for key, value in fields.items()):
+        raise ValueError("attempted record metadata differs from case binding")
+    operation = ({"operation_id": row.get("operation_id", uuid.uuid4().hex)}
+                 if row["kind"] in ("operation_start", "warmup", "sample") else {})
+    untimed = {"timed": False} if row["kind"] in ("operation_start", "warmup") else {}
+    emit(path, {**untimed, **row, **fields, "case_key": sha(canonical(binding).encode()),
+                "segment_id": segment_id, **operation})
+
+
+def validate_case_records(existing, case, expected_binding=None):
+    if not existing:
+        return
+    starts = [r for r in existing if r.get("kind") == "case_start"]
+    if not starts:
+        raise ValueError("preserved case lacks execution segment start")
+    binding = starts[0].get("execution_binding")
+    if (not isinstance(binding, dict) or binding.get("case") != case or
+            expected_binding is not None and binding != expected_binding):
+        raise ValueError("preserved case identity differs from plan/build/environment")
+    try:
+        fields, key = binding_fields(binding), sha(canonical(binding).encode())
+        if not isinstance(binding["environment_identity"], dict) or not isinstance(binding["provenance"], dict):
+            raise ValueError("malformed execution identity")
+    except (KeyError, TypeError) as error:
+        raise ValueError("preserved execution binding is malformed") from error
+    segments, warmed, ready, passed_indices, operations, outcomes = {}, {}, {}, set(), {}, set()
+    stopped, pending, completed = set(), {}, False
+    for row in existing:
+        if row.get("schema") != binding.get("schema") or row.get("case_key") != key:
+            raise ValueError("preserved case schema/key differs from bound identity")
+        if any(row.get(name) != value for name, value in fields.items()):
+            raise ValueError("preserved record metadata differs from case binding")
+        segment = row.get("segment_id")
+        if not isinstance(segment, str) or not re.fullmatch("[0-9a-f]{32}", segment):
+            raise ValueError("preserved record lacks execution segment identity")
+        kind = row.get("kind")
+        if completed:
+            raise ValueError("preserved case has records after completion")
+        if kind == "case_start":
+            if segment in segments or row.get("case") != case or row.get("environment_identity") != binding["environment_identity"]:
+                raise ValueError("preserved execution segment start differs or repeats")
+            prov = row.get("provenance", {})
+            if any(prov.get(k) != v for k, v in binding["provenance"].items()):
+                raise ValueError("preserved segment build provenance differs")
+            segments[segment], warmed[segment] = row, set()
+        elif segment not in segments:
+            raise ValueError("preserved operation precedes its execution segment")
+        if kind == "inputs_ready":
+            if segment in ready or not isinstance(row.get("input_hashes"), dict) or not isinstance(row.get("input_files"), dict):
+                raise ValueError("preserved segment inputs missing or repeated")
+            if ready and any(row.get(k) != next(iter(ready.values())).get(k) for k in ("input_hashes", "input_files", "budget_binding")):
+                raise ValueError("preserved segment immutable input binding differs")
+            ready[segment] = row
+        if kind in ("operation_start", "warmup", "sample"):
+            if kind in ("operation_start", "warmup") and row.get("timed") is not False:
+                raise ValueError("preserved setup/warmup incorrectly claims timing")
+            if segment in stopped:
+                raise ValueError("preserved segment continued after a failed operation")
+            if segment not in ready or row.get("input_hashes") != ready[segment]["input_hashes"]:
+                raise ValueError("preserved operation input/segment binding differs")
+            if not isinstance(row.get("operation_id"), str) or not re.fullmatch("[0-9a-f]{32}", row["operation_id"]):
+                raise ValueError("preserved operation identity is missing")
+            operation_id = row["operation_id"]
+            operation_kind = row.get("operation_kind") if kind == "operation_start" else kind
+            if operation_kind not in ("warmup", "sample"):
+                raise ValueError("preserved operation kind differs")
+            index_field = "index" if operation_kind == "warmup" else "sample_index"
+            if kind == "operation_start":
+                if operation_id in operations or segment in pending:
+                    raise ValueError("preserved operation start repeated or precedes prior outcome")
+                operations[operation_id] = row
+                pending[segment] = operation_id
+            else:
+                start = operations.get(operation_id)
+                if (not start or operation_id in outcomes or start.get("segment_id") != segment or
+                        start.get("operation_kind") != kind or start.get(index_field) != row.get(index_field) or
+                        start.get("receipt") != row.get("receipt") or pending.get(segment) != operation_id):
+                    raise ValueError("preserved result lacks matching operation reservation")
+                outcomes.add(operation_id)
+                del pending[segment]
+            if kind != "operation_start" and not isinstance(row.get("passed"), bool):
+                raise ValueError("preserved operation status is missing")
+            if kind != "operation_start" and not row["passed"]:
+                if not isinstance(row.get("error"), str) or not row["error"]:
+                    raise ValueError("preserved failed attempt lacks diagnostic status")
+                stopped.add(segment)
+            if operation_kind == "warmup":
+                index = row.get("index")
+                if not isinstance(index, int) or isinstance(index, bool) or not 0 <= index < case["warmups"] or index in warmed[segment]:
+                    raise ValueError("preserved warmup index invalid or repeated")
+                if kind != "operation_start" and row["passed"]:
+                    warmed[segment].add(index)
+            else:
+                index = row.get("sample_index")
+                if not isinstance(index, int) or isinstance(index, bool) or not 0 <= index < case["samples"]:
+                    raise ValueError("preserved sample index outside case range")
+                if len(warmed[segment]) != case["warmups"]:
+                    raise ValueError("preserved sample lacks its segment warmups")
+                if kind != "operation_start" and row["passed"]:
+                    if index in passed_indices:
+                        raise ValueError("duplicate passed sample index in preserved evidence")
+                    passed_indices.add(index)
+        if kind == "case_complete":
+            if segment not in ready or segment in stopped or segment in pending:
+                raise ValueError("completion segment lacks ready/successful finalized operations")
+            completed = True
+            reference = next(iter(ready.values()), None)
+            if reference is None or any(row.get(k) != reference.get(k) for k in ("input_hashes",)) or row.get("input_files_before") != reference["input_files"] or row.get("input_files_after") != reference["input_files"]:
+                raise ValueError("completion input binding differs from segment inputs")
+            prov = binding["provenance"]
+            for field in ("source_sha256", "library_sha256"):
+                if any(row.get(field+suffix) != prov[field] for suffix in ("_before", "_after")):
+                    raise ValueError("completion source/library provenance differs")
+            if any(row.get(k) != prov[k] for k in ("build_record_sha256", "freeze_sha256")) or row.get("environment_identity") != binding["environment_identity"]:
+                raise ValueError("completion build/environment provenance differs")
+            expected_lines = [r["_line"] for r in existing if r.get("kind") == "sample" and r.get("passed") and "_line" in r]
+            if len(expected_lines) == len(passed_indices) and row.get("sample_lines") != expected_lines:
+                raise ValueError("completion sample line references differ")
+
+
+def audit_campaign_evidence(evidence, plan, budget, fixtures, schema=SCHEMA, provenance=None, plan_digest=None,
+                            sample_validator=None, completion_validator=None):
+    """Audit every case before filtering/skipping; fixture references are reusable."""
+    if any(r.get("schema") != schema for r in evidence):
+        raise ValueError("legacy/foreign benchmark evidence: preserve it and start a fresh v2 campaign; no implicit migration")
+    cases = {c["case_id"]: c for c in plan["cases"]}
+    grouped, operations, receipts, result_operations, case_keys = {}, set(), {}, set(), {}
+    campaigns = [row for row in evidence if row.get("kind") == "campaign_start"]
+    if len(campaigns) > 1:
+        raise ValueError("preserved campaign start repeated")
+    if campaigns:
+        campaign = campaigns[0]
+        if (evidence[0] is not campaign or campaign.get("ledger_uuid") != budget.ledger_uuid or
+                provenance is not None and campaign.get("provenance") != provenance or
+                schema == SCHEMA and plan_digest is not None and campaign.get("plan_sha256") != plan_digest):
+            raise ValueError("preserved campaign metadata differs from current plan/build/ledger")
+    fixture_receipts = set()
+    for path in Path(fixtures).glob("p*-signature.json"):
+        saved = read_json(path)
+        receipt = saved.get("receipt")
+        if receipt:
+            fixture_receipts.add(receipt)
+    for row in evidence:
+        case_kinds = ("case_start", "inputs_ready", "setup_cache", "operation_start", "warmup", "sample", "case_complete")
+        allowed = case_kinds + ("campaign_start", "setup_signature", "case_unavailable", "case_process_timeout", "case_process_failed")
+        if row.get("kind") not in allowed or row.get("kind") in case_kinds and not row.get("case_key"):
+            raise ValueError("preserved record kind/case identity missing or unknown")
+        if row.get("case_key"):
+            if row.get("case_id") not in cases:
+                raise ValueError("preserved case absent from current plan")
+            previous_key = case_keys.setdefault(row["case_id"], row["case_key"])
+            if previous_key != row["case_key"]:
+                raise ValueError("preserved case split across different execution identities")
+            grouped.setdefault(row["case_key"], []).append(row)
+        if row.get("kind") == "setup_signature":
+            if row.get("case_id") not in cases:
+                raise ValueError("signature setup absent from current plan")
+            pid = cases[row["case_id"]]["pid"]
+            saved = read_json(Path(fixtures)/f"p{pid}-signature.json")
+            validate_fixture_receipts(fixtures, pid, budget)
+            if (row.get("timed") is not False or row.get("ledger_uuid") != budget.ledger_uuid or
+                    row.get("receipt") != saved.get("receipt") or
+                    row.get("budget_evidence") != budget.validate_receipt(saved.get("receipt"))):
+                raise ValueError("signature setup receipt/ledger metadata differs from fixture")
+        if row.get("kind") in ("case_unavailable", "case_process_timeout", "case_process_failed") and row.get("case_id") not in cases:
+            raise ValueError("preserved process outcome absent from current plan")
+        if row.get("kind") in ("operation_start", "sample", "warmup"):
+            operation = row.get("operation_id")
+            if row["kind"] == "operation_start":
+                if not operation or operation in operations:
+                    raise ValueError("campaign operation identity missing or reused")
+                operations.add(operation)
+            elif operation not in operations or operation in result_operations:
+                raise ValueError("campaign result operation identity missing or reused")
+            else:
+                result_operations.add(operation)
+            tokens = [row.get("receipt"), (row.get("validation") or {}).get("rng_validation_receipt")]
+            for token in filter(None, tokens):
+                owner = receipts.get(token)
+                if (owner is not None and owner != operation) or token in fixture_receipts:
+                    raise ValueError("campaign signing receipt reused across independent operations/fixture")
+                receipts[token] = operation
+    for existing in grouped.values():
+        case = cases[existing[0]["case_id"]]
+        binding = existing[0].get("execution_binding") or {}
+        expected = (execution_binding(case, provenance, binding.get("environment_identity"),
+                                      budget.ledger_uuid, plan_digest, schema) if provenance is not None else None)
+        validate_case_records(existing, case, expected)
+        if campaigns:
+            identity = binding["environment_identity"]
+            host = identity if schema == SCHEMA else identity.get("cpu", {})
+            # Parent placement differs from per-case worker OMP/affinity by design.
+            if ({k: v for k, v in host.items() if k not in ("affinity", "openmp")} !=
+                    {k: v for k, v in campaigns[0].get("host_environment", {}).items() if k not in ("affinity", "openmp")} or
+                    schema != SCHEMA and identity.get("gpu") != campaigns[0].get("gpu_environment", {}).get("identity")):
+                raise ValueError("preserved campaign host/device metadata differs from case")
+        validate_preserved_budget(existing, case, budget)
+        inputs = next((r for r in existing if r.get("kind") == "inputs_ready"), None)
+        for setup in (row for row in existing if row.get("kind") == "setup_cache"):
+            if case.get("cache_t") is None or case["op"] not in ("sign", "cache_load") or setup.get("timed") is not False:
+                raise ValueError("preserved cache setup differs from planned operation")
+            fixture_record = read_json(Path(fixtures)/f"p{case['pid']}-fixture.json")
+            cache = Path(fixtures)/f"p{case['pid']}-{sha(bytes.fromhex(fixture_record['pk']))[:16]}-t{case['cache_t']}.cache"
+            if setup.get("cache_file_sha256") != file_sha(cache):
+                raise ValueError("preserved cache setup hash differs from input file")
+        if inputs:
+            (sample_validator or resume_samples)(existing, case, inputs["input_hashes"])
+            for name, digest in inputs["input_files"].items():
+                path = Path(name).resolve()
+                if not path.is_relative_to(Path(fixtures).resolve()) or file_sha(path) != digest:
+                    raise ValueError("preserved case input file changed or leaves fixture directory")
+            record = read_json(Path(fixtures)/f"p{case['pid']}-fixture.json")
+            values = {k: bytes.fromhex(record[k]) for k in ("pk", "message", "context")}
+            if (inputs.get("budget_binding") != budget_binding(budget, case, values) or
+                    any(inputs["input_hashes"].get(k) != sha(v) for k, v in values.items())):
+                raise ValueError("preserved fixture budget/input binding differs")
+            validate_fixture_receipts(fixtures, case["pid"], budget)
+        if any(r.get("kind") == "case_complete" for r in existing):
+            (completion_validator or validate_completed)(existing, case, fixtures, budget, expected)
+
+
+def validate_completed(existing, case, fixtures, budget=None, expected_binding=None):
+    validate_case_records(existing, case, expected_binding)
     if budget is not None:
         validate_preserved_budget(existing, case, budget)
     complete = [row for row in existing if row.get("kind") == "case_complete"]
@@ -1026,18 +1286,28 @@ def worker(args):
     initial = environment(affinity)
     identity = environment_identity(initial)
     budget = SigningBudget(args.budget_db)
-    case_key = sha(canonical({"case": case, "plan": plan_digest, "library": provenance_before["library_sha256"],
-                              "sources": provenance_before["source_sha256"], "freeze": provenance_before["freeze_sha256"],
-                              "environment": identity, "ledger_uuid": budget.ledger_uuid}).encode())
+    binding = execution_binding(case, provenance_before, identity, budget.ledger_uuid, plan_digest)
+    case_key = sha(canonical(binding).encode())
     evidence = rows(args.output)
+    audit_campaign_evidence(evidence, plan, budget, args.fixtures, provenance=provenance_before, plan_digest=plan_digest)
     if any(r.get("kind") == "case_start" and r.get("case", {}).get("case_id") == case["case_id"]
            and r.get("case_key") != case_key for r in evidence):
         raise ValueError("case resume environment/source/build differs; use fresh evidence")
     existing = [r for r in evidence if r.get("case_key") == case_key]
-    if validate_completed(existing, case, args.fixtures, budget):
+    if validate_completed(existing, case, args.fixtures, budget, binding):
         validate_fixture_receipts(args.fixtures, case["pid"], budget)
         return
-    append(args.output, {"kind": "case_start", "case_key": case_key, "case": case,
+    segment_id = uuid.uuid4().hex
+    def emit(row):
+        emit_bound(append, args.output, binding, segment_id, row)
+    def begin(kind, index, receipt, input_hashes):
+        operation_id = uuid.uuid4().hex
+        emit({"kind": "operation_start", "operation_kind": kind, "operation_id": operation_id,
+              "index" if kind == "warmup" else "sample_index": index,
+              "receipt": receipt, "budget_evidence": receipt_evidence(budget, receipt),
+              "input_hashes": input_hashes, "timed": False})
+        return operation_id
+    emit({"kind": "case_start", "case_key": case_key, "case": case,
                          "provenance": provenance_before, "environment": initial,
                          "environment_identity": identity, "ledger_uuid": budget.ledger_uuid, "pid_process": os.getpid()})
     runtime = verify_library_runtime(args.library)
@@ -1058,7 +1328,7 @@ def worker(args):
                 with NativeSlhDsa(case["pid"], case["threads"], BACKENDS[case["backend"]], args.library) as prepare:
                     prepare.cache_build(inputs["sk"], case["cache_t"])
                     prepare.cache_save(cache_path)
-                append(args.output, {"kind": "setup_cache", "case_key": case_key, "cache_file_sha256": file_sha(cache_path), "timed": False})
+                emit({"kind": "setup_cache", "case_key": case_key, "cache_file_sha256": file_sha(cache_path), "timed": False})
             c.cache_load(cache_path, inputs["pk"])
             input_files[str(cache_path)] = file_sha(cache_path)
         if case["op"] == "keygen":
@@ -1071,7 +1341,7 @@ def worker(args):
             raise ValueError("fixture input changed during partial-case resume")
         if any(r.get("budget_binding") != budget_binding(budget, case, inputs) for r in old_starts):
             raise ValueError("partial-case budget binding differs from immutable fixture")
-        append(args.output, {"kind": "inputs_ready", "case_key": case_key, "input_hashes": input_hashes,
+        emit({"kind": "inputs_ready", "case_key": case_key, "input_hashes": input_hashes,
                              "input_files": input_files, "actual_backend": c.backend,
                              "ledger_uuid": budget.ledger_uuid, "budget_binding": budget_binding(budget, case, inputs),
                              "runtime_checks": runtime,
@@ -1081,9 +1351,10 @@ def worker(args):
         encoded = b"\x00" + bytes([len(inputs["context"])]) + inputs["context"] + inputs["message"]
         good = resume_samples(existing, case, input_hashes)
         validate_preserved_budget(existing, case, budget)
-        if not good:
+        if len(good) < case["samples"]:
             for warmup in range(case["warmups"]):
                 receipt = budget.reserve(ALGORITHMS[case["pid"]], inputs["pk"], encoded) if case["op"] == "sign" else None
+                operation_id = begin("warmup", warmup, receipt, input_hashes)
                 finished = False
                 try:
                     c._check(case["op"], call())
@@ -1097,14 +1368,20 @@ def worker(args):
                 except BaseException as exc:
                     if receipt and not finished:
                         finish_failure(budget, receipt, exc)
+                    emit({"kind": "warmup", "index": warmup, "passed": False, "operation_id": operation_id,
+                          "input_hashes": input_hashes, "receipt": receipt, "error": type(exc).__name__+": "+str(exc),
+                          "budget_evidence": failure_receipt_evidence(budget, receipt, exc), "timed": False})
                     raise
-                append(args.output, {"kind": "warmup", "case_key": case_key, "index": warmup,
+                emit({"kind": "warmup", "case_key": case_key, "index": warmup,
+                                     "operation_id": operation_id,
+                                     "passed": True, "input_hashes": input_hashes,
                                      "receipt": receipt, "budget_evidence": receipt_evidence(budget, receipt), "validation": validation, "timed": False})
         prediction = None
         for index in range(case["samples"]):
             if index in good:
                 continue
             receipt = budget.reserve(ALGORITHMS[case["pid"]], inputs["pk"], encoded) if case["op"] == "sign" else None
+            operation_id = begin("sample", index, receipt, input_hashes)
             before = sample_environment(affinity["cpus"])
             finished, duration = False, None
             try:
@@ -1129,21 +1406,25 @@ def worker(args):
             except BaseException as exc:
                 if receipt and not finished:
                     finish_failure(budget, receipt, exc)
-                append(args.output, {"kind": "sample", "case_key": case_key, "sample_index": index,
-                                     "passed": False, "duration_ns": duration, "error": str(exc), "receipt": receipt,
+                emit({"kind": "sample", "case_key": case_key, "sample_index": index,
+                                     "operation_id": operation_id,
+                                     "input_hashes": input_hashes,
+                                     "passed": False, "duration_ns": duration, "error": type(exc).__name__+": "+str(exc), "receipt": receipt,
                                      "budget_evidence": failure_receipt_evidence(budget, receipt, exc)})
                 raise
             result_hash = sha(result) if isinstance(result, bytes) else sha(b"".join(result)) if isinstance(result, tuple) else None
             row = {"kind": "sample", "case_key": case_key, "case_id": case["case_id"],
+                   "operation_id": operation_id,
                    "sample_index": index, "duration_ns": duration, "passed": True,
                    "receipt": receipt, "budget_evidence": receipt_evidence(budget, receipt), "result_sha256": result_hash, "input_hashes": input_hashes,
                    "environment_before": before, "environment_after": sample_environment(affinity["cpus"]),
                    "validation": validation, "classification": provenance_before["classification"]}
-            append(args.output, row)
+            emit(row)
             good[index] = row
         provenance_after = provenance(args)
-        if provenance_before["source_sha256"] != provenance_after["source_sha256"] or provenance_before["library_sha256"] != provenance_after["library_sha256"]:
-            raise ValueError("sources or library changed while measuring; case remains incomplete")
+        if any(provenance_before.get(k) != provenance_after.get(k) for k in
+               ("source_sha256", "library_sha256", "build_record_sha256", "freeze_sha256", "final", "classification")):
+            raise ValueError("sources/library/build/freeze changed while measuring; case remains incomplete")
         if any(file_sha(path) != digest for path, digest in input_files.items()):
             raise ValueError("input file changed while measuring")
         if file_sha(args.plan) != plan_digest:
@@ -1157,7 +1438,7 @@ def worker(args):
         latest = rows(args.output)
         sample_lines = [r["_line"] for r in latest if r.get("case_key") == case_key and r.get("kind") == "sample" and r.get("passed")]
         values = [good[index]["duration_ns"] for index in range(case["samples"])]
-        append(args.output, {"kind": "case_complete", "case_key": case_key, "case_id": case["case_id"],
+        emit({"kind": "case_complete", "case_key": case_key, "case_id": case["case_id"],
             "ledger_uuid": budget.ledger_uuid,
             **summary(values), "samples": values, "sample_lines": sample_lines, **prediction,
             "host": initial["host"], "cpu": initial["lscpu"], "cores": case["threads"], "threads": case["threads"],
@@ -1200,6 +1481,7 @@ def run_cases(args):
                                   "sources": prov["source_sha256"], "freeze": prov["freeze_sha256"],
                                   "host_environment": host_identity, "explicit_cpus": args.cpus, "ledger_uuid": budget.ledger_uuid}).encode())
     old = rows(args.output)
+    audit_campaign_evidence(old, plan, budget, args.fixtures, provenance=prov, plan_digest=plan_digest)
     if any(row.get("schema") != SCHEMA for row in old):
         raise ValueError("preserved output contains foreign records")
     starts = [r for r in old if r.get("kind") == "campaign_start"]
@@ -1207,6 +1489,10 @@ def run_cases(args):
         raise ValueError("preserved output must contain exactly one campaign start")
     if starts and any(r["campaign_key"] != campaign_key for r in starts):
         raise ValueError("preserved file belongs to a different plan/build/freeze; use a fresh output")
+    if starts and any(starts[0].get(k) != v for k, v in {
+            "plan_sha256": plan_digest, "ledger_uuid": budget.ledger_uuid,
+            "provenance": prov, "host_environment": host_identity}.items()):
+        raise ValueError("preserved campaign metadata differs from current plan/build/host")
     if not starts:
         append(args.output, {"kind": "campaign_start", "campaign_key": campaign_key, "plan_sha256": file_sha(args.plan),
                              "ledger_uuid": budget.ledger_uuid,
@@ -1793,7 +2079,7 @@ def self_test(output=None):
                 worker(args)
             budget.ledger_uuid = "3"*32
             call.reset_mock()
-            with self.assertRaisesRegex(ValueError, "resume"):
+            with self.assertRaisesRegex(ValueError, "resume|identity|ledger"):
                 worker(args)
             self.assertEqual(call.call_count, 0)
 

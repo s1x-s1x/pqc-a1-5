@@ -1,0 +1,66 @@
+test_affinity_controller_hash (__main__.ParallelAuditTests.test_affinity_controller_hash) ... ok
+test_affinity_idle_core_evidence (__main__.ParallelAuditTests.test_affinity_idle_core_evidence) ... ok
+test_affinity_original_handoff_fields_preserved (__main__.ParallelAuditTests.test_affinity_original_handoff_fields_preserved) ... ok
+test_affinity_target_must_be_in_inventory (__main__.ParallelAuditTests.test_affinity_target_must_be_in_inventory) ... ok
+test_affinity_task_actual_after_binding (__main__.ParallelAuditTests.test_affinity_task_actual_after_binding) ... ok
+test_affinity_worker_thread_scope (__main__.ParallelAuditTests.test_affinity_worker_thread_scope) ... ok
+test_aggregate_raw_bytes_must_be_original_concatenation (__main__.ParallelAuditTests.test_aggregate_raw_bytes_must_be_original_concatenation) ... ok
+test_altered_preserved_cache_bytes (__main__.ParallelAuditTests.test_altered_preserved_cache_bytes) ... ok
+test_altered_preserved_cache_source_record_copy (__main__.ParallelAuditTests.test_altered_preserved_cache_source_record_copy) ... ok
+test_assignment_incomplete (__main__.ParallelAuditTests.test_assignment_incomplete) ... ok
+test_assignment_overlap_with_completed_serial (__main__.ParallelAuditTests.test_assignment_overlap_with_completed_serial) ... ok
+test_cache_raw_source_binding_must_match_bytes (__main__.ParallelAuditTests.test_cache_raw_source_binding_must_match_bytes) ... ok
+test_canonical_budget_key_identity (__main__.ParallelAuditTests.test_canonical_budget_key_identity) ... ok
+test_complete_positive_preserves_read_only_flags_and_closure (__main__.ParallelAuditTests.test_complete_positive_preserves_read_only_flags_and_closure) ... ok
+test_controller_hash_binding (__main__.ParallelAuditTests.test_controller_hash_binding) ... ok
+test_controller_log_exit_binding (__main__.ParallelAuditTests.test_controller_log_exit_binding) ... ok
+test_direct_budget_key_count_must_match_reservations (__main__.ParallelAuditTests.test_direct_budget_key_count_must_match_reservations) ... ok
+test_distinct_signing_cases_must_not_reuse_receipt (__main__.ParallelAuditTests.test_distinct_signing_cases_must_not_reuse_receipt) ... ok
+test_duplicate_json_key (__main__.ParallelAuditTests.test_duplicate_json_key) ... ok
+test_duplicate_physical_core_inventory (__main__.ParallelAuditTests.test_duplicate_physical_core_inventory) ... ok
+test_failed_worker_exit (__main__.ParallelAuditTests.test_failed_worker_exit) ... ok
+test_generated_signature_auxiliary_required (__main__.ParallelAuditTests.test_generated_signature_auxiliary_required) ... ok
+test_helper_hash_binding (__main__.ParallelAuditTests.test_helper_hash_binding) ... ok
+test_helper_launch_acceptance_hash (__main__.ParallelAuditTests.test_helper_launch_acceptance_hash) ... ok
+test_helper_launch_mock_acceptance_disclosed_as_actual (__main__.ParallelAuditTests.test_helper_launch_mock_acceptance_disclosed_as_actual) ... ok
+test_helper_launch_test_source_hash (__main__.ParallelAuditTests.test_helper_launch_test_source_hash) ... ok
+test_input_full_plan_must_match (__main__.ParallelAuditTests.test_input_full_plan_must_match) ... ok
+test_input_library_identity_must_match (__main__.ParallelAuditTests.test_input_library_identity_must_match) ... ok
+test_input_source_identity_must_match (__main__.ParallelAuditTests.test_input_source_identity_must_match) ... ok
+test_missing_aggregate_sidecar (__main__.ParallelAuditTests.test_missing_aggregate_sidecar) ... ok
+test_missing_assignment_file (__main__.ParallelAuditTests.test_missing_assignment_file) ... ok
+test_missing_helper_launch_acceptance (__main__.ParallelAuditTests.test_missing_helper_launch_acceptance) ... ok
+test_missing_preserved_cache_bytes (__main__.ParallelAuditTests.test_missing_preserved_cache_bytes) ... ok
+test_missing_preserved_cache_source_record_copy (__main__.ParallelAuditTests.test_missing_preserved_cache_source_record_copy) ... ok
+test_missing_worker_provenance (__main__.ParallelAuditTests.test_missing_worker_provenance) ... ok
+test_modeled_case_requires_count_prediction (__main__.ParallelAuditTests.test_modeled_case_requires_count_prediction) ... ok
+test_original_records_are_not_modified_by_audit (__main__.ParallelAuditTests.test_original_records_are_not_modified_by_audit) ... ok
+test_original_relative_stage_configuration (__main__.ParallelAuditTests.test_original_relative_stage_configuration) ... ok
+test_orphan_settled_reservation (__main__.ParallelAuditTests.test_orphan_settled_reservation) ... ok
+test_positive_cache_provenance_includes_preserved_bytes_and_source_records (__main__.ParallelAuditTests.test_positive_cache_provenance_includes_preserved_bytes_and_source_records) ... ok
+test_positive_external_affinity_adjustment (__main__.ParallelAuditTests.test_positive_external_affinity_adjustment) ... ok
+test_preserved_input_bytes_must_equal_original (__main__.ParallelAuditTests.test_preserved_input_bytes_must_equal_original) ... ok
+test_receipt_binding_signature_digest (__main__.ParallelAuditTests.test_receipt_binding_signature_digest) ... ok
+test_remote_stage_parent_traversal_rejected (__main__.ParallelAuditTests.test_remote_stage_parent_traversal_rejected) ... ok
+test_reserved_attempt_prevents_settlement_acceptance (__main__.ParallelAuditTests.test_reserved_attempt_prevents_settlement_acceptance) ... ok
+test_settled_ordinal_gap (__main__.ParallelAuditTests.test_settled_ordinal_gap) ... ok
+test_settled_sidefile_is_active_evidence (__main__.ParallelAuditTests.test_settled_sidefile_is_active_evidence) ... ok
+test_settlement_preserves_interrupted_attempt (__main__.ParallelAuditTests.test_settlement_preserves_interrupted_attempt) ... ok
+test_seven_field_observed_counts_must_match (__main__.ParallelAuditTests.test_seven_field_observed_counts_must_match) ... ok
+test_stale_settled_ledger_uuid (__main__.ParallelAuditTests.test_stale_settled_ledger_uuid) ... ok
+test_summary_claims_parallel_after_sidecars_removed (__main__.ParallelAuditTests.test_summary_claims_parallel_after_sidecars_removed) ... ok
+test_terminated_handoff_aborted_receipt_must_be_failed_charge (__main__.ParallelAuditTests.test_terminated_handoff_aborted_receipt_must_be_failed_charge) ... ok
+test_terminated_handoff_original_bytes_hash (__main__.ParallelAuditTests.test_terminated_handoff_original_bytes_hash) ... ok
+test_terminated_handoff_preserves_original_and_charged_aborted_attempt (__main__.ParallelAuditTests.test_terminated_handoff_preserves_original_and_charged_aborted_attempt) ... ok
+test_terminated_handoff_requires_disclosure (__main__.ParallelAuditTests.test_terminated_handoff_requires_disclosure) ... ok
+test_terminated_handoff_snapshot_raw_bytes (__main__.ParallelAuditTests.test_terminated_handoff_snapshot_raw_bytes) ... ok
+test_timing_flags (__main__.ParallelAuditTests.test_timing_flags) ... ok
+test_truncated_raw_final_line (__main__.ParallelAuditTests.test_truncated_raw_final_line) ... ok
+test_vector_raw_bytes_and_fingerprints_bound (__main__.ParallelAuditTests.test_vector_raw_bytes_and_fingerprints_bound) ... ok
+test_worker_extra_planned_case_execution (__main__.ParallelAuditTests.test_worker_extra_planned_case_execution) ... ok
+
+----------------------------------------------------------------------
+Ran 60 tests in 3.137s
+
+OK
+{"audit_sha256": "fc3204a2fec492ddace65c472c1b62718ac831a0a89cfb6fa7200944d092f6f0", "errors": 0, "failures": 0, "formal_performance_started": false, "native_calls": 0, "passed": true, "real_timing_samples": 0, "schema": "a15-parallel-correctness-audit-selftest-v1", "test_sha256": "8ae549849fce58180b2913573dd3b67236a330d180b4ecdb6c40a6f4aaa88410", "tests": 60}

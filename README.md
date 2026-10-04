@@ -12,25 +12,32 @@ alternative CA/TLS harness. Each acceptance result is tied to its tested source.
 Measurements before the first correctness gate are diagnostic timings only.
 They are not final competition performance results.
 
-## Current checkpoint: project repairs, before performance and paper edits
+## Current checkpoint: friend review repairs, before formal performance
 
-The authorized 2026-10-04 engineering repairs and current-source acceptance are complete.
-See `docs/PROJECT_REPAIR_CHECKPOINT.md` and `docs/NATIVE_REPAIR_20261004.md`.
+The second 2026-10-04 engineering review addresses digest ABI lengths,
+benchmark restart warmups and receipt ownership, scalable budget reconciliation,
+CA error precedence, flight resource budgets and persistent CUDA cleanup errors.
+See `docs/FRIEND_REPAIR_20261004.md` for current changes and acceptance boundaries.
+`docs/NATIVE_REPAIR_20261004.md` describes the preceding repair milestone.
 ABI 1.1 adds checked-capacity operations, private signature candidates and
 optional reference self-verification. Signing budgets use canonical algorithm identities,
 a persistent ledger UUID and receipt reconciliation. TLS accepts fragmented
 handshake streams with 16 KiB record-content limits and reports serialized byte
 counts explicitly. Native/Python fixture acceptance requires both actual paths.
 
-Current-source Linux acceptance passed CPU full 3471/3471, CUDA full
-1789/1789, 11 project functional gates and clean reproduction in
-`build/repair-staging-20261004-r3`. The full-session symbolic searches timed out
+The preceding source version passed CPU full 3471/3471 and CUDA full
+1789/1789 in `build/repair-staging-20261004-r3`. Those original results and
+freezes remain unchanged; they are not fresh full matrices for this revision.
+New regression, native fault and functional evidence bind the changed code.
+The full-session symbolic searches timed out
 and remain explicitly incomplete under the user's delivery choice. Earlier freezes below remain
 historical evidence. Formal CPU/CUDA/network performance samples remain zero.
-The paper/LaTeX and old report framework remain untouched. Project capabilities,
+The separately delivered LaTeX revision binds commit `808d34c`; this engineering
+round does not edit that ZIP. The repository report framework has been synchronized,
+and its original bytes are preserved in `docs/history/`. Project capabilities,
 security boundaries and wire details are in `docs/CAPABILITIES.md`,
 `docs/SECURITY.md` and `docs/PROTOCOL.md`. Read-only delivery verification is
-`python ops/audit_project_repair.py`; clone recovery instructions are in
+`python -B ops/audit_friend_repair.py --checkpoint validation/friend-repair-20261004/checkpoint.json --output review-fresh.json`; clone recovery instructions are in
 `docs/GITHUB_HANDOFF.md`. Pending measurement scopes are in
 `docs/PERFORMANCE_SCOPE_REPAIR.md`.
 

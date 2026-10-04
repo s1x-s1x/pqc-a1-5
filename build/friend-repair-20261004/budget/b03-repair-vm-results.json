@@ -1,0 +1,262 @@
+{
+  "schema": "a15-b03-guarded-counters-v1",
+  "sqlite": "3.50.4",
+  "clock": "2026-10-04T00:00:00+00:00",
+  "inputs": "synthetic public/message/signature and legacy identity-v2 history",
+  "native_calls": 0,
+  "formal_performance_started": false,
+  "elapsed_samples": 0,
+  "measurement": "SQLite progress_handler callback per VM instruction; no stopwatch",
+  "source_sha256": {
+    "tools/signing_budget.py": "8ff1cad39a5d27e37784b16333d14f5b50c24b57640c4c72d907fdc609d10f86",
+    "tools/test_friend_budget_scalability.py": "aa1af2ae8c80ef16f061ca907a0ffc20ec592daa4f1ebd9e26aea9ac55b12aba",
+    "build/friend-repair-20261004/budget/probe_b03_repair.py": "441609929e459f5ab533b2811d79cfb34bd2eaa168a8fe5747101287d65c692f"
+  },
+  "rows": [
+    {
+      "history_before": 1,
+      "reserve": {
+        "vm_opcodes": 782,
+        "count_queries": 0,
+        "history_scan_queries": 0
+      },
+      "validate": {
+        "vm_opcodes": 534,
+        "count_queries": 0,
+        "history_scan_queries": 0
+      },
+      "finish": {
+        "vm_opcodes": 697,
+        "count_queries": 0,
+        "history_scan_queries": 0
+      },
+      "batches": {
+        "1": {
+          "vm_opcodes": 534,
+          "count_queries": 0,
+          "history_scan_queries": 0
+        }
+      },
+      "explicit_full_audit": {
+        "vm_opcodes": 510,
+        "count_queries": 0,
+        "history_scan_queries": 1
+      },
+      "audit": {
+        "ledger_uuid": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "keys": 1,
+        "reservations": 2,
+        "states": {
+          "reserved": 1,
+          "committed": 1,
+          "failed": 0
+        }
+      }
+    },
+    {
+      "history_before": 10,
+      "reserve": {
+        "vm_opcodes": 795,
+        "count_queries": 0,
+        "history_scan_queries": 0
+      },
+      "validate": {
+        "vm_opcodes": 534,
+        "count_queries": 0,
+        "history_scan_queries": 0
+      },
+      "finish": {
+        "vm_opcodes": 697,
+        "count_queries": 0,
+        "history_scan_queries": 0
+      },
+      "batches": {
+        "1": {
+          "vm_opcodes": 534,
+          "count_queries": 0,
+          "history_scan_queries": 0
+        },
+        "10": {
+          "vm_opcodes": 714,
+          "count_queries": 0,
+          "history_scan_queries": 0
+        }
+      },
+      "explicit_full_audit": {
+        "vm_opcodes": 600,
+        "count_queries": 0,
+        "history_scan_queries": 1
+      },
+      "audit": {
+        "ledger_uuid": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "keys": 1,
+        "reservations": 11,
+        "states": {
+          "reserved": 10,
+          "committed": 1,
+          "failed": 0
+        }
+      }
+    },
+    {
+      "history_before": 100,
+      "reserve": {
+        "vm_opcodes": 795,
+        "count_queries": 0,
+        "history_scan_queries": 0
+      },
+      "validate": {
+        "vm_opcodes": 534,
+        "count_queries": 0,
+        "history_scan_queries": 0
+      },
+      "finish": {
+        "vm_opcodes": 697,
+        "count_queries": 0,
+        "history_scan_queries": 0
+      },
+      "batches": {
+        "1": {
+          "vm_opcodes": 534,
+          "count_queries": 0,
+          "history_scan_queries": 0
+        },
+        "10": {
+          "vm_opcodes": 714,
+          "count_queries": 0,
+          "history_scan_queries": 0
+        },
+        "100": {
+          "vm_opcodes": 2514,
+          "count_queries": 0,
+          "history_scan_queries": 0
+        }
+      },
+      "explicit_full_audit": {
+        "vm_opcodes": 1500,
+        "count_queries": 0,
+        "history_scan_queries": 1
+      },
+      "audit": {
+        "ledger_uuid": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "keys": 1,
+        "reservations": 101,
+        "states": {
+          "reserved": 100,
+          "committed": 1,
+          "failed": 0
+        }
+      }
+    },
+    {
+      "history_before": 1000,
+      "reserve": {
+        "vm_opcodes": 795,
+        "count_queries": 0,
+        "history_scan_queries": 0
+      },
+      "validate": {
+        "vm_opcodes": 534,
+        "count_queries": 0,
+        "history_scan_queries": 0
+      },
+      "finish": {
+        "vm_opcodes": 697,
+        "count_queries": 0,
+        "history_scan_queries": 0
+      },
+      "batches": {
+        "1": {
+          "vm_opcodes": 534,
+          "count_queries": 0,
+          "history_scan_queries": 0
+        },
+        "10": {
+          "vm_opcodes": 714,
+          "count_queries": 0,
+          "history_scan_queries": 0
+        },
+        "100": {
+          "vm_opcodes": 2514,
+          "count_queries": 0,
+          "history_scan_queries": 0
+        },
+        "1000": {
+          "vm_opcodes": 20514,
+          "count_queries": 0,
+          "history_scan_queries": 0
+        }
+      },
+      "explicit_full_audit": {
+        "vm_opcodes": 10500,
+        "count_queries": 0,
+        "history_scan_queries": 1
+      },
+      "audit": {
+        "ledger_uuid": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "keys": 1,
+        "reservations": 1001,
+        "states": {
+          "reserved": 1000,
+          "committed": 1,
+          "failed": 0
+        }
+      }
+    },
+    {
+      "history_before": 10000,
+      "reserve": {
+        "vm_opcodes": 795,
+        "count_queries": 0,
+        "history_scan_queries": 0
+      },
+      "validate": {
+        "vm_opcodes": 534,
+        "count_queries": 0,
+        "history_scan_queries": 0
+      },
+      "finish": {
+        "vm_opcodes": 697,
+        "count_queries": 0,
+        "history_scan_queries": 0
+      },
+      "batches": {
+        "1": {
+          "vm_opcodes": 534,
+          "count_queries": 0,
+          "history_scan_queries": 0
+        },
+        "10": {
+          "vm_opcodes": 714,
+          "count_queries": 0,
+          "history_scan_queries": 0
+        },
+        "100": {
+          "vm_opcodes": 2514,
+          "count_queries": 0,
+          "history_scan_queries": 0
+        },
+        "1000": {
+          "vm_opcodes": 20514,
+          "count_queries": 0,
+          "history_scan_queries": 0
+        }
+      },
+      "explicit_full_audit": {
+        "vm_opcodes": 100500,
+        "count_queries": 0,
+        "history_scan_queries": 1
+      },
+      "audit": {
+        "ledger_uuid": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "keys": 1,
+        "reservations": 10001,
+        "states": {
+          "reserved": 10000,
+          "committed": 1,
+          "failed": 0
+        }
+      }
+    }
+  ]
+}

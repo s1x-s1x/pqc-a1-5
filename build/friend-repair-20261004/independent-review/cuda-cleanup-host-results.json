@@ -1,0 +1,17 @@
+{
+  "schema": "a15-cuda-cleanup-host-review-v1",
+  "passed": true,
+  "policy_cases": 17,
+  "cryptographic_abi_calls": 0,
+  "real_cuda_faults": false,
+  "real_timing_samples": 0,
+  "output": "CUDA cleanup host fake-driver: 17 policy cases PASS; cryptographic_abi_calls=0; real_timing_samples=0; real GPU fault behavior untested\n",
+  "sources_sha256": {
+    "c/src/sm3_cuda.cu": "9f7cbfedc974060cc70e30c9a1c99c8a5f290e73abd8695b18a8822634f90309",
+    "c/src/cuda_cleanup.h": "4a3f07159ddc9c0b12a8d5a571df2f1491fab269911b97c82b4e6e2b8372c3bc",
+    "c/tests/test_cuda_cleanup_host.cpp": "8594a3cef33708edc6266059ad6c6af27ed736db4453ede3b730df54cf9cc12c",
+    "c/Makefile": "11e658ff0dea28d4c9fc50f8c8dd7321414cb29d98a66b956cab75bafb6f14f2",
+    "tools/run_cuda_native.py": "0ab6926a42a55cced8bfb3a07ceed860d6aa35ebb01476413ae4b70c0871493d"
+  },
+  "binary_sha256": "b7a7bbd4b0a44fcdfd025f5972b5644af05d844aff53c890f26caae591ee19cb"
+}

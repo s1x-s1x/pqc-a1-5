@@ -1,0 +1,56 @@
+{
+  "schema": "a15-cuda-kernel-v1",
+  "passed": true,
+  "actual_selected_backend": 5,
+  "formal_performance_started": false,
+  "measured_durations": false,
+  "real_timing_samples": 0,
+  "source_hashes": {
+    "c/src/cuda_cleanup.h": "4a3f07159ddc9c0b12a8d5a571df2f1491fab269911b97c82b4e6e2b8372c3bc",
+    "c/src/sm3_cuda.cu": "9f7cbfedc974060cc70e30c9a1c99c8a5f290e73abd8695b18a8822634f90309",
+    "c/src/sm3_cuda.h": "6354878a69a8c299688d8805de46a4b6adfecdf43560de04d6f081feabd18bf1",
+    "c/src/sm3_cuda_device.cuh": "7e9a63997620c38a1a8b93406b55ebbde9201679c4a1006f2b6cc1867c9ee48e",
+    "c/src/sm3_cuda_stub.c": "b5f2ccb7c8ca60e0eb8adf4609962ad0f5f6acbb109b22a799cc33e274a998f6",
+    "c/tests/test_cuda.c": "6dee97e16a8f89832f6073f106c3b96202648c4d20de5b3ed23d51e61710e16b",
+    "c/tests/test_cuda_cleanup_host.cpp": "8594a3cef33708edc6266059ad6c6af27ed736db4453ede3b730df54cf9cc12c",
+    "c/tests/test_cuda_kernel_host.cpp": "9ac22fadf8bd5591fc661eda8de9ce4cff263485273785ec8976ec95b1d208f9"
+  },
+  "gpu_stats": {
+    "kernel_launches": 2770,
+    "device_hashes": 395926,
+    "kernel_ns": 0,
+    "timing_enabled": 0
+  },
+  "cases": [
+    {
+      "case": "gpu-sm3",
+      "comparisons": 7294,
+      "passed": true,
+      "timed": false
+    },
+    {
+      "case": "gpu-fors-subtrees-and-hybrid-wots",
+      "comparisons": 148,
+      "passed": true,
+      "timed": false
+    },
+    {
+      "case": "gpu-full-signatures-cache-randomized-inputs-and-guards",
+      "comparisons": 12,
+      "passed": true,
+      "timed": false
+    },
+    {
+      "passed": true,
+      "cuda_available": true,
+      "actual_backend": 5,
+      "device": 0,
+      "kernel_launches": 2770,
+      "device_hashes": 395926,
+      "timed": false
+    }
+  ],
+  "library_sha256": "6193e8d30cc65a77d8b39d67d65f517028ed3192df8f50cfbeac0416bf7b3550",
+  "executable_sha256": "2024f76572fe0c18be22c5f43ba7c85dafd7d59bdde9b7367c1dfc177429f02a",
+  "log_sha256": "fbdb1ba02f5ef29326d17ab02748abf4e19334ab06edd79a6ca3e2db9587b0e6"
+}

@@ -1,0 +1,1307 @@
+typedef char __nv_bool;
+# 2869 "/usr/include/driver_types.h" 3
+struct CUstream_st;
+# 2874 "/usr/include/driver_types.h" 3
+struct CUevent_st;
+# 51 "/usr/include/x86_64-linux-gnu/bits/thread-shared-types.h" 3
+struct __pthread_internal_list;
+# 22 "/usr/include/x86_64-linux-gnu/bits/struct_mutex.h" 3
+struct __pthread_mutex_s;
+# 68 "/usr/include/x86_64-linux-gnu/bits/pthreadtypes.h" 3
+union pthread_mutex_t;
+# 62 "include/slhdsa_sm3.h"
+struct slh_cuda_info;
+# 67 "include/slhdsa_sm3.h"
+struct slh_cuda_stats;
+# 17 "src/sm3_cuda_device.cuh"
+struct a15_cuda_job;
+# 48 "/usr/include/pthread.h" 3
+enum _ZN42_INTERNAL_fafc1c49_11_sm3_cuda_cu_f21b9c8bUt6_E {
+# 49 "/usr/include/pthread.h" 3
+PTHREAD_MUTEX_TIMED_NP,
+# 50 "/usr/include/pthread.h" 3
+PTHREAD_MUTEX_RECURSIVE_NP,
+# 51 "/usr/include/pthread.h" 3
+PTHREAD_MUTEX_ERRORCHECK_NP,
+# 52 "/usr/include/pthread.h" 3
+PTHREAD_MUTEX_ADAPTIVE_NP,
+# 55 "/usr/include/pthread.h" 3
+PTHREAD_MUTEX_NORMAL = 0,
+# 56 "/usr/include/pthread.h" 3
+PTHREAD_MUTEX_RECURSIVE,
+# 57 "/usr/include/pthread.h" 3
+PTHREAD_MUTEX_ERRORCHECK,
+# 58 "/usr/include/pthread.h" 3
+PTHREAD_MUTEX_DEFAULT = 0,
+# 62 "/usr/include/pthread.h" 3
+PTHREAD_MUTEX_FAST_NP = 0};
+# 27 "src/sm3_cuda.cu"
+struct cuda_cleanup_driver;
+# 10 "src/cuda_cleanup.h"
+struct _Z21a15_cuda_buffer_ownerI19cuda_cleanup_driverE;
+# 34 "src/sm3_cuda.cu"
+struct cuda_buffer;
+# 37 "src/sm3_cuda.cu"
+struct kernel_clock;
+# 61 "src/sm3_cuda.cu"
+struct _ZZ12a15_cuda_sm3EUlvE_;
+# 72 "src/sm3_cuda.cu"
+struct _ZZ18a15_cuda_fors_treeEUlvE_;
+# 177 "/usr/include/c++/11/bits/basic_string.h" 3
+enum _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEUt_E {
+# 177 "/usr/include/c++/11/bits/basic_string.h" 3
+_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE17_S_local_capacityE = 15};
+# 177 "/usr/include/c++/11/bits/basic_string.h" 3
+enum _ZNSt7__cxx1112basic_stringIwSt11char_traitsIwESaIwEEUt_E {
+# 177 "/usr/include/c++/11/bits/basic_string.h" 3
+_ZNSt7__cxx1112basic_stringIwSt11char_traitsIwESaIwEE17_S_local_capacityE = 3};
+# 177 "/usr/include/c++/11/bits/basic_string.h" 3
+enum _ZNSt7__cxx1112basic_stringIDsSt11char_traitsIDsESaIDsEEUt_E {
+# 177 "/usr/include/c++/11/bits/basic_string.h" 3
+_ZNSt7__cxx1112basic_stringIDsSt11char_traitsIDsESaIDsEE17_S_local_capacityE = 7};
+# 177 "/usr/include/c++/11/bits/basic_string.h" 3
+enum _ZNSt7__cxx1112basic_stringIDiSt11char_traitsIDiESaIDiEEUt_E {
+# 177 "/usr/include/c++/11/bits/basic_string.h" 3
+_ZNSt7__cxx1112basic_stringIDiSt11char_traitsIDiESaIDiEE17_S_local_capacityE = 3};
+# 2991 "/usr/include/c++/11/type_traits" 3
+struct _ZSt10__nonesuch;
+# 51 "/usr/include/c++/11/bits/uses_allocator.h" 3
+struct _ZSt15allocator_arg_t;
+# 57 "/usr/include/c++/11/bits/std_mutex.h" 3
+struct _ZSt12__mutex_base;
+# 83 "/usr/include/c++/11/bits/std_mutex.h" 3
+struct _ZSt5mutex;
+# 206 "/usr/include/c++/11/bits/std_mutex.h" 3
+struct _ZSt12adopt_lock_t;
+# 223 "/usr/include/c++/11/bits/std_mutex.h" 3
+struct _ZSt10lock_guardISt5mutexE;
+# 209 "/usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h" 3
+typedef unsigned long size_t;
+#include "crt/device_runtime.h"
+# 38 "/usr/include/x86_64-linux-gnu/bits/types.h" 3
+typedef unsigned char __uint8_t;
+# 42 "/usr/include/x86_64-linux-gnu/bits/types.h" 3
+typedef unsigned __uint32_t;
+# 45 "/usr/include/x86_64-linux-gnu/bits/types.h" 3
+typedef unsigned long __uint64_t;
+# 72 "/usr/include/x86_64-linux-gnu/bits/types.h" 3
+typedef long __intmax_t;
+# 73 "/usr/include/x86_64-linux-gnu/bits/types.h" 3
+typedef unsigned long __uintmax_t;
+# 51 "/usr/include/x86_64-linux-gnu/bits/thread-shared-types.h" 3
+struct __pthread_internal_list {
+# 53 "/usr/include/x86_64-linux-gnu/bits/thread-shared-types.h" 3
+struct __pthread_internal_list *__prev;
+# 54 "/usr/include/x86_64-linux-gnu/bits/thread-shared-types.h" 3
+struct __pthread_internal_list *__next;};
+# 55 "/usr/include/x86_64-linux-gnu/bits/thread-shared-types.h" 3
+typedef struct __pthread_internal_list __pthread_list_t;
+# 22 "/usr/include/x86_64-linux-gnu/bits/struct_mutex.h" 3
+struct __pthread_mutex_s {
+# 24 "/usr/include/x86_64-linux-gnu/bits/struct_mutex.h" 3
+int __lock;
+# 25 "/usr/include/x86_64-linux-gnu/bits/struct_mutex.h" 3
+unsigned __count;
+# 26 "/usr/include/x86_64-linux-gnu/bits/struct_mutex.h" 3
+int __owner;
+# 28 "/usr/include/x86_64-linux-gnu/bits/struct_mutex.h" 3
+unsigned __nusers;
+# 32 "/usr/include/x86_64-linux-gnu/bits/struct_mutex.h" 3
+int __kind;
+# 34 "/usr/include/x86_64-linux-gnu/bits/struct_mutex.h" 3
+short __spins;
+# 35 "/usr/include/x86_64-linux-gnu/bits/struct_mutex.h" 3
+short __elision;
+# 36 "/usr/include/x86_64-linux-gnu/bits/struct_mutex.h" 3
+__pthread_list_t __list;};
+# 68 "/usr/include/x86_64-linux-gnu/bits/pthreadtypes.h" 3
+union pthread_mutex_t {
+# 69 "/usr/include/x86_64-linux-gnu/bits/pthreadtypes.h" 3
+struct __pthread_mutex_s __data;
+# 70 "/usr/include/x86_64-linux-gnu/bits/pthreadtypes.h" 3
+char __size[40];
+# 71 "/usr/include/x86_64-linux-gnu/bits/pthreadtypes.h" 3
+long __align;};
+# 72 "/usr/include/x86_64-linux-gnu/bits/pthreadtypes.h" 3
+typedef union pthread_mutex_t pthread_mutex_t;
+# 24 "/usr/include/x86_64-linux-gnu/bits/stdint-uintn.h" 3
+typedef __uint8_t uint8_t;
+# 26 "/usr/include/x86_64-linux-gnu/bits/stdint-uintn.h" 3
+typedef __uint32_t uint32_t;
+# 27 "/usr/include/x86_64-linux-gnu/bits/stdint-uintn.h" 3
+typedef __uint64_t uint64_t;
+# 101 "/usr/include/stdint.h" 3
+typedef __intmax_t intmax_t;
+# 102 "/usr/include/stdint.h" 3
+typedef __uintmax_t uintmax_t;
+# 62 "include/slhdsa_sm3.h"
+struct slh_cuda_info {
+# 63 "include/slhdsa_sm3.h"
+int device;
+# 63 "include/slhdsa_sm3.h"
+int runtime_version;
+# 63 "include/slhdsa_sm3.h"
+int driver_version;
+# 63 "include/slhdsa_sm3.h"
+int compute_major;
+# 63 "include/slhdsa_sm3.h"
+int compute_minor;
+# 64 "include/slhdsa_sm3.h"
+uint64_t total_memory;
+# 65 "include/slhdsa_sm3.h"
+char name[96];};
+# 66 "include/slhdsa_sm3.h"
+typedef struct slh_cuda_info slh_cuda_info;
+# 67 "include/slhdsa_sm3.h"
+struct slh_cuda_stats {
+# 68 "include/slhdsa_sm3.h"
+uint64_t kernel_launches;
+# 68 "include/slhdsa_sm3.h"
+uint64_t h2d_bytes;
+# 68 "include/slhdsa_sm3.h"
+uint64_t d2h_bytes;
+# 68 "include/slhdsa_sm3.h"
+uint64_t device_hashes;
+# 68 "include/slhdsa_sm3.h"
+uint64_t kernel_ns;
+# 69 "include/slhdsa_sm3.h"
+uint64_t timing_enabled;};
+# 70 "include/slhdsa_sm3.h"
+typedef struct slh_cuda_stats slh_cuda_stats;
+# 17 "src/sm3_cuda_device.cuh"
+struct a15_cuda_job {
+# 18 "src/sm3_cuda_device.cuh"
+uint32_t seed[8];
+# 18 "src/sm3_cuda_device.cuh"
+const uint8_t *skseed;
+# 18 "src/sm3_cuda_device.cuh"
+uint8_t adrs[32];
+# 18 "src/sm3_cuda_device.cuh"
+uint32_t start;char __nv_no_debug_dummy_end_padding_0[4];};
+# 50 "/usr/include/x86_64-linux-gnu/c++/11/bits/gthr-default.h" 3
+typedef pthread_mutex_t __gthread_mutex_t;
+# 27 "src/sm3_cuda.cu"
+struct cuda_cleanup_driver {};
+# 10 "src/cuda_cleanup.h"
+struct _Z21a15_cuda_buffer_ownerI19cuda_cleanup_driverE {
+# 11 "src/cuda_cleanup.h"
+uint8_t *p;
+# 12 "src/cuda_cleanup.h"
+size_t bytes;
+# 13 "src/cuda_cleanup.h"
+__nv_bool *poisoned;};
+# 34 "src/sm3_cuda.cu"
+struct cuda_buffer { struct _Z21a15_cuda_buffer_ownerI19cuda_cleanup_driverE __b_21a15_cuda_buffer_ownerI19cuda_cleanup_driverE;};
+# 37 "src/sm3_cuda.cu"
+struct kernel_clock {
+# 38 "src/sm3_cuda.cu"
+struct CUevent_st *before;
+# 38 "src/sm3_cuda.cu"
+struct CUevent_st *after;
+# 38 "src/sm3_cuda.cu"
+int rc;char __nv_no_debug_dummy_end_padding_0[4];};
+# 61 "src/sm3_cuda.cu"
+struct _ZZ12a15_cuda_sm3EUlvE_ {
+# 61 "src/sm3_cuda.cu"
+struct cuda_buffer *input;
+# 61 "src/sm3_cuda.cu"
+struct cuda_buffer *output;
+# 62 "src/sm3_cuda.cu"
+size_t *input_bytes;
+# 62 "src/sm3_cuda.cu"
+const uint8_t **messages;
+# 63 "src/sm3_cuda.cu"
+size_t *count;
+# 63 "src/sm3_cuda.cu"
+size_t *stride;
+# 63 "src/sm3_cuda.cu"
+size_t *length;
+# 64 "src/sm3_cuda.cu"
+uint8_t **digests;};
+# 72 "src/sm3_cuda.cu"
+struct _ZZ18a15_cuda_fors_treeEUlvE_ {
+# 72 "src/sm3_cuda.cu"
+struct cuda_buffer *first;
+# 72 "src/sm3_cuda.cu"
+struct cuda_buffer *second;
+# 72 "src/sm3_cuda.cu"
+struct cuda_buffer *secret;
+# 73 "src/sm3_cuda.cu"
+const uint8_t **skseed;
+# 74 "src/sm3_cuda.cu"
+const uint32_t **seed;
+# 74 "src/sm3_cuda.cu"
+const uint8_t **adrs;
+# 74 "src/sm3_cuda.cu"
+uint32_t *start;
+# 78 "src/sm3_cuda.cu"
+unsigned *fault_site;
+# 78 "src/sm3_cuda.cu"
+uint32_t *fault_index;
+# 80 "src/sm3_cuda.cu"
+const uint32_t *leaves;
+# 82 "src/sm3_cuda.cu"
+unsigned *height;
+# 83 "src/sm3_cuda.cu"
+uint32_t *target;
+# 83 "src/sm3_cuda.cu"
+uint8_t **auth;
+# 87 "src/sm3_cuda.cu"
+uint8_t **root;};
+# 280 "/usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h" 3
+typedef unsigned long _ZSt6size_t;
+# 51 "/usr/include/c++/11/bits/uses_allocator.h" 3
+struct _ZSt15allocator_arg_t {};
+# 60 "/usr/include/c++/11/bits/std_mutex.h" 3
+typedef __gthread_mutex_t _ZNSt12__mutex_base13__native_typeE;
+# 57 "/usr/include/c++/11/bits/std_mutex.h" 3
+struct _ZSt12__mutex_base {
+# 63 "/usr/include/c++/11/bits/std_mutex.h" 3
+_ZNSt12__mutex_base13__native_typeE _M_mutex;};
+# 83 "/usr/include/c++/11/bits/std_mutex.h" 3
+struct _ZSt5mutex { struct _ZSt12__mutex_base __b_St12__mutex_base;};
+# 206 "/usr/include/c++/11/bits/std_mutex.h" 3
+struct _ZSt12adopt_lock_t {};
+# 226 "/usr/include/c++/11/bits/std_mutex.h" 3
+typedef struct _ZSt5mutex _ZNSt10lock_guardISt5mutexE10mutex_typeE;
+# 223 "/usr/include/c++/11/bits/std_mutex.h" 3
+struct _ZSt10lock_guardISt5mutexE {
+# 241 "/usr/include/c++/11/bits/std_mutex.h" 3
+_ZNSt10lock_guardISt5mutexE10mutex_typeE *_M_device;};
+# 70 "/usr/include/cuda_device_runtime_api.h" 3
+___device__(static  __no_sc__) __inline__ enum cudaError cudaMalloc(void **, size_t);
+# 121 "/usr/include/cuda_device_runtime_api.h" 3
+___device__(extern  __no_sc__) enum cudaError cudaDeviceSynchronize(void);
+# 122 "/usr/include/cuda_device_runtime_api.h" 3
+___device__(extern  __no_sc__) enum cudaError cudaGetLastError(void);
+# 1389 "/usr/include/cuda_runtime_api.h" 3
+___device__(extern  __no_sc__) enum cudaError cudaGetDeviceCount(int *);
+# 3154 "/usr/include/cuda_runtime_api.h" 3
+___device__(extern  __no_sc__) enum cudaError cudaEventRecord(struct CUevent_st *, struct CUstream_st *);
+# 3292 "/usr/include/cuda_runtime_api.h" 3
+___device__(extern  __no_sc__) enum cudaError cudaEventDestroy(struct CUevent_st *);
+# 4927 "/usr/include/cuda_runtime_api.h" 3
+___device__(extern  __no_sc__) enum cudaError cudaFree(void *);
+# 9380 "/usr/include/cuda_runtime_api.h" 3
+___device__(extern  __no_sc__) enum cudaError cudaRuntimeGetVersion(int *);
+#if !defined(__CUDABE__)
+# 26 "/usr/include/x86_64-linux-gnu/bits/string_fortified.h" 3
+ __device_builtin__ ___device__(extern  __no_sc__) __inline__ __attribute__((__artificial__)) __attribute__((__always_inline__)) __attribute__((__gnu_inline__)) __attribute__((__nothrow__)) void *memcpy(void *__restrict__, const void *__restrict__, size_t);
+#endif
+#if !defined(__CUDABE__)
+# 57 "/usr/include/x86_64-linux-gnu/bits/string_fortified.h" 3
+ __device_builtin__ ___device__(extern  __no_sc__) __inline__ __attribute__((__artificial__)) __attribute__((__always_inline__)) __attribute__((__gnu_inline__)) __attribute__((__nothrow__)) void *memset(void *, int, size_t);
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+# 3307 "/usr/include/crt/device_functions.h" 3
+___device__(extern  __no_sc__) unsigned __cudaPushCallConfiguration(struct dim3, struct dim3, size_t, struct CUstream_st *);
+# 23 "src/sm3_cuda_device.cuh"
+___device__(static  __no_sc__) __inline__ __attribute__((__always_inline__)) void _Z16cuda_secure_zeroPvm(void *, size_t);
+# 24 "src/sm3_cuda_device.cuh"
+___device__(static  __no_sc__) __inline__ __attribute__((__always_inline__)) uint32_t _Z8cuda_rotjj(uint32_t, unsigned);
+# 25 "src/sm3_cuda_device.cuh"
+___device__(static  __no_sc__) __inline__ __attribute__((__always_inline__)) uint32_t _Z11cuda_read32PKh(const uint8_t *);
+# 26 "src/sm3_cuda_device.cuh"
+___device__(static  __no_sc__) __inline__ __attribute__((__always_inline__)) void _Z10cuda_put32Phj(uint8_t *, uint32_t);
+# 27 "src/sm3_cuda_device.cuh"
+___device__(static  __no_sc__) __inline__ __attribute__((__always_inline__)) void _Z17cuda_sm3_compressPjPKh(uint32_t *, const uint8_t *);
+# 40 "src/sm3_cuda_device.cuh"
+___device__(static  __no_sc__) __inline__ __attribute__((__always_inline__)) void _Z13cuda_sm3_hashPKhmPh(const uint8_t *, size_t, uint8_t *);
+# 50 "src/sm3_cuda_device.cuh"
+___device__(static  __no_sc__) __inline__ __attribute__((__always_inline__)) void _Z10cuda_thashPKjPKhS2_jPh(const uint32_t *, const uint8_t *, const uint8_t *, unsigned, uint8_t *);
+# 57 "src/sm3_cuda_device.cuh"
+___device__(static  __no_sc__) __inline__ __attribute__((__always_inline__)) void _Z14cuda_fors_leafRK12a15_cuda_jobjPh(const struct a15_cuda_job *, uint32_t, uint8_t *);
+# 68 "src/sm3_cuda_device.cuh"
+___device__(static  __no_sc__) __inline__ __attribute__((__always_inline__)) void _Z16cuda_fors_parentRK12a15_cuda_jobjjPKhPh(const struct a15_cuda_job *, unsigned, uint32_t, const uint8_t *, uint8_t *);
+# 48 "src/sm3_cuda.cu"
+__global__ __var_used__ extern void _Z10sm3_kernelPKhmmmPh(const uint8_t *, size_t, size_t, size_t, uint8_t *);
+# 49 "src/sm3_cuda.cu"
+__global__ __var_used__ extern void _Z16fors_leaf_kernel12a15_cuda_jobjPh(struct a15_cuda_job, uint32_t, uint8_t *);
+# 50 "src/sm3_cuda.cu"
+__global__ __var_used__ extern void _Z18fors_reduce_kernel12a15_cuda_jobjjPKhPh(struct a15_cuda_job, unsigned, uint32_t, const uint8_t *, uint8_t *);
+# 423 "/usr/include/vector_types.h" 3
+___device__(static  __no_sc__) __inline__ void _ZN4dim3C1Ejjj(struct dim3 *const, unsigned, unsigned, unsigned);
+___device__(static  __no_sc__) __inline__ void _ZN4dim3C2Ejjj(struct dim3 *const, unsigned, unsigned, unsigned);
+#include "common_functions.h"
+# 70 "/usr/include/cuda_device_runtime_api.h" 3
+___device__(static  __no_sc__) __inline__ enum cudaError cudaMalloc(
+# 70 "/usr/include/cuda_device_runtime_api.h" 3
+void **p, 
+# 70 "/usr/include/cuda_device_runtime_api.h" 3
+size_t s){
+# 71 "/usr/include/cuda_device_runtime_api.h" 3
+{
+# 72 "/usr/include/cuda_device_runtime_api.h" 3
+return cudaErrorUnknown;
+# 73 "/usr/include/cuda_device_runtime_api.h" 3
+}}
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+# 96 "/usr/include/crt/common_functions.h" 3
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__artificial__)) __attribute__((__always_inline__)) __attribute__((__nothrow__)) void *memset(void *, int, size_t);
+#endif
+#if !defined(__CUDABE__)
+# 97 "/usr/include/crt/common_functions.h" 3
+ __device_builtin__ ___device__(extern  __no_sc__) __attribute__((__artificial__)) __attribute__((__always_inline__)) __attribute__((__nothrow__)) void *memcpy(void *, const void *, size_t);
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+# 23 "src/sm3_cuda_device.cuh"
+___device__(static  __no_sc__) __inline__ __attribute__((__always_inline__)) void _Z16cuda_secure_zeroPvm(
+# 23 "src/sm3_cuda_device.cuh"
+void *p, 
+# 23 "src/sm3_cuda_device.cuh"
+size_t bytes){
+# 23 "src/sm3_cuda_device.cuh"
+{
+# 23 "src/sm3_cuda_device.cuh"
+ volatile uint8_t *__cuda_local_var_22390_73_non_const_out;
+# 23 "src/sm3_cuda_device.cuh"
+__cuda_local_var_22390_73_non_const_out = ((volatile uint8_t *)p);
+# 23 "src/sm3_cuda_device.cuh"
+{
+# 23 "src/sm3_cuda_device.cuh"
+ size_t j;
+# 23 "src/sm3_cuda_device.cuh"
+j = 0UL;
+# 23 "src/sm3_cuda_device.cuh"
+for (; (j < bytes); j++) {
+# 23 "src/sm3_cuda_device.cuh"
+(__cuda_local_var_22390_73_non_const_out[j]) = ((uint8_t)0U); } } 
+# 23 "src/sm3_cuda_device.cuh"
+}}
+# 24 "src/sm3_cuda_device.cuh"
+___device__(static  __no_sc__) __inline__ __attribute__((__always_inline__)) uint32_t _Z8cuda_rotjj(
+# 24 "src/sm3_cuda_device.cuh"
+uint32_t x, 
+# 24 "src/sm3_cuda_device.cuh"
+unsigned n){
+# 24 "src/sm3_cuda_device.cuh"
+{
+# 24 "src/sm3_cuda_device.cuh"
+n &= 31U;
+# 24 "src/sm3_cuda_device.cuh"
+return (n) ? ((x << n) | (x >> (32U - n))) : x;
+# 24 "src/sm3_cuda_device.cuh"
+}}
+# 25 "src/sm3_cuda_device.cuh"
+___device__(static  __no_sc__) __inline__ __attribute__((__always_inline__)) uint32_t _Z11cuda_read32PKh(
+# 25 "src/sm3_cuda_device.cuh"
+const uint8_t *p){
+# 25 "src/sm3_cuda_device.cuh"
+{
+# 25 "src/sm3_cuda_device.cuh"
+return (((((uint32_t)(p[0])) << 24) | (((uint32_t)(p[1])) << 16)) | (((uint32_t)(p[2])) << 8)) | ((unsigned)(p[3]));
+# 25 "src/sm3_cuda_device.cuh"
+}}
+# 26 "src/sm3_cuda_device.cuh"
+___device__(static  __no_sc__) __inline__ __attribute__((__always_inline__)) void _Z10cuda_put32Phj(
+# 26 "src/sm3_cuda_device.cuh"
+uint8_t *p, 
+# 26 "src/sm3_cuda_device.cuh"
+uint32_t x){
+# 26 "src/sm3_cuda_device.cuh"
+{
+# 26 "src/sm3_cuda_device.cuh"
+(p[0]) = ((uint8_t)(x >> 24));
+# 26 "src/sm3_cuda_device.cuh"
+(p[1]) = ((uint8_t)(x >> 16));
+# 26 "src/sm3_cuda_device.cuh"
+(p[2]) = ((uint8_t)(x >> 8));
+# 26 "src/sm3_cuda_device.cuh"
+(p[3]) = ((uint8_t)x); 
+# 26 "src/sm3_cuda_device.cuh"
+}}
+# 27 "src/sm3_cuda_device.cuh"
+___device__(static  __no_sc__) __inline__ __attribute__((__always_inline__)) void _Z17cuda_sm3_compressPjPKh(
+# 27 "src/sm3_cuda_device.cuh"
+uint32_t *s, 
+# 27 "src/sm3_cuda_device.cuh"
+const uint8_t *b){
+# 27 "src/sm3_cuda_device.cuh"
+{
+# 28 "src/sm3_cuda_device.cuh"
+ uint32_t __cuda_local_var_22411_11_non_const_w[68];
+# 30 "src/sm3_cuda_device.cuh"
+ uint32_t __cuda_local_var_22413_11_non_const_a;
+# 30 "src/sm3_cuda_device.cuh"
+ uint32_t __cuda_local_var_22413_18_non_const_b0;
+# 30 "src/sm3_cuda_device.cuh"
+ uint32_t __cuda_local_var_22413_26_non_const_c;
+# 30 "src/sm3_cuda_device.cuh"
+ uint32_t __cuda_local_var_22413_33_non_const_d;
+# 30 "src/sm3_cuda_device.cuh"
+ uint32_t __cuda_local_var_22413_40_non_const_e;
+# 30 "src/sm3_cuda_device.cuh"
+ uint32_t __cuda_local_var_22413_47_non_const_f;
+# 30 "src/sm3_cuda_device.cuh"
+ uint32_t __cuda_local_var_22413_54_non_const_g;
+# 30 "src/sm3_cuda_device.cuh"
+ uint32_t __cuda_local_var_22413_61_non_const_h;
+# 28 "src/sm3_cuda_device.cuh"
+{
+# 28 "src/sm3_cuda_device.cuh"
+ unsigned j;
+# 28 "src/sm3_cuda_device.cuh"
+j = 0U;
+# 28 "src/sm3_cuda_device.cuh"
+for (; (j < 16U); j++) {
+# 28 "src/sm3_cuda_device.cuh"
+((__cuda_local_var_22411_11_non_const_w)[j]) = (_Z11cuda_read32PKh((b + (4U * j)))); } }
+# 29 "src/sm3_cuda_device.cuh"
+{
+# 29 "src/sm3_cuda_device.cuh"
+ unsigned j;
+# 29 "src/sm3_cuda_device.cuh"
+j = 16U;
+# 29 "src/sm3_cuda_device.cuh"
+for (; (j < 68U); j++)
+# 29 "src/sm3_cuda_device.cuh"
+{
+# 29 "src/sm3_cuda_device.cuh"
+ uint32_t __cuda_local_var_22412_39_non_const_x;
+# 29 "src/sm3_cuda_device.cuh"
+__cuda_local_var_22412_39_non_const_x = ((((__cuda_local_var_22411_11_non_const_w)[(j - 16U)]) ^ ((__cuda_local_var_22411_11_non_const_w)[(j - 9U)])) ^ (_Z8cuda_rotjj(((__cuda_local_var_22411_11_non_const_w)[(j - 3U)]), 15U)));
+# 29 "src/sm3_cuda_device.cuh"
+((__cuda_local_var_22411_11_non_const_w)[j]) = ((((__cuda_local_var_22412_39_non_const_x ^ (_Z8cuda_rotjj(__cuda_local_var_22412_39_non_const_x, 15U))) ^ (_Z8cuda_rotjj(__cuda_local_var_22412_39_non_const_x, 23U))) ^ (_Z8cuda_rotjj(((__cuda_local_var_22411_11_non_const_w)[(j - 13U)]), 7U))) ^ ((__cuda_local_var_22411_11_non_const_w)[(j - 6U)]));
+# 29 "src/sm3_cuda_device.cuh"
+} }
+# 30 "src/sm3_cuda_device.cuh"
+__cuda_local_var_22413_11_non_const_a = (s[0]);
+# 30 "src/sm3_cuda_device.cuh"
+__cuda_local_var_22413_18_non_const_b0 = (s[1]);
+# 30 "src/sm3_cuda_device.cuh"
+__cuda_local_var_22413_26_non_const_c = (s[2]);
+# 30 "src/sm3_cuda_device.cuh"
+__cuda_local_var_22413_33_non_const_d = (s[3]);
+# 30 "src/sm3_cuda_device.cuh"
+__cuda_local_var_22413_40_non_const_e = (s[4]);
+# 30 "src/sm3_cuda_device.cuh"
+__cuda_local_var_22413_47_non_const_f = (s[5]);
+# 30 "src/sm3_cuda_device.cuh"
+__cuda_local_var_22413_54_non_const_g = (s[6]);
+# 30 "src/sm3_cuda_device.cuh"
+__cuda_local_var_22413_61_non_const_h = (s[7]);
+# 31 "src/sm3_cuda_device.cuh"
+{
+# 31 "src/sm3_cuda_device.cuh"
+ unsigned j;
+# 31 "src/sm3_cuda_device.cuh"
+j = 0U;
+# 31 "src/sm3_cuda_device.cuh"
+for (; (j < 64U); j++)
+# 31 "src/sm3_cuda_device.cuh"
+{
+# 32 "src/sm3_cuda_device.cuh"
+ uint32_t __cuda_local_var_22415_12_non_const_ar;
+# 32 "src/sm3_cuda_device.cuh"
+ uint32_t __cuda_local_var_22415_30_non_const_ss1;
+# 33 "src/sm3_cuda_device.cuh"
+ uint32_t __cuda_local_var_22416_12_non_const_ff;
+# 33 "src/sm3_cuda_device.cuh"
+ uint32_t __cuda_local_var_22416_47_non_const_gg;
+# 34 "src/sm3_cuda_device.cuh"
+ uint32_t __cuda_local_var_22417_12_non_const_t1;
+# 34 "src/sm3_cuda_device.cuh"
+ uint32_t __cuda_local_var_22417_43_non_const_t2;
+# 32 "src/sm3_cuda_device.cuh"
+__cuda_local_var_22415_12_non_const_ar = (_Z8cuda_rotjj(__cuda_local_var_22413_11_non_const_a, 12U));
+# 32 "src/sm3_cuda_device.cuh"
+__cuda_local_var_22415_30_non_const_ss1 = (_Z8cuda_rotjj(((__cuda_local_var_22415_12_non_const_ar + __cuda_local_var_22413_40_non_const_e) + (_Z8cuda_rotjj(((j < 16U) ? 2043430169U : 2055708042U), j))), 7U));
+# 33 "src/sm3_cuda_device.cuh"
+__cuda_local_var_22416_12_non_const_ff = ((j < 16U) ? ((__cuda_local_var_22413_11_non_const_a ^ __cuda_local_var_22413_18_non_const_b0) ^ __cuda_local_var_22413_26_non_const_c) : (((__cuda_local_var_22413_11_non_const_a & __cuda_local_var_22413_18_non_const_b0) | (__cuda_local_var_22413_11_non_const_a & __cuda_local_var_22413_26_non_const_c)) | (__cuda_local_var_22413_18_non_const_b0 & __cuda_local_var_22413_26_non_const_c)));
+# 33 "src/sm3_cuda_device.cuh"
+__cuda_local_var_22416_47_non_const_gg = ((j < 16U) ? ((__cuda_local_var_22413_40_non_const_e ^ __cuda_local_var_22413_47_non_const_f) ^ __cuda_local_var_22413_54_non_const_g) : ((__cuda_local_var_22413_40_non_const_e & __cuda_local_var_22413_47_non_const_f) | ((~__cuda_local_var_22413_40_non_const_e) & __cuda_local_var_22413_54_non_const_g)));
+# 34 "src/sm3_cuda_device.cuh"
+__cuda_local_var_22417_12_non_const_t1 = (((__cuda_local_var_22416_12_non_const_ff + __cuda_local_var_22413_33_non_const_d) + (__cuda_local_var_22415_30_non_const_ss1 ^ __cuda_local_var_22415_12_non_const_ar)) + (((__cuda_local_var_22411_11_non_const_w)[j]) ^ ((__cuda_local_var_22411_11_non_const_w)[(j + 4U)])));
+# 34 "src/sm3_cuda_device.cuh"
+__cuda_local_var_22417_43_non_const_t2 = (((__cuda_local_var_22416_47_non_const_gg + __cuda_local_var_22413_61_non_const_h) + __cuda_local_var_22415_30_non_const_ss1) + ((__cuda_local_var_22411_11_non_const_w)[j]));
+# 35 "src/sm3_cuda_device.cuh"
+__cuda_local_var_22413_33_non_const_d = __cuda_local_var_22413_26_non_const_c;
+# 35 "src/sm3_cuda_device.cuh"
+__cuda_local_var_22413_26_non_const_c = (_Z8cuda_rotjj(__cuda_local_var_22413_18_non_const_b0, 9U));
+# 35 "src/sm3_cuda_device.cuh"
+__cuda_local_var_22413_18_non_const_b0 = __cuda_local_var_22413_11_non_const_a;
+# 35 "src/sm3_cuda_device.cuh"
+__cuda_local_var_22413_11_non_const_a = __cuda_local_var_22417_12_non_const_t1;
+# 35 "src/sm3_cuda_device.cuh"
+__cuda_local_var_22413_61_non_const_h = __cuda_local_var_22413_54_non_const_g;
+# 35 "src/sm3_cuda_device.cuh"
+__cuda_local_var_22413_54_non_const_g = (_Z8cuda_rotjj(__cuda_local_var_22413_47_non_const_f, 19U));
+# 35 "src/sm3_cuda_device.cuh"
+__cuda_local_var_22413_47_non_const_f = __cuda_local_var_22413_40_non_const_e;
+# 35 "src/sm3_cuda_device.cuh"
+__cuda_local_var_22413_40_non_const_e = ((__cuda_local_var_22417_43_non_const_t2 ^ (_Z8cuda_rotjj(__cuda_local_var_22417_43_non_const_t2, 9U))) ^ (_Z8cuda_rotjj(__cuda_local_var_22417_43_non_const_t2, 17U)));
+# 36 "src/sm3_cuda_device.cuh"
+} }
+# 37 "src/sm3_cuda_device.cuh"
+(s[0]) ^= __cuda_local_var_22413_11_non_const_a;
+# 37 "src/sm3_cuda_device.cuh"
+(s[1]) ^= __cuda_local_var_22413_18_non_const_b0;
+# 37 "src/sm3_cuda_device.cuh"
+(s[2]) ^= __cuda_local_var_22413_26_non_const_c;
+# 37 "src/sm3_cuda_device.cuh"
+(s[3]) ^= __cuda_local_var_22413_33_non_const_d;
+# 37 "src/sm3_cuda_device.cuh"
+(s[4]) ^= __cuda_local_var_22413_40_non_const_e;
+# 37 "src/sm3_cuda_device.cuh"
+(s[5]) ^= __cuda_local_var_22413_47_non_const_f;
+# 37 "src/sm3_cuda_device.cuh"
+(s[6]) ^= __cuda_local_var_22413_54_non_const_g;
+# 37 "src/sm3_cuda_device.cuh"
+(s[7]) ^= __cuda_local_var_22413_61_non_const_h;
+# 38 "src/sm3_cuda_device.cuh"
+_Z16cuda_secure_zeroPvm(((void *)(__cuda_local_var_22411_11_non_const_w)), 272UL); 
+# 39 "src/sm3_cuda_device.cuh"
+}}
+# 40 "src/sm3_cuda_device.cuh"
+___device__(static  __no_sc__) __inline__ __attribute__((__always_inline__)) void _Z13cuda_sm3_hashPKhmPh(
+# 40 "src/sm3_cuda_device.cuh"
+const uint8_t *input, 
+# 40 "src/sm3_cuda_device.cuh"
+size_t length, 
+# 40 "src/sm3_cuda_device.cuh"
+uint8_t *out){
+# 40 "src/sm3_cuda_device.cuh"
+{
+# 41 "src/sm3_cuda_device.cuh"
+ uint32_t __cuda_local_var_22428_11_non_const_s[8];
+# 42 "src/sm3_cuda_device.cuh"
+ size_t __cuda_local_var_22429_9_non_const_whole;
+# 43 "src/sm3_cuda_device.cuh"
+ uint8_t __cuda_local_var_22430_10_non_const_b[64];
+# 43 "src/sm3_cuda_device.cuh"
+ unsigned __cuda_local_var_22430_29_non_const_tail;
+# 45 "src/sm3_cuda_device.cuh"
+ uint64_t __cuda_local_var_22432_11_non_const_bits;
+# 41 "src/sm3_cuda_device.cuh"
+memset((char *)&__cuda_local_var_22428_11_non_const_s, 0,sizeof(__cuda_local_var_22428_11_non_const_s));
+# 41 "src/sm3_cuda_device.cuh"
+__cuda_local_var_22428_11_non_const_s[0] = 1937774191U;
+# 41 "src/sm3_cuda_device.cuh"
+__cuda_local_var_22428_11_non_const_s[1] = 1226093241U;
+# 41 "src/sm3_cuda_device.cuh"
+__cuda_local_var_22428_11_non_const_s[2] = 388252375U;
+# 41 "src/sm3_cuda_device.cuh"
+__cuda_local_var_22428_11_non_const_s[3] = 3666478592U;
+# 41 "src/sm3_cuda_device.cuh"
+__cuda_local_var_22428_11_non_const_s[4] = 2842636476U;
+# 41 "src/sm3_cuda_device.cuh"
+__cuda_local_var_22428_11_non_const_s[5] = 372324522U;
+# 41 "src/sm3_cuda_device.cuh"
+__cuda_local_var_22428_11_non_const_s[6] = 3817729613U;
+# 41 "src/sm3_cuda_device.cuh"
+__cuda_local_var_22428_11_non_const_s[7] = 2969243214U;
+# 42 "src/sm3_cuda_device.cuh"
+__cuda_local_var_22429_9_non_const_whole = (length / 64UL);
+# 42 "src/sm3_cuda_device.cuh"
+{
+# 42 "src/sm3_cuda_device.cuh"
+ size_t j;
+# 42 "src/sm3_cuda_device.cuh"
+j = 0UL;
+# 42 "src/sm3_cuda_device.cuh"
+for (; (j < __cuda_local_var_22429_9_non_const_whole); j++) {
+# 42 "src/sm3_cuda_device.cuh"
+_Z17cuda_sm3_compressPjPKh((__cuda_local_var_22428_11_non_const_s), (input + (64UL * j))); } }
+# 43 "src/sm3_cuda_device.cuh"
+memset((char *)&__cuda_local_var_22430_10_non_const_b, 0,sizeof(__cuda_local_var_22430_10_non_const_b));
+# 43 "src/sm3_cuda_device.cuh"
+__cuda_local_var_22430_10_non_const_b[0] = ((uint8_t)0U);
+# 43 "src/sm3_cuda_device.cuh"
+__cuda_local_var_22430_29_non_const_tail = ((unsigned)(length % 64UL));
+# 43 "src/sm3_cuda_device.cuh"
+{
+# 43 "src/sm3_cuda_device.cuh"
+ unsigned j;
+# 43 "src/sm3_cuda_device.cuh"
+j = 0U;
+# 43 "src/sm3_cuda_device.cuh"
+for (; (j < __cuda_local_var_22430_29_non_const_tail); j++) {
+# 43 "src/sm3_cuda_device.cuh"
+((__cuda_local_var_22430_10_non_const_b)[j]) = (input[((__cuda_local_var_22429_9_non_const_whole * 64UL) + ((unsigned long)j))]); } }
+# 43 "src/sm3_cuda_device.cuh"
+((__cuda_local_var_22430_10_non_const_b)[__cuda_local_var_22430_29_non_const_tail]) = ((uint8_t)128U);
+# 44 "src/sm3_cuda_device.cuh"
+if (__cuda_local_var_22430_29_non_const_tail >= 56U)
+# 44 "src/sm3_cuda_device.cuh"
+{
+# 44 "src/sm3_cuda_device.cuh"
+_Z17cuda_sm3_compressPjPKh((__cuda_local_var_22428_11_non_const_s), ((const uint8_t *)(__cuda_local_var_22430_10_non_const_b)));
+# 44 "src/sm3_cuda_device.cuh"
+{
+# 44 "src/sm3_cuda_device.cuh"
+ unsigned j;
+# 44 "src/sm3_cuda_device.cuh"
+j = 0U;
+# 44 "src/sm3_cuda_device.cuh"
+for (; (j < 64U); j++) {
+# 44 "src/sm3_cuda_device.cuh"
+((__cuda_local_var_22430_10_non_const_b)[j]) = ((uint8_t)0U); } }
+# 44 "src/sm3_cuda_device.cuh"
+}
+# 45 "src/sm3_cuda_device.cuh"
+__cuda_local_var_22432_11_non_const_bits = (((uint64_t)length) * 8UL);
+# 45 "src/sm3_cuda_device.cuh"
+{
+# 45 "src/sm3_cuda_device.cuh"
+ unsigned j;
+# 45 "src/sm3_cuda_device.cuh"
+j = 0U;
+# 45 "src/sm3_cuda_device.cuh"
+for (; (j < 8U); j++) {
+# 45 "src/sm3_cuda_device.cuh"
+((__cuda_local_var_22430_10_non_const_b)[(63U - j)]) = ((uint8_t)(__cuda_local_var_22432_11_non_const_bits >> (8U * j))); } }
+# 45 "src/sm3_cuda_device.cuh"
+_Z17cuda_sm3_compressPjPKh((__cuda_local_var_22428_11_non_const_s), ((const uint8_t *)(__cuda_local_var_22430_10_non_const_b)));
+# 46 "src/sm3_cuda_device.cuh"
+{
+# 46 "src/sm3_cuda_device.cuh"
+ unsigned j;
+# 46 "src/sm3_cuda_device.cuh"
+j = 0U;
+# 46 "src/sm3_cuda_device.cuh"
+for (; (j < 8U); j++) {
+# 46 "src/sm3_cuda_device.cuh"
+_Z10cuda_put32Phj((out + (4U * j)), ((__cuda_local_var_22428_11_non_const_s)[j])); } }
+# 47 "src/sm3_cuda_device.cuh"
+_Z16cuda_secure_zeroPvm(((void *)(__cuda_local_var_22428_11_non_const_s)), 32UL);
+# 47 "src/sm3_cuda_device.cuh"
+_Z16cuda_secure_zeroPvm(((void *)(__cuda_local_var_22430_10_non_const_b)), 64UL); 
+# 48 "src/sm3_cuda_device.cuh"
+}}
+# 50 "src/sm3_cuda_device.cuh"
+___device__(static  __no_sc__) __inline__ __attribute__((__always_inline__)) void _Z10cuda_thashPKjPKhS2_jPh(
+# 50 "src/sm3_cuda_device.cuh"
+const uint32_t *seed, 
+# 50 "src/sm3_cuda_device.cuh"
+const uint8_t *adrs, 
+# 50 "src/sm3_cuda_device.cuh"
+const uint8_t *input, 
+# 50 "src/sm3_cuda_device.cuh"
+unsigned length, 
+# 50 "src/sm3_cuda_device.cuh"
+uint8_t *out){
+# 50 "src/sm3_cuda_device.cuh"
+{
+# 51 "src/sm3_cuda_device.cuh"
+ uint32_t __cuda_local_var_22442_11_non_const_s[8];
+# 51 "src/sm3_cuda_device.cuh"
+ uint8_t __cuda_local_var_22442_62_non_const_b[64];
+# 53 "src/sm3_cuda_device.cuh"
+ uint64_t __cuda_local_var_22444_76_non_const_bits;
+# 51 "src/sm3_cuda_device.cuh"
+{
+# 51 "src/sm3_cuda_device.cuh"
+ unsigned j;
+# 51 "src/sm3_cuda_device.cuh"
+j = 0U;
+# 51 "src/sm3_cuda_device.cuh"
+for (; (j < 8U); j++) {
+# 51 "src/sm3_cuda_device.cuh"
+((__cuda_local_var_22442_11_non_const_s)[j]) = (seed[j]); } }
+# 51 "src/sm3_cuda_device.cuh"
+memset((char *)&__cuda_local_var_22442_62_non_const_b, 0,sizeof(__cuda_local_var_22442_62_non_const_b));
+# 51 "src/sm3_cuda_device.cuh"
+__cuda_local_var_22442_62_non_const_b[0] = ((uint8_t)0U);
+# 51 "src/sm3_cuda_device.cuh"
+((__cuda_local_var_22442_62_non_const_b)[0]) = (adrs[3]);
+# 52 "src/sm3_cuda_device.cuh"
+{
+# 52 "src/sm3_cuda_device.cuh"
+ unsigned j;
+# 52 "src/sm3_cuda_device.cuh"
+j = 0U;
+# 52 "src/sm3_cuda_device.cuh"
+for (; (j < 8U); j++) {
+# 52 "src/sm3_cuda_device.cuh"
+((__cuda_local_var_22442_62_non_const_b)[(1U + j)]) = (adrs[(8U + j)]); } }
+# 52 "src/sm3_cuda_device.cuh"
+{
+# 52 "src/sm3_cuda_device.cuh"
+ unsigned j;
+# 52 "src/sm3_cuda_device.cuh"
+j = 0U;
+# 52 "src/sm3_cuda_device.cuh"
+for (; (j < 13U); j++) {
+# 52 "src/sm3_cuda_device.cuh"
+((__cuda_local_var_22442_62_non_const_b)[(9U + j)]) = (adrs[(19U + j)]); } }
+# 53 "src/sm3_cuda_device.cuh"
+{
+# 53 "src/sm3_cuda_device.cuh"
+ unsigned j;
+# 53 "src/sm3_cuda_device.cuh"
+j = 0U;
+# 53 "src/sm3_cuda_device.cuh"
+for (; (j < length); j++) {
+# 53 "src/sm3_cuda_device.cuh"
+((__cuda_local_var_22442_62_non_const_b)[(22U + j)]) = (input[j]); } }
+# 53 "src/sm3_cuda_device.cuh"
+((__cuda_local_var_22442_62_non_const_b)[(22U + length)]) = ((uint8_t)128U);
+# 53 "src/sm3_cuda_device.cuh"
+__cuda_local_var_22444_76_non_const_bits = ((uint64_t)((86U + length) * 8U));
+# 54 "src/sm3_cuda_device.cuh"
+{
+# 54 "src/sm3_cuda_device.cuh"
+ unsigned j;
+# 54 "src/sm3_cuda_device.cuh"
+j = 0U;
+# 54 "src/sm3_cuda_device.cuh"
+for (; (j < 8U); j++) {
+# 54 "src/sm3_cuda_device.cuh"
+((__cuda_local_var_22442_62_non_const_b)[(63U - j)]) = ((uint8_t)(__cuda_local_var_22444_76_non_const_bits >> (8U * j))); } }
+# 54 "src/sm3_cuda_device.cuh"
+_Z17cuda_sm3_compressPjPKh((__cuda_local_var_22442_11_non_const_s), ((const uint8_t *)(__cuda_local_var_22442_62_non_const_b)));
+# 54 "src/sm3_cuda_device.cuh"
+{
+# 54 "src/sm3_cuda_device.cuh"
+ unsigned j;
+# 54 "src/sm3_cuda_device.cuh"
+j = 0U;
+# 54 "src/sm3_cuda_device.cuh"
+for (; (j < 4U); j++) {
+# 54 "src/sm3_cuda_device.cuh"
+_Z10cuda_put32Phj((out + (4U * j)), ((__cuda_local_var_22442_11_non_const_s)[j])); } }
+# 55 "src/sm3_cuda_device.cuh"
+_Z16cuda_secure_zeroPvm(((void *)(__cuda_local_var_22442_11_non_const_s)), 32UL);
+# 55 "src/sm3_cuda_device.cuh"
+_Z16cuda_secure_zeroPvm(((void *)(__cuda_local_var_22442_62_non_const_b)), 64UL); 
+# 56 "src/sm3_cuda_device.cuh"
+}}
+# 57 "src/sm3_cuda_device.cuh"
+___device__(static  __no_sc__) __inline__ __attribute__((__always_inline__)) void _Z14cuda_fors_leafRK12a15_cuda_jobjPh(
+# 57 "src/sm3_cuda_device.cuh"
+const struct a15_cuda_job *job, 
+# 57 "src/sm3_cuda_device.cuh"
+uint32_t relative, 
+# 57 "src/sm3_cuda_device.cuh"
+uint8_t *out){
+# 57 "src/sm3_cuda_device.cuh"
+{
+# 58 "src/sm3_cuda_device.cuh"
+ uint8_t __cuda_local_var_22453_10_non_const_address[32];
+# 58 "src/sm3_cuda_device.cuh"
+ uint32_t __cuda_local_var_22453_80_non_const_index;
+# 58 "src/sm3_cuda_device.cuh"
+{
+# 58 "src/sm3_cuda_device.cuh"
+ unsigned j;
+# 58 "src/sm3_cuda_device.cuh"
+j = 0U;
+# 58 "src/sm3_cuda_device.cuh"
+for (; (j < 32U); j++) {
+# 58 "src/sm3_cuda_device.cuh"
+((__cuda_local_var_22453_10_non_const_address)[j]) = (((job->adrs))[j]); } }
+# 58 "src/sm3_cuda_device.cuh"
+__cuda_local_var_22453_80_non_const_index = ((job->start) + relative);
+# 59 "src/sm3_cuda_device.cuh"
+_Z10cuda_put32Phj(((__cuda_local_var_22453_10_non_const_address) + 16), 6U);
+# 59 "src/sm3_cuda_device.cuh"
+_Z10cuda_put32Phj(((__cuda_local_var_22453_10_non_const_address) + 24), 0U);
+# 59 "src/sm3_cuda_device.cuh"
+_Z10cuda_put32Phj(((__cuda_local_var_22453_10_non_const_address) + 28), __cuda_local_var_22453_80_non_const_index);
+# 59 "src/sm3_cuda_device.cuh"
+_Z10cuda_thashPKjPKhS2_jPh(((job->seed)), ((const uint8_t *)(__cuda_local_var_22453_10_non_const_address)), (job->skseed), 16U, out);
+# 63 "src/sm3_cuda_device.cuh"
+_Z10cuda_put32Phj(((__cuda_local_var_22453_10_non_const_address) + 16), 3U);
+# 63 "src/sm3_cuda_device.cuh"
+_Z10cuda_thashPKjPKhS2_jPh(((job->seed)), ((const uint8_t *)(__cuda_local_var_22453_10_non_const_address)), ((const uint8_t *)out), 16U, out); 
+# 67 "src/sm3_cuda_device.cuh"
+}}
+# 68 "src/sm3_cuda_device.cuh"
+___device__(static  __no_sc__) __inline__ __attribute__((__always_inline__)) void _Z16cuda_fors_parentRK12a15_cuda_jobjjPKhPh(
+# 68 "src/sm3_cuda_device.cuh"
+const struct a15_cuda_job *job, 
+# 68 "src/sm3_cuda_device.cuh"
+unsigned height, 
+# 68 "src/sm3_cuda_device.cuh"
+uint32_t relative, 
+# 68 "src/sm3_cuda_device.cuh"
+const uint8_t *nodes, 
+# 68 "src/sm3_cuda_device.cuh"
+uint8_t *out){
+# 68 "src/sm3_cuda_device.cuh"
+{
+# 69 "src/sm3_cuda_device.cuh"
+ uint8_t __cuda_local_var_22468_10_non_const_address[32];
+# 69 "src/sm3_cuda_device.cuh"
+{
+# 69 "src/sm3_cuda_device.cuh"
+ unsigned j;
+# 69 "src/sm3_cuda_device.cuh"
+j = 0U;
+# 69 "src/sm3_cuda_device.cuh"
+for (; (j < 32U); j++) {
+# 69 "src/sm3_cuda_device.cuh"
+((__cuda_local_var_22468_10_non_const_address)[j]) = (((job->adrs))[j]); } }
+# 69 "src/sm3_cuda_device.cuh"
+_Z10cuda_put32Phj(((__cuda_local_var_22468_10_non_const_address) + 16), 3U);
+# 70 "src/sm3_cuda_device.cuh"
+_Z10cuda_put32Phj(((__cuda_local_var_22468_10_non_const_address) + 24), height);
+# 70 "src/sm3_cuda_device.cuh"
+_Z10cuda_put32Phj(((__cuda_local_var_22468_10_non_const_address) + 28), (((job->start) >> height) + relative));
+# 70 "src/sm3_cuda_device.cuh"
+_Z10cuda_thashPKjPKhS2_jPh(((job->seed)), ((const uint8_t *)(__cuda_local_var_22468_10_non_const_address)), (nodes + (relative * 32U)), 32U, out); 
+# 71 "src/sm3_cuda_device.cuh"
+}}
+# 48 "src/sm3_cuda.cu"
+__global__ __var_used__ void _Z10sm3_kernelPKhmmmPh(
+# 48 "src/sm3_cuda.cu"
+const uint8_t *messages, 
+# 48 "src/sm3_cuda.cu"
+size_t stride, 
+# 48 "src/sm3_cuda.cu"
+size_t length, 
+# 48 "src/sm3_cuda.cu"
+size_t count, 
+# 48 "src/sm3_cuda.cu"
+uint8_t *out){
+# 48 "src/sm3_cuda.cu"
+{
+# 48 "src/sm3_cuda.cu"
+ size_t __cuda_local_var_48239_113_non_const_i;
+# 48 "src/sm3_cuda.cu"
+__cuda_local_var_48239_113_non_const_i = ((((size_t)(blockIdx.x)) * ((unsigned long)(blockDim.x))) + ((unsigned long)(threadIdx.x)));
+# 48 "src/sm3_cuda.cu"
+if (__cuda_local_var_48239_113_non_const_i < count) {
+# 48 "src/sm3_cuda.cu"
+_Z13cuda_sm3_hashPKhmPh((messages + (__cuda_local_var_48239_113_non_const_i * stride)), length, (out + (32UL * __cuda_local_var_48239_113_non_const_i))); } 
+# 48 "src/sm3_cuda.cu"
+}}
+# 49 "src/sm3_cuda.cu"
+__global__ __var_used__ void _Z16fors_leaf_kernel12a15_cuda_jobjPh(
+# 49 "src/sm3_cuda.cu"
+struct a15_cuda_job __val_param(job), 
+# 49 "src/sm3_cuda.cu"
+uint32_t count, 
+# 49 "src/sm3_cuda.cu"
+uint8_t *nodes){__copy_param(struct a15_cuda_job job,__val_param(job));
+# 49 "src/sm3_cuda.cu"
+{
+# 49 "src/sm3_cuda.cu"
+ uint32_t __cuda_local_var_48244_90_non_const_i;
+# 49 "src/sm3_cuda.cu"
+__cuda_local_var_48244_90_non_const_i = (((blockIdx.x) * (blockDim.x)) + (threadIdx.x));
+# 49 "src/sm3_cuda.cu"
+if (__cuda_local_var_48244_90_non_const_i < count) {
+# 49 "src/sm3_cuda.cu"
+_Z14cuda_fors_leafRK12a15_cuda_jobjPh((((const struct a15_cuda_job *)&job)), __cuda_local_var_48244_90_non_const_i, (nodes + (16U * __cuda_local_var_48244_90_non_const_i))); } 
+# 49 "src/sm3_cuda.cu"
+}}
+# 50 "src/sm3_cuda.cu"
+__global__ __var_used__ void _Z18fors_reduce_kernel12a15_cuda_jobjjPKhPh(
+# 50 "src/sm3_cuda.cu"
+struct a15_cuda_job __val_param(job), 
+# 50 "src/sm3_cuda.cu"
+unsigned height, 
+# 50 "src/sm3_cuda.cu"
+uint32_t count, 
+# 50 "src/sm3_cuda.cu"
+const uint8_t *input, 
+# 50 "src/sm3_cuda.cu"
+uint8_t *out){__copy_param(struct a15_cuda_job job,__val_param(job));
+# 50 "src/sm3_cuda.cu"
+{
+# 50 "src/sm3_cuda.cu"
+ uint32_t __cuda_local_var_48249_127_non_const_i;
+# 50 "src/sm3_cuda.cu"
+__cuda_local_var_48249_127_non_const_i = (((blockIdx.x) * (blockDim.x)) + (threadIdx.x));
+# 50 "src/sm3_cuda.cu"
+if (__cuda_local_var_48249_127_non_const_i < count) {
+# 50 "src/sm3_cuda.cu"
+_Z16cuda_fors_parentRK12a15_cuda_jobjjPKhPh((((const struct a15_cuda_job *)&job)), height, __cuda_local_var_48249_127_non_const_i, input, (out + (16U * __cuda_local_var_48249_127_non_const_i))); } 
+# 50 "src/sm3_cuda.cu"
+}}
+__asm__(".align 2");
+# 423 "/usr/include/vector_types.h" 3
+___device__(static  __no_sc__) __inline__ void _ZN4dim3C1Ejjj( struct dim3 *const this, 
+# 423 "/usr/include/vector_types.h" 3
+unsigned vx, 
+# 423 "/usr/include/vector_types.h" 3
+unsigned vy, 
+# 423 "/usr/include/vector_types.h" 3
+unsigned vz){
+# 423 "/usr/include/vector_types.h" 3
+{
+# 423 "/usr/include/vector_types.h" 3
+(this->x) = vx;
+# 423 "/usr/include/vector_types.h" 3
+(this->y) = vy;
+# 423 "/usr/include/vector_types.h" 3
+(this->z) = vz; 
+# 423 "/usr/include/vector_types.h" 3
+}}
+__asm__(".align 2");
+___device__(static  __no_sc__) __inline__ void _ZN4dim3C2Ejjj( struct dim3 *const this,  unsigned __T0,  unsigned __T1,  unsigned __T2){ {  _ZN4dim3C1Ejjj(this, __T0, __T1, __T2);  }}

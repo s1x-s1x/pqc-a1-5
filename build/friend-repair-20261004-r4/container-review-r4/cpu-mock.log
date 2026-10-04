@@ -1,0 +1,36 @@
+test_actual_compile_command_gate (__main__.self_test.<locals>.Checks.test_actual_compile_command_gate) ... ok
+test_all_correctness_evidence_files_are_rechecked (__main__.self_test.<locals>.Checks.test_all_correctness_evidence_files_are_rechecked) ... ok
+test_atomic_creation_and_foreign_writer (__main__.self_test.<locals>.Checks.test_atomic_creation_and_foreign_writer) ... ok
+test_budget_snapshot_mapping_and_live_ledger_independence (__main__.self_test.<locals>.Checks.test_budget_snapshot_mapping_and_live_ledger_independence) ... ok
+test_budget_snapshot_path_identity_and_independent_copy (__main__.self_test.<locals>.Checks.test_budget_snapshot_path_identity_and_independent_copy) ... ok
+test_cache_roundtrip_with_mock_abi (__main__.self_test.<locals>.Checks.test_cache_roundtrip_with_mock_abi) ... ok
+test_completed_case_reconciles_live_receipt (__main__.self_test.<locals>.Checks.test_completed_case_reconciles_live_receipt) ... ok
+test_completed_case_rejects_other_ledger_before_native (__main__.self_test.<locals>.Checks.test_completed_case_rejects_other_ledger_before_native) ... ok
+test_counter_probe_with_mock_abi (__main__.self_test.<locals>.Checks.test_counter_probe_with_mock_abi) ... ok
+test_environment_freeze (__main__.self_test.<locals>.Checks.test_environment_freeze) ... ok
+test_freeze_build_record_and_plan_binding (__main__.self_test.<locals>.Checks.test_freeze_build_record_and_plan_binding) ... ok
+test_jsonl_tail_and_foreign_rows (__main__.self_test.<locals>.Checks.test_jsonl_tail_and_foreign_rows) ... ok
+test_kernel_lock_released (__main__.self_test.<locals>.Checks.test_kernel_lock_released) ... ok
+test_missing_or_changed_budget_snapshots_block_both_schemas (__main__.self_test.<locals>.Checks.test_missing_or_changed_budget_snapshots_block_both_schemas) ... ok
+test_mock_build_entry_records_checked_output (__main__.self_test.<locals>.Checks.test_mock_build_entry_records_checked_output) ... /tmp/a15-bench-mock-78wo1evi/mock-build/build-record.json
+ok
+test_mock_case_timeout (__main__.self_test.<locals>.Checks.test_mock_case_timeout) ... unit-p201-verify-REF-cnone-p1: sequential child
+ok
+test_mock_interruption_and_partial_resume (__main__.self_test.<locals>.Checks.test_mock_interruption_and_partial_resume) ... ok
+test_mock_worker_complete_and_skip (__main__.self_test.<locals>.Checks.test_mock_worker_complete_and_skip) ... ok
+test_output_protection (__main__.self_test.<locals>.Checks.test_output_protection) ... ok
+test_plan_minimums_and_pairing (__main__.self_test.<locals>.Checks.test_plan_minimums_and_pairing) ... ok
+test_plan_ranges_and_rejections (__main__.self_test.<locals>.Checks.test_plan_ranges_and_rejections) ... ok
+test_post_finalize_model_failure_preserves_original (__main__.self_test.<locals>.Checks.test_post_finalize_model_failure_preserves_original) ... ok
+test_provenance_hash_gate (__main__.self_test.<locals>.Checks.test_provenance_hash_gate) ... ok
+test_published_freeze_package_gate (__main__.self_test.<locals>.Checks.test_published_freeze_package_gate) ... ok
+test_resume_environment_change_rejected (__main__.self_test.<locals>.Checks.test_resume_environment_change_rejected) ... ok
+test_resume_indices_and_hashes (__main__.self_test.<locals>.Checks.test_resume_indices_and_hashes) ... ok
+test_statistics (__main__.self_test.<locals>.Checks.test_statistics) ... ok
+test_topology_and_smt (__main__.self_test.<locals>.Checks.test_topology_and_smt) ... ok
+
+----------------------------------------------------------------------
+Ran 28 tests in 0.283s
+
+OK
+{"created_utc":"2026-10-04T15:32:24.517469+00:00","mock_checks":28,"native_calls":0,"passed":true,"real_timing_samples":0,"schema":"a15-bench-selftest-v1","scope":"mock planning/statistics/file/resume/timeout/freeze orchestration only","source_sha256":{"reference/sm3.py":"43fb6d92afc803f4842bd06dfb00f813c7ed102f1b68d9115c3e0cd6497c2c8e","tools/bench_cpu.py":"9dc804d250e526ccffaf0d429a5a377848b56b685f0388853dee73cea3994d61","tools/bench_sm3_harness.c":"ddf61075e429aa8e6f3bae4f3eab63ec364d8567196a4c489165684ff4e141ee","tools/count_model.py":"6ac77e6b63e6cf9c03818c0e7d349012e16fafc5d1624e59da960564d97fc419","tools/native.py":"9e2635db014b9fccb5ea1bff5eeb0b5f003a81964a31233a7248e13d8b0be5eb","tools/signing_budget.py":"8ff1cad39a5d27e37784b16333d14f5b50c24b57640c4c72d907fdc609d10f86"},"tool_sha256":"9dc804d250e526ccffaf0d429a5a377848b56b685f0388853dee73cea3994d61"}

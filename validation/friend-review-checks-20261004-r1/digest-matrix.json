@@ -1,0 +1,73 @@
+{
+  "schema": "a15-native-digest-matrix-v1",
+  "passed": true,
+  "rows": [
+    {
+      "algorithm": "sha256",
+      "selector": "sha256",
+      "digest_bytes": 32,
+      "passed": true
+    },
+    {
+      "algorithm": "sha256",
+      "selector": 1,
+      "digest_bytes": 32,
+      "passed": true
+    },
+    {
+      "algorithm": "sha512",
+      "selector": "sha512",
+      "digest_bytes": 64,
+      "passed": true
+    },
+    {
+      "algorithm": "sha512",
+      "selector": 2,
+      "digest_bytes": 64,
+      "passed": true
+    },
+    {
+      "algorithm": "shake128",
+      "selector": "shake128",
+      "digest_bytes": 32,
+      "passed": true
+    },
+    {
+      "algorithm": "shake128",
+      "selector": 3,
+      "digest_bytes": 32,
+      "passed": true
+    },
+    {
+      "algorithm": "shake256",
+      "selector": "shake256",
+      "digest_bytes": 64,
+      "passed": true
+    },
+    {
+      "algorithm": "shake256",
+      "selector": 4,
+      "digest_bytes": 64,
+      "passed": true
+    },
+    {
+      "algorithm": "sm3",
+      "selector": "sm3",
+      "digest_bytes": 32,
+      "passed": true
+    },
+    {
+      "algorithm": "sm3",
+      "selector": 5,
+      "digest_bytes": 32,
+      "passed": true
+    }
+  ],
+  "pid": 201,
+  "backend": "REF",
+  "library_sha256": "6ecb9557f6e72dd5e30c9d3be8eff6c759b928ac005ab6f37f4918064f5d7f36",
+  "adapter_sha256": "9e2635db014b9fccb5ea1bff5eeb0b5f003a81964a31233a7248e13d8b0be5eb",
+  "created_utc": "2026-10-04T14:47:38.574981+00:00",
+  "formal_performance_started": false,
+  "real_timing_samples": 0
+}

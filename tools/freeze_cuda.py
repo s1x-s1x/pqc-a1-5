@@ -700,7 +700,15 @@ def self_test(output=None):
             _,vectors,record,database,_=self.current_ledger_fixture()
             for algorithm in ("slh-dsa-sm3-128s","unknown"):
                 with self.subTest(algorithm=algorithm):
-                    with sqlite3.connect(database) as db: db.execute("UPDATE keys SET algorithm=?",(algorithm,))
+                    with sqlite3.connect(database) as db:
+                        with self.assertRaises(sqlite3.DatabaseError):
+                            db.execute("UPDATE keys SET algorithm=?",(algorithm,))
+                        # Deliberately bypass the write guards only in this
+                        # corruption fixture, then restore their exact schema.
+                        triggers=db.execute("SELECT name,sql FROM sqlite_master WHERE type='trigger' AND tbl_name='keys'").fetchall()
+                        for name,_ in triggers: db.execute('DROP TRIGGER "'+name.replace('"','""')+'"')
+                        db.execute("UPDATE keys SET algorithm=?",(algorithm,))
+                        for _,sql in triggers: db.execute(sql)
                     with patch.dict(globals(),INPUTS=InputSnapshot()):
                         with self.assertRaisesRegex(ValueError,"persistent receipt"):
                             validate_release_rows(record,vectors,database)

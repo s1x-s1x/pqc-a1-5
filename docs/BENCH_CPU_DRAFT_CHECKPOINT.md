@@ -1,3 +1,5 @@
+> 历史阶段文档：以下“当前/已就绪/未修改”均指本轮朋友复审修补之前的绑定版本。2026-10-04 最新工程状态见 [FRIEND_REPAIR_20261004.md](FRIEND_REPAIR_20261004.md) 与最终 `validation/friend-repair-20261004/checkpoint.json`；旧冻结保持原身份。
+
 # 性能测试准备交接
 
 2026-10-04：停在正式性能测试之前，真实计时样本为 **0**。CPU 运行器通过 26 项 mock，CUDA 准备接口通过 23 项 mock；两份实际 self-test JSON 均包含 passed=true/native_calls=0/real_timing_samples=0，并绑定工具哈希。独立 SM3 harness 已在本地编译，执行 SM3 abc known answer 和 256 组 scalar/x8 对比，全部通过，sample 入口尚未调用。性能工具准备子任务当时没有连接服务器。

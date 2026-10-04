@@ -26,7 +26,7 @@ import bench_cpu as cpu
 from native import NativeSlhDsa
 from signing_budget import SigningBudget
 
-CUDA_FILES = ["c/src/sm3_cuda.h", "c/src/sm3_cuda.cu", "c/src/sm3_cuda_device.cuh"]
+CUDA_FILES = ["c/src/sm3_cuda.h", "c/src/sm3_cuda.cu", "c/src/sm3_cuda_device.cuh", "c/src/cuda_cleanup.h"]
 BUILD_FILES = list(dict.fromkeys([p for p in cpu.BUILD_FILES if p != "c/src/sm3_cuda_stub.c"] + CUDA_FILES))
 TOOL_FILES = list(dict.fromkeys(["tools/bench_cuda.py"] + cpu.TOOL_FILES))
 FORS_HEIGHT = {1: 12, 2: 6, 3: 24}
@@ -35,7 +35,7 @@ SCOPES = {
     "kernel_ns": "sum of CUDA event intervals for device kernels only; excludes explicit copies, allocation, ABI and CPU work; event creation/record/synchronization overhead is included in end-to-end time",
     "transfer_bytes": "explicit cudaMemcpy payload bytes only; excludes kernel parameters, CUDA runtime metadata and memory initialization/wiping",
 }
-SCHEMA = "a15-cuda-bench-v1"
+SCHEMA = "a15-cuda-bench-v2"
 
 
 class CudaInfo(ct.Structure):
@@ -391,19 +391,23 @@ def resume_samples(existing, case, input_hashes):
                 or not isinstance(row.get("kernel_ns"), int) or isinstance(row["kernel_ns"], bool)
                 or not 0 < row["kernel_ns"] <= row["duration_ns"]
                 or stats.get("kernel_ns") != row["kernel_ns"] or stats.get("timing_enabled") != 1
-                or stats.get("kernel_launches", 0) < 1 or stats.get("device_hashes", 0) < 1):
+                or any(not isinstance(stats.get(k), int) or isinstance(stats[k], bool) or stats[k] < 0
+                       for k in ("kernel_ns", "timing_enabled", "kernel_launches", "device_hashes", "h2d_bytes", "d2h_bytes"))
+                or stats.get("kernel_launches", 0) < 1 or stats.get("device_hashes", 0) < 1
+                or row.get("scopes") != SCOPES or row.get("core_cycles") is not None):
             raise ValueError("preserved CUDA sample lacks valid device timing/scopes")
     return good
 
 
-def validate_completed(existing, case, fixtures, budget=None):
-    if not cpu.validate_completed(existing, case, fixtures, budget):
+def validate_completed(existing, case, fixtures, budget=None, expected_binding=None):
+    if not cpu.validate_completed(existing, case, fixtures, budget, expected_binding):
         return False
     ready = next(r for r in existing if r.get("kind") == "inputs_ready")
     good = resume_samples(existing, case, ready["input_hashes"])
     complete = next(r for r in existing if r.get("kind") == "case_complete")
     values = [good[index]["kernel_ns"] for index in range(case["samples"])]
-    if complete.get("kernel_samples") != values or complete.get("kernel_summary") != cpu.summary(values):
+    if (complete.get("kernel_samples") != values or complete.get("kernel_summary") != cpu.summary(values)
+            or complete.get("scopes") != SCOPES or complete.get("core_cycles") is not None):
         raise ValueError("CUDA kernel completion statistics differ from raw samples")
     return True
 
@@ -443,22 +447,34 @@ def worker(args):
     initial_gpu = gpu_environment()
     identity = {"cpu": cpu.environment_identity(initial), "gpu": initial_gpu["identity"]}
     budget = SigningBudget(args.budget_db)
-    case_key = cpu.sha(cpu.canonical({"case": case, "provenance": {k: before[k] for k in
-        ("source_sha256", "library_sha256", "plan_sha256", "build_record_sha256", "freeze_sha256")}, "environment": identity, "ledger_uuid": budget.ledger_uuid}).encode())
+    binding = cpu.execution_binding(case, before, identity, budget.ledger_uuid, cpu.file_sha(args.plan), SCHEMA)
+    case_key = cpu.sha(cpu.canonical(binding).encode())
     evidence = cpu.rows(args.output)
+    cpu.audit_campaign_evidence(evidence, plan, budget, args.fixtures, SCHEMA, before, cpu.file_sha(args.plan),
+                                resume_samples, validate_completed)
     if any(r.get("schema") != SCHEMA for r in evidence):
         raise ValueError("preserved CUDA JSONL contains foreign records")
     if any(r.get("kind") == "case_start" and r.get("case", {}).get("case_id") == case["case_id"] and r.get("case_key") != case_key for r in evidence):
         raise ValueError("CUDA resume source/build/plan/CPU/GPU conditions changed")
     existing = [r for r in evidence if r.get("case_key") == case_key]
-    if validate_completed(existing, case, args.fixtures, budget):
+    if validate_completed(existing, case, args.fixtures, budget, binding):
         cpu.validate_fixture_receipts(args.fixtures, case["pid"], budget)
         # Even skipped cases recheck native device identity with events off.
         with NativeSlhDsa(case["pid"], case["threads"], 5, args.library) as c:
             stats = Statistics(c.lib); stats.reset(False)
             validate_freeze(args, device=stats.info())
         return
-    append(args.output, {"kind": "case_start", "case_key": case_key, "case": case,
+    segment_id = cpu.uuid.uuid4().hex
+    def emit(row):
+        cpu.emit_bound(append, args.output, binding, segment_id, row)
+    def begin(kind, index, receipt, input_hashes):
+        operation_id = cpu.uuid.uuid4().hex
+        emit({"kind": "operation_start", "operation_kind": kind, "operation_id": operation_id,
+              "index" if kind == "warmup" else "sample_index": index,
+              "receipt": receipt, "budget_evidence": cpu.receipt_evidence(budget, receipt),
+              "input_hashes": input_hashes, "timed": False})
+        return operation_id
+    emit({"kind": "case_start", "case_key": case_key, "case": case,
         "provenance": before, "environment": initial, "gpu_environment": initial_gpu,
         "environment_identity": identity, "ledger_uuid": budget.ledger_uuid, "pid_process": os.getpid()})
     runtime = cpu.verify_library_runtime(args.library)
@@ -490,7 +506,7 @@ def worker(args):
                 raise ValueError("CUDA fixture changed during partial resume")
             if old.get("budget_binding") != cpu.budget_binding(budget, case, inputs):
                 raise ValueError("CUDA partial-case budget binding differs from immutable fixture")
-        append(args.output, {"kind": "inputs_ready", "case_key": case_key, "input_hashes": input_hashes,
+        emit({"kind": "inputs_ready", "case_key": case_key, "input_hashes": input_hashes,
             "ledger_uuid": budget.ledger_uuid, "budget_binding": cpu.budget_binding(budget, case, inputs),
             "input_files": input_files, "runtime_checks": runtime, "actual_backend": 5,
             "validation": "separate REF after timing", "kernel_events": "disabled during setup/warmup/validation"})
@@ -498,9 +514,10 @@ def worker(args):
         encoded = b"\x00" + bytes([len(inputs["context"])]) + inputs["context"] + inputs["message"]
         good = resume_samples(existing, case, input_hashes)
         cpu.validate_preserved_budget(existing, case, budget)
-        if not good:
+        if len(good) < case["samples"]:
             for warmup in range(case["warmups"]):
                 receipt = budget.reserve(cpu.ALGORITHMS[case["pid"]], inputs["pk"], encoded) if case["op"] == "sign" else None
+                operation_id = begin("warmup", warmup, receipt, input_hashes)
                 finished = False
                 try:
                     stats.reset(False); c._check(case["op"], call()); result = extract()
@@ -509,8 +526,13 @@ def worker(args):
                         finished = True; budget.finish(receipt, result)
                 except BaseException as exc:
                     if receipt and not finished: cpu.finish_failure(budget, receipt, exc)
+                    emit({"kind": "warmup", "index": warmup, "passed": False, "operation_id": operation_id,
+                        "input_hashes": input_hashes, "receipt": receipt, "error": type(exc).__name__+": "+str(exc),
+                        "budget_evidence": cpu.failure_receipt_evidence(budget, receipt, exc), "timed": False})
                     raise
-                append(args.output, {"kind": "warmup", "case_key": case_key, "index": warmup,
+                emit({"kind": "warmup", "case_key": case_key, "index": warmup,
+                    "operation_id": operation_id,
+                    "passed": True, "input_hashes": input_hashes,
                     "receipt": receipt, "budget_evidence": cpu.receipt_evidence(budget, receipt), "validation": validation, "timed": False})
         prediction = None
         for index in range(case["samples"]):
@@ -519,6 +541,7 @@ def worker(args):
             if observation["gpu"]["identity"] != identity["gpu"]:
                 raise ValueError("GPU identity/power policy changed before CUDA sample")
             receipt = budget.reserve(cpu.ALGORITHMS[case["pid"]], inputs["pk"], encoded) if case["op"] == "sign" else None
+            operation_id = begin("sample", index, receipt, input_hashes)
             finished, sample = False, None
             try:
                 sample = sample_once(call, stats, permit=before)
@@ -532,18 +555,22 @@ def worker(args):
                     raise ValueError("GPU identity/power policy changed during CUDA sample")
             except BaseException as exc:
                 if receipt and not finished: cpu.finish_failure(budget, receipt, exc)
-                append(args.output, {"kind": "sample", "case_key": case_key, "sample_index": index,
+                emit({"kind": "sample", "case_key": case_key, "sample_index": index,
+                    "operation_id": operation_id,
+                    "input_hashes": input_hashes,
                     "passed": False, "duration_ns": sample["end_to_end_ns"] if sample else None,
-                    "error": str(exc), "receipt": receipt, "budget_evidence": cpu.failure_receipt_evidence(budget, receipt, exc)})
+                    "error": type(exc).__name__+": "+str(exc), "receipt": receipt, "budget_evidence": cpu.failure_receipt_evidence(budget, receipt, exc)})
                 raise
             row = {"kind": "sample", "case_key": case_key, "case_id": case["case_id"], "sample_index": index,
+                "operation_id": operation_id,
                 "passed": True, "duration_ns": sample["end_to_end_ns"], **sample, "actual_backend": 5,
+                "backend": case["backend"],
                 "receipt": receipt, "budget_evidence": cpu.receipt_evidence(budget, receipt), "input_hashes": input_hashes,
                 "result_sha256": cpu.sha(result if isinstance(result, bytes) else b"".join(result)),
                 "environment_before": observation,
                 "environment_after": observation_after,
                 "validation": validation, "classification": "formal"}
-            append(args.output, row); good[index] = row
+            emit(row); good[index] = row
         after = provenance(args)
         if any(after[k] != before[k] for k in ("source_sha256", "library_sha256", "plan_sha256", "build_record_sha256", "freeze_sha256")):
             raise ValueError("CUDA source/library/plan/build/freeze changed during case")
@@ -563,7 +590,7 @@ def worker(args):
         values = [good[index]["duration_ns"] for index in range(case["samples"])]
         kernel_values = [good[index]["kernel_ns"] for index in range(case["samples"])]
         latest = cpu.rows(args.output)
-        append(args.output, {"kind": "case_complete", "case_key": case_key, "case_id": case["case_id"],
+        emit({"kind": "case_complete", "case_key": case_key, "case_id": case["case_id"],
             "ledger_uuid": budget.ledger_uuid,
             **cpu.summary(values), "samples": values, "kernel_samples": kernel_values,
             "kernel_summary": cpu.summary(kernel_values), "scopes": SCOPES, **prediction,
@@ -592,10 +619,16 @@ def run_cases(args):
         ("source_sha256", "library_sha256", "plan_sha256", "build_record_sha256", "freeze_sha256")},
         "host": host, "gpu": gpu["identity"], "explicit_cpus": args.cpus, "ledger_uuid": budget.ledger_uuid}).encode())
     old = cpu.rows(args.output)
+    cpu.audit_campaign_evidence(old, plan, budget, args.fixtures, SCHEMA, before, cpu.file_sha(args.plan),
+                                resume_samples, validate_completed)
     if any(r.get("schema") != SCHEMA for r in old): raise ValueError("foreign CUDA JSONL records")
     starts = [r for r in old if r.get("kind") == "campaign_start"]
     if old and not starts or len(starts) > 1 or starts and starts[0].get("campaign_key") != campaign_key:
         raise ValueError("CUDA campaign resume source/plan/CPU/GPU conditions changed")
+    if starts and (starts[0].get("ledger_uuid") != budget.ledger_uuid or starts[0].get("provenance") != before or
+                   starts[0].get("host_environment") != host or
+                   starts[0].get("gpu_environment", {}).get("identity") != gpu["identity"]):
+        raise ValueError("preserved CUDA campaign metadata differs from current plan/build/host")
     ids = [c["case_id"] for c in plan["cases"]]
     selected = set(args.case or ids)
     if not selected.issubset(ids): raise ValueError("--case name absent from CUDA plan")
@@ -775,7 +808,7 @@ def self_test(output=None):
             worker(args)
             state["budget_type"].ledger_uuid = "4"*32
             count = state["native_contexts"]
-            with self.assertRaisesRegex(ValueError, "resume"):
+            with self.assertRaisesRegex(ValueError, "resume|identity|ledger"):
                 worker(args)
             self.assertEqual(state["native_contexts"], count)
 
@@ -828,7 +861,7 @@ def self_test(output=None):
             worker(args)
             rows = cpu.rows(args.output)
             self.assertEqual(len([r for r in rows if r.get("kind") == "sample" and r.get("passed")]), 100)
-            self.assertEqual((len(state["reservations"]), len(state["finishes"])), (102, 102))
+            self.assertEqual((len(state["reservations"]), len(state["finishes"])), (103, 103))
             self.assertEqual(sum(not success for _, success in state["finishes"]), 1)
         def test_gpu_change_rejects_completed_resume(self):
             args, case, state, _, gpu = self.worker_harness(); worker(args)
@@ -870,7 +903,8 @@ def self_test(output=None):
         def test_kernel_resume_integrity(self):
             case = make_plan([2], [1])["cases"][0]
             row = {"kind": "sample", "passed": True, "sample_index": 0, "duration_ns": 100, "end_to_end_ns": 100,
-                "kernel_ns": 40, "actual_backend": 5, "input_hashes": {}, "cuda_stats": FakeStats().row}
+                "kernel_ns": 40, "actual_backend": 5, "input_hashes": {}, "cuda_stats": FakeStats().row,
+                "scopes": SCOPES, "core_cycles": None}
             self.assertEqual(len(resume_samples([row], case, {})), 1)
             with self.assertRaisesRegex(ValueError, "duplicate"): resume_samples([row, row], case, {})
             for replacement in (0, 101, True):

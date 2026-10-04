@@ -1,0 +1,21 @@
+{
+  "schema": "a15-independent-completion-review-v1",
+  "native_calls": 0,
+  "real_timing_samples": 0,
+  "checks": [
+    {
+      "mode": "pending",
+      "cpu_completion_accepted": false,
+      "cpu_error": "completion segment lacks ready/successful finalized operations",
+      "cuda_completion_accepted": false,
+      "cuda_error": "completion segment lacks ready/successful finalized operations"
+    },
+    {
+      "mode": "failed",
+      "cpu_completion_accepted": false,
+      "cpu_error": "completion segment lacks ready/successful finalized operations",
+      "cuda_completion_accepted": false,
+      "cuda_error": "completion segment lacks ready/successful finalized operations"
+    }
+  ]
+}

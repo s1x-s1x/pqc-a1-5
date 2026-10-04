@@ -27,6 +27,7 @@ from ..key_schedule.hkdf import encode_hybrid_secret
 from ..metrics import Metrics
 from ..pki import pq_extension_from_leaf
 from ..alt_chain import verify_alt_chain
+from ..record.aead import MAX_CIPHERTEXT_BYTES, MAX_CONTENT_BYTES
 from ..wire import split_handshake_message
 from .certificate_verify import (
     HybridCertificateVerify,
@@ -99,6 +100,10 @@ class HybridClient(HandshakeState):
         self._server_flight_index = 0
         self._handshake_buffer = bytearray()
         self.server_flight_fragments: list[tuple[str, int, int]] = []
+        self._server_flight_failed = False
+        self._server_flight_records = 0
+        self._server_flight_ciphertext_bytes = 0
+        self._server_flight_plaintext_bytes = 0
 
     # -- flight 1 -----------------------------------------------------------
 
@@ -264,44 +269,110 @@ class HybridClient(HandshakeState):
     @named_errors("server_flight")
     def receive_server_flight(self, records: list[bytes]) -> None:
         """Decrypt and check EncryptedExtensions, Certificate, CertificateVerify, Finished."""
-        for record in records:
-            self.receive_server_record(record)
-        self.finish_server_flight()
+        self._require_live_server_flight()
+        try:
+            for record in records:
+                self.receive_server_record(record)
+            self.finish_server_flight()
+        except BaseException:
+            self._abort_server_flight()
+            raise
 
     @property
     def server_flight_complete(self) -> bool:
-        return self._server_flight_index == len(_EXPECTED_FLIGHT) and not self._handshake_buffer
+        return (not self._server_flight_failed
+                and self._server_flight_index == len(_EXPECTED_FLIGHT)
+                and not self._handshake_buffer)
+
+    def _require_live_server_flight(self) -> None:
+        if self._server_flight_failed:
+            raise HandshakeError("server_flight", "server flight already failed; create a new client")
+
+    def _abort_server_flight(self) -> None:
+        """Terminate this attempt; keep bounded audit/counters, drop usable keys.
+
+        A failed record may have consumed sequence state and complete messages may
+        already be in the transcript. Clearing buffers never makes that state safe
+        to resume, so there is no reset/retry on this client instance.
+        """
+        self._server_flight_failed = True
+        self._handshake_buffer.clear()
+        self.client_records = self.server_records = None
+        self.application_client_records = self.application_server_records = None
+        self.schedule.master_secret = None
+        self.schedule.client_application_traffic = None
+        self.schedule.server_application_traffic = None
+        self.schedule.exporter_master_secret = None
+        self.schedule.resumption_master_secret = None
 
     @named_errors("server_flight")
     def finish_server_flight(self) -> None:
+        self._require_live_server_flight()
         if not self.server_flight_complete:
+            self._abort_server_flight()
             raise HandshakeError("server_flight", "truncated authenticated handshake flight")
 
     @named_errors("server_flight")
     def receive_server_record(self, record: bytes) -> None:
         """Consume one authenticated fragment; preserve complete-message transcripts."""
+        self._require_live_server_flight()
+        try:
+            self._receive_server_record(record)
+        except BaseException:
+            self._abort_server_flight()
+            raise
+
+    def _receive_server_record(self, record: bytes) -> None:
         if self.server_flight_complete:
             raise HandshakeError("server_flight", "unexpected record after Finished")
+        # Check costs before decryption or allocating a new audit entry. The
+        # direct receiver has the same limits as the transport-backed receiver.
+        if self._server_flight_records >= self.config.server_flight_max_records:
+            raise HandshakeError("server_flight", "server flight record budget exceeded")
+        if len(self.server_flight_fragments) >= self.config.server_flight_max_audit_entries:
+            raise HandshakeError("server_flight", "server flight audit entry budget exceeded")
+        if len(record) > MAX_CIPHERTEXT_BYTES:
+            raise HandshakeError("record", "ciphertext exceeds the 16640-byte record limit")
+        if self._server_flight_ciphertext_bytes + len(record) > self.config.server_flight_max_ciphertext_bytes:
+            raise HandshakeError("server_flight", "server flight ciphertext budget exceeded")
+        self._server_flight_records += 1
+        self._server_flight_ciphertext_bytes += len(record)
         payload = self.open_handshake(record)
         if not payload:
             raise HandshakeError("server_flight", "empty handshake fragment")
+        if len(payload) > MAX_CONTENT_BYTES:
+            raise HandshakeError("record", "decrypted record content exceeds 16384 bytes")
+        if self._server_flight_plaintext_bytes + len(payload) > self.config.server_flight_max_plaintext_bytes:
+            raise HandshakeError("server_flight", "server flight plaintext budget exceeded")
+        self._server_flight_plaintext_bytes += len(payload)
         name = _EXPECTED_FLIGHT[self._server_flight_index][0]
         self.server_flight_fragments.append((name, len(payload), len(record)))
-        self._handshake_buffer.extend(payload)
-        # Bound the announced message before buffering its body. This harness
-        # supports at most 1 MiB per handshake message; TLS record bounds are lower.
-        while len(self._handshake_buffer) >= 4:
+        # Copy a split header first, validate its length, then copy only its body.
+        # Coalesced messages are processed independently without buffering an
+        # unchecked following body; the assembly allocation stays at <= 1 MiB.
+        fragment = memoryview(payload)
+        offset = 0
+        while offset < len(fragment):
+            if len(self._handshake_buffer) < 4:
+                take = min(4 - len(self._handshake_buffer), len(fragment) - offset)
+                self._handshake_buffer.extend(fragment[offset:offset + take])
+                offset += take
+                if len(self._handshake_buffer) < 4:
+                    return
             size = 4 + int.from_bytes(self._handshake_buffer[1:4], "big")
             if size > (1 << 20):
                 raise HandshakeError("server_flight", "handshake message exceeds harness limit")
+            take = min(size - len(self._handshake_buffer), len(fragment) - offset)
+            self._handshake_buffer.extend(fragment[offset:offset + take])
+            offset += take
             if len(self._handshake_buffer) < size:
                 return
-            inner = bytes(self._handshake_buffer[:size])
-            del self._handshake_buffer[:size]
+            inner = bytes(self._handshake_buffer)
+            self._handshake_buffer.clear()
             self._consume_server_handshake(inner)
             self._server_flight_index += 1
             if self._server_flight_index == len(_EXPECTED_FLIGHT):
-                if self._handshake_buffer:
+                if offset < len(fragment):
                     raise HandshakeError("server_flight", "trailing data after Finished")
                 self.setup_application_keys()
                 return
@@ -538,6 +609,7 @@ class HybridClient(HandshakeState):
         This method adds the client's own Finished and then derives ``res master``, which
         is the one secret RFC 8446 section 7.1 takes over the longer transcript.
         """
+        self._require_live_server_flight()
         if self.application_client_records is None:
             raise HandshakeError(
                 "client_finished",

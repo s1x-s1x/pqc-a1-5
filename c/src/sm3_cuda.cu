@@ -1,6 +1,7 @@
 /* B1 CUDA SM3/FORS. Built only on explicit CUDA=1. No CPU fallback here. */
 #include "sm3_cuda.h"
 #include "sm3_cuda_device.cuh"
+#include "cuda_cleanup.h"
 #include <cuda_runtime.h>
 #include <mutex>
 #include <cstring>
@@ -20,18 +21,18 @@
 #endif
 static std::mutex cuda_mutex;
 static slh_cuda_stats statistics={};
+static bool cleanup_poisoned=false;
 static int cuda_status(cudaError_t rc){return rc==cudaSuccess?SLH_OK:rc==cudaErrorMemoryAllocation?SLH_ERR_ALLOC:SLH_ERR_BACKEND;}
-static int select_device(){int count=0;if(cudaGetDeviceCount(&count)!=cudaSuccess||!count)return SLH_ERR_BACKEND;return cuda_status(cudaSetDevice(0));}
-struct cuda_buffer {
- uint8_t *p;size_t bytes;
- explicit cuda_buffer(size_t n):p(nullptr),bytes(n){}
- int allocate(){return bytes?cuda_status(cudaMalloc((void**)&p,bytes)):SLH_OK;}
- int clear_release(){if(!p)return 0;int rc=cuda_status(cudaMemset(p,0,bytes));if(!rc)rc=cuda_status(cudaDeviceSynchronize());
-  /* If zeroing fails, keep ownership for destructor retry. Never turn a failed
-   * cleanup into an operation success or silently free uncleared secret data. */
-  if(rc)return rc;rc=cuda_status(cudaFree(p));if(!rc)p=nullptr;return rc;
- }
- ~cuda_buffer(){if(p){cudaMemset(p,0,bytes);cudaDeviceSynchronize();cudaFree(p);}}
+static int select_device(){if(cleanup_poisoned)return SLH_ERR_BACKEND;int count=0;if(cudaGetDeviceCount(&count)!=cudaSuccess||!count)return SLH_ERR_BACKEND;return cuda_status(cudaSetDevice(0));}
+struct cuda_cleanup_driver {
+ static int backend_error(){return SLH_ERR_BACKEND;}
+ static int allocate(uint8_t **p,size_t n){return cuda_status(cudaMalloc((void**)p,n));}
+ static int wipe(uint8_t *p,size_t n){return cuda_status(cudaMemset(p,0,n));}
+ static int synchronize(){return cuda_status(cudaDeviceSynchronize());}
+ static int release(uint8_t *p){return cuda_status(cudaFree(p));}
+};
+struct cuda_buffer:a15_cuda_buffer_owner<cuda_cleanup_driver> {
+ explicit cuda_buffer(size_t n):a15_cuda_buffer_owner<cuda_cleanup_driver>(n,cleanup_poisoned){}
 };
 struct kernel_clock {
  cudaEvent_t before=nullptr,after=nullptr;int rc=0;

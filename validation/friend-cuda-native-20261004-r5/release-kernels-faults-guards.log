@@ -1,0 +1,133 @@
+mkdir -p ../build/friend-cuda-native-20261004-r5/release
+rm -f ../build/friend-cuda-native-20261004-r5/release/.a15-config-*
+touch ../build/friend-cuda-native-20261004-r5/release/.a15-config-b142a1ee467afe39f68f0c05eb3e0ea205c76fc7c59d05bb3e9664eecac6f5ea
+mkdir -p ../build/friend-cuda-native-20261004-r5/release
+nvcc -std=c++14 -O3 -gencode=arch=compute_86,code=compute_86 -Xcompiler=-fPIC,-fvisibility=hidden,-pthread -Iinclude -Isrc -DSLH_RELEASE_BUILD -c src/sm3_cuda.cu -o ../build/friend-cuda-native-20261004-r5/release/sm3_cuda.o
+mkdir -p ../build/friend-cuda-native-20261004-r5/release
+gcc -std=c11 -Wall -Wextra -Wno-misleading-indentation -fPIC -fopenmp -Iinclude -Isrc -I../third_party/slhdsa-c -O3 -DSLH_RELEASE_BUILD -shared src/engine.c src/sm3.c src/sm3x8.c ../third_party/slhdsa-c/sha2_256.c ../third_party/slhdsa-c/sha2_512.c ../third_party/slhdsa-c/sha3_api.c ../third_party/slhdsa-c/sha3_f1600.c ../build/friend-cuda-native-20261004-r5/release/sm3_cuda.o -L/usr/lib/x86_64-linux-gnu -lcudart -lstdc++ -pthread -o ../build/friend-cuda-native-20261004-r5/release/libslhdsa_sm3.so
+mkdir -p ../build/friend-cuda-native-20261004-r5/release
+gcc -std=c11 -Wall -Wextra -Wno-misleading-indentation -fPIC -fopenmp -Iinclude -Isrc -I../third_party/slhdsa-c -O3 src/sm3.c src/sm3x8.c ../third_party/slhdsa-c/sha2_256.c ../third_party/slhdsa-c/sha2_512.c ../third_party/slhdsa-c/sha3_api.c ../third_party/slhdsa-c/sha3_f1600.c tests/test_repair.c ../build/friend-cuda-native-20261004-r5/release/sm3_cuda.o -L/usr/lib/x86_64-linux-gnu -lcudart -lstdc++ -pthread -o ../build/friend-cuda-native-20261004-r5/release/test_repair
+../build/friend-cuda-native-20261004-r5/release/test_repair ../build/friend-cuda-native-20261004-r5/release/repair.cache
+repair midstate full256/boundaries/thread-copy: 224 comparisons PASS
+repair capacities/private-publication/reordered-tasks/changing-cache/failure-wipes: PASS; 169647 observed wipes
+mkdir -p ../build/friend-cuda-native-20261004-r5/release
+gcc -std=c11 -Wall -Wextra -Wno-misleading-indentation -fPIC -fopenmp -Iinclude -Isrc -I../third_party/slhdsa-c -O3 src/engine.c src/sm3.c src/sm3x8.c ../third_party/slhdsa-c/sha2_256.c ../third_party/slhdsa-c/sha2_512.c ../third_party/slhdsa-c/sha3_api.c ../third_party/slhdsa-c/sha3_f1600.c tests/test_cuda.c ../build/friend-cuda-native-20261004-r5/release/sm3_cuda.o -L/usr/lib/x86_64-linux-gnu -lcudart -lstdc++ -pthread -o ../build/friend-cuda-native-20261004-r5/release/test_cuda
+A15_TEST_CACHE_DIR=../build/friend-cuda-native-20261004-r5/release ../build/friend-cuda-native-20261004-r5/release/test_cuda
+{"case":"gpu-sm3","comparisons":7294,"passed":true,"timed":false}
+{"case":"gpu-fors-subtrees-and-hybrid-wots","comparisons":148,"passed":true,"timed":false}
+{"case":"gpu-full-signatures-cache-randomized-inputs-and-guards","comparisons":12,"passed":true,"timed":false}
+{"passed":true,"cuda_available":true,"actual_backend":5,"device":0,"kernel_launches":2770,"device_hashes":395926,"timed":false}
+mkdir -p ../build/friend-cuda-native-20261004-r5/release
+nvcc -std=c++14 -O3 -gencode=arch=compute_86,code=compute_86 -Xcompiler=-fPIC,-fvisibility=hidden,-pthread -Iinclude -Isrc -DSLH_TEST_BUILD -DSLH_TEST_FAULT_POINT=0 -c src/sm3_cuda.cu -o ../build/friend-cuda-native-20261004-r5/release/sm3_cuda_fault_0.o
+mkdir -p ../build/friend-cuda-native-20261004-r5/release
+gcc -std=c11 -Wall -Wextra -Wno-misleading-indentation -fPIC -fopenmp -Iinclude -Isrc -I../third_party/slhdsa-c -O3 -DSLH_TEST_BUILD -DSLH_TEST_FAULT_POINT=0 -DSLH_TEST_BACKEND=5 src/engine.c src/sm3.c src/sm3x8.c ../third_party/slhdsa-c/sha2_256.c ../third_party/slhdsa-c/sha2_512.c ../third_party/slhdsa-c/sha3_api.c ../third_party/slhdsa-c/sha3_f1600.c tests/test_fault.c ../build/friend-cuda-native-20261004-r5/release/sm3_cuda_fault_0.o -L/usr/lib/x86_64-linux-gnu -lcudart -lstdc++ -pthread -o ../build/friend-cuda-native-20261004-r5/release/test_cuda_fault_0
+mkdir -p ../build/friend-cuda-native-20261004-r5/release
+nvcc -std=c++14 -O3 -gencode=arch=compute_86,code=compute_86 -Xcompiler=-fPIC,-fvisibility=hidden,-pthread -Iinclude -Isrc -DSLH_TEST_BUILD -DSLH_TEST_FAULT_POINT=1 -c src/sm3_cuda.cu -o ../build/friend-cuda-native-20261004-r5/release/sm3_cuda_fault_1.o
+mkdir -p ../build/friend-cuda-native-20261004-r5/release
+gcc -std=c11 -Wall -Wextra -Wno-misleading-indentation -fPIC -fopenmp -Iinclude -Isrc -I../third_party/slhdsa-c -O3 -DSLH_TEST_BUILD -DSLH_TEST_FAULT_POINT=1 -DSLH_TEST_BACKEND=5 src/engine.c src/sm3.c src/sm3x8.c ../third_party/slhdsa-c/sha2_256.c ../third_party/slhdsa-c/sha2_512.c ../third_party/slhdsa-c/sha3_api.c ../third_party/slhdsa-c/sha3_f1600.c tests/test_fault.c ../build/friend-cuda-native-20261004-r5/release/sm3_cuda_fault_1.o -L/usr/lib/x86_64-linux-gnu -lcudart -lstdc++ -pthread -o ../build/friend-cuda-native-20261004-r5/release/test_cuda_fault_1
+mkdir -p ../build/friend-cuda-native-20261004-r5/release
+nvcc -std=c++14 -O3 -gencode=arch=compute_86,code=compute_86 -Xcompiler=-fPIC,-fvisibility=hidden,-pthread -Iinclude -Isrc -DSLH_TEST_BUILD -DSLH_TEST_FAULT_POINT=2 -c src/sm3_cuda.cu -o ../build/friend-cuda-native-20261004-r5/release/sm3_cuda_fault_2.o
+mkdir -p ../build/friend-cuda-native-20261004-r5/release
+gcc -std=c11 -Wall -Wextra -Wno-misleading-indentation -fPIC -fopenmp -Iinclude -Isrc -I../third_party/slhdsa-c -O3 -DSLH_TEST_BUILD -DSLH_TEST_FAULT_POINT=2 -DSLH_TEST_BACKEND=5 src/engine.c src/sm3.c src/sm3x8.c ../third_party/slhdsa-c/sha2_256.c ../third_party/slhdsa-c/sha2_512.c ../third_party/slhdsa-c/sha3_api.c ../third_party/slhdsa-c/sha3_f1600.c tests/test_fault.c ../build/friend-cuda-native-20261004-r5/release/sm3_cuda_fault_2.o -L/usr/lib/x86_64-linux-gnu -lcudart -lstdc++ -pthread -o ../build/friend-cuda-native-20261004-r5/release/test_cuda_fault_2
+mkdir -p ../build/friend-cuda-native-20261004-r5/release
+nvcc -std=c++14 -O3 -gencode=arch=compute_86,code=compute_86 -Xcompiler=-fPIC,-fvisibility=hidden,-pthread -Iinclude -Isrc -DSLH_TEST_BUILD -DSLH_TEST_FAULT_POINT=3 -c src/sm3_cuda.cu -o ../build/friend-cuda-native-20261004-r5/release/sm3_cuda_fault_3.o
+mkdir -p ../build/friend-cuda-native-20261004-r5/release
+gcc -std=c11 -Wall -Wextra -Wno-misleading-indentation -fPIC -fopenmp -Iinclude -Isrc -I../third_party/slhdsa-c -O3 -DSLH_TEST_BUILD -DSLH_TEST_FAULT_POINT=3 -DSLH_TEST_BACKEND=5 src/engine.c src/sm3.c src/sm3x8.c ../third_party/slhdsa-c/sha2_256.c ../third_party/slhdsa-c/sha2_512.c ../third_party/slhdsa-c/sha3_api.c ../third_party/slhdsa-c/sha3_f1600.c tests/test_fault.c ../build/friend-cuda-native-20261004-r5/release/sm3_cuda_fault_3.o -L/usr/lib/x86_64-linux-gnu -lcudart -lstdc++ -pthread -o ../build/friend-cuda-native-20261004-r5/release/test_cuda_fault_3
+In file included from /usr/include/string.h:535,
+                 from src/secure_zero.h:4,
+                 from src/engine.c:10:
+In function ‘memcpy’,
+    inlined from ‘wots_group8.constprop’ at src/engine.c:168:62:
+/usr/include/x86_64-linux-gnu/bits/string_fortified.h:29:10: warning: writing 16 bytes into a region of size 0 [-Wstringop-overflow=]
+   29 |   return __builtin___memcpy_chk (__dest, __src, __len,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   30 |                                  __glibc_objsize0 (__dest));
+      |                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/engine.c: In function ‘wots_group8.constprop’:
+src/engine.c:155:70: note: at offset 128 into destination object ‘out’ of size [0, 128]
+  155 | static void wots_group8(work w,unsigned first,unsigned count,uint8_t out[8][N],const uint32_t *starts,const uint32_t *steps,const uint8_t *signature) {
+      |                                                              ~~~~~~~~^~~~~~~~~
+mkdir -p ../build/friend-cuda-native-20261004-r5/release
+nvcc -std=c++14 -O3 -gencode=arch=compute_86,code=compute_86 -Xcompiler=-fPIC,-fvisibility=hidden,-pthread -Iinclude -Isrc -DSLH_TEST_BUILD -DSLH_TEST_FAULT_POINT=4 -c src/sm3_cuda.cu -o ../build/friend-cuda-native-20261004-r5/release/sm3_cuda_fault_4.o
+mkdir -p ../build/friend-cuda-native-20261004-r5/release
+gcc -std=c11 -Wall -Wextra -Wno-misleading-indentation -fPIC -fopenmp -Iinclude -Isrc -I../third_party/slhdsa-c -O3 -DSLH_TEST_BUILD -DSLH_TEST_FAULT_POINT=4 -DSLH_TEST_BACKEND=5 src/engine.c src/sm3.c src/sm3x8.c ../third_party/slhdsa-c/sha2_256.c ../third_party/slhdsa-c/sha2_512.c ../third_party/slhdsa-c/sha3_api.c ../third_party/slhdsa-c/sha3_f1600.c tests/test_fault.c ../build/friend-cuda-native-20261004-r5/release/sm3_cuda_fault_4.o -L/usr/lib/x86_64-linux-gnu -lcudart -lstdc++ -pthread -o ../build/friend-cuda-native-20261004-r5/release/test_cuda_fault_4
+mkdir -p ../build/friend-cuda-native-20261004-r5/release
+nvcc -std=c++14 -O3 -gencode=arch=compute_86,code=compute_86 -Xcompiler=-fPIC,-fvisibility=hidden,-pthread -Iinclude -Isrc -DSLH_TEST_BUILD -DSLH_TEST_FAULT_POINT=5 -c src/sm3_cuda.cu -o ../build/friend-cuda-native-20261004-r5/release/sm3_cuda_fault_5.o
+mkdir -p ../build/friend-cuda-native-20261004-r5/release
+gcc -std=c11 -Wall -Wextra -Wno-misleading-indentation -fPIC -fopenmp -Iinclude -Isrc -I../third_party/slhdsa-c -O3 -DSLH_TEST_BUILD -DSLH_TEST_FAULT_POINT=5 -DSLH_TEST_BACKEND=5 src/engine.c src/sm3.c src/sm3x8.c ../third_party/slhdsa-c/sha2_256.c ../third_party/slhdsa-c/sha2_512.c ../third_party/slhdsa-c/sha3_api.c ../third_party/slhdsa-c/sha3_f1600.c tests/test_fault.c ../build/friend-cuda-native-20261004-r5/release/sm3_cuda_fault_5.o -L/usr/lib/x86_64-linux-gnu -lcudart -lstdc++ -pthread -o ../build/friend-cuda-native-20261004-r5/release/test_cuda_fault_5
+fault point=0 backend=5 threads=1 cache_t=5 self_verify=0 pure/internal/prehash/digest PASS
+fault point=0 backend=5 threads=1 cache_t=5 self_verify=1 pure/internal/prehash/digest PASS
+fault point=0 backend=5 threads=1 cache_t=10 self_verify=0 pure/internal/prehash/digest PASS
+fault point=0 backend=5 threads=1 cache_t=10 self_verify=1 pure/internal/prehash/digest PASS
+fault point=0 backend=5 threads=4 cache_t=5 self_verify=0 pure/internal/prehash/digest PASS
+fault point=0 backend=5 threads=4 cache_t=5 self_verify=1 pure/internal/prehash/digest PASS
+fault point=0 backend=5 threads=4 cache_t=10 self_verify=0 pure/internal/prehash/digest PASS
+fault point=0 backend=5 threads=4 cache_t=10 self_verify=1 pure/internal/prehash/digest PASS
+fault point 0: 32 control signing calls, valid signatures+guards PASS
+fault point=1 backend=5 threads=1 cache_t=5 self_verify=0 pure/internal/prehash/digest PASS
+fault point=1 backend=5 threads=1 cache_t=5 self_verify=1 pure/internal/prehash/digest PASS
+fault point=1 backend=5 threads=1 cache_t=10 self_verify=0 pure/internal/prehash/digest PASS
+fault point=1 backend=5 threads=1 cache_t=10 self_verify=1 pure/internal/prehash/digest PASS
+fault point=1 backend=5 threads=4 cache_t=5 self_verify=0 pure/internal/prehash/digest PASS
+fault point=1 backend=5 threads=4 cache_t=5 self_verify=1 pure/internal/prehash/digest PASS
+fault point=1 backend=5 threads=4 cache_t=10 self_verify=0 pure/internal/prehash/digest PASS
+fault point=1 backend=5 threads=4 cache_t=10 self_verify=1 pure/internal/prehash/digest PASS
+fault point 1: 32 signing calls, detection-off invalid signature, detection-on SLH_ERR_FAULT+2320-byte-clearing+guards PASS
+fault point=2 backend=5 threads=1 cache_t=5 self_verify=0 pure/internal/prehash/digest PASS
+fault point=2 backend=5 threads=1 cache_t=5 self_verify=1 pure/internal/prehash/digest PASS
+fault point=2 backend=5 threads=1 cache_t=10 self_verify=0 pure/internal/prehash/digest PASS
+fault point=2 backend=5 threads=1 cache_t=10 self_verify=1 pure/internal/prehash/digest PASS
+fault point=2 backend=5 threads=4 cache_t=5 self_verify=0 pure/internal/prehash/digest PASS
+fault point=2 backend=5 threads=4 cache_t=5 self_verify=1 pure/internal/prehash/digest PASS
+fault point=2 backend=5 threads=4 cache_t=10 self_verify=0 pure/internal/prehash/digest PASS
+fault point=2 backend=5 threads=4 cache_t=10 self_verify=1 pure/internal/prehash/digest PASS
+fault point 2: 32 signing calls, detection-off invalid signature, detection-on SLH_ERR_FAULT+2320-byte-clearing+guards PASS
+fault point=3 backend=5 threads=1 cache_t=5 self_verify=0 pure/internal/prehash/digest PASS
+fault point=3 backend=5 threads=1 cache_t=5 self_verify=1 pure/internal/prehash/digest PASS
+fault point=3 backend=5 threads=1 cache_t=10 self_verify=0 pure/internal/prehash/digest PASS
+fault point=3 backend=5 threads=1 cache_t=10 self_verify=1 pure/internal/prehash/digest PASS
+fault point=3 backend=5 threads=4 cache_t=5 self_verify=0 pure/internal/prehash/digest PASS
+fault point=3 backend=5 threads=4 cache_t=5 self_verify=1 pure/internal/prehash/digest PASS
+fault point=3 backend=5 threads=4 cache_t=10 self_verify=0 pure/internal/prehash/digest PASS
+fault point=3 backend=5 threads=4 cache_t=10 self_verify=1 pure/internal/prehash/digest PASS
+fault point 3: 32 signing calls, detection-off invalid signature, detection-on SLH_ERR_FAULT+2320-byte-clearing+guards PASS
+fault point=4 backend=5 threads=1 cache_t=5 self_verify=0 pure/internal/prehash/digest PASS
+fault point=4 backend=5 threads=1 cache_t=5 self_verify=1 pure/internal/prehash/digest PASS
+fault point=4 backend=5 threads=1 cache_t=10 self_verify=0 pure/internal/prehash/digest PASS
+fault point=4 backend=5 threads=1 cache_t=10 self_verify=1 pure/internal/prehash/digest PASS
+fault point=4 backend=5 threads=4 cache_t=5 self_verify=0 pure/internal/prehash/digest PASS
+fault point=4 backend=5 threads=4 cache_t=5 self_verify=1 pure/internal/prehash/digest PASS
+fault point=4 backend=5 threads=4 cache_t=10 self_verify=0 pure/internal/prehash/digest PASS
+fault point=4 backend=5 threads=4 cache_t=10 self_verify=1 pure/internal/prehash/digest PASS
+fault point 4: 32 signing calls, detection-off invalid signature, detection-on SLH_ERR_FAULT+2320-byte-clearing+guards PASS
+fault point=5 backend=5 threads=1 cache_t=5 self_verify=0 pure/internal/prehash/digest PASS
+fault point=5 backend=5 threads=1 cache_t=5 self_verify=1 pure/internal/prehash/digest PASS
+fault point=5 backend=5 threads=1 cache_t=10 self_verify=0 pure/internal/prehash/digest PASS
+fault point=5 backend=5 threads=1 cache_t=10 self_verify=1 pure/internal/prehash/digest PASS
+fault point=5 backend=5 threads=4 cache_t=5 self_verify=0 pure/internal/prehash/digest PASS
+fault point=5 backend=5 threads=4 cache_t=5 self_verify=1 pure/internal/prehash/digest PASS
+fault point=5 backend=5 threads=4 cache_t=10 self_verify=0 pure/internal/prehash/digest PASS
+fault point=5 backend=5 threads=4 cache_t=10 self_verify=1 pure/internal/prehash/digest PASS
+fault point 5: 32 signing calls, detection-off invalid signature, detection-on SLH_ERR_FAULT+2320-byte-clearing+guards PASS
+mkdir -p ../build/friend-cuda-native-20261004-r5/release
+g++ -std=c++14 -O2 -Wall -Wextra -Isrc tests/test_cuda_cleanup_host.cpp -o ../build/friend-cuda-native-20261004-r5/release/test_cuda_cleanup_host
+../build/friend-cuda-native-20261004-r5/release/test_cuda_cleanup_host
+CUDA cleanup host fake-driver: 17 policy cases PASS; cryptographic_abi_calls=0; real_timing_samples=0; real GPU fault behavior untested
+python3 ../tools/check_native_guards.py --cc 'gcc' --library ../build/friend-cuda-native-20261004-r5/release/libslhdsa_sm3.so
+native guard source checks PASS: two-macro test gate, release exclusion, five calculation sites
+native guard compiler checks PASS: release code erased; four bad builds rejected; release symbols clean
+mkdir -p ../build/friend-cuda-native-20261004-r5/release/cuda-resources
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_Z18fors_reduce_kernel12a15_cuda_jobjjPKhPh' for 'sm_86'
+ptxas info    : Function properties for _Z18fors_reduce_kernel12a15_cuda_jobjjPKhPh
+    368 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 40 registers, 456 bytes cmem[0]
+ptxas info    : Compiling entry function '_Z16fors_leaf_kernel12a15_cuda_jobjPh' for 'sm_86'
+ptxas info    : Function properties for _Z16fors_leaf_kernel12a15_cuda_jobjPh
+    368 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 47 registers, 448 bytes cmem[0]
+ptxas info    : Compiling entry function '_Z10sm3_kernelPKhmmmPh' for 'sm_86'
+ptxas info    : Function properties for _Z10sm3_kernelPKhmmmPh
+    368 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 95 registers, 392 bytes cmem[0]
+rm ../build/friend-cuda-native-20261004-r5/release/sm3_cuda_fault_4.o ../build/friend-cuda-native-20261004-r5/release/sm3_cuda_fault_1.o ../build/friend-cuda-native-20261004-r5/release/sm3_cuda_fault_5.o ../build/friend-cuda-native-20261004-r5/release/sm3_cuda_fault_0.o ../build/friend-cuda-native-20261004-r5/release/sm3_cuda_fault_3.o ../build/friend-cuda-native-20261004-r5/release/sm3_cuda_fault_2.o

@@ -1,0 +1,12 @@
+test_cuda_math_boundary_rejects_kernel_delta (__main__.self_test.<locals>.PollutionTests.test_cuda_math_boundary_rejects_kernel_delta) ... ok
+test_e1_long_certificate_and_corrupt_order (__main__.self_test.<locals>.PollutionTests.test_e1_long_certificate_and_corrupt_order) ... ok
+test_environment_rejects_stale_source_and_failed_container (__main__.self_test.<locals>.PollutionTests.test_environment_rejects_stale_source_and_failed_container) ... ok
+test_hash_failure_and_missing_file (__main__.self_test.<locals>.PollutionTests.test_hash_failure_and_missing_file) ... ok
+test_paths_and_duplicate_json_fail_closed (__main__.self_test.<locals>.PollutionTests.test_paths_and_duplicate_json_fail_closed) ... ok
+test_step_failure_and_missing_hash (__main__.self_test.<locals>.PollutionTests.test_step_failure_and_missing_hash) ... ok
+test_timing_and_permit_fields_fail_closed (__main__.self_test.<locals>.PollutionTests.test_timing_and_permit_fields_fail_closed) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.253s
+
+OK

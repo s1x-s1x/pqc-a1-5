@@ -1,0 +1,26 @@
+test_authorized_hash_bound_test_fixture_keys_are_included (__main__.PackageRepair.test_authorized_hash_bound_test_fixture_keys_are_included) ... ok
+test_backslash_external_rejected (__main__.PackageRepair.test_backslash_external_rejected) ... ok
+test_existing_archive_preserved (__main__.PackageRepair.test_existing_archive_preserved) ... ok
+test_existing_sidecar_preserved (__main__.PackageRepair.test_existing_sidecar_preserved) ... ok
+test_fixture_bundle_without_test_only_rejected (__main__.PackageRepair.test_fixture_bundle_without_test_only_rejected) ... ok
+test_includes_ignored_hash_closure_and_runs_unpacked_gate (__main__.PackageRepair.test_includes_ignored_hash_closure_and_runs_unpacked_gate) ... ok
+test_live_ignored_evidence_mutation_rejected (__main__.PackageRepair.test_live_ignored_evidence_mutation_rejected) ... ok
+test_missing_external_rejected (__main__.PackageRepair.test_missing_external_rejected) ... ok
+test_parent_original_rejected (__main__.PackageRepair.test_parent_original_rejected) ... ok
+test_portable_member_names (__main__.PackageRepair.test_portable_member_names) ... ok
+test_publication_sidecar_race_preserves_prior_record_and_cleans_archive (__main__.PackageRepair.test_publication_sidecar_race_preserves_prior_record_and_cleans_archive) ... ok
+test_stale_audited_hash_rejected (__main__.PackageRepair.test_stale_audited_hash_rejected) ... ok
+test_test_key_map_outside_declared_bundle_rejected (__main__.PackageRepair.test_test_key_map_outside_declared_bundle_rejected) ... ok
+test_tracked_private_fixture_rejected (__main__.PackageRepair.test_tracked_private_fixture_rejected) ... ok
+test_unpacked_closure_change_rejected (__main__.PackageRepair.test_unpacked_closure_change_rejected) ... ok
+test_unreported_audit_dependency_fails_clean_unpack_without_residue (__main__.PackageRepair.test_unreported_audit_dependency_fails_clean_unpack_without_residue) ... ok
+test_windows_absolute_external_rejected (__main__.PackageRepair.test_windows_absolute_external_rejected) ... ok
+test_wrong_external_hash_rejected (__main__.PackageRepair.test_wrong_external_hash_rejected) ... ok
+test_wrong_external_size_rejected (__main__.PackageRepair.test_wrong_external_size_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 2.369s
+
+OK
+
+{"schema": "a15-offline-package-repair-synthetic-v1", "passed": true, "tests": 19, "failures": 0, "errors": 0, "source_sha256": "3d47ccbdea1bee0a03ce7bfcc57919bcaec82352f6faaaa3116d462f98c4b7d6", "native_calls": 0, "real_timing_samples": 0, "actual_project_acceptance": false, "notes": "Real temporary Git repositories and a synthetic read-only hash audit. No real package is published."}

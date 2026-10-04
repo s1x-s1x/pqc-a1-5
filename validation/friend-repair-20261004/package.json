@@ -1,0 +1,12 @@
+{
+  "schema": "a15-friend-repair-package-v1",
+  "engineering_acceptance_passed": true,
+  "performance_authorized": false,
+  "files_sha256": {
+    "audit.json": "4e4efdeb5ed5ec1be104fad0d1acbe9a7dd478a700ba700af85d4a8c7d7a6af6",
+    "checkpoint.json": "a14a790d314ad049f6fd9fb48eaf0b2cfe5d47ea228f9c871e061e16742120e7",
+    "REVIEW.md": "9a3a8907503771db7d0a52f5353f17c915f7c0adb44397a8b50d3f1422bd00c4",
+    "source-manifest.json": "fbd7ac6baf92cfed3896e4fdef748729ed8a99d87c6753284efe539fea252101",
+    "source.tar.gz": "133e196b0bac056708bd9e3a9907e6e96c05bdbe92a956d1ab6a7a69d51242ed"
+  }
+}

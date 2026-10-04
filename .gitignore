@@ -5,6 +5,7 @@ __pycache__/
 *.upload-*
 third_party/**/.git/
 runtime/
+.repro-artifacts/
 *.so
 *.o
 .v9-scratch/

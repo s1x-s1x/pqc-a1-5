@@ -87,7 +87,8 @@ class BudgetRepair(unittest.TestCase):
         with closing(sqlite3.connect(self.path)) as db:
             self.assertEqual(db.execute("SELECT COUNT(*) FROM keys").fetchone()[0], 2)
             self.assertEqual(db.execute("SELECT COUNT(*) FROM reservations").fetchone()[0], 2)
-            self.assertEqual(db.execute("SELECT COUNT(*) FROM ledger_metadata").fetchone()[0], 0)
+            # Schema installation is now part of the same migration transaction.
+            self.assertIsNone(db.execute("SELECT name FROM sqlite_master WHERE name='ledger_metadata'").fetchone())
 
     def test_parallel_alias_calls_consume_exact_limit_even_on_failure(self):
         budget = SigningBudget(self.path)
@@ -126,9 +127,11 @@ class BudgetRepair(unittest.TestCase):
     def evidence(self):
         budget = SigningBudget(self.path)
         case = cpu.case_record(3, "sign", samples=1, family="unit")
+        case["backend"] = "CUDA"  # One synthetic record set exercises both auditors.
         inputs = {"pk": self.public, "message": b"m", "context": b"c"}
         binding = cpu.budget_binding(budget, case, inputs)
         receipt = budget.reserve(cpu.ALGORITHMS[3], self.public, self.message)
+        reserved = budget.validate_receipt(receipt, statuses=("reserved",))
         budget.finish(receipt, self.signature)
         path = self.folder/"p3-fixture.json"
         path.write_text(json.dumps({k: v.hex() for k, v in inputs.items()}))
@@ -137,19 +140,51 @@ class BudgetRepair(unittest.TestCase):
                   "receipt": receipt, "budget_evidence": budget.validate_receipt(receipt),
                   "result_sha256": cpu.sha(self.signature), "input_hashes": input_hashes,
                   "actual_backend": 5, "end_to_end_ns": 100, "kernel_ns": 40,
-                  "cuda_stats": {"kernel_ns": 40, "timing_enabled": 1, "kernel_launches": 1, "device_hashes": 1}}
+                  "cuda_stats": {"kernel_ns": 40, "timing_enabled": 1, "kernel_launches": 1, "device_hashes": 1,
+                                 "h2d_bytes": 16, "d2h_bytes": 16}, "scopes": cuda.SCOPES, "core_cycles": None}
         complete = {"kind": "case_complete", "ledger_uuid": budget.ledger_uuid,
-                    "samples": [100], **cpu.summary([100]), "kernel_samples": [40], "kernel_summary": cpu.summary([40])}
-        records = [{"kind": "case_start", "ledger_uuid": budget.ledger_uuid},
-                   {"kind": "inputs_ready", "ledger_uuid": budget.ledger_uuid, "budget_binding": binding,
-                    "input_hashes": input_hashes, "input_files": {str(path): cpu.file_sha(path)}}, sample, complete]
+                    "samples": [100], **cpu.summary([100]), "kernel_samples": [40], "kernel_summary": cpu.summary([40]),
+                    "scopes": cuda.SCOPES, "core_cycles": None,
+                    "sample_lines": [], "input_hashes": input_hashes,
+                    "input_files_before": {str(path): cpu.file_sha(path)}, "input_files_after": {str(path): cpu.file_sha(path)}}
+        prov = {"source_sha256": "a"*64, "library_sha256": "b"*64, "build_record_sha256": "c"*64,
+                "freeze_sha256": "d"*64, "final": True, "classification": "synthetic unit"}
+        identity = {"host": "synthetic"}
+        execution = cpu.execution_binding(case, prov, identity, budget.ledger_uuid, "e"*64)
+        records, segment, operation = [], "1"*32, "2"*32
+        def emit(row):
+            cpu.emit_bound(lambda _path, bound: records.append({"schema": cpu.SCHEMA, **bound}), None, execution, segment, row)
+        emit({"kind": "case_start", "case": case, "provenance": prov, "environment_identity": identity})
+        emit({"kind": "inputs_ready", "budget_binding": binding,
+              "input_hashes": input_hashes, "input_files": {str(path): cpu.file_sha(path)}})
+        emit({"kind": "operation_start", "operation_id": operation, "operation_kind": "sample", "sample_index": 0,
+              "receipt": receipt, "budget_evidence": reserved, "input_hashes": input_hashes})
+        emit({**sample, "operation_id": operation})
+        complete.update({field+suffix: prov[field] for field in ("source_sha256", "library_sha256") for suffix in ("_before", "_after")})
+        complete.update({k: prov[k] for k in ("build_record_sha256", "freeze_sha256")})
+        complete["environment_identity"] = identity
+        emit(complete)
         return budget, case, records
+
+    def bypass_guard(self, trigger, statement, values=()):
+        """Deliberate guard removal/restoration simulates arbitrary DB corruption."""
+        with closing(sqlite3.connect(self.path)) as db, db:
+            table = db.execute("SELECT tbl_name FROM sqlite_master WHERE name=?", (trigger,)).fetchone()[0]
+            guards = db.execute("SELECT name,sql FROM sqlite_master WHERE type='trigger' AND tbl_name=?", (table,)).fetchall()
+            for name, _ddl in guards:
+                db.execute(f"DROP TRIGGER {name}")
+            db.execute(statement, values)
+            for _name, ddl in guards:
+                db.execute(ddl)
 
     def test_complete_cpu_and_cuda_check_live_receipts_before_skip(self):
         budget, case, records = self.evidence()
         self.assertTrue(cpu.validate_completed(records, case, self.folder, budget))
         self.assertTrue(cuda.validate_completed(records, case, self.folder, budget))
-        with budget.connection() as db: db.execute("UPDATE reservations SET signature_sha256=?", ("0"*64,))
+        with budget.connection() as db:
+            with self.assertRaisesRegex(sqlite3.IntegrityError, "guarded ledger"):
+                db.execute("UPDATE reservations SET signature_sha256=?", ("0"*64,))
+        self.bypass_guard("a15_reservations_update", "UPDATE reservations SET signature_sha256=?", ("0"*64,))
         for checker in (cpu.validate_completed, cuda.validate_completed):
             with self.assertRaisesRegex(ValueError, "live receipt"):
                 checker(records, case, self.folder, budget)
@@ -164,22 +199,25 @@ class BudgetRepair(unittest.TestCase):
 
     def test_sample_digest_and_duplicate_receipt_rejected(self):
         budget, case, records = self.evidence()
-        changed = copy.deepcopy(records); changed[2]["result_sha256"] = "0"*64
+        changed = copy.deepcopy(records); changed[3]["result_sha256"] = "0"*64
         with self.assertRaisesRegex(ValueError, "signature differs"):
             cpu.validate_preserved_budget(changed, case, budget)
-        changed = records+[dict(records[2])]
+        changed = records+[dict(records[3])]
         with self.assertRaisesRegex(ValueError, "reused"):
             cpu.validate_preserved_budget(changed, case, budget)
 
     def test_live_uuid_replacement_rejected(self):
         budget = SigningBudget(self.path)
-        with budget.connection() as db: db.execute("UPDATE ledger_metadata SET value=? WHERE name='ledger_uuid'", ("0"*32,))
+        with budget.connection() as db:
+            with self.assertRaisesRegex(sqlite3.IntegrityError, "guarded ledger"):
+                db.execute("UPDATE ledger_metadata SET value=? WHERE name='ledger_uuid'", ("0"*32,))
+        self.bypass_guard("a15_ledger_metadata_update", "UPDATE ledger_metadata SET value=? WHERE name='ledger_uuid'", ("0"*32,))
         with self.assertRaisesRegex(BudgetError, "UUID changed"):
             budget.reserve("slh-dsa-sm3-128-24", self.public, self.message)
 
     def test_fixture_signature_reconciliation(self):
         budget, case, records = self.evidence()
-        receipt = records[2]["receipt"]
+        receipt = records[3]["receipt"]
         saved = {"receipt": receipt, "ledger_uuid": budget.ledger_uuid, "sig": self.signature.hex(),
                  "fixture_sha256": cpu.file_sha(self.folder/"p3-fixture.json")}
         cpu.atomic_json(self.folder/"p3-signature.json", saved)

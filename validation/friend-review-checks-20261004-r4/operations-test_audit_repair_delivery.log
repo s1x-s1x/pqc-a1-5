@@ -1,0 +1,16 @@
+test_archive_member_hash_and_set_stay_exact (__main__.Checks.test_archive_member_hash_and_set_stay_exact) ... ok
+test_budget_snapshot_remains_read_only_and_independent (__main__.Checks.test_budget_snapshot_remains_read_only_and_independent) ... ok
+test_current_source_hash_changes_are_rejected (__main__.Checks.test_current_source_hash_changes_are_rejected) ... ok
+test_historical_default_19_checks_preserved (__main__.Checks.test_historical_default_19_checks_preserved) ... ok
+test_mapping_is_explicit_and_confined (__main__.Checks.test_mapping_is_explicit_and_confined) ... ok
+test_mock_content_hash_is_rechecked (__main__.Checks.test_mock_content_hash_is_rechecked) ... ok
+test_mock_count_state_and_native_zero_checked (__main__.Checks.test_mock_count_state_and_native_zero_checked) ... ok
+test_mock_must_be_unique_exact_tool_evidence (__main__.Checks.test_mock_must_be_unique_exact_tool_evidence) ... ok
+test_new_header_must_be_in_freeze_and_build (__main__.Checks.test_new_header_must_be_in_freeze_and_build) ... ok
+test_readiness_and_any_project_timing_fail_closed (__main__.Checks.test_readiness_and_any_project_timing_fail_closed) ... ok
+test_repair_19_checks_explicit_mapping_and_new_mocks (__main__.Checks.test_repair_19_checks_explicit_mapping_and_new_mocks) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.249s
+
+OK

@@ -28,6 +28,9 @@ class AdapterBoundaries(unittest.TestCase):
             self.attach("slh_sign_" + ending + "_checked", [native.VOID, native.U8P,
                 ct.c_size_t, ct.POINTER(ct.c_size_t), ct.c_int, native.U8P,
                 ct.c_size_t, native.U8P, ct.c_size_t, native.U8P, native.U8P], self.prehash)
+            self.attach("slh_verify_" + ending, [native.VOID, native.U8P, ct.c_size_t,
+                ct.c_int, native.U8P, ct.c_size_t, native.U8P, ct.c_size_t,
+                native.U8P], self.verify_prehash)
         self.attach("slh_ctx_set_threads", [native.VOID, ct.c_int], lambda _, n: self.record("threads", n))
         self.attach("slh_ctx_set_cache_level", [native.VOID, ct.c_uint], lambda _, n: self.record("level", n))
         self.attach("slh_subtree_checked", [native.VOID, ct.c_int, native.U8P,
@@ -62,6 +65,59 @@ class AdapterBoundaries(unittest.TestCase):
         ct.memset(sig, 0x42, capacity)
         length[0] = capacity
         return 0
+
+    def verify_prehash(self, ctx, sig, slen, alg, msg, mlen, context, clen, pk):
+        self.record("verify_prehash", alg, ct.string_at(msg, mlen), ct.string_at(context, clen))
+        return 0
+
+    def test_all_five_digest_algorithms_and_lengths_before_sign_verify_abi(self):
+        # Explicit C ABI contract, independent of the adapter's lookup table.
+        sizes = {"sha256": 32, "sha512": 64, "shake128": 32, "shake256": 64, "sm3": 32}
+        for name, expected in sizes.items():
+            for selector in (name, native.PREHASH[name]):
+                for signing in (True, False):
+                    with self.subTest(algorithm=selector, signing=signing):
+                        for size in (expected - 1, expected + 1):
+                            before = len(self.records)
+                            with self.assertRaises(ValueError):
+                                if signing:
+                                    self.adapter.sign_digest(bytes(size), bytes(64), selector)
+                                else:
+                                    self.adapter.verify_digest(bytes(size), bytes(2320), bytes(32), selector)
+                            self.assertEqual(len(self.records), before)
+                        digest = memoryview(bytes(range(expected))).cast("I")
+                        if signing:
+                            self.assertEqual(self.adapter.sign_digest(digest, bytes(64), selector), bytes([0x42]) * 2320)
+                        else:
+                            self.assertTrue(self.adapter.verify_digest(digest, bytes(2320), bytes(32), selector))
+                        self.assertEqual(self.records[-1][1:3], (native.PREHASH[name], bytes(range(expected))))
+        # SHAKE256's old 32-byte allowance is outside the required +/-1 cases.
+        for selector in ("shake256", 4):
+            with self.assertRaises(ValueError):
+                self.adapter.sign_digest(bytes(32), bytes(64), selector)
+            with self.assertRaises(ValueError):
+                self.adapter.verify_digest(bytes(32), bytes(2320), bytes(32), selector)
+
+    def test_digest_optional_c_length_query_must_match_all_five_algorithms(self):
+        # No query is supported by the explicit fallback contract in the matrix.
+        self.lib.slh_prehash_bytes = lambda alg: {1: 32, 2: 64, 3: 32, 4: 64, 5: 32}[alg]
+        for alg, size in {1: 32, 2: 64, 3: 32, 4: 64, 5: 32}.items():
+            self.adapter.sign_digest(bytes(size), bytes(64), alg)
+            self.assertTrue(self.adapter.verify_digest(bytes(size), bytes(2320), bytes(32), alg))
+        for reported in (0, 32, 65):
+            self.lib.slh_prehash_bytes = lambda alg: reported
+            before = len(self.records)
+            with self.assertRaisesRegex(RuntimeError, "contract mismatch"):
+                self.adapter.sign_digest(bytes(64), bytes(64), "shake256")
+            with self.assertRaisesRegex(RuntimeError, "contract mismatch"):
+                self.adapter.verify_digest(bytes(64), bytes(2320), bytes(32), 4)
+            self.assertEqual(len(self.records), before)
+
+    def test_message_prehash_is_distinct_from_digest_length_guard(self):
+        for selector in ("shake256", 4):
+            self.adapter.sign_prehash(b"message", bytes(64), selector)
+            self.assertTrue(self.adapter.verify_prehash(b"message", bytes(2320), bytes(32), selector))
+            self.assertEqual(self.records[-1][1:3], (4, b"message"))
 
     def subtree(self, ctx, kind, adrs, start, z, target, root, rcap, auth, acap):
         self.record("subtree", kind, start, z, target, rcap, acap)

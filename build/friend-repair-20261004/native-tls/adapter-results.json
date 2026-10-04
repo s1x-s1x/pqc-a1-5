@@ -1,0 +1,8 @@
+{
+  "scope": "mock ABI adapter regression, no native library or crypto operations",
+  "tests": 10,
+  "passed": true,
+  "failures": [],
+  "errors": [],
+  "formal_performance_samples": 0
+}
