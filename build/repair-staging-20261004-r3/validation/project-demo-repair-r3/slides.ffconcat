@@ -1,0 +1,10 @@
+ffconcat version 1.0
+file 'slide-01.png'
+duration 8
+file 'slide-02.png'
+duration 8
+file 'slide-03.png'
+duration 8
+file 'slide-04.png'
+duration 8
+file 'slide-04.png'

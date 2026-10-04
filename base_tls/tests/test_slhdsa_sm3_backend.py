@@ -63,5 +63,6 @@ def test_real_preissued_slh_chain(name, python):
     chain, _, _, _ = load_fixture(directory, pq_signer=pq_signer, expected_algorithm=name)
     result = verify_alt_chain(chain.chain_der, x509.load_der_x509_certificate(chain.root_der),
                               "server.example", require_alt_chain=True,
-                              expected_algorithm=name, force_python=python)
+                              expected_algorithm=name, force_python=python, require_native=not python)
     assert result.checked_edges == 2 and result.complete
+    assert all(x["mode"] == ("python" if python else "native") for x in result.verifiers)

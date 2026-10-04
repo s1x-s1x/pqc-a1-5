@@ -1,0 +1,12 @@
+{
+  "schema": "a15-offline-package-repair-synthetic-v1",
+  "passed": true,
+  "tests": 19,
+  "failures": 0,
+  "errors": 0,
+  "source_sha256": "3d47ccbdea1bee0a03ce7bfcc57919bcaec82352f6faaaa3116d462f98c4b7d6",
+  "native_calls": 0,
+  "real_timing_samples": 0,
+  "actual_project_acceptance": false,
+  "notes": "Real temporary Git repositories and a synthetic read-only hash audit. No real package is published."
+}

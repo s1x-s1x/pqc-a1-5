@@ -1,0 +1,253 @@
+{
+  "schema": "a15-ca-symbolic-run-v1",
+  "started_utc": "2026-10-04T07:06:02.498113+00:00",
+  "verifier_version": "Verifpal 1.4.12 - https://verifpal.com\nVerifpal is authored by Nadim Kobeissi.\nEveryone who has contributed to Verifpal is\nnamed on the Wall of Honor in the Verifpal\nDocumentation's Acknowledgments page:\n\n  https://verifpal.com/docs/acknowledgments/\n",
+  "verifier_sha256": "c6836c8b0f60e2e9a229ad1f7a5a7f02c6876c5b66730663f8803302e621cbdd",
+  "sessions": 1,
+  "source_sha256": {
+    "tools/run_ca_models.py": "b4415149e8749a69a68531562eefaf6b5dcceaf34d63d01d115a9d824779d19e",
+    "base_tls/verification/ca_models/control_all_ca_leaked.vp": "194737906f37272f2f5952a5859b192debf77400c81879f3c59b163377b619a0",
+    "base_tls/verification/ca_models/control_alt_disabled.vp": "2e94eef251c66724a7d7cd135f0855ee69ac10255ea07dff913b23fa85837d47",
+    "base_tls/verification/ca_models/control_both_online_leaked.vp": "e218758a1d533610b53b3bc69ddd1f44920850d212e56ba189de51621787bd08",
+    "base_tls/verification/ca_models/M1_all_classical.vp": "1f8c10168601af48967ad1145edcf7cc5ebb221c30c414632826ab33ac0c299c",
+    "base_tls/verification/ca_models/M1_ca_leaked.vp": "435d4a1106aed2acc17f2e56db7e57c63da9658a6f6e6032799ecccffd0fd662",
+    "base_tls/verification/ca_models/M1_honest.vp": "527eceb81ade8438b81cc3a5bb79ea5dfe6a426b76f9d24cf7488e3f1ed8bfd2",
+    "base_tls/verification/ca_models/M2_all_classical.vp": "4e5482bb1e92e075df04fbeb62ae0b4dd1ab3fbeb709d0ad40aaf7a44ce61602",
+    "base_tls/verification/ca_models/M2_ca_leaked.vp": "a0afa4a05b2c218a2c4cdfe14d5f95430d71a6de78b2d98ff1dedffbbafd6435",
+    "base_tls/verification/ca_models/M2_dual_all_classical.vp": "fbdd09e4119a8a967215a03e85f98f3414dec7c096749dd4ff37c4c6460e1446",
+    "base_tls/verification/ca_models/M2_honest.vp": "879a823a4f266bebb75ce901885eca47c700d2c482f7b89072dd360c69b575db",
+    "base_tls/verification/ca_models/queries.json": "6e02f5668b2bdcbee0b80b0988d2ba3fbd8ef99c45eae44c67094575a3834370"
+  },
+  "runs": [
+    {
+      "model": "M1_ca_leaked",
+      "command": [
+        "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\build\\ca-verifier-1.4.12\\verifpal.exe",
+        "verify",
+        "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\base_tls\\verification\\ca_models\\M1_ca_leaked.vp",
+        "--sessions",
+        "1",
+        "--color",
+        "never",
+        "--result-code"
+      ],
+      "returncode": 0,
+      "result_code": "a1a0f0c1",
+      "raw_sha256": "9ec2372fc382555fbf2dc1f99f84ad0bf48782e65a98a475c63c1a6b1f424655",
+      "model_sha256": "435d4a1106aed2acc17f2e56db7e57c63da9658a6f6e6032799ecccffd0fd662",
+      "json_command": [
+        "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\build\\ca-verifier-1.4.12\\verifpal.exe",
+        "verify",
+        "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\base_tls\\verification\\ca_models\\M1_ca_leaked.vp",
+        "--sessions",
+        "1",
+        "--format",
+        "json"
+      ],
+      "json_returncode": 0,
+      "json_sha256": "4cb3bf91765b4455a2ea18f68aa79168e979ed445c2cc19f260f70a1b03d30f5"
+    },
+    {
+      "model": "M2_ca_leaked",
+      "command": [
+        "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\build\\ca-verifier-1.4.12\\verifpal.exe",
+        "verify",
+        "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\base_tls\\verification\\ca_models\\M2_ca_leaked.vp",
+        "--sessions",
+        "1",
+        "--color",
+        "never",
+        "--result-code"
+      ],
+      "returncode": 0,
+      "result_code": "a0a0f0c0",
+      "raw_sha256": "a34cc8bd2012d864233407b4487b375d1b7dbdf4cf555b597d88ce74678674bb",
+      "model_sha256": "a0afa4a05b2c218a2c4cdfe14d5f95430d71a6de78b2d98ff1dedffbbafd6435",
+      "json_command": [
+        "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\build\\ca-verifier-1.4.12\\verifpal.exe",
+        "verify",
+        "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\base_tls\\verification\\ca_models\\M2_ca_leaked.vp",
+        "--sessions",
+        "1",
+        "--format",
+        "json"
+      ],
+      "json_returncode": 0,
+      "json_sha256": "effeff59b5ed98f39ae73fe0bb4997d152013a520aa81e857dfa86e1e6b56b64"
+    },
+    {
+      "model": "M1_all_classical",
+      "command": [
+        "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\build\\ca-verifier-1.4.12\\verifpal.exe",
+        "verify",
+        "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\base_tls\\verification\\ca_models\\M1_all_classical.vp",
+        "--sessions",
+        "1",
+        "--color",
+        "never",
+        "--result-code"
+      ],
+      "returncode": 0,
+      "result_code": "a1a1f0c1",
+      "raw_sha256": "34ee881fec246bc5249146889ce2b540cc8ba9299cfeb8091be571fd1bf088c6",
+      "model_sha256": "1f8c10168601af48967ad1145edcf7cc5ebb221c30c414632826ab33ac0c299c",
+      "json_command": [
+        "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\build\\ca-verifier-1.4.12\\verifpal.exe",
+        "verify",
+        "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\base_tls\\verification\\ca_models\\M1_all_classical.vp",
+        "--sessions",
+        "1",
+        "--format",
+        "json"
+      ],
+      "json_returncode": 0,
+      "json_sha256": "a27dd2a9c80ea021bb26bec5163f48315d19c621e0551859fc5a2429b411ed53"
+    },
+    {
+      "model": "M2_all_classical",
+      "command": [
+        "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\build\\ca-verifier-1.4.12\\verifpal.exe",
+        "verify",
+        "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\base_tls\\verification\\ca_models\\M2_all_classical.vp",
+        "--sessions",
+        "1",
+        "--color",
+        "never",
+        "--result-code"
+      ],
+      "returncode": 0,
+      "result_code": "a0a1f0c1",
+      "raw_sha256": "62d2a7b9ab23ff75e07738ed2d67e74a243ed4f08efd56503adb54fbc2060cb4",
+      "model_sha256": "4e5482bb1e92e075df04fbeb62ae0b4dd1ab3fbeb709d0ad40aaf7a44ce61602",
+      "json_command": [
+        "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\build\\ca-verifier-1.4.12\\verifpal.exe",
+        "verify",
+        "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\base_tls\\verification\\ca_models\\M2_all_classical.vp",
+        "--sessions",
+        "1",
+        "--format",
+        "json"
+      ],
+      "json_returncode": 0,
+      "json_sha256": "0da550f0e42729b1766e172d7472db9df661b62c7ad678a46a4f8ae4987d4c71"
+    },
+    {
+      "model": "M2_dual_all_classical",
+      "command": [
+        "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\build\\ca-verifier-1.4.12\\verifpal.exe",
+        "verify",
+        "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\base_tls\\verification\\ca_models\\M2_dual_all_classical.vp",
+        "--sessions",
+        "1",
+        "--color",
+        "never",
+        "--result-code"
+      ],
+      "returncode": 0,
+      "result_code": "a0a0f0c0",
+      "raw_sha256": "de4d31bc77d574f6f66ca6f3c805b91696e87f89fdb5fdb289d3af0ef3023f36",
+      "model_sha256": "fbdd09e4119a8a967215a03e85f98f3414dec7c096749dd4ff37c4c6460e1446",
+      "json_command": [
+        "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\build\\ca-verifier-1.4.12\\verifpal.exe",
+        "verify",
+        "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\base_tls\\verification\\ca_models\\M2_dual_all_classical.vp",
+        "--sessions",
+        "1",
+        "--format",
+        "json"
+      ],
+      "json_returncode": 0,
+      "json_sha256": "068b18029d8a69546081ebf660ecaa9a5fdc768dad00f9209b985c926b8e590f"
+    },
+    {
+      "model": "control_alt_disabled",
+      "command": [
+        "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\build\\ca-verifier-1.4.12\\verifpal.exe",
+        "verify",
+        "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\base_tls\\verification\\ca_models\\control_alt_disabled.vp",
+        "--sessions",
+        "1",
+        "--color",
+        "never",
+        "--result-code"
+      ],
+      "returncode": 0,
+      "result_code": "a1a0f0c1",
+      "raw_sha256": "01d8b0b4b1721ae23c67ae1b8ac9f3d329b7e9fd91707b4bb8304086c4ed94e4",
+      "model_sha256": "2e94eef251c66724a7d7cd135f0855ee69ac10255ea07dff913b23fa85837d47",
+      "json_command": [
+        "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\build\\ca-verifier-1.4.12\\verifpal.exe",
+        "verify",
+        "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\base_tls\\verification\\ca_models\\control_alt_disabled.vp",
+        "--sessions",
+        "1",
+        "--format",
+        "json"
+      ],
+      "json_returncode": 0,
+      "json_sha256": "6a34f4455c597b1a6b740940c02a04bff9cf8e868cd791123aa29dadfdd7c0f5"
+    },
+    {
+      "model": "control_all_ca_leaked",
+      "command": [
+        "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\build\\ca-verifier-1.4.12\\verifpal.exe",
+        "verify",
+        "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\base_tls\\verification\\ca_models\\control_all_ca_leaked.vp",
+        "--sessions",
+        "1",
+        "--color",
+        "never",
+        "--result-code"
+      ],
+      "returncode": 0,
+      "result_code": "a1a0f0c1",
+      "raw_sha256": "afc52e59c628a799095f15cd478dd037915ce502083961adb8ff9505f19cf1bc",
+      "model_sha256": "194737906f37272f2f5952a5859b192debf77400c81879f3c59b163377b619a0",
+      "json_command": [
+        "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\build\\ca-verifier-1.4.12\\verifpal.exe",
+        "verify",
+        "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\base_tls\\verification\\ca_models\\control_all_ca_leaked.vp",
+        "--sessions",
+        "1",
+        "--format",
+        "json"
+      ],
+      "json_returncode": 0,
+      "json_sha256": "faabfe0186e58520063f7ce357093413c8c9d0c97c77c3347ae8d6bd680b29f5"
+    },
+    {
+      "model": "control_both_online_leaked",
+      "command": [
+        "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\build\\ca-verifier-1.4.12\\verifpal.exe",
+        "verify",
+        "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\base_tls\\verification\\ca_models\\control_both_online_leaked.vp",
+        "--sessions",
+        "1",
+        "--color",
+        "never",
+        "--result-code"
+      ],
+      "returncode": 0,
+      "result_code": "a0a1f0c1",
+      "raw_sha256": "5589c1403ed73bb05e4b8a0820c31997e5f0f116a3d79ec241c74fc0b1370e33",
+      "model_sha256": "e218758a1d533610b53b3bc69ddd1f44920850d212e56ba189de51621787bd08",
+      "json_command": [
+        "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\build\\ca-verifier-1.4.12\\verifpal.exe",
+        "verify",
+        "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\base_tls\\verification\\ca_models\\control_both_online_leaked.vp",
+        "--sessions",
+        "1",
+        "--format",
+        "json"
+      ],
+      "json_returncode": 0,
+      "json_sha256": "d842416745f12f4ffcea67ea7d3cbcace3834211459acb7c5576df1ebb51c373"
+    }
+  ],
+  "real_timing_samples": 0,
+  "formal_performance_started": false,
+  "scope": "Bounded ideal-primitives search; implementation/DER and unbounded security are separate.",
+  "completed_utc": "2026-10-04T07:37:17.676443+00:00",
+  "source_unchanged": true,
+  "tool_runs_completed": true
+}

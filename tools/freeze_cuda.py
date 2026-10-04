@@ -23,10 +23,19 @@ import bench_cuda
 import check_cuda
 import check_optimization
 import run_cuda_native
+from signing_budget import canonical_algorithm
 
 
 def require(condition,message):
     if not condition: raise ValueError(message)
+
+
+def same_budget_algorithm(observed,expected):
+    """Compare allowlisted identities for old caller labels and new ledgers."""
+    try:
+        return canonical_algorithm(observed)==canonical_algorithm(expected)
+    except ValueError:
+        return False
 
 
 class InputSnapshot:
@@ -265,7 +274,7 @@ def verify_budget_receipts(database,rows,vectors):
         require(found is not None,"CUDA signature reservation absent from persistent database")
         require(found[0]==row["budget_status"],"CUDA receipt status differs")
         pid=row["case"]["pid"]; vector=vectors[pid]
-        require(found[1]==check_cuda.sha(vector["mp_bytes"]) and found[3]==check_optimization.ALGORITHMS[pid] and
+        require(found[1]==check_cuda.sha(vector["mp_bytes"]) and same_budget_algorithm(found[3],check_optimization.ALGORITHMS[pid]) and
                 found[4]==vector["pk_bytes"],"CUDA receipt input/key identity differs")
         if found[0]=="committed": require(found[2]==row["result"]["signature_sha256"],"CUDA receipt signature digest differs")
         else: require(found[2] is None,"CUDA failed reservation contains signature digest")
@@ -515,8 +524,10 @@ def validate_release_rows(record,vectors,database):
         require(type(signature) is str and len(signature)==64 and all(c in "0123456789abcdef" for c in signature),
                 "CUDA release signature digest malformed")
         fingerprint=row["input"]
-        require(found_rows[row["budget_receipt"]]==("committed",fingerprint["budget_message_sha256"],signature,
-                                fingerprint["budget_algorithm"],bytes.fromhex(fingerprint["public_key_hex"])),
+        found=found_rows[row["budget_receipt"]]
+        require(found is not None and found[:3]==("committed",fingerprint["budget_message_sha256"],signature) and
+                same_budget_algorithm(found[3],fingerprint["budget_algorithm"]) and
+                found[4]==bytes.fromhex(fingerprint["public_key_hex"]),
                 "CUDA release persistent receipt message/public key/signature/status differs")
 
 
@@ -638,6 +649,61 @@ def self_test(output=None):
         def test_valid_exact14_eight_receipts_without_h2d(self):
             _,snapshot,vectors,record,database=self.fixture()
             validate_release_rows(record,vectors,database); snapshot.verify()
+
+        def current_ledger_fixture(self):
+            from signing_budget import SigningBudget
+            out,snapshot,vectors,record,_=self.fixture()
+            database=out/"current-budget.sqlite"; ledger=SigningBudget(database)
+            by_id={v["case_id"]:v for v in vectors}
+            for row in record["rows"]:
+                if not row.get("budget_receipt"): continue
+                fingerprint=row["input"]; public=bytes.fromhex(fingerprint["public_key_hex"])
+                if row["case_id"].endswith("/sign"):
+                    vector=by_id[row["case_id"].removesuffix("/sign")]
+                    message=bytes.fromhex(vector["mp"]); signature=bytes.fromhex(vector["sig"])
+                else:
+                    message=b"\0CUDA release prehash\xff"
+                    signature=bytes([fingerprint["hash_alg"]+20])
+                receipt=ledger.reserve(fingerprint["budget_algorithm"],public,message)
+                ledger.finish(receipt,signature); row["budget_receipt"]=receipt; self.rehash(row)
+            return snapshot,vectors,record,database,ledger
+
+        def test_actual_current_ledger_exact14_lowercase_algorithms(self):
+            snapshot,vectors,record,database,ledger=self.current_ledger_fixture()
+            status=ledger.status()
+            self.assertEqual(sum(r["used"] for r in status),8)
+            self.assertTrue(all(r["algorithm"]==r["algorithm"].lower() and r["count_reconciled"] for r in status))
+            validate_release_rows(record,vectors,database); snapshot.verify()
+
+        def test_actual_current_ledger_matrix_committed_and_failed(self):
+            from signing_budget import SigningBudget
+            out,snapshot,_,_,_=self.fixture(); database=out/"matrix-budget.sqlite"
+            ledger=SigningBudget(database); public=b"p"*32; message=b"matrix input"; signature=b"matrix signature"
+            committed=ledger.reserve(check_optimization.ALGORITHMS[3],public,message)
+            ledger.finish(committed,signature)
+            failed=ledger.reserve(check_optimization.ALGORITHMS[3].lower(),public,message); ledger.finish(failed)
+            vectors={3:dict(mp_bytes=message,pk_bytes=public)}
+            rows=[dict(case=dict(pid=3),budget_receipt=committed,budget_status="committed",
+                       result=dict(signature_sha256=check_cuda.sha(signature))),
+                  dict(case=dict(pid=3),budget_receipt=failed,budget_status="failed",result={})]
+            verify_budget_receipts(database,rows,vectors); snapshot.verify()
+            self.assertEqual(ledger.status()[0]["used"],2)
+
+        def test_algorithm_normalization_retains_allowlist(self):
+            self.assertTrue(same_budget_algorithm("slh-dsa-sm3-128-24","SLH-DSA-SM3-128-24"))
+            self.assertTrue(same_budget_algorithm("SLH-DSA-SM3-128-24","slh-dsa-sm3-128-24"))
+            self.assertFalse(same_budget_algorithm("slh-dsa-sm3-128s","SLH-DSA-SM3-128-24"))
+            self.assertFalse(same_budget_algorithm("unknown","UNKNOWN"))
+            self.assertFalse(same_budget_algorithm(None,"SLH-DSA-SM3-128-24"))
+
+        def test_actual_current_ledger_wrong_algorithm_rejected(self):
+            _,vectors,record,database,_=self.current_ledger_fixture()
+            for algorithm in ("slh-dsa-sm3-128s","unknown"):
+                with self.subTest(algorithm=algorithm):
+                    with sqlite3.connect(database) as db: db.execute("UPDATE keys SET algorithm=?",(algorithm,))
+                    with patch.dict(globals(),INPUTS=InputSnapshot()):
+                        with self.assertRaisesRegex(ValueError,"persistent receipt"):
+                            validate_release_rows(record,vectors,database)
 
         def test_preserved_budget_survives_future_live_reservations(self):
             out,snapshot,vectors,record,database=self.fixture()
@@ -831,7 +897,7 @@ def self_test(output=None):
     record=dict(schema="a15-cuda-freeze-selftest-v1",passed=True,mock_checks=len(names),native_calls=0,
                 real_timing_samples=0,formal_performance_started=False,tool_sha256=bench_cpu.file_sha(Path(__file__)),
                 release_tool_sha256=bench_cpu.file_sha(ROOT/"tools/check_cuda_release.py"),
-                scope="exact14/eight signatures; six-field stats; persistent SQL; historical archive/library; first-byte binding; canonical publication last")
+                scope="exact14/eight signatures; six-field stats; persistent SQL; current canonical ledger and matrix receipts; historical archive/library; first-byte binding; canonical publication last")
     if output is not None: bench_cpu.atomic_json(output,record)
     return record
 

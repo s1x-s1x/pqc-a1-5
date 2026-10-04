@@ -1,0 +1,26 @@
+{
+  "model": "control_both_online_leaked",
+  "sessions": 1,
+  "model_sha256": "5131bd7351c4dca21b04851f8e5bd909c0a1c6b9dfd49576e27586495d89c3f6",
+  "first": {
+    "command": [
+      "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\build\\ca-verifier-1.4.12\\verifpal.exe",
+      "verify",
+      "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\base_tls\\verification\\ca_models_v2\\control_both_online_leaked.vp",
+      "--sessions",
+      "1",
+      "--color",
+      "never",
+      "--result-code"
+    ],
+    "started_utc": "2026-10-04T07:38:25.015497+00:00",
+    "completed_utc": "2026-10-04T07:42:25.632669+00:00",
+    "returncode": null,
+    "status": "timeout",
+    "timeout_seconds": 240,
+    "raw_sha256": "4c8d8603d6a88b3ddaa57bd1290e046bd34187e1008f29ea00bd423d96c4d77e"
+  },
+  "query_verdicts": [],
+  "result_code": null,
+  "tool_completed": false
+}

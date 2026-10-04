@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+<rect width="1600" height="900" fill="#0b1220"/>
+<rect x="62" y="56" width="1476" height="644" rx="24" fill="#111e31"/>
+<rect x="62" y="56" width="9" height="644" rx="4" fill="#2dd4bf"/>
+<text x="96" y="113" font-size="40" fill="#eff6ff" font-family="Arial, DejaVu Sans, sans-serif">03  CERTIFICATE RECORD FRAGMENTATION</text>
+<text x="96" y="180" font-size="23" fill="#a6b5c9" font-family="Arial, DejaVu Sans, sans-serif">Record boundaries preserve authentication order and complete-message transcripts.</text>
+<text x="96" y="285" font-size="25" fill="#dbe7f3" font-family="Arial, DejaVu Sans, sans-serif">P3 Certificate: 2 authenticated records</text>
+<text x="96" y="337" font-size="25" fill="#dbe7f3" font-family="Arial, DejaVu Sans, sans-serif">  record 1: content=16,384 B / ciphertext=16,401 B</text>
+<text x="96" y="389" font-size="25" fill="#dbe7f3" font-family="Arial, DejaVu Sans, sans-serif">  record 2: content=1,264 B / ciphertext=1,281 B</text>
+<text x="96" y="441" font-size="25" fill="#dbe7f3" font-family="Arial, DejaVu Sans, sans-serif">Content bound: 16,384 B; ciphertext bound: 16,640 B</text>
+<text x="96" y="493" font-size="25" fill="#dbe7f3" font-family="Arial, DejaVu Sans, sans-serif">Transcript hashes complete handshake messages once.</text>
+<text x="96" y="545" font-size="25" fill="#dbe7f3" font-family="Arial, DejaVu Sans, sans-serif">Private harness / TCP prefix / standard TLS header model stay separate.</text>
+<text x="96" y="764" font-size="19" fill="#93c5fd" font-family="Arial, DejaVu Sans, sans-serif">SOURCE JSON SHA-256</text>
+<text x="96" y="809" font-size="21" fill="#a6b5c9" font-family="Arial, DejaVu Sans, sans-serif">eef343742ad4d4d70475d2d0c907de8d20fbe0dc572a12b08835b5643f7c2ccb</text>
+<text x="96" y="858" font-size="19" fill="#a6b5c9" font-family="Arial, DejaVu Sans, sans-serif">3/4  |  FUNCTIONAL ONLY  |  GENERATED EVIDENCE PRESENTATION</text>
+</svg>

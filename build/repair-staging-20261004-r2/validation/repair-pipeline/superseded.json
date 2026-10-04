@@ -1,0 +1,14 @@
+{
+  "reason": "Python keygen partial-buffer cleanup completed after source capture; superseded before freeze.",
+  "pipeline_pid": 2215699,
+  "signaled_processes": [
+    2215699,
+    2215701,
+    2234009,
+    2234014,
+    2244742,
+    2245229
+  ],
+  "formal_performance_started": false,
+  "real_timing_samples": 0
+}

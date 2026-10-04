@@ -1,0 +1,43 @@
+// Small reusable-certificate control. The same certificate can authorize
+// fresh online sessions; issuer transmission origin is a stronger question.
+attacker[active]
+principal Issuer[
+    knows private caKey
+    caPk = PUBKEY(caKey)
+    knows public identity, policy
+]
+principal Server[
+    knows private onlineKey
+    onlinePk = PUBKEY(onlineKey)
+]
+Server -> Issuer: [onlinePk]
+principal Issuer[
+    leaf = CONCAT(identity, onlinePk, policy)
+    certificateSignature = SIGN(caKey, leaf)
+    certificate = CONCAT(leaf, certificateSignature)
+]
+Issuer -> Client: [caPk], certificate
+principal Client[
+    knows public identity, policy
+    receivedLeaf, receivedCertSig = SPLIT(certificate)?
+    receivedIdentity, receivedPk, receivedPolicy = SPLIT(receivedLeaf)?
+    _ = ASSERT(receivedIdentity, identity)?
+    _ = ASSERT(receivedPolicy, policy)?
+    _ = SIGNVERIF(caPk, receivedLeaf, receivedCertSig)?
+    generates challenge
+]
+Client -> Server: challenge
+principal Server[
+    proof = SIGN(onlineKey, challenge)
+]
+Server -> Client: proof
+principal Client[
+    _ = SIGNVERIF(receivedPk, challenge, proof)?
+    accepted = HASH(challenge, certificate, proof)
+]
+Client -> Server: accepted
+queries[
+    authentication? Issuer -> Client: certificate[precondition[Client -> Server: accepted]]
+    authentication? Server -> Client: proof[precondition[Client -> Server: accepted]]
+    freshness? accepted[precondition[Client -> Server: accepted]]
+]

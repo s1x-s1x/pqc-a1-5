@@ -92,6 +92,7 @@ ENTRY_POINTS: dict[str, str] = {
 #: definition, and must have at least one variable-receiver reference from a live root.
 INTERFACE_METHODS: dict[str, str] = {
     'tls/config.py::HybridTLSConfig.cipher_suite_id': 'configured suite property in client/server',
+    'tls/config.py::HybridTLSConfig.aead_suite': 'handshake state selects record suite through its config receiver',
     'tls/credentials.py::CertificateAuthority.verify': 'called through the authority held by the connection',
     'tls/wire.py::Reader.expect_end': 'wire decoders enforce exact consumption',
     'tls/classical/ecdh.py::EcdheKeyPair.exchange': 'configured ECDHE key pair in client/server',
@@ -110,6 +111,9 @@ INTERFACE_METHODS: dict[str, str] = {
     'tls/handshake/server.py::HybridServer.receive_client_finished': 'connection driver verifies client Finished',
     'tls/handshake/state.py::HandshakeState.exporter_secret': 'connection driver exports negotiated key material',
     'tls/pq/backends.py::PqSigner.verify': 'called through the configured signer',
+    'tls/pq/slhdsa_sm3.py::SlhDsaSm3.keygen': 'configured SLH signer key generation through a variable receiver',
+    'tls/pq/slhdsa_sm3.py::SlhDsaSm3.sign': 'configured SLH signer signing through a variable receiver',
+    'tls/pq/slhdsa_sm3.py::SlhDsaSm3.verify': 'configured SLH signer verification through a variable receiver',
     'tls/pq/signature.py::MlDsa.verify': 'called through the configured signer',
     'tls/pq/signature.py::Falcon.verify': 'called through the configured signer',
     'tls/pq/signature.py::Xmss.verify': 'called through the configured signer',
@@ -125,6 +129,7 @@ INTERFACE_METHODS: dict[str, str] = {
     'tls/pq/wots_xmss.py::XmssSignatureBackend.verify': 'called through the configured signer',
     'tls/record/aead.py::AeadSuite.new': 'transcript instantiates the configured AEAD suite',
     'tls/record/aead.py::RecordLayer.open': 'connection/handshake decrypts incoming records',
+    'tls/record/aead.py::RecordLayer.seal': 'configured record layer protects handshake/application fragments',
 }
 
 #: Names a framework calls for us. A hook is exempted only in a class carrying the decorator
@@ -410,7 +415,21 @@ def _source_files(root: Path) -> list[Path]:
         if parts[0] not in (*LIVE_ROOTS, TEST_ROOT):
             continue
         files.append(path)
+    # One explicit external driver belongs to this TLS implementation but is
+    # shipped at the repository root. Give it a stable virtual module name;
+    # never sweep arbitrary parent directories or silently exempt its callees.
+    external = root.parent / "tools" / "alt_chain_fixtures.py"
+    if external.is_file():
+        files.append(external)
     return files
+
+
+def _module_name(path: Path, root: Path) -> str:
+    if path.is_relative_to(root):
+        return path.relative_to(root).as_posix()
+    if path == root.parent / "tools" / "alt_chain_fixtures.py":
+        return "project_tools/alt_chain_fixtures.py"
+    raise ValueError("unexpected source outside the audited tree")
 
 
 def _parse(path: Path, root: Path) -> ast.Module:
@@ -422,12 +441,12 @@ def _parse(path: Path, root: Path) -> ast.Module:
     try:
         source = path.read_text(encoding="utf-8-sig")
     except (OSError, UnicodeDecodeError) as error:
-        raise SystemExit(f"tool error: cannot read {path.relative_to(root)}: {error}")
+        raise SystemExit(f"tool error: cannot read {_module_name(path, root)}: {error}")
     try:
         return ast.parse(source, filename=str(path))
     except SyntaxError as error:
         raise SystemExit(
-            f"tool error: {path.relative_to(root)} does not parse ({error.msg} "
+            f"tool error: {_module_name(path, root)} does not parse ({error.msg} "
             f"at line {error.lineno}); the sweep cannot judge a tree it cannot read"
         )
 
@@ -647,7 +666,7 @@ def index_tree(root: Path) -> TreeIndex:
     files = _source_files(root)
     parsed: list[tuple[Path, str, ast.Module]] = []
     for path in files:
-        module = path.relative_to(root).as_posix()
+        module = _module_name(path, root)
         tree = _parse(path, root)
         parsed.append((path, module, tree))
         for node in ast.walk(tree):
@@ -1282,6 +1301,9 @@ def main() -> int:
         return 2
 
     entries = dict(ENTRY_POINTS)
+    if "project_tools/alt_chain_fixtures.py::main" in index.functions:
+        entries["project_tools/alt_chain_fixtures.py::main"] = (
+            "actual repository CLI launched by python tools/alt_chain_fixtures.py; direct argparse branches call its actions")
     # The tables above describe this project. A tree that is not this project — a synthetic
     # probe tree with three files in it — cannot be expected to contain those definitions, so a
     # built-in declaration with no counterpart there is reported and skipped. A *copy* of this

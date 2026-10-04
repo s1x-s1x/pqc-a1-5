@@ -32,12 +32,13 @@ ALGORITHM_OIDS = {
 OID_ALGORITHMS = {value: key for key, value in ALGORITHM_OIDS.items()}
 
 
-def get_alt_signer(name: str, *, force_python=False, threads=1, library=None):
+def get_alt_signer(name: str, *, force_python=False, require_native=False, threads=1, library=None):
     if name not in ALGORITHM_OIDS:
         raise ValueError(f"unsupported alternative-signature algorithm {name!r}")
     if name.startswith("slh-dsa-sm3-"):
         from .pq.slhdsa_sm3 import SlhDsaSm3
-        return SlhDsaSm3(name, threads=threads, library=library, force_python=force_python)
+        return SlhDsaSm3(name, threads=threads, library=library, force_python=force_python,
+                        require_native=require_native)
     from .pq.signature import get_pq_signer
     return get_pq_signer(name)
 
@@ -76,6 +77,7 @@ class AltVerification:
     checked_edges: int
     legacy_edges: int
     algorithms: tuple[str, ...]
+    verifiers: tuple[dict, ...] = ()
 
     @property
     def complete(self) -> bool:
@@ -84,7 +86,7 @@ class AltVerification:
 
 def verify_alt_chain(chain_der, trusted_root: x509.Certificate, expected_name: str,
                      *, require_alt_chain=False, expected_algorithm=None,
-                     force_python=False) -> AltVerification:
+                     force_python=False, require_native=False, library=None) -> AltVerification:
     """Validate all ordinary constraints first, then every advertised alt edge.
 
     No public key supplied by the peer replaces the local root's alt key. A peer
@@ -97,7 +99,7 @@ def verify_alt_chain(chain_der, trusted_root: x509.Certificate, expected_name: s
     root_der = trusted_root.public_bytes(serialization.Encoding.DER)
     if chain_der[-1] == root_der:
         parsed.pop()
-    checked, legacy, algorithms = 0, 0, []
+    checked, legacy, algorithms, verifiers = 0, 0, [], []
     try:
         # Check the local anchor's encoding even on a legacy path. Its alternative
         # key is provisioned out of band together with this exact certificate.
@@ -136,14 +138,21 @@ def verify_alt_chain(chain_der, trusted_root: x509.Certificate, expected_name: s
                 # or finding a supplied 72 does not make it a trusted anchor.
                 parse_public_key_info(own_key)
             signature = bit_string_bytes(sig)
-            signer = get_alt_signer(name, force_python=force_python)
+            signer = get_alt_signer(name, force_python=force_python, require_native=require_native,
+                                    library=library)
             if len(signature) != signer.signature_bytes:
                 raise DerError("alternative signature length mismatch")
             if not signer.verify(key, pre_tbs(child.tbs_certificate_bytes), signature):
                 raise DerError("alternative signature verification failed")
+            import hashlib
+            evidence = dict(getattr(signer, "last_verification", None) or {"mode": "provider", "algorithm": name})
+            evidence.update({"edge": index, "public_key_sha256": hashlib.sha256(key).hexdigest(),
+                "message_sha256": hashlib.sha256(pre_tbs(child.tbs_certificate_bytes)).hexdigest(),
+                "signature_sha256": hashlib.sha256(signature).hexdigest(), "passed": True})
+            verifiers.append(evidence)
             checked += 1
             algorithms.append(name)
-        return AltVerification(leaf, checked, legacy, tuple(algorithms))
+        return AltVerification(leaf, checked, legacy, tuple(algorithms), tuple(verifiers))
     except (DerError, ValueError, TypeError, KeyError) as error:
         raise HandshakeError("certificate_alt", str(error)) from error
 
@@ -163,7 +172,8 @@ def _issue_fixed(*, subject, issuer, subject_key, issuer_key, ca, path_length,
 
 
 def issue_alt_certificate(*, name: str, signer, secret_key, issuer_public_key: bytes,
-                          extra=(), before_sign: Callable | None = None, **issue):
+                          extra=(), before_sign: Callable | None = None,
+                          after_sign: Callable | None = None, **issue):
     """Two fixed-serial classical builds around one PQ signature of preTBS.
 
     before_sign(name, issuer_public_key, preTBS) is called before each CA signing
@@ -171,6 +181,8 @@ def issue_alt_certificate(*, name: str, signer, secret_key, issuer_public_key: b
     """
     if signer.name != name:
         raise ValueError("alternative signer does not match requested algorithm")
+    if before_sign is not None and after_sign is None:
+        raise ValueError("a CA reservation callback requires an after_sign finalizer")
     reserved = {SUBJECT_ALT_PUBLIC_KEY_INFO, ALT_SIGNATURE_ALGORITHM, ALT_SIGNATURE_VALUE}
     if any(getattr(x, "oid", None) in reserved - {SUBJECT_ALT_PUBLIC_KEY_INFO} for x in extra):
         raise ValueError("caller supplied reserved alternative signature extension")
@@ -178,15 +190,21 @@ def issue_alt_certificate(*, name: str, signer, secret_key, issuer_public_key: b
                                                    algorithm_identifier(ALGORITHM_OIDS[name]))]
     draft = _issue_fixed(extra=extensions, **issue)
     to_sign = pre_tbs(draft.tbs_certificate_bytes)
-    if before_sign is not None:
-        before_sign(name, bytes(issuer_public_key), to_sign)
-    signature = signer.sign(secret_key, to_sign)
-    if len(signature) != signer.signature_bytes or not signer.verify(issuer_public_key, to_sign, signature):
-        raise ValueError("generated alternative signature failed its independent wrapper check")
-    final = _issue_fixed(extra=[*extensions, x509.UnrecognizedExtension(ALT_SIGNATURE_VALUE,
-                                                                     bit_string(signature))], **issue)
-    if pre_tbs(final.tbs_certificate_bytes) != to_sign:
-        raise ValueError("preTBS changed during final certificate assembly")
+    receipt = before_sign(name, bytes(issuer_public_key), to_sign) if before_sign else None
+    try:
+        signature = signer.sign(secret_key, to_sign)
+        if len(signature) != signer.signature_bytes or not signer.verify(issuer_public_key, to_sign, signature):
+            raise ValueError("generated alternative signature failed its independent wrapper check")
+        final = _issue_fixed(extra=[*extensions, x509.UnrecognizedExtension(ALT_SIGNATURE_VALUE,
+                                                                         bit_string(signature))], **issue)
+        if pre_tbs(final.tbs_certificate_bytes) != to_sign:
+            raise ValueError("preTBS changed during final certificate assembly")
+    except BaseException:
+        if receipt is not None:
+            after_sign(receipt, None)
+        raise
+    if receipt is not None:
+        after_sign(receipt, signature)
     return final
 
 
@@ -203,7 +221,7 @@ class TestChainMaterial:
 
 def build_alt_test_chain(name: str, *, identity="server.example", leaf_key=None,
                          pq_scheme_id=None, pq_public_key=None, threads=1,
-                         library=None, before_sign=None, now=None, root_key=None,
+                         library=None, before_sign=None, after_sign=None, now=None, root_key=None,
                          intermediate_key=None) -> TestChainMaterial:
     """Offline fixture generator. Runtime handshakes load its public chain.
 
@@ -243,11 +261,21 @@ def build_alt_test_chain(name: str, *, identity="server.example", leaf_key=None,
                                 "pre_tbs_sha256": hashlib.sha256(message).hexdigest(), "message_bytes": len(message),
                                 "budget_receipt": str(receipt) if receipt is not None else None})
         return receipt
+    def finish(receipt, signature=None):
+        if after_sign is None:
+            raise ValueError("CA budget finalizer is required")
+        after_sign(receipt, signature)
+        import hashlib
+        for row in signing_records:
+            if row["budget_receipt"] == str(receipt):
+                row["budget_status"] = "committed" if signature is not None else "failed"
+                row["signature_sha256"] = hashlib.sha256(signature).hexdigest() if signature is not None else None
     intermediate = issue_alt_certificate(name=name, signer=signer, secret_key=root_secret,
         issuer_public_key=root_public, extra=[x509.UnrecognizedExtension(SUBJECT_ALT_PUBLIC_KEY_INFO,
-        public_key_info(name, intermediate_public))], before_sign=reserve, **intermediate_args)
+        public_key_info(name, intermediate_public))], before_sign=reserve, after_sign=finish, **intermediate_args)
     leaf = issue_alt_certificate(name=name, signer=signer, secret_key=intermediate_secret,
-                                issuer_public_key=intermediate_public, extra=leaf_ext, before_sign=reserve, **leaf_args)
+                                issuer_public_key=intermediate_public, extra=leaf_ext, before_sign=reserve,
+                                after_sign=finish, **leaf_args)
     encode = lambda c: c.public_bytes(serialization.Encoding.DER)
     def bundle(r, i, l):
         return CertificateChain((encode(l), encode(i)), encode(r), root_key.public_key(), encode(l))
@@ -256,7 +284,8 @@ def build_alt_test_chain(name: str, *, identity="server.example", leaf_key=None,
     baseline_leaf = _issue_fixed(extra=leaf_ext, **leaf_args)
     classical_leaf = _issue_fixed(extra=leaf_ext[:2], **leaf_args)
     result = bundle(root, intermediate, leaf)
-    verify_alt_chain(result.chain_der, root, identity, require_alt_chain=True, expected_algorithm=name)
+    verify_alt_chain(result.chain_der, root, identity, require_alt_chain=True, expected_algorithm=name,
+                     require_native=name.startswith("slh-dsa-sm3-"), library=library)
     if hasattr(signer, "close"):
         signer.close()
     return TestChainMaterial(result, root_key, intermediate_key, leaf_key,

@@ -1,0 +1,17 @@
+lock: requirements.lock.txt
+  cryptography==47.0.0             49 hash(es)
+  cffi==2.0.0              84 hash(es)
+  pycparser==3.0                2 hash(es)
+  pqcrypto==1.0.0              8 hash(es)
+  pytest==9.1.1              2 hash(es)
+  pluggy==1.6.0              2 hash(es)
+  iniconfig==2.3.0              2 hash(es)
+  packaging==26.3               2 hash(es)
+  colorama==0.4.6              2 hash(es)
+  pygments==2.21.0             2 hash(es)
+  10 packages, 155 hashes
+lock: requirements-falcon.lock.txt
+  pqcrypto==0.4.0              49 hash(es)
+  1 packages, 49 hashes
+
+PASS: 2 lock file(s), 11 packages, every package pinned and hashed.

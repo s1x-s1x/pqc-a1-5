@@ -1,0 +1,497 @@
+{
+  "schema": "a15-cuda-build-v1",
+  "created_utc": "2026-10-04T07:49:22.190306+00:00",
+  "final": false,
+  "source_sha256": {
+    "c/Makefile": "ceb01df11af00548d41cfb313878ca5bd52f08336dd2647d8e04adaddade9b1f",
+    "c/include/slhdsa_sm3.h": "dd3c12dd2ea439eab9bdd38fead74bd1bdae271588650c9fd1a8e511f52674c4",
+    "c/src/engine.c": "e9ef382c21ee8ae7576d524959a6d12808c848b00ad5d728cbb0bcc1eb5d227b",
+    "c/src/sm3.c": "1e2712dc6a2ac0f7f2950936acc37c08d80c69e39743ce211abbc5ed7142d20f",
+    "c/src/sm3.h": "a8eb36558ee2680ffb486c81430461406f8a6002a367d3187fa130e3e0d46761",
+    "c/src/sm3x8.c": "41da8e709dd31d8ce126b5ea4bbf972ad57fcdc1565247a959f94f8001263b2e",
+    "c/src/sm3x8.h": "94f3bef4ff710d6fff7d3e29633e390778ef0cfd2b4ab90084a01e497da43fc4",
+    "c/src/secure_zero.h": "9ac49e9ece7575d338b8cec116cbacee394273392f2672af97af58266dca2b70",
+    "c/src/sm3_cuda.h": "6354878a69a8c299688d8805de46a4b6adfecdf43560de04d6f081feabd18bf1",
+    "c/src/sm3_cuda_device.cuh": "7e9a63997620c38a1a8b93406b55ebbde9201679c4a1006f2b6cc1867c9ee48e",
+    "third_party/slhdsa-c/sha2_256.c": "cbc9ef22886cf8a6a8f4e51b60b4b858d9c8a5a5dbe2ad16764a7e6ea3fba85c",
+    "third_party/slhdsa-c/sha2_512.c": "b06e26570cc3492b060c7f97d4fe7f69b1667628c176ed9f83af11b60076c9aa",
+    "third_party/slhdsa-c/sha2_api.h": "96698a33d10b8e1c50f82ee82e34209f37607ea207baaf6ee8f238bff9878ef7",
+    "third_party/slhdsa-c/sha3_api.c": "6d3814614abbc671f290a39a65c0ab7dd9176a31c4cca52cd28b7d37b06cccdb",
+    "third_party/slhdsa-c/sha3_api.h": "1432755b08078487d2391f2bdb3def145f3f5c8855e01ab301fd9e9f7ce0b4eb",
+    "third_party/slhdsa-c/sha3_f1600.c": "1c094367c05bb887fd5b48faf24125619904b88fe0c18ca0d64dd4e5bb5ab757",
+    "third_party/slhdsa-c/plat_local.h": "57ca78d49794cbfd5b45bca5b31576e8de126eb3b9e07beb7a783282f84d706a",
+    "c/src/sm3_cuda.cu": "97b2d7f9a4ca92eb412bc94b0636cc47b8bcf89c8db3dfdbd56b234dbc3c1d25"
+  },
+  "library": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/build/bench-cuda-repair-r3-release/libslhdsa_sm3.so",
+  "library_sha256": "03ccb1e084c38a8c56cd4af6500d05f6a150dbce5778fe9df1f67c3d9eeca322",
+  "compilers": {
+    "cc": {
+      "path": "/usr/bin/x86_64-linux-gnu-gcc-11",
+      "sha256": "821af3c74506283c179ca413bb33e6b528805a4dd8a5c09df125e5ad560a9e89",
+      "version": {
+        "argv": [
+          "/usr/bin/x86_64-linux-gnu-gcc-11",
+          "--version"
+        ],
+        "returncode": 0,
+        "stdout": "x86_64-linux-gnu-gcc-11 (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0\nCopyright (C) 2021 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
+        "stderr": ""
+      }
+    },
+    "nvcc": {
+      "path": "/usr/bin/nvcc",
+      "sha256": "161d3b102575c96201a515d1b64259d4eab039f95d310604131eb42293a69433",
+      "version": {
+        "argv": [
+          "/usr/bin/nvcc",
+          "--version"
+        ],
+        "returncode": 0,
+        "stdout": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2021 NVIDIA Corporation\nBuilt on Thu_Nov_18_09:45:30_PST_2021\nCuda compilation tools, release 11.5, V11.5.119\nBuild cuda_11.5.r11.5/compiler.30672275_0",
+        "stderr": ""
+      }
+    },
+    "host_cxx": {
+      "path": "/usr/bin/x86_64-linux-gnu-g++-11",
+      "sha256": "2360901d864cf10bfd6296e261cb2c14053552a80377761ab07146ec9ec9a2c0",
+      "version": {
+        "argv": [
+          "/usr/bin/x86_64-linux-gnu-g++-11",
+          "--version"
+        ],
+        "returncode": 0,
+        "stdout": "x86_64-linux-gnu-g++-11 (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0\nCopyright (C) 2021 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
+        "stderr": ""
+      }
+    }
+  },
+  "arch": "sm_86",
+  "build_output": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/build/bench-cuda-repair-r3-release",
+  "compile_commands": [
+    [
+      "/usr/bin/x86_64-linux-gnu-gcc-11",
+      "-std=c11",
+      "-O3",
+      "-Wall",
+      "-Wextra",
+      "-Wno-misleading-indentation",
+      "-fPIC",
+      "-fopenmp",
+      "-DSLH_RELEASE_BUILD",
+      "-Ic/include",
+      "-Ic/src",
+      "-Ithird_party/slhdsa-c",
+      "-c",
+      "c/src/engine.c",
+      "-o",
+      "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/build/bench-cuda-repair-r3-release/host-0.o"
+    ],
+    [
+      "/usr/bin/x86_64-linux-gnu-gcc-11",
+      "-std=c11",
+      "-O3",
+      "-Wall",
+      "-Wextra",
+      "-Wno-misleading-indentation",
+      "-fPIC",
+      "-fopenmp",
+      "-DSLH_RELEASE_BUILD",
+      "-Ic/include",
+      "-Ic/src",
+      "-Ithird_party/slhdsa-c",
+      "-c",
+      "c/src/sm3.c",
+      "-o",
+      "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/build/bench-cuda-repair-r3-release/host-1.o"
+    ],
+    [
+      "/usr/bin/x86_64-linux-gnu-gcc-11",
+      "-std=c11",
+      "-O3",
+      "-Wall",
+      "-Wextra",
+      "-Wno-misleading-indentation",
+      "-fPIC",
+      "-fopenmp",
+      "-DSLH_RELEASE_BUILD",
+      "-Ic/include",
+      "-Ic/src",
+      "-Ithird_party/slhdsa-c",
+      "-c",
+      "c/src/sm3x8.c",
+      "-o",
+      "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/build/bench-cuda-repair-r3-release/host-2.o"
+    ],
+    [
+      "/usr/bin/x86_64-linux-gnu-gcc-11",
+      "-std=c11",
+      "-O3",
+      "-Wall",
+      "-Wextra",
+      "-Wno-misleading-indentation",
+      "-fPIC",
+      "-fopenmp",
+      "-DSLH_RELEASE_BUILD",
+      "-Ic/include",
+      "-Ic/src",
+      "-Ithird_party/slhdsa-c",
+      "-c",
+      "third_party/slhdsa-c/sha2_256.c",
+      "-o",
+      "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/build/bench-cuda-repair-r3-release/host-3.o"
+    ],
+    [
+      "/usr/bin/x86_64-linux-gnu-gcc-11",
+      "-std=c11",
+      "-O3",
+      "-Wall",
+      "-Wextra",
+      "-Wno-misleading-indentation",
+      "-fPIC",
+      "-fopenmp",
+      "-DSLH_RELEASE_BUILD",
+      "-Ic/include",
+      "-Ic/src",
+      "-Ithird_party/slhdsa-c",
+      "-c",
+      "third_party/slhdsa-c/sha2_512.c",
+      "-o",
+      "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/build/bench-cuda-repair-r3-release/host-4.o"
+    ],
+    [
+      "/usr/bin/x86_64-linux-gnu-gcc-11",
+      "-std=c11",
+      "-O3",
+      "-Wall",
+      "-Wextra",
+      "-Wno-misleading-indentation",
+      "-fPIC",
+      "-fopenmp",
+      "-DSLH_RELEASE_BUILD",
+      "-Ic/include",
+      "-Ic/src",
+      "-Ithird_party/slhdsa-c",
+      "-c",
+      "third_party/slhdsa-c/sha3_api.c",
+      "-o",
+      "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/build/bench-cuda-repair-r3-release/host-5.o"
+    ],
+    [
+      "/usr/bin/x86_64-linux-gnu-gcc-11",
+      "-std=c11",
+      "-O3",
+      "-Wall",
+      "-Wextra",
+      "-Wno-misleading-indentation",
+      "-fPIC",
+      "-fopenmp",
+      "-DSLH_RELEASE_BUILD",
+      "-Ic/include",
+      "-Ic/src",
+      "-Ithird_party/slhdsa-c",
+      "-c",
+      "third_party/slhdsa-c/sha3_f1600.c",
+      "-o",
+      "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/build/bench-cuda-repair-r3-release/host-6.o"
+    ],
+    [
+      "/usr/bin/nvcc",
+      "-std=c++14",
+      "-O3",
+      "--compiler-bindir",
+      "/usr/bin/x86_64-linux-gnu-g++-11",
+      "-gencode",
+      "arch=compute_86,code=[sm_86,compute_86]",
+      "-Xcompiler=-fPIC,-fvisibility=hidden,-pthread",
+      "-DSLH_RELEASE_BUILD",
+      "-Ic/include",
+      "-Ic/src",
+      "-Ithird_party/slhdsa-c",
+      "-c",
+      "c/src/sm3_cuda.cu",
+      "-o",
+      "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/build/bench-cuda-repair-r3-release/sm3_cuda.o"
+    ],
+    [
+      "/usr/bin/nvcc",
+      "--compiler-bindir",
+      "/usr/bin/x86_64-linux-gnu-g++-11",
+      "-shared",
+      "-Xcompiler=-fopenmp,-pthread",
+      "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/build/bench-cuda-repair-r3-release/host-0.o",
+      "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/build/bench-cuda-repair-r3-release/host-1.o",
+      "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/build/bench-cuda-repair-r3-release/host-2.o",
+      "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/build/bench-cuda-repair-r3-release/host-3.o",
+      "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/build/bench-cuda-repair-r3-release/host-4.o",
+      "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/build/bench-cuda-repair-r3-release/host-5.o",
+      "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/build/bench-cuda-repair-r3-release/host-6.o",
+      "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/build/bench-cuda-repair-r3-release/sm3_cuda.o",
+      "-o",
+      "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/build/bench-cuda-repair-r3-release/libslhdsa_sm3.so"
+    ]
+  ],
+  "results": [
+    {
+      "argv": [
+        "/usr/bin/x86_64-linux-gnu-gcc-11",
+        "-std=c11",
+        "-O3",
+        "-Wall",
+        "-Wextra",
+        "-Wno-misleading-indentation",
+        "-fPIC",
+        "-fopenmp",
+        "-DSLH_RELEASE_BUILD",
+        "-Ic/include",
+        "-Ic/src",
+        "-Ithird_party/slhdsa-c",
+        "-c",
+        "c/src/engine.c",
+        "-o",
+        "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/build/bench-cuda-repair-r3-release/host-0.o"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/x86_64-linux-gnu-gcc-11",
+        "-std=c11",
+        "-O3",
+        "-Wall",
+        "-Wextra",
+        "-Wno-misleading-indentation",
+        "-fPIC",
+        "-fopenmp",
+        "-DSLH_RELEASE_BUILD",
+        "-Ic/include",
+        "-Ic/src",
+        "-Ithird_party/slhdsa-c",
+        "-c",
+        "c/src/sm3.c",
+        "-o",
+        "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/build/bench-cuda-repair-r3-release/host-1.o"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/x86_64-linux-gnu-gcc-11",
+        "-std=c11",
+        "-O3",
+        "-Wall",
+        "-Wextra",
+        "-Wno-misleading-indentation",
+        "-fPIC",
+        "-fopenmp",
+        "-DSLH_RELEASE_BUILD",
+        "-Ic/include",
+        "-Ic/src",
+        "-Ithird_party/slhdsa-c",
+        "-c",
+        "c/src/sm3x8.c",
+        "-o",
+        "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/build/bench-cuda-repair-r3-release/host-2.o"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/x86_64-linux-gnu-gcc-11",
+        "-std=c11",
+        "-O3",
+        "-Wall",
+        "-Wextra",
+        "-Wno-misleading-indentation",
+        "-fPIC",
+        "-fopenmp",
+        "-DSLH_RELEASE_BUILD",
+        "-Ic/include",
+        "-Ic/src",
+        "-Ithird_party/slhdsa-c",
+        "-c",
+        "third_party/slhdsa-c/sha2_256.c",
+        "-o",
+        "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/build/bench-cuda-repair-r3-release/host-3.o"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/x86_64-linux-gnu-gcc-11",
+        "-std=c11",
+        "-O3",
+        "-Wall",
+        "-Wextra",
+        "-Wno-misleading-indentation",
+        "-fPIC",
+        "-fopenmp",
+        "-DSLH_RELEASE_BUILD",
+        "-Ic/include",
+        "-Ic/src",
+        "-Ithird_party/slhdsa-c",
+        "-c",
+        "third_party/slhdsa-c/sha2_512.c",
+        "-o",
+        "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/build/bench-cuda-repair-r3-release/host-4.o"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/x86_64-linux-gnu-gcc-11",
+        "-std=c11",
+        "-O3",
+        "-Wall",
+        "-Wextra",
+        "-Wno-misleading-indentation",
+        "-fPIC",
+        "-fopenmp",
+        "-DSLH_RELEASE_BUILD",
+        "-Ic/include",
+        "-Ic/src",
+        "-Ithird_party/slhdsa-c",
+        "-c",
+        "third_party/slhdsa-c/sha3_api.c",
+        "-o",
+        "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/build/bench-cuda-repair-r3-release/host-5.o"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/x86_64-linux-gnu-gcc-11",
+        "-std=c11",
+        "-O3",
+        "-Wall",
+        "-Wextra",
+        "-Wno-misleading-indentation",
+        "-fPIC",
+        "-fopenmp",
+        "-DSLH_RELEASE_BUILD",
+        "-Ic/include",
+        "-Ic/src",
+        "-Ithird_party/slhdsa-c",
+        "-c",
+        "third_party/slhdsa-c/sha3_f1600.c",
+        "-o",
+        "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/build/bench-cuda-repair-r3-release/host-6.o"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/nvcc",
+        "-std=c++14",
+        "-O3",
+        "--compiler-bindir",
+        "/usr/bin/x86_64-linux-gnu-g++-11",
+        "-gencode",
+        "arch=compute_86,code=[sm_86,compute_86]",
+        "-Xcompiler=-fPIC,-fvisibility=hidden,-pthread",
+        "-DSLH_RELEASE_BUILD",
+        "-Ic/include",
+        "-Ic/src",
+        "-Ithird_party/slhdsa-c",
+        "-c",
+        "c/src/sm3_cuda.cu",
+        "-o",
+        "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/build/bench-cuda-repair-r3-release/sm3_cuda.o"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/nvcc",
+        "--compiler-bindir",
+        "/usr/bin/x86_64-linux-gnu-g++-11",
+        "-shared",
+        "-Xcompiler=-fopenmp,-pthread",
+        "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/build/bench-cuda-repair-r3-release/host-0.o",
+        "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/build/bench-cuda-repair-r3-release/host-1.o",
+        "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/build/bench-cuda-repair-r3-release/host-2.o",
+        "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/build/bench-cuda-repair-r3-release/host-3.o",
+        "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/build/bench-cuda-repair-r3-release/host-4.o",
+        "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/build/bench-cuda-repair-r3-release/host-5.o",
+        "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/build/bench-cuda-repair-r3-release/host-6.o",
+        "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/build/bench-cuda-repair-r3-release/sm3_cuda.o",
+        "-o",
+        "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/build/bench-cuda-repair-r3-release/libslhdsa_sm3.so"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "compile_output_checked": true,
+  "dependencies": {
+    "result": {
+      "argv": [
+        "ldd",
+        "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/build/bench-cuda-repair-r3-release/libslhdsa_sm3.so"
+      ],
+      "returncode": 0,
+      "stdout": "linux-vdso.so.1 (0x00007ffdf03f4000)\n\tlibstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007fa39d8d6000)\n\tlibgomp.so.1 => /lib/x86_64-linux-gnu/libgomp.so.1 (0x00007fa39d88c000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007fa39d86c000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fa39d643000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007fa39dc04000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007fa39d55c000)",
+      "stderr": ""
+    },
+    "sha256": {
+      "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2": "41daf7836f7fce21a40ca63a00c5caf21b05a35a76ccc075d86f1716212cdf01",
+      "/usr/lib/x86_64-linux-gnu/libc.so.6": "b2cf6c33b74d2f22543b7a469a75b538911e690f769d0b238843a49465b83793",
+      "/usr/lib/x86_64-linux-gnu/libgcc_s.so.1": "fc9d43b2f6c20e53b009238f767c5b949d202389e20de9e202ea684b4ba3729a",
+      "/usr/lib/x86_64-linux-gnu/libgomp.so.1.0.0": "d46f9225c1883039e8a6853e6d96ca1af11d034ce186a090952e4a7c8a7c2fdc",
+      "/usr/lib/x86_64-linux-gnu/libm.so.6": "3dd5511ae94785c9f921429b0f2b2f7aabb461b6f0e6de6dfdbef15f24bdfee6",
+      "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30": "ff0825e113603c3866680d5d52216bc6d8eedf3a59f52a0aef67ff01994db128"
+    }
+  },
+  "counters": false,
+  "test_injection": false,
+  "sanitizer": false,
+  "release_probe": {
+    "passed": true,
+    "native_calls": 3,
+    "native_calls_scope": "constant-work subtree invocations (one release counter probe plus CUDA/REF comparison); excludes context/info/stats ABI calls",
+    "real_timing_samples": 0,
+    "counter_probe": {
+      "counter_probe": "one FORS leaf, all seven counters zero",
+      "timed": false
+    },
+    "device": {
+      "device": 0,
+      "runtime_version": 11050,
+      "driver_version": 12090,
+      "compute_major": 8,
+      "compute_minor": 9,
+      "total_memory": 25250627584,
+      "name": "NVIDIA GeForce RTX 4090"
+    },
+    "untimed_stats": {
+      "kernel_launches": 1,
+      "h2d_bytes": 16,
+      "d2h_bytes": 16,
+      "device_hashes": 2,
+      "kernel_ns": 0,
+      "timing_enabled": 0
+    },
+    "gpu_fors_matches_ref": true,
+    "kernel_timing_enabled": false
+  },
+  "passed": true,
+  "native_calls": 3,
+  "real_timing_samples": 0,
+  "tool_sha256": "74dae93d1095d732e323a9b562b70de1079696b8d58bc5d82820bbf8f394d9c0"
+}

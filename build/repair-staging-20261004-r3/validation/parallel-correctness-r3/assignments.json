@@ -1,0 +1,509 @@
+{
+  "assignments": [
+    {
+      "name": "worker-18",
+      "directory": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-18",
+      "cases_file": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-18.cases.json",
+      "threads": 1,
+      "pid": 103,
+      "backend": "REF",
+      "case_ids": [
+        "lib0-ebc18f682915/103/REF/1/keygen/matrix-t12",
+        "lib0-ebc18f682915/103/REF/1/cache_build/matrix-t12",
+        "lib0-ebc18f682915/103/REF/1/sign/uncached",
+        "lib0-ebc18f682915/103/REF/1/sign/matrix-t12"
+      ]
+    },
+    {
+      "name": "worker-19",
+      "directory": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-19",
+      "cases_file": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-19.cases.json",
+      "threads": 2,
+      "pid": 103,
+      "backend": "REF",
+      "case_ids": [
+        "lib0-ebc18f682915/103/REF/2/keygen/matrix-t12",
+        "lib0-ebc18f682915/103/REF/2/cache_build/matrix-t12",
+        "lib0-ebc18f682915/103/REF/2/sign/uncached",
+        "lib0-ebc18f682915/103/REF/2/sign/matrix-t12"
+      ]
+    },
+    {
+      "name": "worker-20",
+      "directory": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-20",
+      "cases_file": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-20.cases.json",
+      "threads": 4,
+      "pid": 103,
+      "backend": "REF",
+      "case_ids": [
+        "lib0-ebc18f682915/103/REF/4/keygen/matrix-t12",
+        "lib0-ebc18f682915/103/REF/4/cache_build/matrix-t12",
+        "lib0-ebc18f682915/103/REF/4/sign/uncached",
+        "lib0-ebc18f682915/103/REF/4/sign/matrix-t12"
+      ]
+    },
+    {
+      "name": "worker-21",
+      "directory": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-21",
+      "cases_file": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-21.cases.json",
+      "threads": 8,
+      "pid": 103,
+      "backend": "REF",
+      "case_ids": [
+        "lib0-ebc18f682915/103/REF/8/keygen/matrix-t12",
+        "lib0-ebc18f682915/103/REF/8/cache_build/matrix-t12",
+        "lib0-ebc18f682915/103/REF/8/sign/uncached",
+        "lib0-ebc18f682915/103/REF/8/sign/matrix-t12"
+      ]
+    },
+    {
+      "name": "worker-00",
+      "directory": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-00",
+      "cases_file": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-00.cases.json",
+      "threads": 8,
+      "pid": 3,
+      "backend": "AVX2",
+      "case_ids": [
+        "lib0-ebc18f682915/3/AVX2/8/keygen/matrix-t12",
+        "lib0-ebc18f682915/3/AVX2/8/cache_build/matrix-t12",
+        "lib0-ebc18f682915/3/AVX2/8/sign/uncached",
+        "lib0-ebc18f682915/3/AVX2/8/sign/matrix-t12"
+      ]
+    },
+    {
+      "name": "worker-24",
+      "directory": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-24",
+      "cases_file": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-24.cases.json",
+      "threads": 64,
+      "pid": 103,
+      "backend": "REF",
+      "case_ids": [
+        "lib0-ebc18f682915/103/REF/64/keygen/matrix-t12",
+        "lib0-ebc18f682915/103/REF/64/sign/uncached",
+        "lib0-ebc18f682915/103/REF/64/sign/matrix-t12"
+      ]
+    },
+    {
+      "name": "worker-03",
+      "directory": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-03",
+      "cases_file": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-03.cases.json",
+      "threads": 64,
+      "pid": 3,
+      "backend": "AVX2",
+      "case_ids": [
+        "lib0-ebc18f682915/3/AVX2/64/keygen/matrix-t12",
+        "lib0-ebc18f682915/3/AVX2/64/sign/uncached",
+        "lib0-ebc18f682915/3/AVX2/64/sign/matrix-t12"
+      ]
+    },
+    {
+      "name": "worker-23",
+      "directory": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-23",
+      "cases_file": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-23.cases.json",
+      "threads": 32,
+      "pid": 103,
+      "backend": "REF",
+      "case_ids": [
+        "lib0-ebc18f682915/103/REF/32/keygen/matrix-t12",
+        "lib0-ebc18f682915/103/REF/32/cache_build/matrix-t12",
+        "lib0-ebc18f682915/103/REF/32/sign/uncached",
+        "lib0-ebc18f682915/103/REF/32/sign/matrix-t12"
+      ]
+    },
+    {
+      "name": "worker-02",
+      "directory": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-02",
+      "cases_file": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-02.cases.json",
+      "threads": 32,
+      "pid": 3,
+      "backend": "AVX2",
+      "case_ids": [
+        "lib0-ebc18f682915/3/AVX2/32/keygen/matrix-t12",
+        "lib0-ebc18f682915/3/AVX2/32/cache_build/matrix-t12",
+        "lib0-ebc18f682915/3/AVX2/32/sign/uncached",
+        "lib0-ebc18f682915/3/AVX2/32/sign/matrix-t12"
+      ]
+    },
+    {
+      "name": "worker-22",
+      "directory": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-22",
+      "cases_file": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-22.cases.json",
+      "threads": 16,
+      "pid": 103,
+      "backend": "REF",
+      "case_ids": [
+        "lib0-ebc18f682915/103/REF/16/keygen/matrix-t12",
+        "lib0-ebc18f682915/103/REF/16/cache_build/matrix-t12",
+        "lib0-ebc18f682915/103/REF/16/sign/uncached",
+        "lib0-ebc18f682915/103/REF/16/sign/matrix-t12"
+      ]
+    },
+    {
+      "name": "worker-01",
+      "directory": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-01",
+      "cases_file": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-01.cases.json",
+      "threads": 16,
+      "pid": 3,
+      "backend": "AVX2",
+      "case_ids": [
+        "lib0-ebc18f682915/3/AVX2/16/keygen/matrix-t12",
+        "lib0-ebc18f682915/3/AVX2/16/cache_build/matrix-t12",
+        "lib0-ebc18f682915/3/AVX2/16/sign/uncached",
+        "lib0-ebc18f682915/3/AVX2/16/sign/matrix-t12"
+      ]
+    },
+    {
+      "name": "worker-38",
+      "directory": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-38",
+      "cases_file": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-38.cases.json",
+      "threads": 64,
+      "pid": 201,
+      "backend": "AVX2",
+      "case_ids": [
+        "lib0-ebc18f682915/201/AVX2/64/sign/uncached",
+        "lib0-ebc18f682915/201/AVX2/64/sign/matrix-t10",
+        "lib0-ebc18f682915/201/AVX2/64/sign_fault/changed-root-self-check"
+      ]
+    },
+    {
+      "name": "worker-31",
+      "directory": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-31",
+      "cases_file": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-31.cases.json",
+      "threads": 64,
+      "pid": 201,
+      "backend": "REF",
+      "case_ids": [
+        "lib0-ebc18f682915/201/REF/64/sign/uncached",
+        "lib0-ebc18f682915/201/REF/64/sign/matrix-t10",
+        "lib0-ebc18f682915/201/REF/64/sign_fault/changed-root-self-check"
+      ]
+    },
+    {
+      "name": "worker-17",
+      "directory": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-17",
+      "cases_file": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-17.cases.json",
+      "threads": 64,
+      "pid": 102,
+      "backend": "REF",
+      "case_ids": [
+        "lib0-ebc18f682915/102/REF/64/sign/uncached",
+        "lib0-ebc18f682915/102/REF/64/sign/matrix-t3"
+      ]
+    },
+    {
+      "name": "worker-10",
+      "directory": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-10",
+      "cases_file": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-10.cases.json",
+      "threads": 64,
+      "pid": 101,
+      "backend": "REF",
+      "case_ids": [
+        "lib0-ebc18f682915/101/REF/64/sign/uncached",
+        "lib0-ebc18f682915/101/REF/64/sign/matrix-t9"
+      ]
+    },
+    {
+      "name": "worker-37",
+      "directory": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-37",
+      "cases_file": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-37.cases.json",
+      "threads": 32,
+      "pid": 201,
+      "backend": "AVX2",
+      "case_ids": [
+        "lib0-ebc18f682915/201/AVX2/32/sign/uncached",
+        "lib0-ebc18f682915/201/AVX2/32/sign/matrix-t10",
+        "lib0-ebc18f682915/201/AVX2/32/sign_fault/changed-root-self-check"
+      ]
+    },
+    {
+      "name": "worker-30",
+      "directory": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-30",
+      "cases_file": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-30.cases.json",
+      "threads": 32,
+      "pid": 201,
+      "backend": "REF",
+      "case_ids": [
+        "lib0-ebc18f682915/201/REF/32/sign/uncached",
+        "lib0-ebc18f682915/201/REF/32/sign/matrix-t10",
+        "lib0-ebc18f682915/201/REF/32/sign_fault/changed-root-self-check"
+      ]
+    },
+    {
+      "name": "worker-16",
+      "directory": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-16",
+      "cases_file": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-16.cases.json",
+      "threads": 32,
+      "pid": 102,
+      "backend": "REF",
+      "case_ids": [
+        "lib0-ebc18f682915/102/REF/32/sign/uncached",
+        "lib0-ebc18f682915/102/REF/32/sign/matrix-t3"
+      ]
+    },
+    {
+      "name": "worker-09",
+      "directory": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-09",
+      "cases_file": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-09.cases.json",
+      "threads": 32,
+      "pid": 101,
+      "backend": "REF",
+      "case_ids": [
+        "lib0-ebc18f682915/101/REF/32/sign/uncached",
+        "lib0-ebc18f682915/101/REF/32/sign/matrix-t9"
+      ]
+    },
+    {
+      "name": "worker-36",
+      "directory": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-36",
+      "cases_file": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-36.cases.json",
+      "threads": 16,
+      "pid": 201,
+      "backend": "AVX2",
+      "case_ids": [
+        "lib0-ebc18f682915/201/AVX2/16/sign/uncached",
+        "lib0-ebc18f682915/201/AVX2/16/sign/matrix-t10",
+        "lib0-ebc18f682915/201/AVX2/16/sign_fault/changed-root-self-check"
+      ]
+    },
+    {
+      "name": "worker-29",
+      "directory": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-29",
+      "cases_file": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-29.cases.json",
+      "threads": 16,
+      "pid": 201,
+      "backend": "REF",
+      "case_ids": [
+        "lib0-ebc18f682915/201/REF/16/sign/uncached",
+        "lib0-ebc18f682915/201/REF/16/sign/matrix-t10",
+        "lib0-ebc18f682915/201/REF/16/sign_fault/changed-root-self-check"
+      ]
+    },
+    {
+      "name": "worker-15",
+      "directory": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-15",
+      "cases_file": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-15.cases.json",
+      "threads": 16,
+      "pid": 102,
+      "backend": "REF",
+      "case_ids": [
+        "lib0-ebc18f682915/102/REF/16/sign/uncached",
+        "lib0-ebc18f682915/102/REF/16/sign/matrix-t3"
+      ]
+    },
+    {
+      "name": "worker-08",
+      "directory": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-08",
+      "cases_file": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-08.cases.json",
+      "threads": 16,
+      "pid": 101,
+      "backend": "REF",
+      "case_ids": [
+        "lib0-ebc18f682915/101/REF/16/sign/uncached",
+        "lib0-ebc18f682915/101/REF/16/sign/matrix-t9"
+      ]
+    },
+    {
+      "name": "worker-32",
+      "directory": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-32",
+      "cases_file": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-32.cases.json",
+      "threads": 1,
+      "pid": 201,
+      "backend": "AVX2",
+      "case_ids": [
+        "lib0-ebc18f682915/201/AVX2/1/sign/uncached",
+        "lib0-ebc18f682915/201/AVX2/1/sign/matrix-t10",
+        "lib0-ebc18f682915/201/AVX2/1/sign_fault/changed-root-self-check"
+      ]
+    },
+    {
+      "name": "worker-25",
+      "directory": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-25",
+      "cases_file": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-25.cases.json",
+      "threads": 1,
+      "pid": 201,
+      "backend": "REF",
+      "case_ids": [
+        "lib0-ebc18f682915/201/REF/1/sign/uncached",
+        "lib0-ebc18f682915/201/REF/1/sign/matrix-t10",
+        "lib0-ebc18f682915/201/REF/1/sign_fault/changed-root-self-check"
+      ]
+    },
+    {
+      "name": "worker-11",
+      "directory": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-11",
+      "cases_file": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-11.cases.json",
+      "threads": 1,
+      "pid": 102,
+      "backend": "REF",
+      "case_ids": [
+        "lib0-ebc18f682915/102/REF/1/sign/uncached",
+        "lib0-ebc18f682915/102/REF/1/sign/matrix-t3"
+      ]
+    },
+    {
+      "name": "worker-04",
+      "directory": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-04",
+      "cases_file": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-04.cases.json",
+      "threads": 1,
+      "pid": 101,
+      "backend": "REF",
+      "case_ids": [
+        "lib0-ebc18f682915/101/REF/1/sign/uncached",
+        "lib0-ebc18f682915/101/REF/1/sign/matrix-t9"
+      ]
+    },
+    {
+      "name": "worker-33",
+      "directory": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-33",
+      "cases_file": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-33.cases.json",
+      "threads": 2,
+      "pid": 201,
+      "backend": "AVX2",
+      "case_ids": [
+        "lib0-ebc18f682915/201/AVX2/2/sign/uncached",
+        "lib0-ebc18f682915/201/AVX2/2/sign/matrix-t10",
+        "lib0-ebc18f682915/201/AVX2/2/sign_fault/changed-root-self-check"
+      ]
+    },
+    {
+      "name": "worker-26",
+      "directory": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-26",
+      "cases_file": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-26.cases.json",
+      "threads": 2,
+      "pid": 201,
+      "backend": "REF",
+      "case_ids": [
+        "lib0-ebc18f682915/201/REF/2/sign/uncached",
+        "lib0-ebc18f682915/201/REF/2/sign/matrix-t10",
+        "lib0-ebc18f682915/201/REF/2/sign_fault/changed-root-self-check"
+      ]
+    },
+    {
+      "name": "worker-12",
+      "directory": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-12",
+      "cases_file": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-12.cases.json",
+      "threads": 2,
+      "pid": 102,
+      "backend": "REF",
+      "case_ids": [
+        "lib0-ebc18f682915/102/REF/2/sign/uncached",
+        "lib0-ebc18f682915/102/REF/2/sign/matrix-t3"
+      ]
+    },
+    {
+      "name": "worker-05",
+      "directory": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-05",
+      "cases_file": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-05.cases.json",
+      "threads": 2,
+      "pid": 101,
+      "backend": "REF",
+      "case_ids": [
+        "lib0-ebc18f682915/101/REF/2/sign/uncached",
+        "lib0-ebc18f682915/101/REF/2/sign/matrix-t9"
+      ]
+    },
+    {
+      "name": "worker-34",
+      "directory": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-34",
+      "cases_file": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-34.cases.json",
+      "threads": 4,
+      "pid": 201,
+      "backend": "AVX2",
+      "case_ids": [
+        "lib0-ebc18f682915/201/AVX2/4/sign/uncached",
+        "lib0-ebc18f682915/201/AVX2/4/sign/matrix-t10",
+        "lib0-ebc18f682915/201/AVX2/4/sign_fault/changed-root-self-check"
+      ]
+    },
+    {
+      "name": "worker-27",
+      "directory": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-27",
+      "cases_file": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-27.cases.json",
+      "threads": 4,
+      "pid": 201,
+      "backend": "REF",
+      "case_ids": [
+        "lib0-ebc18f682915/201/REF/4/sign/uncached",
+        "lib0-ebc18f682915/201/REF/4/sign/matrix-t10",
+        "lib0-ebc18f682915/201/REF/4/sign_fault/changed-root-self-check"
+      ]
+    },
+    {
+      "name": "worker-13",
+      "directory": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-13",
+      "cases_file": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-13.cases.json",
+      "threads": 4,
+      "pid": 102,
+      "backend": "REF",
+      "case_ids": [
+        "lib0-ebc18f682915/102/REF/4/sign/uncached",
+        "lib0-ebc18f682915/102/REF/4/sign/matrix-t3"
+      ]
+    },
+    {
+      "name": "worker-06",
+      "directory": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-06",
+      "cases_file": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-06.cases.json",
+      "threads": 4,
+      "pid": 101,
+      "backend": "REF",
+      "case_ids": [
+        "lib0-ebc18f682915/101/REF/4/sign/uncached",
+        "lib0-ebc18f682915/101/REF/4/sign/matrix-t9"
+      ]
+    },
+    {
+      "name": "worker-35",
+      "directory": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-35",
+      "cases_file": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-35.cases.json",
+      "threads": 8,
+      "pid": 201,
+      "backend": "AVX2",
+      "case_ids": [
+        "lib0-ebc18f682915/201/AVX2/8/sign/uncached",
+        "lib0-ebc18f682915/201/AVX2/8/sign/matrix-t10",
+        "lib0-ebc18f682915/201/AVX2/8/sign_fault/changed-root-self-check"
+      ]
+    },
+    {
+      "name": "worker-28",
+      "directory": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-28",
+      "cases_file": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-28.cases.json",
+      "threads": 8,
+      "pid": 201,
+      "backend": "REF",
+      "case_ids": [
+        "lib0-ebc18f682915/201/REF/8/sign/uncached",
+        "lib0-ebc18f682915/201/REF/8/sign/matrix-t10",
+        "lib0-ebc18f682915/201/REF/8/sign_fault/changed-root-self-check"
+      ]
+    },
+    {
+      "name": "worker-14",
+      "directory": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-14",
+      "cases_file": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-14.cases.json",
+      "threads": 8,
+      "pid": 102,
+      "backend": "REF",
+      "case_ids": [
+        "lib0-ebc18f682915/102/REF/8/sign/uncached",
+        "lib0-ebc18f682915/102/REF/8/sign/matrix-t3"
+      ]
+    },
+    {
+      "name": "worker-07",
+      "directory": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-07",
+      "cases_file": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-07.cases.json",
+      "threads": 8,
+      "pid": 101,
+      "backend": "REF",
+      "case_ids": [
+        "lib0-ebc18f682915/101/REF/8/sign/uncached",
+        "lib0-ebc18f682915/101/REF/8/sign/matrix-t9"
+      ]
+    }
+  ],
+  "pending_cases": 112,
+  "completed_serial": 3359,
+  "full_plan": 3471
+}

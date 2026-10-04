@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+<rect width="1600" height="900" fill="#0b1220"/>
+<rect x="62" y="56" width="1476" height="644" rx="24" fill="#111e31"/>
+<rect x="62" y="56" width="9" height="644" rx="4" fill="#2dd4bf"/>
+<text x="96" y="113" font-size="40" fill="#eff6ff" font-family="Arial, DejaVu Sans, sans-serif">01  EXECUTED FUNCTIONAL EVIDENCE</text>
+<text x="96" y="180" font-size="23" fill="#a6b5c9" font-family="Arial, DejaVu Sans, sans-serif">Executed JSON evidence visualization; no fabricated terminal screenshot.</text>
+<text x="96" y="285" font-size="25" fill="#dbe7f3" font-family="Arial, DejaVu Sans, sans-serif">slh-dsa-sm3-128-24 | native | 2 edges | PASS</text>
+<text x="96" y="337" font-size="25" fill="#dbe7f3" font-family="Arial, DejaVu Sans, sans-serif">slh-dsa-sm3-128-24 | python | 2 edges | PASS</text>
+<text x="96" y="389" font-size="25" fill="#dbe7f3" font-family="Arial, DejaVu Sans, sans-serif">slh-dsa-sm3-128s | native | 2 edges | PASS</text>
+<text x="96" y="441" font-size="25" fill="#dbe7f3" font-family="Arial, DejaVu Sans, sans-serif">slh-dsa-sm3-128s | python | 2 edges | PASS</text>
+<text x="96" y="493" font-size="25" fill="#dbe7f3" font-family="Arial, DejaVu Sans, sans-serif">ml-dsa-44 | provider | 2 edges | PASS</text>
+<text x="96" y="764" font-size="19" fill="#93c5fd" font-family="Arial, DejaVu Sans, sans-serif">SOURCE JSON SHA-256</text>
+<text x="96" y="809" font-size="21" fill="#a6b5c9" font-family="Arial, DejaVu Sans, sans-serif">a9e696750dced3c01d426b0cf4a825adf1a3f71287fc92ce54f4fe95be9ffd3c</text>
+<text x="96" y="858" font-size="19" fill="#a6b5c9" font-family="Arial, DejaVu Sans, sans-serif">1/4  |  FUNCTIONAL ONLY  |  GENERATED EVIDENCE PRESENTATION</text>
+</svg>

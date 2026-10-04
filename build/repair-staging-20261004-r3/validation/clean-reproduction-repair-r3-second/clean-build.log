@@ -1,0 +1,23 @@
+make: Entering directory '/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/clean-reproduction-repair-r3-second/checkout/c'
+mkdir -p ../build/reproduce
+rm -f ../build/reproduce/.a15-config-*
+touch ../build/reproduce/.a15-config-0d5698a2385ef6145594f74216e71dedf9a6a0f16a31779fdf982143164c8d36
+mkdir -p ../build/reproduce
+gcc -std=c11 -Wall -Wextra -Wno-misleading-indentation -fPIC -fopenmp -Iinclude -Isrc -I../third_party/slhdsa-c -O3 -DSLH_RELEASE_BUILD -shared src/engine.c src/sm3.c src/sm3x8.c ../third_party/slhdsa-c/sha2_256.c ../third_party/slhdsa-c/sha2_512.c ../third_party/slhdsa-c/sha3_api.c ../third_party/slhdsa-c/sha3_f1600.c src/sm3_cuda_stub.c   -o ../build/reproduce/libslhdsa_sm3.so
+mkdir -p ../build/reproduce
+gcc -std=c11 -Wall -Wextra -Wno-misleading-indentation -fPIC -fopenmp -Iinclude -Isrc -I../third_party/slhdsa-c -O3 src/engine.c src/sm3.c src/sm3x8.c ../third_party/slhdsa-c/sha2_256.c ../third_party/slhdsa-c/sha2_512.c ../third_party/slhdsa-c/sha3_api.c ../third_party/slhdsa-c/sha3_f1600.c src/sm3_cuda_stub.c tests/test_native.c   -o ../build/reproduce/test_native
+A15_TEST_CACHE=../build/reproduce/test.cache ../build/reproduce/test_native
+native argument guards PASS
+pid 201 native checks PASS
+pid 101 native checks PASS
+pid 102 native checks PASS
+native tests PASS
+mkdir -p ../build/reproduce
+gcc -std=c11 -Wall -Wextra -Wno-misleading-indentation -fPIC -fopenmp -Iinclude -Isrc -I../third_party/slhdsa-c -O3 src/sm3.c src/sm3x8.c ../third_party/slhdsa-c/sha2_256.c ../third_party/slhdsa-c/sha2_512.c ../third_party/slhdsa-c/sha3_api.c ../third_party/slhdsa-c/sha3_f1600.c src/sm3_cuda_stub.c tests/test_repair.c   -o ../build/reproduce/test_repair
+../build/reproduce/test_repair ../build/reproduce/repair.cache
+repair midstate full256/boundaries/thread-copy: 224 comparisons PASS
+repair capacities/private-publication/reordered-tasks/changing-cache/failure-wipes: PASS; 169647 observed wipes
+python3 ../tools/check_native_guards.py --cc 'gcc' --library ../build/reproduce/libslhdsa_sm3.so
+native guard source checks PASS: two-macro test gate, release exclusion, five calculation sites
+native guard compiler checks PASS: release code erased; four bad builds rejected; release symbols clean
+make: Leaving directory '/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/clean-reproduction-repair-r3-second/checkout/c'

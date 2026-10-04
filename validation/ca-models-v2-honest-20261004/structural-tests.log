@@ -1,0 +1,8 @@
+test_every_scenario_uses_received_flight_in_online_checks (tools.test_ca_models_v2.CompositeContract.test_every_scenario_uses_received_flight_in_online_checks) ... ok
+test_no_expected_result_codes_or_mutation_of_v1 (tools.test_ca_models_v2.CompositeContract.test_no_expected_result_codes_or_mutation_of_v1) ... ok
+test_queries_are_all_acceptance_conditioned_and_separate (tools.test_ca_models_v2.CompositeContract.test_queries_are_all_acceptance_conditioned_and_separate) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+OK

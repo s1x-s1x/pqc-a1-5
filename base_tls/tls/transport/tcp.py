@@ -296,8 +296,6 @@ def run_over_tcp(
         trusted_name="server.example",
     )
     messages: list[MessageRecord] = []
-    suite = config.aead_suite()
-    protection = suite.tag_length + 5
     client_waits = 0
     waits_to_authenticated = 0
     application_ok = False
@@ -317,7 +315,7 @@ def run_over_tcp(
             sock.settimeout(timeout_seconds)
             deadline = _frame_deadline(timeout_seconds)
             client_hello = client.create_client_hello()
-            messages.append(MessageRecord("ClientHello", "client", len(client_hello)))
+            messages.append(MessageRecord("ClientHello", "client", len(client_hello), transport_prefix_bytes=4))
             outbound_client: list[bytes] = []
             _queue_frame(outbound_client, client_hello, client_shaper)
             _flush(sock, outbound_client, client_shaper)
@@ -325,10 +323,11 @@ def run_over_tcp(
             # Wait 1: ServerHello plus the whole authenticated server flight.
             client_waits += 1
             server_hello = _recv_frame(sock, deadline)
-            messages.append(MessageRecord("ServerHello", "server", len(server_hello)))
+            messages.append(MessageRecord("ServerHello", "server", len(server_hello), transport_prefix_bytes=4))
             client.receive_server_hello(server_hello)
-            flight = [_recv_frame(sock, deadline) for _ in range(4)]
-            client.receive_server_flight(flight)
+            while not client.server_flight_complete:
+                client.receive_server_record(_recv_frame(sock, deadline))
+            client.finish_server_flight()
             # The instant the server is authenticated and the handshake keys are usable.
             authenticated_seconds = time.perf_counter() - started
             # Snapshot the byte counters HERE, not at the end of the run: the prediction
@@ -337,17 +336,18 @@ def run_over_tcp(
             # difference into the reported harness overhead.
             authenticated_client_bytes = client_shaper.bytes_sent if client_shaper else 0
             authenticated_server_bytes = server_shaper.bytes_sent if server_shaper else 0
-            for name, record in zip(
-                ("EncryptedExtensions", "Certificate", "CertificateVerify", "Finished"), flight, strict=True
-            ):
-                messages.append(MessageRecord(name, "server", len(record) - protection, protection))
+            for name, plain_bytes, record_bytes in client.server_flight_fragments:
+                messages.append(MessageRecord(name, "server", plain_bytes,
+                                              record_bytes - plain_bytes, transport_prefix_bytes=4))
             waits_to_authenticated = client_waits
 
             # The client Finished and the first application data share one flight,
             # which is what keeps the handshake at one round trip.
             client_finished = client.send_client_finished()
             messages.append(
-                MessageRecord("Finished", "client", len(client.sent_client_finished or b""), protection)
+                MessageRecord("Finished", "client", len(client.sent_client_finished or b""),
+                              len(client_finished) - len(client.sent_client_finished or b""),
+                              transport_prefix_bytes=4)
             )
             _queue_frame(outbound_client, client_finished, client_shaper)
             request = client.application_client_records.seal(  # type: ignore[union-attr]

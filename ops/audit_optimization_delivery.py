@@ -86,8 +86,23 @@ def remote_name(name):
 
 
 class Audit:
-    def __init__(self, root):
+    def __init__(self, root, *, readiness=READINESS, staging_root=None,
+                 remote_staging_root=None, external_manifest=EXTERNAL_MANIFEST):
         self.root = root.resolve()
+        self.readiness_name = relative_name(readiness)
+        self.external_manifest_name = relative_name(external_manifest)
+        self.repair = self.readiness_name != READINESS
+        require((staging_root is None) == (remote_staging_root is None),
+                "local/remote staging roots must be supplied together")
+        require(self.repair == (staging_root is not None),
+                "repair audit requires explicit readiness and staging root mapping")
+        self.staging_root = relative_name(staging_root) if staging_root is not None else None
+        self.remote_staging_root = remote_name(remote_staging_root) if remote_staging_root is not None else None
+        if self.repair:
+            require(self.remote_staging_root.startswith(REMOTE_ROOT + "/build/")
+                    and self.remote_staging_root != REMOTE_ROOT,
+                    "repair remote staging root must be inside the project build directory")
+            require(self.staging_root.startswith("build/"), "repair local staging root must be inside build")
         self.errors = []
         self.checks = []
         self.packages = {}
@@ -107,6 +122,8 @@ class Audit:
 
     def mapped(self, original):
         original = remote_name(original)
+        if self.remote_staging_root is not None and original.startswith(self.remote_staging_root + "/"):
+            return self.local(self.staging_root + "/" + original[len(self.remote_staging_root) + 1:])
         if original.startswith(REMOTE_ROOT + "/"):
             return self.local(original[len(REMOTE_ROOT) + 1:])
         require(original in self.external, "external evidence manifest entry missing")
@@ -133,11 +150,11 @@ class Audit:
             return None
 
     def external_manifest(self):
-        path = self.local(EXTERNAL_MANIFEST)
+        path = self.local(self.external_manifest_name)
         manifest = read_json(path)
         require(manifest.get("schema") == "a15-external-evidence-mirror-v1",
                 "external manifest schema differs")
-        require(manifest.get("remote_project_root") == REMOTE_ROOT,
+        require(manifest.get("remote_project_root") in {REMOTE_ROOT, self.remote_staging_root} - {None},
                 "external manifest remote root differs")
         entries = manifest.get("files")
         require(isinstance(entries, dict) and bool(entries), "external manifest empty")
@@ -161,12 +178,19 @@ class Audit:
         return {"files": len(entries), "manifest_sha256": file_sha(path)}
 
     def published_package(self, kind, readiness):
-        folder = "validation/optimization-" + kind + "-final"
-        directory = self.local(folder)
+        expected = readiness["packages"][kind]
+        if self.repair:
+            original_directory = remote_name(expected.get("directory"))
+            require(original_directory.startswith(self.remote_staging_root + "/validation/"),
+                    "repair package directory must be in the explicit staging validation directory")
+            directory = self.mapped(original_directory)
+        else:
+            folder = "validation/optimization-" + kind + "-final"
+            original_directory = REMOTE_ROOT + "/" + folder
+            directory = self.local(folder)
         package = read_json(directory / "package.json")
         freeze = read_json(directory / "freeze.json")
         sources = hash_map(read_json(directory / "source-manifest.json"), "source manifest")
-        expected = readiness["packages"][kind]
         require(package.get("passed") is True and package.get("formal_performance_started") is False
                 and type(package.get("real_timing_samples", 0)) is int
                 and package.get("real_timing_samples", 0) == 0, "package is not preparation")
@@ -185,6 +209,9 @@ class Audit:
                 and type(freeze.get("real_timing_samples", 0)) is int
                 and freeze.get("real_timing_samples", 0) == 0, "freeze final state differs")
         frozen = hash_map(freeze.get("source_sha256"), "frozen sources")
+        if self.repair:
+            require("c/src/secure_zero.h" in frozen and "c/Makefile" in frozen,
+                    "repair freeze omits secure-zero/build configuration source identity")
         require(all(sources.get(name) == digest for name, digest in frozen.items()),
                 "source manifest omits frozen source")
         field = "correctness_evidence" if kind == "cpu" else "correctness_evidence_sha256"
@@ -193,6 +220,7 @@ class Audit:
                 and type(expected.get("evidence_files")) is int
                 and expected["evidence_files"] == len(evidence), "readiness file counts differ")
         result = {"freeze": freeze, "sources": sources, "evidence": evidence, "directory": directory,
+                  "remote_directory": original_directory, "readiness_entry": expected,
                   "summary": {"source_files": len(sources), "frozen_sources": len(frozen),
                               "evidence_files": len(evidence), "package_sha256": file_sha(directory / "package.json"),
                               "freeze_sha256": recorded["freeze.json"], "files_sha256": recorded}}
@@ -238,9 +266,25 @@ class Audit:
 
     def build_and_plans(self, kind, data):
         freeze = data["freeze"]
-        build_dir = "build/cuda-staging-20261004/build/bench-" + kind + "-prep-20261004/"
-        record_path = self.local(build_dir + "build-record.json")
-        library_path = self.local(build_dir + "libslhdsa_sm3.so")
+        if self.repair:
+            candidates = []
+            for original, digest in data["evidence"].items():
+                if digest == freeze.get("build_record_sha256") and original.endswith(".json"):
+                    path = self.mapped(original)
+                    self.checked_file(path, digest)
+                    record = read_json(path)
+                    if isinstance(record, dict) and record.get("schema") == "a15-" + kind + "-build-v1":
+                        candidates.append((original, path, record))
+            require(len(candidates) == 1, "repair release build must have one exact frozen evidence binding")
+            original, record_path, record = candidates[0]
+            require(original.startswith(self.remote_staging_root + "/"), "repair release build leaves staging")
+            library_original = remote_name(record.get("library"))
+            require(library_original.startswith(self.remote_staging_root + "/"), "repair release library leaves staging")
+            library_path = self.mapped(library_original)
+        else:
+            build_dir = "build/cuda-staging-20261004/build/bench-" + kind + "-prep-20261004/"
+            record_path = self.local(build_dir + "build-record.json")
+            library_path = self.local(build_dir + "libslhdsa_sm3.so")
         self.checked_file(record_path, freeze.get("build_record_sha256"))
         self.checked_file(library_path, freeze.get("library_sha256"))
         record = read_json(record_path)
@@ -252,6 +296,9 @@ class Audit:
             require(record.get(flag) is False, "release record instrumentation enabled")
         require(record.get("compile_output_checked") is True, "release compile output unchecked")
         compiled = hash_map(record.get("source_sha256"), "build source")
+        if self.repair:
+            require("c/src/secure_zero.h" in compiled and "c/Makefile" in compiled,
+                    "repair release compiled sources omit secure-zero/build configuration identity")
         require(all(freeze["source_sha256"].get(name) == digest for name, digest in compiled.items()),
                 "release compiled sources differ from freeze")
         plans = freeze.get("plans")
@@ -278,21 +325,42 @@ class Audit:
                 "build_record_sha256": freeze["build_record_sha256"], "plans": summary}
 
     def mocks(self, kind, data):
-        version, count = ("v6", 26) if kind == "cpu" else ("v7", 23)
-        name = "build/cuda-staging-20261004/preparation/bench_" + kind + "-mock-final-" + version + ".json"
-        original = REMOTE_ROOT + "/" + name
-        require(original in data["evidence"], "final mock is not bound in correctness evidence")
-        path = self.local(name)
-        self.checked_file(path, data["evidence"][original])
-        mock = read_json(path)
         schema = "a15-bench-selftest-v1" if kind == "cpu" else "a15-cuda-selftest-v1"
+        tool = "tools/bench_" + kind + ".py"
+        if self.repair:
+            count = data["readiness_entry"].get("mock_checks")
+            minimum = 28 if kind == "cpu" else 25
+            require(type(count) is int and count >= minimum, "repair readiness mock count missing or below accepted scope")
+            candidates = []
+            for original, digest in data["evidence"].items():
+                if not original.endswith(".json"):
+                    continue
+                path = self.mapped(original)
+                self.checked_file(path, digest)
+                mock = read_json(path)
+                if (isinstance(mock, dict) and mock.get("schema") == schema
+                        and mock.get("tool_sha256") == data["freeze"]["source_sha256"].get(tool)):
+                    candidates.append((original, mock))
+            require(len(candidates) == 1, "repair freeze must bind one mock for the exact current tool")
+            original, mock = candidates[0]
+            require(original.startswith(self.remote_staging_root + "/"), "repair mock leaves explicit staging")
+            if kind == "cuda":
+                require(data["freeze"].get("evidence", {}).get("mock", {}).get("path") == original,
+                        "repair CUDA mock differs from explicit release evidence")
+        else:
+            version, count = ("v6", 26) if kind == "cpu" else ("v7", 23)
+            name = "build/cuda-staging-20261004/preparation/bench_" + kind + "-mock-final-" + version + ".json"
+            original = REMOTE_ROOT + "/" + name
+            require(original in data["evidence"], "final mock is not bound in correctness evidence")
+            path = self.local(name)
+            self.checked_file(path, data["evidence"][original])
+            mock = read_json(path)
         require(mock.get("schema") == schema and mock.get("passed") is True
                 and type(mock.get("mock_checks")) is int and mock["mock_checks"] == count,
                 "final mock count/state differs")
         require(type(mock.get("native_calls")) is int and mock["native_calls"] == 0
                 and type(mock.get("real_timing_samples")) is int and mock["real_timing_samples"] == 0,
                 "final mock native/timing count differs")
-        tool = "tools/bench_" + kind + ".py"
         sources = hash_map(mock.get("source_sha256"), "mock sources")
         require(mock.get("tool_sha256") == sources.get(tool) == data["freeze"]["source_sha256"].get(tool),
                 "final mock tool binding differs")
@@ -300,7 +368,7 @@ class Audit:
             require(data["freeze"]["source_sha256"].get(name) == digest, "mock source differs from freeze")
             self.checked_file(self.local(name), digest)
         return {"checks": count, "passed": True, "native_calls": 0, "real_timing_samples": 0,
-                "tool_sha256": mock["tool_sha256"]}
+                "tool_sha256": mock["tool_sha256"], "evidence_path": original}
 
     def cuda_release(self, data):
         freeze = data["freeze"]
@@ -337,7 +405,7 @@ class Audit:
             require(isinstance(entry, dict), "budget snapshot entry malformed")
             original = remote_name(entry.get("snapshot_database"))
             live_original = remote_name(entry.get("live_database"))
-            require(live_original not in live and not live_original.startswith(REMOTE_ROOT + "/validation/optimization-" + kind + "-final/"),
+            require(live_original not in live and not live_original.startswith(data["remote_directory"] + "/"),
                     "budget live identity duplicated or inside package")
             live.add(live_original)
             for suffix in ("", "-wal", "-shm"):
@@ -433,7 +501,9 @@ class Audit:
                 "passed": not self.errors, "classification": "local mirror byte/provenance audit; Linux execution runtime remains on server",
                 "linux_runtime_gate_executed": False, "native_calls": 0, "timing_samples": 0,
                 "real_timing_samples": 0, "formal_performance_started": False if performance is not None else None,
-                "server_gate_evidence": {"path": READINESS, "sha256": file_sha(self.local(READINESS)) if readiness is not None else None,
+                "audit_profile": "repair" if self.repair else "historical optimization delivery",
+                "staging_mapping": {"local": self.staging_root, "remote": self.remote_staging_root} if self.repair else None,
+                "server_gate_evidence": {"path": self.readiness_name, "sha256": file_sha(self.local(self.readiness_name)) if readiness is not None else None,
                                          "passed": readiness.get("passed") if readiness is not None else False,
                                          "cpu_gate_passed": readiness.get("cpu_gate_passed") if readiness is not None else False,
                                          "cuda_gate_passed": readiness.get("cuda_gate_passed") if readiness is not None else False,
@@ -442,7 +512,7 @@ class Audit:
                 "local_performance": performance, "checks": self.checks, "errors": self.errors}
 
     def server_readiness(self):
-        path = self.local(READINESS)
+        path = self.local(self.readiness_name)
         result = read_json(path)
         require(result.get("schema") == "a15-optimization-final-readiness-v1" and result.get("passed") is True
                 and result.get("cpu_gate_passed") is True and result.get("cuda_gate_passed") is True,
@@ -461,10 +531,18 @@ class Audit:
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[1], help="local project root")
+    parser.add_argument("--readiness", default=READINESS, help="explicit project-relative repair readiness JSON; default preserves historical scope")
+    parser.add_argument("--staging-root", help="repair evidence mirror directory relative to the local project, inside build")
+    parser.add_argument("--remote-staging-root", help="canonical absolute remote repair project root inside the original project's build directory")
+    parser.add_argument("--external-manifest", default=EXTERNAL_MANIFEST, help="project-relative external evidence manifest")
     parser.add_argument("--output", type=Path,
                         help="create a new audit JSON directly under validation or build (project-relative or absolute)")
     args = parser.parse_args()
-    audit = Audit(args.root)
+    try:
+        audit = Audit(args.root, readiness=args.readiness, staging_root=args.staging_root,
+                      remote_staging_root=args.remote_staging_root, external_manifest=args.external_manifest)
+    except AuditError as error:
+        parser.error(str(error))
     try:
         result = audit.run()
     except Exception as error:

@@ -62,18 +62,26 @@ def generate(args):
         raise ValueError("fixture handshake signer must have a serializable stateless secret")
     leaf_key, root_key, intermediate_key = [ec.generate_private_key(ec.SECP256R1()) for _ in range(3)]
     now = datetime.now(timezone.utc).replace(microsecond=0)
-    reserve = None
+    reserve, finish, ledger = None, None, None
     if args.budget_db is not None:
         from tools.signing_budget import SigningBudget
         ledger = SigningBudget(args.budget_db)
         reserve = ledger.reserve
+        finish = ledger.finish
     completed = []
     for name in ALGORITHMS:
         print(json.dumps({"phase": "fixture-generation", "algorithm": name}), flush=True)
         material = build_alt_test_chain(name, leaf_key=leaf_key, root_key=root_key,
             intermediate_key=intermediate_key, pq_scheme_id=signer.scheme_id,
             pq_public_key=public, threads=args.threads, library=args.library,
-            before_sign=reserve, now=now)
+            before_sign=reserve, after_sign=finish, now=now)
+        if ledger is not None:
+            for row in material.signing_records:
+                reconciliation = ledger.validate_receipt(row["budget_receipt"], algorithm=row["algorithm"],
+                    message_sha256=row["pre_tbs_sha256"], signature_sha256=row["signature_sha256"])
+                if reconciliation["public_key_sha256"] != row["issuer_public_key_sha256"]:
+                    raise ValueError("CA receipt public key differs from issued edge")
+                row["ledger_uuid"] = ledger.ledger_uuid
         directory = output / name
         files, chains = {}, {}
         for kind, chain, prefix in (("alt", material.chain, ""), ("hybrid", material.baseline_chain, "hybrid-"),
@@ -97,6 +105,7 @@ def generate(args):
                     "generated_at_utc": now.isoformat(), "validity": {"not_before": (now.timestamp()-86400), "not_after": now.timestamp()+365*86400},
                     "chains": chains, "files_sha256": {k: sha(v) for k, v in files.items()},
                     "signing_records": material.signing_records, "sources_sha256": before,
+                    "budget_ledger_uuid": ledger.ledger_uuid if ledger is not None else None,
                     "library_sha256": library_before,
                     "threads": args.threads,
                     "scope": "offline test-only CA chains; private test keys are fixture credentials, not production keys"}
@@ -109,7 +118,8 @@ def generate(args):
     write(output / "MANIFEST.json", json_bytes({"schema": "a15-alt-fixtures-v1", "test_only": True,
         "generated_at_utc": now.isoformat(), "fixtures": completed, "sources_sha256": before,
         "command": sys.argv, "source_unchanged": True,
-        "library_sha256": library_before, "library_unchanged": True}))
+        "library_sha256": library_before, "library_unchanged": True,
+        "budget_ledger_uuid": ledger.ledger_uuid if ledger is not None else None}))
     print(json.dumps({"completed": completed}), flush=True)
 
 
@@ -120,12 +130,18 @@ def verify(args):
         directory = args.fixtures / name
         metadata = json.loads((directory / "fixture.json").read_text())
         signer = get_pq_signer(metadata["handshake_signer"])
-        chain, _, _, _ = load_fixture(directory, pq_signer=signer, expected_algorithm=name)
+        chain, _, _, _ = load_fixture(directory, pq_signer=signer, expected_algorithm=name,
+                                       library=args.library, require_native=name.startswith("slh-"))
         root = x509.load_der_x509_certificate(chain.root_der)
         for python in ([False, True] if name.startswith("slh-") else [False]):
             result = verify_alt_chain(chain.chain_der, root, "server.example", require_alt_chain=True,
-                                      expected_algorithm=name, force_python=python)
-            rows.append({"algorithm": name, "verifier": "python" if python else "native-or-provider",
+                                      expected_algorithm=name, force_python=python,
+                                      require_native=name.startswith("slh-") and not python,
+                                      library=args.library)
+            expected_mode = "python" if python else ("native" if name.startswith("slh-") else "provider")
+            if any(x["mode"] != expected_mode for x in result.verifiers):
+                raise ValueError("fixture verifier did not execute its required backend")
+            rows.append({"algorithm": name, "verifier": expected_mode, "verifiers": result.verifiers,
                          "checked_edges": result.checked_edges, "passed": result.complete,
                          "fixture_sha256": sha((directory / "fixture.json").read_bytes())})
     write(args.output, json_bytes({"schema": "a15-alt-fixture-verification-v1", "passed": all(x["passed"] for x in rows),
@@ -163,8 +179,16 @@ def main():
         sub.add_argument("--output", type=Path, required=True)
         if action == "e1":
             sub.add_argument("--handshake-signer", default="falcon-512")
+        else:
+            sub.add_argument("--library", type=Path, required=True,
+                             help="explicit native library; both native and independent Python paths are mandatory")
     args = parser.parse_args()
-    {"generate": generate, "verify": verify, "e1": e1}[args.action](args)
+    if args.action == "generate":
+        generate(args)
+    elif args.action == "verify":
+        verify(args)
+    else:
+        e1(args)
 
 
 if __name__ == "__main__":

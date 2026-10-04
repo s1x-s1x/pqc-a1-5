@@ -1,0 +1,14 @@
+{
+  "schema": "a15-parallel-correctness-selftest-v1",
+  "passed": true,
+  "mock_checks": 55,
+  "failures": 0,
+  "errors": 0,
+  "native_calls": 0,
+  "real_timing_samples": 0,
+  "formal_performance_started": false,
+  "actual_matrix_acceptance": false,
+  "tool_sha256": "4fc4ef5821b5a06f21e787feb9cdfe9972a8513cda620d1ac5be7c8d8db86e27",
+  "test_tool_sha256": "40ed09c37dd792615a4ded9933dba4406392eaecceaafb9e9150091815e09131",
+  "scope": "Temporary synthetic source/library/vector files, strict stub Runner/ledger, row hashes and original-byte provenance; no native or performance calls"
+}

@@ -1,0 +1,11 @@
+{
+  "reason": "Post-precheck truncation test required commit-time fstat verification; superseded before freeze.",
+  "pipeline_pid": 2176732,
+  "signaled_processes": [
+    2176732,
+    2176733,
+    2211203
+  ],
+  "formal_performance_started": false,
+  "real_timing_samples": 0
+}

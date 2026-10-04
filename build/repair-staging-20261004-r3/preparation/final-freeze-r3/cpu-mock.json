@@ -1,0 +1,18 @@
+{
+  "schema": "a15-bench-selftest-v1",
+  "created_utc": "2026-10-04T07:49:14.931324+00:00",
+  "mock_checks": 28,
+  "passed": true,
+  "native_calls": 0,
+  "real_timing_samples": 0,
+  "tool_sha256": "07385da89cc9e55fde08351f417253f5b910d88ca7a8a68d04fe5de524a83a7f",
+  "source_sha256": {
+    "tools/bench_cpu.py": "07385da89cc9e55fde08351f417253f5b910d88ca7a8a68d04fe5de524a83a7f",
+    "tools/bench_sm3_harness.c": "ddf61075e429aa8e6f3bae4f3eab63ec364d8567196a4c489165684ff4e141ee",
+    "tools/native.py": "2bd269ee8f4b091d6da86e73e5a18e6c0e091800c904329fb91f34f16a892fd9",
+    "tools/signing_budget.py": "db3fe3982dd66bbef74dedbb273e1bfd136213563d324ba5807c13871e205d1f",
+    "tools/count_model.py": "6ac77e6b63e6cf9c03818c0e7d349012e16fafc5d1624e59da960564d97fc419",
+    "reference/sm3.py": "43fb6d92afc803f4842bd06dfb00f813c7ed102f1b68d9115c3e0cd6497c2c8e"
+  },
+  "scope": "mock planning/statistics/file/resume/timeout/freeze orchestration only"
+}

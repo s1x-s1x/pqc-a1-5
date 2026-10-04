@@ -1,0 +1,86 @@
+{
+  "schema": "a15-ca-symbolic-run-v2",
+  "started_utc": "2026-10-04T07:33:12.730068+00:00",
+  "verifier_version": "Verifpal 1.4.12 - https://verifpal.com\nVerifpal is authored by Nadim Kobeissi.\nEveryone who has contributed to Verifpal is\nnamed on the Wall of Honor in the Verifpal\nDocumentation's Acknowledgments page:\n\n  https://verifpal.com/docs/acknowledgments/\n",
+  "verifier_sha256": "c6836c8b0f60e2e9a229ad1f7a5a7f02c6876c5b66730663f8803302e621cbdd",
+  "source_sha256": {
+    "tools/run_ca_models_v2.py": "d60596d5820939d5b1c95b6b27b5791b39fd157f0c6b86a35aefe01f38a593e5",
+    "tools/run_ca_models.py": "b4415149e8749a69a68531562eefaf6b5dcceaf34d63d01d115a9d824779d19e",
+    "base_tls/verification/ca_models_v2/control_all_ca_leaked.vp": "66469f0b4ee89ae9d18da6bcba1be53ce57ad1062739d00230236c0b45503082",
+    "base_tls/verification/ca_models_v2/control_alt_disabled.vp": "7f6910052e0cb5c6f9e8756f29b02b3d47ed85a6362469713bdd3300755c137f",
+    "base_tls/verification/ca_models_v2/control_both_online_leaked.vp": "5131bd7351c4dca21b04851f8e5bd909c0a1c6b9dfd49576e27586495d89c3f6",
+    "base_tls/verification/ca_models_v2/M1_all_classical.vp": "33a3f6f85c59025c2ca1bb05ef8fe12285e9a8c41f639bc761277ee388b6d1ad",
+    "base_tls/verification/ca_models_v2/M1_ca_leaked.vp": "abb16ac99690d245013c4c32984a764e9efe6121d20e6872c342a5c0fd6d7485",
+    "base_tls/verification/ca_models_v2/M1_honest.vp": "08f7b2b149b9547793c71d8c29440df0bc93b5d5954f0fb2d95b667eb9761726",
+    "base_tls/verification/ca_models_v2/M2_all_classical.vp": "ada6405f153d98b811109408b138607356f249e65e76bfa7958e370fe62addf8",
+    "base_tls/verification/ca_models_v2/M2_ca_leaked.vp": "7d7637e132601be4609e5b9cbaf949faab618f73510921ea21b7d505c25eb372",
+    "base_tls/verification/ca_models_v2/M2_dual_all_classical.vp": "778c7748dd709872380bb34c2ccfa53cdfab6cdb36589432f1b86a8617a745f1",
+    "base_tls/verification/ca_models_v2/M2_honest.vp": "2d025d1acb392916b5702223b15fed51f8871bbadbb35afbba4378f0f9915d47",
+    "base_tls/verification/ca_models_v2/queries.json": "8fb449eeadc4f82f5eb906ed76f919d9a463d84f23247c779d802b6ee14a63ae",
+    "base_tls/verification/ca_models_v2/replay_reusable_certificate.vp": "7d6f4d41898e0b54d82f420e555c01cbfb50a16718b332631198b232d3cb3fac"
+  },
+  "source_archive_sha256": "1cc23a9a14881f0e2cf2b65faa073142f827d4323226c2b7dbde6ea0f2d6f066",
+  "sessions": 1,
+  "timeout_seconds_per_invocation": 600,
+  "workers": 1,
+  "runs": [
+    {
+      "model": "M1_honest",
+      "sessions": 1,
+      "model_sha256": "08f7b2b149b9547793c71d8c29440df0bc93b5d5954f0fb2d95b667eb9761726",
+      "first": {
+        "command": [
+          "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\build\\ca-verifier-1.4.12\\verifpal.exe",
+          "verify",
+          "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\base_tls\\verification\\ca_models_v2\\M1_honest.vp",
+          "--sessions",
+          "1",
+          "--color",
+          "never",
+          "--result-code"
+        ],
+        "started_utc": "2026-10-04T07:33:12.746223+00:00",
+        "completed_utc": "2026-10-04T07:43:13.080154+00:00",
+        "returncode": null,
+        "status": "timeout",
+        "timeout_seconds": 600,
+        "raw_sha256": "387cbf20dff87e902e47042e86d61be44fd52a00ad2904cafdd5daee6fab5b1a"
+      },
+      "query_verdicts": [],
+      "result_code": null,
+      "tool_completed": false
+    },
+    {
+      "model": "M2_honest",
+      "sessions": 1,
+      "model_sha256": "2d025d1acb392916b5702223b15fed51f8871bbadbb35afbba4378f0f9915d47",
+      "first": {
+        "command": [
+          "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\build\\ca-verifier-1.4.12\\verifpal.exe",
+          "verify",
+          "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\base_tls\\verification\\ca_models_v2\\M2_honest.vp",
+          "--sessions",
+          "1",
+          "--color",
+          "never",
+          "--result-code"
+        ],
+        "started_utc": "2026-10-04T07:43:13.082731+00:00",
+        "completed_utc": "2026-10-04T07:53:13.448034+00:00",
+        "returncode": null,
+        "status": "timeout",
+        "timeout_seconds": 600,
+        "raw_sha256": "26785c74143fc8d3ec913c8b78b0cdfbb736a5858634ae4ef5b739f28472704e"
+      },
+      "query_verdicts": [],
+      "result_code": null,
+      "tool_completed": false
+    }
+  ],
+  "real_timing_samples": 0,
+  "formal_performance_started": false,
+  "scope": "Bounded ideal primitives; attack is a result. Tool timeout/error and attack verdict are separate.",
+  "completed_utc": "2026-10-04T07:53:13.450078+00:00",
+  "source_unchanged": true,
+  "tool_runs_completed": false
+}

@@ -1,0 +1,17 @@
+test_aliases_share_one_small_allowance (__main__.BudgetRepair.test_aliases_share_one_small_allowance) ... ok
+test_allowlist_and_bool_limits (__main__.BudgetRepair.test_allowlist_and_bool_limits) ... ok
+test_bad_legacy_count_fails_transactionally (__main__.BudgetRepair.test_bad_legacy_count_fails_transactionally) ... ok
+test_complete_cpu_and_cuda_check_live_receipts_before_skip (__main__.BudgetRepair.test_complete_cpu_and_cuda_check_live_receipts_before_skip) ... ok
+test_fixture_signature_reconciliation (__main__.BudgetRepair.test_fixture_signature_reconciliation) ... ok
+test_legacy_alias_migration_retains_all_charges_and_receipts (__main__.BudgetRepair.test_legacy_alias_migration_retains_all_charges_and_receipts) ... ok
+test_live_uuid_replacement_rejected (__main__.BudgetRepair.test_live_uuid_replacement_rejected) ... ok
+test_migration_uses_stricter_limit (__main__.BudgetRepair.test_migration_uses_stricter_limit) ... ok
+test_new_database_rejects_complete_and_partial_resume (__main__.BudgetRepair.test_new_database_rejects_complete_and_partial_resume) ... ok
+test_parallel_alias_calls_consume_exact_limit_even_on_failure (__main__.BudgetRepair.test_parallel_alias_calls_consume_exact_limit_even_on_failure) ... ok
+test_receipt_checks_every_bound_field (__main__.BudgetRepair.test_receipt_checks_every_bound_field) ... ok
+test_sample_digest_and_duplicate_receipt_rejected (__main__.BudgetRepair.test_sample_digest_and_duplicate_receipt_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.380s
+
+OK

@@ -1,0 +1,30 @@
+{
+  "fixed_parameters_with_existing_vector_trace": [
+    1,
+    2,
+    3,
+    101,
+    102,
+    103,
+    201
+  ],
+  "all_existing_vector_roots_match": true,
+  "prediction_rows": 35,
+  "current_measured_pids": [
+    2,
+    102,
+    201
+  ],
+  "missing_measured_pids": [
+    1,
+    3,
+    101,
+    103
+  ],
+  "low_cost_next_step": "verify_internal for all seven replay inputs; no tree generation, same seven-field compare",
+  "small_tree_next_step": "keygen/sign pid1/101 seeded replay, no-cache versus t0 and resolved threads1/4",
+  "large_tree_next_step": "pid3/103 keygen and sign remain full native workloads; use existing vectors to avoid creating new reference vectors",
+  "shortcut_boundary": "signature reuse supplies exact S_i for model but does not measure native sign/keygen counts",
+  "counts_build_scope": "global atomic counters need exclusive sequential operation reset/read",
+  "final": false
+}

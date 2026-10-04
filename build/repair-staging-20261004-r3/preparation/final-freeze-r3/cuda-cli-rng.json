@@ -1,0 +1,114 @@
+{
+  "schema": "a15-native-rng-v1",
+  "timestamp_utc": "2026-10-04T11:28:39.422049+00:00",
+  "passed": true,
+  "results": [
+    {
+      "case_id": "rng-keygen-one",
+      "result": {
+        "command": "keygen",
+        "pid": 201,
+        "backend_requested": "cuda",
+        "backend_selected": 5,
+        "threads_requested": 1,
+        "library_sha256": "03ccb1e084c38a8c56cd4af6500d05f6a150dbce5778fe9df1f67c3d9eeca322",
+        "pk_sha256": "387274fb503d2b63fcd28bd9c67a6aeeb1753bc1b23fe6fe70e41d93759b6ebe",
+        "sk_sha256": "b659b61ed39b436965d05d077eeb25280fe3a878834ed6c0fb84bebb2e0893d8",
+        "pk_bytes": 32,
+        "sk_bytes": 64,
+        "signature_bytes": 2320,
+        "fixture_seeded": false
+      },
+      "passed": true
+    },
+    {
+      "case_id": "rng-keygen-two",
+      "result": {
+        "command": "keygen",
+        "pid": 201,
+        "backend_requested": "cuda",
+        "backend_selected": 5,
+        "threads_requested": 1,
+        "library_sha256": "03ccb1e084c38a8c56cd4af6500d05f6a150dbce5778fe9df1f67c3d9eeca322",
+        "pk_sha256": "ebe00fd7d9f04dedf7b618fed626ec064a45e0c4b475f792cfb31896cb7bb03c",
+        "sk_sha256": "72c142b831009849c27de1c63d9b66d869135311ce105aa34eb862fc1fa39ec6",
+        "pk_bytes": 32,
+        "sk_bytes": 64,
+        "signature_bytes": 2320,
+        "fixture_seeded": false
+      },
+      "passed": true
+    },
+    {
+      "case_id": "independent-rng-keys",
+      "passed": true,
+      "note": "operational sanity check, not a randomness quality proof"
+    },
+    {
+      "case_id": "rng-randomized-sign",
+      "result": {
+        "command": "sign",
+        "pid": 201,
+        "backend_requested": "cuda",
+        "backend_selected": 5,
+        "threads_requested": 1,
+        "library_sha256": "03ccb1e084c38a8c56cd4af6500d05f6a150dbce5778fe9df1f67c3d9eeca322",
+        "signature_bytes": 2320,
+        "signature_sha256": "743ccdeb160e10c2654a31a802b120e9bf93cf3a53b40c5e56b2b4271d9e9cc7",
+        "budget_receipt": "3f7855f666154e8a8537fe020123a02b",
+        "ledger_uuid": "cb8c64a8dcaf414793a7662f7956b404",
+        "budget_evidence": {
+          "ledger_uuid": "cb8c64a8dcaf414793a7662f7956b404",
+          "receipt": "3f7855f666154e8a8537fe020123a02b",
+          "key_id": "f28fba9ece2476451d7b975d4ed0988c90512d347a12bfc37653f7809c9167de",
+          "algorithm": "slh-dsa-sm3-toy",
+          "public_key_sha256": "387274fb503d2b63fcd28bd9c67a6aeeb1753bc1b23fe6fe70e41d93759b6ebe",
+          "message_sha256": "8093492f73660fd668353dae9eed9992f5557528b488017af7a57427e7865f0c",
+          "status": "committed",
+          "signature_sha256": "743ccdeb160e10c2654a31a802b120e9bf93cf3a53b40c5e56b2b4271d9e9cc7"
+        },
+        "mode": "pure"
+      },
+      "passed": true
+    },
+    {
+      "case_id": "rng-verify",
+      "result": {
+        "command": "verify",
+        "pid": 201,
+        "backend_requested": "cuda",
+        "backend_selected": 5,
+        "threads_requested": 1,
+        "library_sha256": "03ccb1e084c38a8c56cd4af6500d05f6a150dbce5778fe9df1f67c3d9eeca322",
+        "valid": true
+      },
+      "passed": true
+    },
+    {
+      "case_id": "budget",
+      "passed": true,
+      "status": [
+        {
+          "key_id": "f28fba9ece2476451d7b975d4ed0988c90512d347a12bfc37653f7809c9167de",
+          "algorithm": "slh-dsa-sm3-toy",
+          "limit": 18446744073709551616,
+          "used": 1,
+          "remaining": 18446744073709551615,
+          "states": {
+            "committed": 1
+          },
+          "count_reconciled": true
+        }
+      ]
+    }
+  ],
+  "library_sha256": "03ccb1e084c38a8c56cd4af6500d05f6a150dbce5778fe9df1f67c3d9eeca322",
+  "backend_requested": "cuda",
+  "sources_sha256": {
+    "tools/check_rng_native.py": "6e67fa5f28c875142ee50538304f0f6c5ab95e430e0af56fdd18528f89e0ab5d",
+    "tools/cli.py": "80fa717e3ddc369f76dc89e6547272c1fbbd99c7d84840e837259965621349e3",
+    "tools/native.py": "2bd269ee8f4b091d6da86e73e5a18e6c0e091800c904329fb91f34f16a892fd9"
+  },
+  "formal_performance_started": false,
+  "duration_measured": false
+}

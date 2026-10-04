@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "grid_id": "limited-use-analytic-grid-v1",
+  "n_values": [
+    16
+  ],
+  "h_values": [
+    20,
+    22,
+    24,
+    26,
+    28,
+    30,
+    32
+  ],
+  "d_values": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "a_values": [
+    8,
+    10,
+    12,
+    14,
+    16,
+    18,
+    20,
+    22,
+    24
+  ],
+  "k_values": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18,
+    20,
+    22,
+    24,
+    26,
+    28,
+    30,
+    32,
+    33,
+    34
+  ],
+  "lgw_values": [
+    2,
+    3,
+    4
+  ],
+  "q": "16777216",
+  "FORS_term_min_exponent": 128,
+  "precision_decimal_digits": 100,
+  "relative_tail": "1e-40",
+  "message_length_internal": 64,
+  "cache_level_rule": "min(12,hp) top-layer only",
+  "constraints": [
+    "h divisible by d",
+    "hp<=24",
+    "h-hp<=64",
+    "k<=35",
+    "a<=24",
+    "k*2^a<=2^32",
+    "ceil(8n/lgw)+floor(log_w(len1*(w-1)))+1<=68",
+    "m=ceil(k*a/8)+ceil((h-hp)/8)+ceil(hp/8)<=49"
+  ],
+  "primary_pareto_minimize": [
+    "signature_bytes",
+    "expected_sign_primitive_calls_no_cache"
+  ],
+  "secondary_pareto_minimize": [
+    "signature_bytes",
+    "expected_sign_primitive_calls_t12"
+  ],
+  "secondary_cache_storage_constraint": "none; each row reports different storage",
+  "screening_scope": "FORS target-coverage term only; does not certify overall security or NIST category",
+  "candidate_status": "analytical candidate; not implemented except exact matches in the fixed C pid table",
+  "lgw3_encoding": "ceil length; final message digit zero-padded on the right (2 data bits then 1 zero bit)",
+  "no_global_optimality_claim": true,
+  "configuration_sha256": "9ad023b534069b67b3dc717373ded69f18ea176011f698dfc53566d7ee2f4a13"
+}

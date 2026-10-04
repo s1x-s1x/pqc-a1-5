@@ -1,0 +1,71 @@
+ Verifpal * Verification initiated for 'control_both_online_leaked.vp' at 03:29:56 PM.
+     Info . Attacker is configured as active.
+     Info . Running at phase 0.
+     FAIL x authentication? Server -> Client: onlinesignature[precondition[Client -> Server: apprecord]] (Analysis 17)
+     FAIL x confidentiality? applicationmessage[precondition[Client -> Server: apprecord]] (Analysis 17)
+
+--------------------------------------------------
+ Verifpal * Verification completed for 'control_both_online_leaked.vp' at 03:33:36 PM in 220.27s.
+
+     PASS + authentication? Intermediate -> Client: leaftbs[precondition[Client -> Server: apprecord]]  [search exhausted at 1 session]
+     FAIL x authentication? Server -> Client: onlinesignature[precondition[Client -> Server: apprecord]]
+            Attack trace:
+            | 1. Attacker constructs PUBKEY(nil).
+            | 2. Attacker observes clientkempk on the wire.
+            | 3. Attacker constructs KEM_ENCAP(clientkempk, nil)|2.
+            | 4. Attacker observes clientshare on the wire.
+            | 5. Attacker constructs DH_KEX(clientshare, nil).
+            | 6. Attacker constructs KEM_ENCAP(clientkempk, nil)|1.
+            | 7. Attacker constructs CONCAT(DH_KEX(clientshare, nil), KEM_ENCAP(clientkempk, nil)|1).
+            | 8. Attacker constructs HKDF(nil, CONCAT(DH_KEX(clientshare, nil), KEM_ENCAP(clientkempk, nil)|1), hslabel)|1.
+            | 9. Attacker constructs HKDF(nil, HKDF(nil, CONCAT(DH_KEX(clientshare, nil), KEM_ENCAP(clientkempk, nil)|1), hslabel)|1, finishedlabel)|1.
+            | 10. Attacker observes clientrandom on the wire.
+            | 11. During Rootca's run (phase 0), attacker constructs clienthello.
+            | 12. Attacker constructs CONCAT(nil, PUBKEY(nil), KEM_ENCAP(clientkempk, nil)|2).
+            | 13. Attacker observes leaftbs on the wire.
+            | 14. Attacker observes leafsig on the wire.
+            | 15. Attacker observes leafaltsig on the wire.
+            | 16. During Rootca's run (phase 0), attacker constructs certificatetranscript.
+            | 17. Attacker constructs HASH(clienthello, CONCAT(nil, PUBKEY(nil), KEM_ENCAP(clientkempk, nil)|2), certificatetranscript, onlinealgorithms).
+            | 18. Attacker constructs HASH(HASH(clienthello, CONCAT(nil, PUBKEY(nil), KEM_ENCAP(clientkempk, nil)|2), certificatetranscript, onlinealgorithms), nil, nil).
+            | 19. Attacker constructs MAC(HKDF(nil, HKDF(nil, CONCAT(DH_KEX(clientshare, nil), KEM_ENCAP(clientkempk, nil)|1), hslabel)|1, finishedlabel)|1, HASH(HASH(clienthello, CONCAT(nil, PUBKEY(nil), KEM_ENCAP(clientkempk, nil)|2), certificatetranscript, onlinealgorithms), nil, nil)).
+            | 20. Attacker replaces serverrandom, servershare, kemciphertext, onlinesignature, onlinealtsignature, serverfinished (sent by Server to Client) with nil, PUBKEY(nil), KEM_ENCAP(clientkempk, nil)|2, nil, nil, MAC(HKDF(nil, HKDF(nil, CONCAT(DH_KEX(clientshare, nil), KEM_ENCAP(clientkempk, nil)|1), hslabel)|1, finishedlabel)|1, HASH(HASH(clienthello, CONCAT(nil, PUBKEY(nil), KEM_ENCAP(clientkempk, nil)|2), certificatetranscript, onlinealgorithms), nil, nil)). (servershare was PUBKEY(serverephemeral); kemciphertext was KEM_ENCAP(clientkempk, encapsulationrandom)|2; onlinesignature was SIGN(onlineclassical, cvserver); onlinealtsignature was SIGN(onlinealternative, cvserver); serverfinished was MAC(finishedkey, HASH(transcriptserver, onlinesignature, onlinealtsignature)))
+            | 21. Client's SIGNVERIF(receivedonlineclassicalpk, cvclient, onlinesignature)? does not halt: Attacker holds onlineclassical, so it can supply a value this check accepts.
+            | 22. Client's SIGNVERIF(receivedonlinealtpk, cvclient, onlinealtsignature)? does not halt: Attacker holds onlinealternative, so it can supply a value this check accepts.
+            | 23. Client's ASSERT(MAC(HKDF(nil, HKDF(nil, CONCAT(DH_KEX(PUBKEY(nil), clientephemeral), KEM_ENCAP(clientkempk, nil)|1), hslabel)|1, finishedlabel)|1, HASH(HASH(clienthello, CONCAT(nil, PUBKEY(nil), KEM_ENCAP(clientkempk, nil)|2), certificatetranscript, onlinealgorithms), nil, nil)), MAC(HKDF(nil, HKDF(nil, CONCAT(DH_KEX(PUBKEY(nil), clientephemeral), KEM_DECAP(clientkemsecret, KEM_ENCAP(clientkempk, nil)|2)), hslabel)|1, finishedlabel)|1, HASH(HASH(clienthello, CONCAT(nil, PUBKEY(nil), KEM_ENCAP(clientkempk, nil)|2), certificatetranscript, onlinealgorithms), nil, nil)))? passes — the attacker controls one of its inputs.
+            | 24. Attacker observes onlinesignature on the wire.
+            > onlinesignature (nil), sent by Attacker and not by Server, is successfully used in SIGNVERIF(receivedonlineclassicalpk, cvclient, onlinesignature)? within Client's state.
+            ! Client still sends apprecord to Server, so the failure counts.
+     PASS + freshness? transcriptclient  [search exhausted at 1 session]
+     FAIL x confidentiality? applicationmessage[precondition[Client -> Server: apprecord]]
+            Attack trace:
+            | 1. During Client's run (phase 0), attacker constructs PUBKEY(nil).
+            | 2. Attacker observes clientkempk on the wire.
+            | 3. Attacker constructs KEM_ENCAP(clientkempk, nil)|2.
+            | 4. Attacker observes clientshare on the wire.
+            | 5. Attacker constructs DH_KEX(clientshare, nil).
+            | 6. Attacker constructs KEM_ENCAP(clientkempk, nil)|1.
+            | 7. Attacker constructs CONCAT(DH_KEX(clientshare, nil), KEM_ENCAP(clientkempk, nil)|1).
+            | 8. Attacker constructs HKDF(nil, CONCAT(DH_KEX(clientshare, nil), KEM_ENCAP(clientkempk, nil)|1), hslabel)|1.
+            | 9. During Client's run (phase 0), attacker constructs HKDF(nil, HKDF(nil, CONCAT(DH_KEX(clientshare, nil), KEM_ENCAP(clientkempk, nil)|1), hslabel)|1, finishedlabel)|1.
+            | 10. Attacker observes clientrandom on the wire.
+            | 11. During Rootca's run (phase 0), attacker constructs clienthello.
+            | 12. Attacker constructs CONCAT(nil, PUBKEY(nil), KEM_ENCAP(clientkempk, nil)|2).
+            | 13. Attacker observes leaftbs on the wire.
+            | 14. Attacker observes leafsig on the wire.
+            | 15. Attacker observes leafaltsig on the wire.
+            | 16. During Rootca's run (phase 0), attacker constructs certificatetranscript.
+            | 17. Attacker constructs HASH(clienthello, CONCAT(nil, PUBKEY(nil), KEM_ENCAP(clientkempk, nil)|2), certificatetranscript, onlinealgorithms).
+            | 18. During Client's run (phase 0), attacker constructs HASH(HASH(clienthello, CONCAT(nil, PUBKEY(nil), KEM_ENCAP(clientkempk, nil)|2), certificatetranscript, onlinealgorithms), nil, nil).
+            | 19. During Client's run (phase 0), attacker constructs MAC(HKDF(nil, HKDF(nil, CONCAT(DH_KEX(clientshare, nil), KEM_ENCAP(clientkempk, nil)|1), hslabel)|1, finishedlabel)|1, HASH(HASH(clienthello, CONCAT(nil, PUBKEY(nil), KEM_ENCAP(clientkempk, nil)|2), certificatetranscript, onlinealgorithms), nil, nil)).
+            | 20. Attacker replaces serverrandom, servershare, kemciphertext, onlinesignature, onlinealtsignature, serverfinished (sent by Server to Client) with nil, PUBKEY(nil), KEM_ENCAP(clientkempk, nil)|2, nil, nil, MAC(HKDF(nil, HKDF(nil, CONCAT(DH_KEX(clientshare, nil), KEM_ENCAP(clientkempk, nil)|1), hslabel)|1, finishedlabel)|1, HASH(HASH(clienthello, CONCAT(nil, PUBKEY(nil), KEM_ENCAP(clientkempk, nil)|2), certificatetranscript, onlinealgorithms), nil, nil)). (servershare was PUBKEY(serverephemeral); kemciphertext was KEM_ENCAP(clientkempk, encapsulationrandom)|2; onlinesignature was SIGN(onlineclassical, cvserver); onlinealtsignature was SIGN(onlinealternative, cvserver); serverfinished was MAC(finishedkey, HASH(transcriptserver, onlinesignature, onlinealtsignature)))
+            | 21. During Client's run (phase 0), attacker observes AEAD_ENC(HKDF(nil, HKDF(nil, CONCAT(DH_KEX(clientshare, nil), KEM_ENCAP(clientkempk, nil)|1), hslabel)|1, applabel)|1, nil, applicationmessage, HASH(clienthello, CONCAT(nil, PUBKEY(nil), KEM_ENCAP(clientkempk, nil)|2), certificatetranscript, onlinealgorithms)) on the wire.
+            | 22. Attacker constructs HKDF(nil, HKDF(nil, CONCAT(DH_KEX(clientshare, nil), KEM_ENCAP(clientkempk, nil)|1), hslabel)|1, applabel)|1.
+            | 23. During Client's run (phase 0), attacker opens AEAD_ENC(HKDF(nil, HKDF(nil, CONCAT(DH_KEX(clientshare, nil), KEM_ENCAP(clientkempk, nil)|1), hslabel)|1, applabel)|1, nil, applicationmessage, HASH(clienthello, CONCAT(nil, PUBKEY(nil), KEM_ENCAP(clientkempk, nil)|2), certificatetranscript, onlinealgorithms)) with HKDF(nil, HKDF(nil, CONCAT(DH_KEX(clientshare, nil), KEM_ENCAP(clientkempk, nil)|1), hslabel)|1, applabel)|1, nil, obtaining applicationmessage.
+            > applicationmessage (applicationmessage) is obtained by Attacker.
+            ! Client still sends apprecord to Server, so the failure counts.
+
+--------------------------------------------------
+     FAIL x 2 of 4 queries failed.
+ Verifpal * Thank you for using Verifpal.
+a0a1f0c1

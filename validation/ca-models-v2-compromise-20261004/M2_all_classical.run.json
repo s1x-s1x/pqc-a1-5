@@ -1,0 +1,26 @@
+{
+  "model": "M2_all_classical",
+  "sessions": 1,
+  "model_sha256": "ada6405f153d98b811109408b138607356f249e65e76bfa7958e370fe62addf8",
+  "first": {
+    "command": [
+      "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\build\\ca-verifier-1.4.12\\verifpal.exe",
+      "verify",
+      "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\base_tls\\verification\\ca_models_v2\\M2_all_classical.vp",
+      "--sessions",
+      "1",
+      "--color",
+      "never",
+      "--result-code"
+    ],
+    "started_utc": "2026-10-04T07:34:24.128288+00:00",
+    "completed_utc": "2026-10-04T07:38:24.545070+00:00",
+    "returncode": null,
+    "status": "timeout",
+    "timeout_seconds": 240,
+    "raw_sha256": "f057f5dc5ef615f66e46469317be06dd6a24f5223a075d3317b8599101e7ea5c"
+  },
+  "query_verdicts": [],
+  "result_code": null,
+  "tool_completed": false
+}

@@ -1,0 +1,159 @@
+mkdir -p ../build/native-repair-r2/counters
+rm -f ../build/native-repair-r2/counters/.a15-config-*
+touch ../build/native-repair-r2/counters/.a15-config-242ede072258ff709130491ee91e1eff52bbe0d7d9005af37eea654fec9166b8
+mkdir -p ../build/native-repair-r2/counters
+gcc -std=c11 -Wall -Wextra -Wno-misleading-indentation -fPIC -fopenmp -Iinclude -Isrc -I../third_party/slhdsa-c -DSLH_COUNTERS -O3 -DSLH_RELEASE_BUILD -shared src/engine.c src/sm3.c src/sm3x8.c ../third_party/slhdsa-c/sha2_256.c ../third_party/slhdsa-c/sha2_512.c ../third_party/slhdsa-c/sha3_api.c ../third_party/slhdsa-c/sha3_f1600.c src/sm3_cuda_stub.c   -o ../build/native-repair-r2/counters/libslhdsa_sm3.so
+mkdir -p ../build/native-repair-r2/counters
+gcc -std=c11 -Wall -Wextra -Wno-misleading-indentation -fPIC -fopenmp -Iinclude -Isrc -I../third_party/slhdsa-c -DSLH_COUNTERS -O3 src/engine.c src/sm3.c src/sm3x8.c ../third_party/slhdsa-c/sha2_256.c ../third_party/slhdsa-c/sha2_512.c ../third_party/slhdsa-c/sha3_api.c ../third_party/slhdsa-c/sha3_f1600.c src/sm3_cuda_stub.c tests/test_review.c   -o ../build/native-repair-r2/counters/test_review
+../build/native-repair-r2/counters/test_review ../build/native-repair-r2/counters
+toy cache t=0 size=16480 round-trip/signature-byte-equivalence PASS
+toy cache t=1 size=8288 round-trip/signature-byte-equivalence PASS
+toy cache t=2 size=4192 round-trip/signature-byte-equivalence PASS
+toy cache t=3 size=2144 round-trip/signature-byte-equivalence PASS
+toy cache t=4 size=1120 round-trip/signature-byte-equivalence PASS
+toy cache t=5 size=608 round-trip/signature-byte-equivalence PASS
+toy cache t=6 size=352 round-trip/signature-byte-equivalence PASS
+toy cache t=7 size=224 round-trip/signature-byte-equivalence PASS
+toy cache t=8 size=160 round-trip/signature-byte-equivalence PASS
+toy cache t=9 size=128 round-trip/signature-byte-equivalence PASS
+toy cache t=10 size=112 round-trip/signature-byte-equivalence PASS
+cache malformed offset 0 old-cache-preserved PASS
+cache malformed offset 8 old-cache-preserved PASS
+cache malformed offset 12 old-cache-preserved PASS
+cache malformed offset 16 old-cache-preserved PASS
+cache malformed offset 20 old-cache-preserved PASS
+cache malformed offset 24 old-cache-preserved PASS
+cache malformed offset 28 old-cache-preserved PASS
+cache malformed offset 32 old-cache-preserved PASS
+cache malformed offset 48 old-cache-preserved PASS
+cache malformed offset 64 old-cache-preserved PASS
+cache changed layer node + recomputed SM3 checksum rejected by root PASS
+cache changed claimed root + matching supplied key + recomputed checksum rejected by tree root PASS
+cache both public-key halves bound; old-cache-preserved PASS
+cache cross-pid + recomputed checksum rejected PASS
+cache truncation/extra-byte rejected old-cache-preserved PASS
+cache large t avoids underflow/overshift PASS
+keygen threads=1 pk/sk byte-equivalence PASS
+keygen threads=8 pk/sk byte-equivalence PASS
+signature key binding/cached/loaded/cross-key threads=1 bytes=2320 PASS
+signature key binding/cached/loaded/cross-key threads=2 bytes=2320 PASS
+signature key binding/cached/loaded/cross-key threads=4 bytes=2320 PASS
+signature key binding/cached/loaded/cross-key threads=8 bytes=2320 PASS
+cross-key cache fallback and malformed-secret self-check PASS
+WOTS z=8 start=256 target=256 threads=1 root/auth/root-only/guards PASS
+WOTS z=8 start=256 target=256 threads=2 root/auth/root-only/guards PASS
+WOTS z=8 start=256 target=256 threads=4 root/auth/root-only/guards PASS
+WOTS z=8 start=256 target=256 threads=8 root/auth/root-only/guards PASS
+WOTS z=8 start=256 target=256 threads=32 root/auth/root-only/guards PASS
+WOTS z=8 start=256 target=511 threads=1 root/auth/root-only/guards PASS
+WOTS z=8 start=256 target=511 threads=2 root/auth/root-only/guards PASS
+WOTS z=8 start=256 target=511 threads=4 root/auth/root-only/guards PASS
+WOTS z=8 start=256 target=511 threads=8 root/auth/root-only/guards PASS
+WOTS z=8 start=256 target=511 threads=32 root/auth/root-only/guards PASS
+WOTS z=5 start=32 target=63 threads=1 root/auth/root-only/guards PASS
+WOTS z=5 start=32 target=63 threads=2 root/auth/root-only/guards PASS
+WOTS z=5 start=32 target=63 threads=4 root/auth/root-only/guards PASS
+WOTS z=5 start=32 target=63 threads=8 root/auth/root-only/guards PASS
+WOTS z=5 start=32 target=63 threads=32 root/auth/root-only/guards PASS
+FORS z=8 start=5376 target=5376 threads=1 root/auth/root-only/guards PASS
+FORS z=8 start=5376 target=5376 threads=2 root/auth/root-only/guards PASS
+FORS z=8 start=5376 target=5376 threads=4 root/auth/root-only/guards PASS
+FORS z=8 start=5376 target=5376 threads=8 root/auth/root-only/guards PASS
+FORS z=8 start=5376 target=5376 threads=32 root/auth/root-only/guards PASS
+FORS z=8 start=5376 target=5631 threads=1 root/auth/root-only/guards PASS
+FORS z=8 start=5376 target=5631 threads=2 root/auth/root-only/guards PASS
+FORS z=8 start=5376 target=5631 threads=4 root/auth/root-only/guards PASS
+FORS z=8 start=5376 target=5631 threads=8 root/auth/root-only/guards PASS
+FORS z=8 start=5376 target=5631 threads=32 root/auth/root-only/guards PASS
+FORS z=5 start=5152 target=5183 threads=1 root/auth/root-only/guards PASS
+FORS z=5 start=5152 target=5183 threads=2 root/auth/root-only/guards PASS
+FORS z=5 start=5152 target=5183 threads=4 root/auth/root-only/guards PASS
+FORS z=5 start=5152 target=5183 threads=8 root/auth/root-only/guards PASS
+FORS z=5 start=5152 target=5183 threads=32 root/auth/root-only/guards PASS
+WOTS z=0 start=1023 target=1023 threads=1 root/auth/root-only/guards PASS
+WOTS z=0 start=1023 target=1023 threads=2 root/auth/root-only/guards PASS
+WOTS z=0 start=1023 target=1023 threads=4 root/auth/root-only/guards PASS
+WOTS z=0 start=1023 target=1023 threads=8 root/auth/root-only/guards PASS
+WOTS z=0 start=1023 target=1023 threads=32 root/auth/root-only/guards PASS
+WOTS z=1 start=1022 target=1023 threads=1 root/auth/root-only/guards PASS
+WOTS z=1 start=1022 target=1023 threads=2 root/auth/root-only/guards PASS
+WOTS z=1 start=1022 target=1023 threads=4 root/auth/root-only/guards PASS
+WOTS z=1 start=1022 target=1023 threads=8 root/auth/root-only/guards PASS
+WOTS z=1 start=1022 target=1023 threads=32 root/auth/root-only/guards PASS
+WOTS z=4 start=1008 target=1023 threads=1 root/auth/root-only/guards PASS
+WOTS z=4 start=1008 target=1023 threads=2 root/auth/root-only/guards PASS
+WOTS z=4 start=1008 target=1023 threads=4 root/auth/root-only/guards PASS
+WOTS z=4 start=1008 target=1023 threads=8 root/auth/root-only/guards PASS
+WOTS z=4 start=1008 target=1023 threads=32 root/auth/root-only/guards PASS
+WOTS z=10 start=0 target=1023 threads=1 root/auth/root-only/guards PASS
+WOTS z=10 start=0 target=1023 threads=2 root/auth/root-only/guards PASS
+WOTS z=10 start=0 target=1023 threads=4 root/auth/root-only/guards PASS
+WOTS z=10 start=0 target=1023 threads=8 root/auth/root-only/guards PASS
+WOTS z=10 start=0 target=1023 threads=32 root/auth/root-only/guards PASS
+FORS z=0 start=6143 target=6143 threads=1 root/auth/root-only/guards PASS
+FORS z=0 start=6143 target=6143 threads=2 root/auth/root-only/guards PASS
+FORS z=0 start=6143 target=6143 threads=4 root/auth/root-only/guards PASS
+FORS z=0 start=6143 target=6143 threads=8 root/auth/root-only/guards PASS
+FORS z=0 start=6143 target=6143 threads=32 root/auth/root-only/guards PASS
+FORS z=1 start=6142 target=6143 threads=1 root/auth/root-only/guards PASS
+FORS z=1 start=6142 target=6143 threads=2 root/auth/root-only/guards PASS
+FORS z=1 start=6142 target=6143 threads=4 root/auth/root-only/guards PASS
+FORS z=1 start=6142 target=6143 threads=8 root/auth/root-only/guards PASS
+FORS z=1 start=6142 target=6143 threads=32 root/auth/root-only/guards PASS
+FORS z=4 start=6128 target=6143 threads=1 root/auth/root-only/guards PASS
+FORS z=4 start=6128 target=6143 threads=2 root/auth/root-only/guards PASS
+FORS z=4 start=6128 target=6143 threads=4 root/auth/root-only/guards PASS
+FORS z=4 start=6128 target=6143 threads=8 root/auth/root-only/guards PASS
+FORS z=4 start=6128 target=6143 threads=32 root/auth/root-only/guards PASS
+FORS z=10 start=5120 target=6143 threads=1 root/auth/root-only/guards PASS
+FORS z=10 start=5120 target=6143 threads=2 root/auth/root-only/guards PASS
+FORS z=10 start=5120 target=6143 threads=4 root/auth/root-only/guards PASS
+FORS z=10 start=5120 target=6143 threads=8 root/auth/root-only/guards PASS
+FORS z=10 start=5120 target=6143 threads=32 root/auth/root-only/guards PASS
+subtree invalid inputs leave outputs untouched PASS
+exact counters sign prf=75782 f=214935 h=7151 t=1024 compress=316293; WOTS steps=99 verify f=111 compress=206 PASS
+native extended review PASS
+mkdir -p ../build/native-repair-r2/counters
+gcc -std=c11 -Wall -Wextra -Wno-misleading-indentation -fPIC -fopenmp -Iinclude -Isrc -I../third_party/slhdsa-c -DSLH_COUNTERS -O3 src/sm3.c src/sm3x8.c ../third_party/slhdsa-c/sha2_256.c ../third_party/slhdsa-c/sha2_512.c ../third_party/slhdsa-c/sha3_api.c ../third_party/slhdsa-c/sha3_f1600.c src/sm3_cuda_stub.c tests/test_repair.c   -o ../build/native-repair-r2/counters/test_repair
+../build/native-repair-r2/counters/test_repair ../build/native-repair-r2/counters/repair.cache
+repair midstate full256/boundaries/thread-copy: 224 comparisons PASS
+repair capacities/private-publication/reordered-tasks/changing-cache/failure-wipes: PASS; 169647 observed wipes
+mkdir -p ../build/native-repair-r2/counters
+gcc -std=c11 -Wall -Wextra -Wno-misleading-indentation -fPIC -fopenmp -Iinclude -Isrc -I../third_party/slhdsa-c -DSLH_COUNTERS -O3 src/engine.c src/sm3.c src/sm3x8.c ../third_party/slhdsa-c/sha2_256.c ../third_party/slhdsa-c/sha2_512.c ../third_party/slhdsa-c/sha3_api.c ../third_party/slhdsa-c/sha3_f1600.c src/sm3_cuda_stub.c tests/test_avx2.c   -o ../build/native-repair-r2/counters/test_avx2
+A15_TEST_CACHE_DIR=../build/native-repair-r2/counters ../build/native-repair-r2/counters/test_avx2
+SM3 AVX2 seeded PRF/F/H + arbitrary compression, unaligned buffers: 4096 lane comparisons PASS
+runtime CPU/OS detection; SHA2 REF; unavailable explicit backend rejection PASS
+FORS/WOTS AVX2 absolute addresses/heights/chunking/auth/root-only/guards/counters: 342 comparisons PASS
+pid=201 AVX2 full signature/ref/counters/self-check/threads PASS
+pid=1 AVX2 full signature/ref/counters/self-check/threads PASS
+pid=2 AVX2 full signature/ref/counters/self-check/threads PASS
+AVX2 complete signing comparisons: 12 PASS (128-24 uses bounded subtree tests only)
+WOTS AVX2 keygen/cache-build/node-serialization/cache-load/cached signatures: 25 cache levels PASS
+AVX2 checks PASS
+mkdir -p ../build/native-repair-r2/counters
+gcc -std=c11 -Wall -Wextra -Wno-misleading-indentation -fPIC -fopenmp -Iinclude -Isrc -I../third_party/slhdsa-c -DSLH_COUNTERS -O3 src/sm3.c src/sm3x8.c ../third_party/slhdsa-c/sha2_256.c ../third_party/slhdsa-c/sha2_512.c ../third_party/slhdsa-c/sha3_api.c ../third_party/slhdsa-c/sha3_f1600.c src/sm3_cuda_stub.c tests/test_wots.c   -o ../build/native-repair-r2/counters/test_wots
+../build/native-repair-r2/counters/test_wots
+WOTS pid=201 lane masks/tails1..8/start/zero/max/divergent steps: 96 comparisons PASS
+WOTS pid=201 lgw=2 len=68 leaf/sign/T_len/recovery/auth/counters: 96 comparisons PASS
+WOTS pid=1 lane masks/tails1..8/start/zero/max/divergent steps: 96 comparisons PASS
+WOTS pid=1 lgw=4 len=35 leaf/sign/T_len/recovery/auth/counters: 96 comparisons PASS
+WOTS pid=2 lane masks/tails1..8/start/zero/max/divergent steps: 96 comparisons PASS
+WOTS pid=2 lgw=4 len=35 leaf/sign/T_len/recovery/auth/counters: 96 comparisons PASS
+WOTS pid=3 lane masks/tails1..8/start/zero/max/divergent steps: 96 comparisons PASS
+WOTS pid=3 lgw=2 len=68 leaf/sign/T_len/recovery/auth/counters: 96 comparisons PASS
+WOTS correctness PASS; no performance measured
+mkdir -p ../build/native-repair-r2/counters
+gcc -std=c11 -Wall -Wextra -Wno-misleading-indentation -fPIC -fopenmp -Iinclude -Isrc -I../third_party/slhdsa-c -DSLH_COUNTERS -O3 src/engine.c src/sm3.c src/sm3x8.c ../third_party/slhdsa-c/sha2_256.c ../third_party/slhdsa-c/sha2_512.c ../third_party/slhdsa-c/sha3_api.c ../third_party/slhdsa-c/sha3_f1600.c src/sm3_cuda_stub.c tests/test_prehash.c   -o ../build/native-repair-r2/counters/test_prehash
+../build/native-repair-r2/counters/test_prehash
+five prehash abc known answers/lengths PASS
+prehash id=1 backend=1 message/digest/DER/internal/mode/context/length/counters PASS
+prehash id=2 backend=1 message/digest/DER/internal/mode/context/length/counters PASS
+prehash id=3 backend=1 message/digest/DER/internal/mode/context/length/counters PASS
+prehash id=4 backend=1 message/digest/DER/internal/mode/context/length/counters PASS
+prehash id=5 backend=1 message/digest/DER/internal/mode/context/length/counters PASS
+prehash id=1 backend=2 message/digest/DER/internal/mode/context/length/counters PASS
+prehash id=2 backend=2 message/digest/DER/internal/mode/context/length/counters PASS
+prehash id=3 backend=2 message/digest/DER/internal/mode/context/length/counters PASS
+prehash id=4 backend=2 message/digest/DER/internal/mode/context/length/counters PASS
+prehash id=5 backend=2 message/digest/DER/internal/mode/context/length/counters PASS
+native prehash checks PASS

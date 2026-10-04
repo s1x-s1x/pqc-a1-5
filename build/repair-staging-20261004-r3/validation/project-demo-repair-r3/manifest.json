@@ -1,0 +1,31 @@
+{
+  "schema": "a15-demo-artifacts-v1",
+  "mode": "executed-fixtures",
+  "titles": [
+    "01  EXECUTED FUNCTIONAL EVIDENCE",
+    "02  P0-P4 FIXTURE HANDSHAKES",
+    "03  CERTIFICATE RECORD FRAGMENTATION",
+    "04  STRICT POLICY NEGATIVE CHECKS"
+  ],
+  "video_status": "generated",
+  "performance_samples": 0,
+  "slh_ca_signing_calls": 0,
+  "contains_private_keys": false,
+  "contains_elapsed_times": false,
+  "artifacts_sha256": {
+    "MAKE_VIDEO.txt": "a9ba8b8d8534201242107e0f8203558b9a7410cbcb6b43cdafe86698cfdd9608",
+    "captions.srt": "8f5fc365dfc961dbffd1a8fa252d40020c0829720c5a1aaecceb0cc93b17d167",
+    "evidence-demo.mp4": "2cb3dd4258dc615347771f18a9fa3b6ec9354d0caca189b321e1869a98cd1af1",
+    "evidence.json": "4d7890a8bfce43a635c40976804e96f9f4ab4422871bef7740cd624d34fccd45",
+    "slide-01.png": "706c20a33dc58de3ec893a54392ab75c01f81c05f97624471c070dc5a43e1d5f",
+    "slide-01.svg": "e2f1c02076e5c6c9711589c0a485b6b68520e36a9cd212e277eb0ac86cddcab5",
+    "slide-02.png": "83de73103bd7881c462da456773287fbdf8d9e039b1826763394253ea76de197",
+    "slide-02.svg": "03d79875f77d6d1a522df2e8abf8a1ed285ceb50b8d3256c8ff7bc8951dbf152",
+    "slide-03.png": "9eb9ce012c5f19f711cb32d21f6f7e86280dce455e45af175b655f256cf94d5a",
+    "slide-03.svg": "58b30fcb417602c4a14e4d33c86975db961ee9d40e149280d84fac08bcca8c83",
+    "slide-04.png": "da7f22d342a3302a90f9e3649edcac63523c27b9b8407de30802a7b02c3a5aef",
+    "slide-04.svg": "c22e8aad17fc365e0f25b9feed909b9081412fc89c9d76668ec64cbfef3ee47d",
+    "slides.ffconcat": "ed52ec73e95424b64d3ce99cca4a3423e524b7f7d4803954a4769da262f348e6"
+  },
+  "scope": "visualization of executed evidence; generated presentation video, not a live screen recording"
+}

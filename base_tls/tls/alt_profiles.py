@@ -26,7 +26,7 @@ def profiles(fixtures, *, handshake_signer="falcon-512", require_alt=True):
 
 
 def e1_record(profile, config):
-    """Execute a real authenticated handshake and export exact message/DER bytes.
+    """Execute an authenticated handshake and export serialized harness/DER bytes.
 
     The server-flight figure is TLS-harness wire bytes; external TCP framing,
     segmentation and initcwnd belong to the root runner's network evidence.
@@ -41,13 +41,21 @@ def e1_record(profile, config):
             extensions.append({"certificate": "leaf" if position == 0 else "intermediate",
                                "oid": identifier, "critical": critical,
                                "encoded_extension_bytes": len(ext.encoded), "value_bytes": len(value)})
-    return {"schema": "a15-E1-v1", "profile": profile, "configuration": config.describe(),
+    return {"schema": "a15-E1-v2", "profile": profile, "configuration": config.describe(),
             "passed": result.application_payload_ok and result.exporters_match,
             "handshake_bytes": result.handshake_bytes, "server_flight_bytes": result.server_bytes,
+            "handshake_message_bytes": result.plaintext_bytes,
+            "harness_record_bytes": sum(x.record_bytes for x in result.messages),
+            "harness_tcp_framed_bytes_model": sum(x.tcp_framed_bytes for x in result.messages),
+            "standard_tls_record_bytes_model": sum(x.standard_tls_model_bytes for x in result.messages),
+            "tcp_ip_bytes": None,
             "per_message": [{"name": x.name, "sender": x.sender, "plaintext_bytes": x.message_bytes,
-                             "protection_bytes": x.protection_bytes, "wire_bytes": x.total_bytes} for x in result.messages],
+                             "protection_bytes": x.protection_bytes, "wire_bytes": x.total_bytes,
+                             "harness_record_bytes": x.record_bytes, "record_count": x.record_count,
+                             "harness_tcp_framed_bytes_model": x.tcp_framed_bytes,
+                             "standard_tls_record_bytes_model": x.standard_tls_model_bytes} for x in result.messages],
             "chain_der_bytes": [len(x) for x in chain.chain_der], "chain_der_sha256": [hashlib.sha256(x).hexdigest() for x in chain.chain_der],
             "root_der_sha256": hashlib.sha256(chain.root_der).hexdigest(),
             "extensions": extensions,
             "alt_extension_bytes": sum(x["encoded_extension_bytes"] for x in extensions if x["oid"] in {"2.5.29.72", "2.5.29.73", "2.5.29.74"}),
-            "scope": "real DER certificates and authenticated in-process TLS harness; no inferred TCP/initcwnd claim"}
+            "scope": "actual DER/handshake/bare harness record bytes; TCP framing and standard TLS headers are explicit size models; TCP/IP/initcwnd unmeasured; private protocol, not standard TLS interoperability"}

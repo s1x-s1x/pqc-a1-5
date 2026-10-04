@@ -1,0 +1,167 @@
+{
+  "schema": "a15-ca-symbolic-v2-bounded-summary-v1",
+  "runs": [
+    {
+      "manifest": "validation/ca-models-v2-honest-20261004/manifest.json",
+      "manifest_sha256": "0f96a263ed12acddc9d76ea458162509ed5dc5866bb60f307a770cb0f92dd075",
+      "source_archive_sha256": "6a12ce2d11b4eb5eb1dc530008386eddf2ec16b6cfc1e23ccd75e89f1a4e5c5c",
+      "source_unchanged": true,
+      "tool_runs_completed": false,
+      "completed_utc": "2026-10-04T07:32:11.692895+00:00"
+    },
+    {
+      "manifest": "validation/ca-models-v2-compromise-20261004/manifest.json",
+      "manifest_sha256": "702c6898d2407a6901a92a74c806fc4acf93b5343274dfec521b7661d268d640",
+      "source_archive_sha256": "7df9d54359aeb1fdcc789283a7b5c9df279d1509b9aa068a83e3b22d816270ba",
+      "source_unchanged": true,
+      "tool_runs_completed": false,
+      "completed_utc": "2026-10-04T07:42:25.638113+00:00"
+    },
+    {
+      "manifest": "validation/ca-models-v2-honest-extended-20261004/manifest.json",
+      "manifest_sha256": "2eda58fe0f093e0bf0bb9ab02df674ee290e3eb739051931f8b2484e4d5bac13",
+      "source_archive_sha256": "1cc23a9a14881f0e2cf2b65faa073142f827d4323226c2b7dbde6ea0f2d6f066",
+      "source_unchanged": true,
+      "tool_runs_completed": false,
+      "completed_utc": "2026-10-04T07:53:13.450078+00:00"
+    }
+  ],
+  "invocations": [
+    {
+      "model": "M1_honest",
+      "sessions": 1,
+      "timeout_seconds": 180,
+      "status": "timeout",
+      "result_code": null,
+      "tool_completed": false,
+      "first_text": "validation/ca-models-v2-honest-20261004/M1_honest.first.txt",
+      "first_text_sha256": "41e18e56e5786e1f162fdde46927d60e00d98f5754340263dcfbcfc0add6e73a"
+    },
+    {
+      "model": "M2_honest",
+      "sessions": 1,
+      "timeout_seconds": 180,
+      "status": "timeout",
+      "result_code": null,
+      "tool_completed": false,
+      "first_text": "validation/ca-models-v2-honest-20261004/M2_honest.first.txt",
+      "first_text_sha256": "3f1c7d7f4848f175769fb580bf142f41143b94b7290ee66b198653620f751c1c"
+    },
+    {
+      "model": "replay_reusable_certificate",
+      "sessions": 2,
+      "timeout_seconds": 180,
+      "status": "completed",
+      "result_code": "a0a0f0",
+      "tool_completed": true,
+      "first_text": "validation/ca-models-v2-honest-20261004/replay_reusable_certificate.first.txt",
+      "first_text_sha256": "cd0e51414466f680ea1df13a418f2ac4366b76748ec856391546e13709c68255"
+    },
+    {
+      "model": "M1_ca_leaked",
+      "sessions": 1,
+      "timeout_seconds": 240,
+      "status": "timeout",
+      "result_code": null,
+      "tool_completed": false,
+      "first_text": "validation/ca-models-v2-compromise-20261004/M1_ca_leaked.first.txt",
+      "first_text_sha256": "ab9709b0cd2d34e2ebba3541ceac8ebd19cbe78380c9074d12355305a003ff26"
+    },
+    {
+      "model": "M2_ca_leaked",
+      "sessions": 1,
+      "timeout_seconds": 240,
+      "status": "timeout",
+      "result_code": null,
+      "tool_completed": false,
+      "first_text": "validation/ca-models-v2-compromise-20261004/M2_ca_leaked.first.txt",
+      "first_text_sha256": "fe11423e1bb21fc7dd2d55debfe478d13539e3aca98a1889c59aca08e0b1242d"
+    },
+    {
+      "model": "M2_all_classical",
+      "sessions": 1,
+      "timeout_seconds": 240,
+      "status": "timeout",
+      "result_code": null,
+      "tool_completed": false,
+      "first_text": "validation/ca-models-v2-compromise-20261004/M2_all_classical.first.txt",
+      "first_text_sha256": "f057f5dc5ef615f66e46469317be06dd6a24f5223a075d3317b8599101e7ea5c"
+    },
+    {
+      "model": "M2_dual_all_classical",
+      "sessions": 1,
+      "timeout_seconds": 240,
+      "status": "timeout",
+      "result_code": null,
+      "tool_completed": false,
+      "first_text": "validation/ca-models-v2-compromise-20261004/M2_dual_all_classical.first.txt",
+      "first_text_sha256": "ce44694448640937477bebc16c2d8c6ec58d3a0adee3ef70bd9422692cfb8872"
+    },
+    {
+      "model": "control_all_ca_leaked",
+      "sessions": 1,
+      "timeout_seconds": 240,
+      "status": "timeout",
+      "result_code": null,
+      "tool_completed": false,
+      "first_text": "validation/ca-models-v2-compromise-20261004/control_all_ca_leaked.first.txt",
+      "first_text_sha256": "667c7ab77037be6a990dcfce33411a087e0ea2c034f5911ac16adca11f20ffaf"
+    },
+    {
+      "model": "control_both_online_leaked",
+      "sessions": 1,
+      "timeout_seconds": 240,
+      "status": "timeout",
+      "result_code": null,
+      "tool_completed": false,
+      "first_text": "validation/ca-models-v2-compromise-20261004/control_both_online_leaked.first.txt",
+      "first_text_sha256": "4c8d8603d6a88b3ddaa57bd1290e046bd34187e1008f29ea00bd423d96c4d77e"
+    },
+    {
+      "model": "M1_honest",
+      "sessions": 1,
+      "timeout_seconds": 600,
+      "status": "timeout",
+      "result_code": null,
+      "tool_completed": false,
+      "first_text": "validation/ca-models-v2-honest-extended-20261004/M1_honest.first.txt",
+      "first_text_sha256": "387cbf20dff87e902e47042e86d61be44fd52a00ad2904cafdd5daee6fab5b1a"
+    },
+    {
+      "model": "M2_honest",
+      "sessions": 1,
+      "timeout_seconds": 600,
+      "status": "timeout",
+      "result_code": null,
+      "tool_completed": false,
+      "first_text": "validation/ca-models-v2-honest-extended-20261004/M2_honest.first.txt",
+      "first_text_sha256": "26785c74143fc8d3ec913c8b78b0cdfbb736a5858634ae4ef5b739f28472704e"
+    }
+  ],
+  "full_scenarios_attempted": 8,
+  "full_model_invocations": 10,
+  "full_model_completed_verdicts": 0,
+  "full_model_timeouts": 10,
+  "replay_control": {
+    "model": "replay_reusable_certificate",
+    "sessions": 2,
+    "result_code": "a0a0f0",
+    "queries": 3,
+    "attacks": 0,
+    "search_exhausted": true
+  },
+  "generated_not_run": [
+    "M1_all_classical",
+    "control_alt_disabled"
+  ],
+  "security_validation_complete": false,
+  "remaining": "Complete bounded searches for full CA/TLS models; replay control is a local example, not full-model evidence.",
+  "formal_performance_started": false,
+  "real_timing_samples": 0,
+  "v1_sources_unchanged": true,
+  "v1_preserved_runs": [
+    "validation/ca-models-repair-first-20261004/manifest.json",
+    "validation/ca-models-repair-compromise-20261004/manifest.json"
+  ],
+  "v1_M1_ca_leaked_first_result_code": "a1a0f0c1"
+}

@@ -610,7 +610,7 @@ def test_handshake_bytes_are_recorded_with_their_protection_overhead(default_pro
     assert by_name["ClientHello"].protection_bytes == 0
     assert by_name["ServerHello"].protection_bytes == 0
 
-    tag_overhead = default_profile.aead_suite().tag_length + 5  # AEAD tag plus record header
+    tag_overhead = default_profile.aead_suite().tag_length + 1  # actual inner type plus tag
     for name in ("EncryptedExtensions", "Certificate", "CertificateVerify", "Finished"):
         assert by_name[name].protection_bytes == tag_overhead
 

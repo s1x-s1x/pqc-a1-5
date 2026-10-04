@@ -4,6 +4,7 @@ The constructor allocates no key, tree, native context or process pool.
 """
 from __future__ import annotations
 
+import hashlib
 import os
 import sys
 from pathlib import Path
@@ -24,7 +25,7 @@ class SlhDsaSm3:
     secret_key_bytes = 64
 
     def __init__(self, name="slh-dsa-sm3-128-24", *, library=None, threads=1,
-                 force_python=False, backend=0):
+                 force_python=False, require_native=False, backend=0):
         if name not in PARAMETERS:
             raise BackendUnavailableError(f"unknown SLH variant {name!r}")
         if not isinstance(threads, int) or not 1 <= threads <= 1024:
@@ -33,6 +34,10 @@ class SlhDsaSm3:
         self.pid, self.scheme_id, self.signature_bytes = PARAMETERS[name]
         self.library = library
         self.threads, self.force_python, self.backend = threads, force_python, backend
+        if force_python and require_native:
+            raise ValueError("force_python and require_native are mutually exclusive")
+        self.require_native = require_native
+        self.last_verification = None
         self.max_signatures = 1 << 24 if self.pid == 3 else None
         self._signing_contexts = {}
 
@@ -81,6 +86,7 @@ class SlhDsaSm3:
             self.close()
 
     def verify(self, public_key: bytes, message: bytes, signature: bytes) -> bool:
+        self.last_verification = {"mode": "rejected-input", "algorithm": self.name}
         if not isinstance(public_key, (bytes, bytearray)) or not isinstance(signature, (bytes, bytearray)):
             return False
         if len(public_key) != 32 or len(signature) != self.signature_bytes:
@@ -89,12 +95,23 @@ class SlhDsaSm3:
             if not self.force_python:
                 try:
                     with self._native() as native:
-                        return bool(native.verify(bytes(message), bytes(signature), bytes(public_key), context=b""))
+                        path = Path(native.library_path).resolve()
+                        before = hashlib.sha256(path.read_bytes()).hexdigest()
+                        result = bool(native.verify(bytes(message), bytes(signature), bytes(public_key), context=b""))
+                        if hashlib.sha256(path.read_bytes()).hexdigest() != before:
+                            raise BackendUnavailableError("native library changed during verification")
+                        self.last_verification = {"mode": "native", "algorithm": self.name,
+                            "library_path": str(path), "library_sha256": before,
+                            "backend": native.backend, "passed": result}
+                        return result
                 except BackendUnavailableError:
-                    pass
+                    if self.require_native:
+                        raise
             self._modules()
             from reference import ReferenceSlhDsa
             with ReferenceSlhDsa(self.pid, workers=1) as model:
-                return bool(model.verify(bytes(message), bytes(signature), bytes(public_key), context=b""))
+                result = bool(model.verify(bytes(message), bytes(signature), bytes(public_key), context=b""))
+                self.last_verification = {"mode": "python", "algorithm": self.name, "passed": result}
+                return result
         except (ValueError, TypeError, IndexError, RuntimeError, ImportError, OSError):
             return False

@@ -1,0 +1,26 @@
+{
+  "model": "M2_honest",
+  "sessions": 1,
+  "model_sha256": "2d025d1acb392916b5702223b15fed51f8871bbadbb35afbba4378f0f9915d47",
+  "first": {
+    "command": [
+      "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\build\\ca-verifier-1.4.12\\verifpal.exe",
+      "verify",
+      "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\base_tls\\verification\\ca_models_v2\\M2_honest.vp",
+      "--sessions",
+      "1",
+      "--color",
+      "never",
+      "--result-code"
+    ],
+    "started_utc": "2026-10-04T07:29:11.182186+00:00",
+    "completed_utc": "2026-10-04T07:32:11.526995+00:00",
+    "returncode": null,
+    "status": "timeout",
+    "timeout_seconds": 180,
+    "raw_sha256": "3f1c7d7f4848f175769fb580bf142f41143b94b7290ee66b198653620f751c1c"
+  },
+  "query_verdicts": [],
+  "result_code": null,
+  "tool_completed": false
+}

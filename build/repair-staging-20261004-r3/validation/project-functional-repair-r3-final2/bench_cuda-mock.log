@@ -1,0 +1,32 @@
+test_abi_layout (__main__.self_test.<locals>.Checks.test_abi_layout) ... ok
+test_build_commands_release_only (__main__.self_test.<locals>.Checks.test_build_commands_release_only) ... ok
+test_candidate_content_is_never_formal_permit (__main__.self_test.<locals>.Checks.test_candidate_content_is_never_formal_permit) ... ok
+test_completed_case_reconciles_live_receipt (__main__.self_test.<locals>.Checks.test_completed_case_reconciles_live_receipt) ... ok
+test_completed_case_rejects_other_ledger_before_native (__main__.self_test.<locals>.Checks.test_completed_case_rejects_other_ledger_before_native) ... ok
+test_disable_error_preserves_original (__main__.self_test.<locals>.Checks.test_disable_error_preserves_original) ... ok
+test_error_disables_events (__main__.self_test.<locals>.Checks.test_error_disables_events) ... ok
+test_freeze_build_plan_evidence_binding (__main__.self_test.<locals>.Checks.test_freeze_build_plan_evidence_binding) ... ok
+test_freeze_lifecycle_rejected_before_provenance (__main__.self_test.<locals>.Checks.test_freeze_lifecycle_rejected_before_provenance) ... ok
+test_full_worker_raw_statistics_and_skip (__main__.self_test.<locals>.Checks.test_full_worker_raw_statistics_and_skip) ... ok
+test_gpu_change_rejects_completed_resume (__main__.self_test.<locals>.Checks.test_gpu_change_rejects_completed_resume) ... ok
+test_invalid_plan (__main__.self_test.<locals>.Checks.test_invalid_plan) ... ok
+test_kernel_resume_integrity (__main__.self_test.<locals>.Checks.test_kernel_resume_integrity) ... ok
+test_no_cpu_only_gpu_claim (__main__.self_test.<locals>.Checks.test_no_cpu_only_gpu_claim) ... ok
+test_normative_plan (__main__.self_test.<locals>.Checks.test_normative_plan) ... ok
+test_parent_sequential_dispatch_omp (__main__.self_test.<locals>.Checks.test_parent_sequential_dispatch_omp) ... {"classification":"formal","complete_cases":0,"output":"/tmp/a15-cuda-mock-fbmyfvth/raw.jsonl"}
+ok
+test_parent_timeout_and_no_native_calls (__main__.self_test.<locals>.Checks.test_parent_timeout_and_no_native_calls) ... ok
+test_parent_worker_gate_precedes_native_affinity (__main__.self_test.<locals>.Checks.test_parent_worker_gate_precedes_native_affinity) ... ok
+test_partial_resume_consumes_failed_attempt (__main__.self_test.<locals>.Checks.test_partial_resume_consumes_failed_attempt) ... ok
+test_post_finalize_error_has_one_finish (__main__.self_test.<locals>.Checks.test_post_finalize_error_has_one_finish) ... ok
+test_public_gate_rechecks_budget_snapshots_before_content (__main__.self_test.<locals>.Checks.test_public_gate_rechecks_budget_snapshots_before_content) ... ok
+test_real_fixture_helper_uses_cuda_schema_and_budget (__main__.self_test.<locals>.Checks.test_real_fixture_helper_uses_cuda_schema_and_budget) ... ok
+test_subtree_worker_has_no_signature_budget (__main__.self_test.<locals>.Checks.test_subtree_worker_has_no_signature_budget) ... ok
+test_timing_permit_before_any_native (__main__.self_test.<locals>.Checks.test_timing_permit_before_any_native) ... ok
+test_two_scopes (__main__.self_test.<locals>.Checks.test_two_scopes) ... ok
+
+----------------------------------------------------------------------
+Ran 25 tests in 1.010s
+
+OK
+{"created_utc":"2026-10-04T08:00:36.187495+00:00","mock_checks":25,"native_calls":0,"passed":true,"real_timing_samples":0,"schema":"a15-cuda-selftest-v1","scope":"mock plan/build/freeze/stats/scopes/full-worker/budget/fixtures/resume/timeout/affinity/environment checks; native libraries, subprocess and real timers blocked","source_sha256":{"reference/sm3.py":"43fb6d92afc803f4842bd06dfb00f813c7ed102f1b68d9115c3e0cd6497c2c8e","tools/bench_cpu.py":"07385da89cc9e55fde08351f417253f5b910d88ca7a8a68d04fe5de524a83a7f","tools/bench_cuda.py":"74dae93d1095d732e323a9b562b70de1079696b8d58bc5d82820bbf8f394d9c0","tools/bench_sm3_harness.c":"ddf61075e429aa8e6f3bae4f3eab63ec364d8567196a4c489165684ff4e141ee","tools/count_model.py":"6ac77e6b63e6cf9c03818c0e7d349012e16fafc5d1624e59da960564d97fc419","tools/native.py":"2bd269ee8f4b091d6da86e73e5a18e6c0e091800c904329fb91f34f16a892fd9","tools/signing_budget.py":"db3fe3982dd66bbef74dedbb273e1bfd136213563d324ba5807c13871e205d1f"},"tool_sha256":"74dae93d1095d732e323a9b562b70de1079696b8d58bc5d82820bbf8f394d9c0"}

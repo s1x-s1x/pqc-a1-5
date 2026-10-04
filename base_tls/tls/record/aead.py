@@ -1,15 +1,14 @@
 """AEAD record layer.
 
-The construction follows RFC 8446 section 5.2/5.3: the nonce is the static IV
-XORed with the 64-bit record sequence number, the additional data is the record
-header, and the plaintext is the content followed by its real content type. Padding
-is not used, so ciphertext length is exactly plaintext length plus the tag; that
-keeps the byte accounting in ``bench`` a faithful lower bound.
+The nonce is the static IV XORed with the 64-bit record sequence number. The
+plaintext appends its inner content type, then AES-GCM adds its tag (17 bytes of
+overhead for the supported suites). Content/ciphertext bounds follow RFC 8446.
 
-One deviation from RFC 8446: the outer record header carries the true content type
-instead of always ``application_data``. Sizes and the AAD length are unchanged,
-because the unencrypted content type byte is exactly what the real convention pays
-for as well.
+This private harness returns bare ciphertext, without a serialized TLS header.
+Its five-byte AAD uses the actual content type and plaintext-inner length; deployed
+TLS uses application_data and ciphertext length. TCP adds a private four-byte
+length prefix. These deviations remain explicit; size models do not establish
+standard TLS interoperability.
 """
 
 from __future__ import annotations
@@ -35,6 +34,8 @@ _LEGACY_VERSION = b"\x03\x03"
 #: reached: ``2**24.5`` for AES-GCM with a 16-byte tag. Held as a float because the section
 #: states it as a fractional power of two; compared as an integer bound.
 _RECORD_LIMIT = 2 ** 24.5
+MAX_CONTENT_BYTES = 1 << 14
+MAX_CIPHERTEXT_BYTES = MAX_CONTENT_BYTES + 256
 
 
 class AeadSuite:
@@ -133,6 +134,8 @@ class RecordLayer:
 
     def seal(self, content_type: int, payload: bytes) -> bytes:
         """Encrypt ``payload`` into one record."""
+        if len(payload) > MAX_CONTENT_BYTES:
+            raise HandshakeError("record", "record content exceeds 16384 bytes; fragment before sealing")
         self._check_usage_limit(self._sequence)
         inner = payload + u8(content_type)
         ciphertext = self._aead.encrypt(self._nonce(), inner, self._additional_data(content_type, len(inner)))
@@ -147,6 +150,8 @@ class RecordLayer:
         reported as :class:`HandshakeError` carrying the record number.
         """
         record_number = self._sequence
+        if len(record) > MAX_CIPHERTEXT_BYTES:
+            raise HandshakeError("record", "ciphertext exceeds the 16640-byte record limit")
         self._check_usage_limit(record_number)
         header_type = expected_type if expected_type is not None else CONTENT_TYPE_APPLICATION_DATA
         inner_length = len(record) - self.suite.tag_length
@@ -158,6 +163,8 @@ class RecordLayer:
             )
         except InvalidTag as error:
             raise HandshakeError("record", f"record {record_number} failed authentication") from error
+        if len(inner) < 1 or len(inner) - 1 > MAX_CONTENT_BYTES:
+            raise HandshakeError("record", "decrypted record content exceeds 16384 bytes")
         self._sequence += 1
         self.records_opened += 1
         return inner[-1], inner[:-1]

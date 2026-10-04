@@ -1,0 +1,16 @@
+ Verifpal * Verification initiated for 'M1_honest.vp' at 03:04:33 PM.
+     Info . Attacker is configured as active.
+     Info . Running at phase 0.
+
+--------------------------------------------------
+ Verifpal * Verification completed for 'M1_honest.vp' at 03:04:47 PM in 14.05s.
+
+     PASS + authentication? Intermediate -> Client: leaftbs[precondition[Client -> Server: apprecord]]  [search exhausted at 1 session]
+     PASS + authentication? Server -> Client: onlinesignature[precondition[Client -> Server: apprecord]]  [search exhausted at 1 session]
+     PASS + freshness? transcriptclient  [search exhausted at 1 session]
+     PASS + confidentiality? applicationmessage[precondition[Client -> Server: apprecord]]  [search exhausted at 1 session]
+
+--------------------------------------------------
+     PASS + All 4 queries pass.
+ Verifpal * Thank you for using Verifpal.
+a0a0f0c0

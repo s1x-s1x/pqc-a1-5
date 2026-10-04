@@ -29,8 +29,10 @@ def main():
     source = parser.add_mutually_exclusive_group(required=True)
     source.add_argument("--source-root", type=Path, help="accepted system root, normally / on Linux")
     source.add_argument("--ssh", action="store_true", help="accepted host through ops.remote environment settings")
+    parser.add_argument("--manifest", type=Path, default=MANIFEST,
+                        help="hash-bound external evidence manifest (historical or repair version)")
     args = parser.parse_args()
-    manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
+    manifest = json.loads(args.manifest.read_text(encoding="utf-8"))
     if manifest.get("schema") != "a15-external-evidence-mirror-v1":
         raise ValueError("Unexpected external evidence manifest")
     jump = remote = sftp = None

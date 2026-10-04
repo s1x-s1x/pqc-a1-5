@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "files_sha256": {
+    "source.tar.gz": "6fcdeec8737f62c7e4bc23cfc425e76c6a01de7ae7afba919736f83f1deb6e03",
+    "source-manifest.json": "8f224b1a4a57bee67378ace94a2e4bc10e134e87924246ddbaceb760f415f57e",
+    "REVIEW.md": "8217381f4fa03359ac63b6d9abef8cfc429364ec9b51675f718c0f4dbcf86e11",
+    "freeze.json": "b689edbd39cb330a0fa2e89fbb3bae461769d18fe513b11f2c9f8b7610e8464d"
+  },
+  "formal_performance_started": false
+}

@@ -1,0 +1,54 @@
+{
+  "schema": "a15-parallel-correctness-provenance-v1",
+  "kind": "worker",
+  "original_manifest_path": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/cpu-full-repair-r3-serial-history/manifest.json",
+  "original_manifest_sha256": "4cc4fd880b87e0aa57ed2dac612af8f94aed98920d97f900c77db7b4620a067f",
+  "requested_case_ids": [
+    "lib0-ebc18f682915/101/REF/64/sign/uncached",
+    "lib0-ebc18f682915/101/REF/64/sign/matrix-t9"
+  ],
+  "created_utc": "2026-10-04T10:58:56.527058+00:00",
+  "global_atomic_measurements_serialized": true,
+  "formal_performance_started": false,
+  "real_timing_samples": 0,
+  "copied_caches": [],
+  "executed_case_ids": [
+    "lib0-ebc18f682915/201/REF/1/counter_probe/enabled",
+    "lib0-ebc18f682915/101/REF/64/sign/uncached",
+    "lib0-ebc18f682915/101/REF/64/sign/matrix-t9"
+  ],
+  "requested_scope_complete": true,
+  "error": null,
+  "receipt_bindings": [
+    {
+      "ledger_uuid": "9ef8ee531b8e4e4cb8d8a32b2576810d",
+      "receipt": "4901b27c3fb0444e893856bc88ca76f6",
+      "key_id": "9665bf43a47a34e07e62999ecc84f5ffc43988513ad1243e363e916237bc0e9a",
+      "algorithm": "slh-dsa-sha2-128s",
+      "public_key_sha256": "d164c770e43962d33fa75f48a3dcfe633742e1ce97911173fb264799e3bffd25",
+      "message_sha256": "32ac44feb01c7942dffa0d6614542329fc626fe28e9697d85fc94dcfff36c82c",
+      "status": "committed",
+      "signature_sha256": "49db815f15545c39a389d56adce0bf91aba49a7b070ca8bb1adeed545c304fe0"
+    },
+    {
+      "ledger_uuid": "9ef8ee531b8e4e4cb8d8a32b2576810d",
+      "receipt": "ce71a4b6c3564e95ae5e1ae4e597174a",
+      "key_id": "9665bf43a47a34e07e62999ecc84f5ffc43988513ad1243e363e916237bc0e9a",
+      "algorithm": "slh-dsa-sha2-128s",
+      "public_key_sha256": "d164c770e43962d33fa75f48a3dcfe633742e1ce97911173fb264799e3bffd25",
+      "message_sha256": "32ac44feb01c7942dffa0d6614542329fc626fe28e9697d85fc94dcfff36c82c",
+      "status": "committed",
+      "signature_sha256": "49db815f15545c39a389d56adce0bf91aba49a7b070ca8bb1adeed545c304fe0"
+    }
+  ],
+  "input_files_sha256": {
+    "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/cpu-full-repair-r3-serial-history/manifest.json": "4cc4fd880b87e0aa57ed2dac612af8f94aed98920d97f900c77db7b4620a067f",
+    "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/build/native-repair-r3/counters/libslhdsa_sm3.so": "ebc18f6829157cbd04feed9f831d271f661124dde5d05cebe5ddaf01ba0d2ea8",
+    "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/report-data/DP1-analysis/count-replay-inputs.jsonl": "cad64b833bfe18ea17e418919788468d3811ebc3f2161314631dc07945e0d8f6",
+    "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-10.cases.json": "027009254a4f025aff21b540bb79bd9bdfbe5341c26e4bcfe87f9d60b5cf709d",
+    "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-10/cache-source-records.jsonl": "78e090f82293eeec8274889f7dc39c708160e553338f17dbed5edc7ff144a743"
+  },
+  "cases_jsonl_sha256": "a5be2a74461fa69726d6f2189ea5273c8ff96c619f192a3d097c862fb48c1621",
+  "worker_summary_sha256": "4a142d6629c0dca40375ac22686fba98d950405ec3eba19469c8daebdfdc4d57",
+  "helper_sha256": "4fc4ef5821b5a06f21e787feb9cdfe9972a8513cda620d1ac5be7c8d8db86e27"
+}

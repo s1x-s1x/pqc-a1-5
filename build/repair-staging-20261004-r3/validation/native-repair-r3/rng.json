@@ -1,0 +1,114 @@
+{
+  "schema": "a15-native-rng-v1",
+  "timestamp_utc": "2026-10-04T07:49:14.572162+00:00",
+  "passed": true,
+  "results": [
+    {
+      "case_id": "rng-keygen-one",
+      "result": {
+        "command": "keygen",
+        "pid": 201,
+        "backend_requested": "avx2",
+        "backend_selected": 2,
+        "threads_requested": 1,
+        "library_sha256": "6ecb9557f6e72dd5e30c9d3be8eff6c759b928ac005ab6f37f4918064f5d7f36",
+        "pk_sha256": "1080eaeac2f7e92426e08ccea43e5a14d0eb181d06ec6f39b8bf718ed16ea2b2",
+        "sk_sha256": "7e874e5684021fb2bcaa4053bb814070f8543f8c0b57bb2291ff2f1af8791530",
+        "pk_bytes": 32,
+        "sk_bytes": 64,
+        "signature_bytes": 2320,
+        "fixture_seeded": false
+      },
+      "passed": true
+    },
+    {
+      "case_id": "rng-keygen-two",
+      "result": {
+        "command": "keygen",
+        "pid": 201,
+        "backend_requested": "avx2",
+        "backend_selected": 2,
+        "threads_requested": 1,
+        "library_sha256": "6ecb9557f6e72dd5e30c9d3be8eff6c759b928ac005ab6f37f4918064f5d7f36",
+        "pk_sha256": "a6891072622c748418aa26ed133969be6a9c7f2450f3b32e69c55b34a1982180",
+        "sk_sha256": "1fb32cc75ee2211c2c55b20d70970c499bfc71b71a881ce5315e200c744805ee",
+        "pk_bytes": 32,
+        "sk_bytes": 64,
+        "signature_bytes": 2320,
+        "fixture_seeded": false
+      },
+      "passed": true
+    },
+    {
+      "case_id": "independent-rng-keys",
+      "passed": true,
+      "note": "operational sanity check, not a randomness quality proof"
+    },
+    {
+      "case_id": "rng-randomized-sign",
+      "result": {
+        "command": "sign",
+        "pid": 201,
+        "backend_requested": "avx2",
+        "backend_selected": 2,
+        "threads_requested": 1,
+        "library_sha256": "6ecb9557f6e72dd5e30c9d3be8eff6c759b928ac005ab6f37f4918064f5d7f36",
+        "signature_bytes": 2320,
+        "signature_sha256": "73aa9301af5b04cadcaf20f8c100b07a3d44740f3fb37c124d27d0a3f45d0a04",
+        "budget_receipt": "a0cd4c8b62c344e590c5adc227bde81e",
+        "ledger_uuid": "95e6221915bb40c3bab9ef63bcdc99dd",
+        "budget_evidence": {
+          "ledger_uuid": "95e6221915bb40c3bab9ef63bcdc99dd",
+          "receipt": "a0cd4c8b62c344e590c5adc227bde81e",
+          "key_id": "42416e52973d8cbb9ca47750290926d778d05ef3afe5fda8a7a56b3c2cbe6720",
+          "algorithm": "slh-dsa-sm3-toy",
+          "public_key_sha256": "1080eaeac2f7e92426e08ccea43e5a14d0eb181d06ec6f39b8bf718ed16ea2b2",
+          "message_sha256": "8093492f73660fd668353dae9eed9992f5557528b488017af7a57427e7865f0c",
+          "status": "committed",
+          "signature_sha256": "73aa9301af5b04cadcaf20f8c100b07a3d44740f3fb37c124d27d0a3f45d0a04"
+        },
+        "mode": "pure"
+      },
+      "passed": true
+    },
+    {
+      "case_id": "rng-verify",
+      "result": {
+        "command": "verify",
+        "pid": 201,
+        "backend_requested": "avx2",
+        "backend_selected": 2,
+        "threads_requested": 1,
+        "library_sha256": "6ecb9557f6e72dd5e30c9d3be8eff6c759b928ac005ab6f37f4918064f5d7f36",
+        "valid": true
+      },
+      "passed": true
+    },
+    {
+      "case_id": "budget",
+      "passed": true,
+      "status": [
+        {
+          "key_id": "42416e52973d8cbb9ca47750290926d778d05ef3afe5fda8a7a56b3c2cbe6720",
+          "algorithm": "slh-dsa-sm3-toy",
+          "limit": 18446744073709551616,
+          "used": 1,
+          "remaining": 18446744073709551615,
+          "states": {
+            "committed": 1
+          },
+          "count_reconciled": true
+        }
+      ]
+    }
+  ],
+  "library_sha256": "6ecb9557f6e72dd5e30c9d3be8eff6c759b928ac005ab6f37f4918064f5d7f36",
+  "backend_requested": "avx2",
+  "sources_sha256": {
+    "tools/check_rng_native.py": "6e67fa5f28c875142ee50538304f0f6c5ab95e430e0af56fdd18528f89e0ab5d",
+    "tools/cli.py": "80fa717e3ddc369f76dc89e6547272c1fbbd99c7d84840e837259965621349e3",
+    "tools/native.py": "2bd269ee8f4b091d6da86e73e5a18e6c0e091800c904329fb91f34f16a892fd9"
+  },
+  "formal_performance_started": false,
+  "duration_measured": false
+}

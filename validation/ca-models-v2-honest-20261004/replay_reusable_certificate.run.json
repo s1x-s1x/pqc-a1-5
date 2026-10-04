@@ -1,0 +1,78 @@
+{
+  "model": "replay_reusable_certificate",
+  "sessions": 2,
+  "model_sha256": "7d6f4d41898e0b54d82f420e555c01cbfb50a16718b332631198b232d3cb3fac",
+  "first": {
+    "command": [
+      "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\build\\ca-verifier-1.4.12\\verifpal.exe",
+      "verify",
+      "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\base_tls\\verification\\ca_models_v2\\replay_reusable_certificate.vp",
+      "--sessions",
+      "2",
+      "--color",
+      "never",
+      "--result-code"
+    ],
+    "started_utc": "2026-10-04T07:32:11.487730+00:00",
+    "completed_utc": "2026-10-04T07:32:11.576144+00:00",
+    "returncode": 0,
+    "status": "completed",
+    "raw_sha256": "cd0e51414466f680ea1df13a418f2ac4366b76748ec856391546e13709c68255"
+  },
+  "query_verdicts": [
+    {
+      "query": "authentication? Issuer -> Client: certificate[precondition[Client -> Server: accepted]]",
+      "attack_found": false,
+      "conclusion": "",
+      "envelope": {
+        "sessions": 2,
+        "truncations": [],
+        "exhausted": true,
+        "summary": "search exhausted at 2 sessions"
+      }
+    },
+    {
+      "query": "authentication? Server -> Client: proof[precondition[Client -> Server: accepted]]",
+      "attack_found": false,
+      "conclusion": "",
+      "envelope": {
+        "sessions": 2,
+        "truncations": [],
+        "exhausted": true,
+        "summary": "search exhausted at 2 sessions"
+      }
+    },
+    {
+      "query": "freshness? accepted[precondition[Client -> Server: accepted]]",
+      "attack_found": false,
+      "conclusion": "",
+      "envelope": {
+        "sessions": 2,
+        "truncations": [],
+        "exhausted": true,
+        "summary": "search exhausted at 2 sessions"
+      }
+    }
+  ],
+  "result_code": "a0a0f0",
+  "structured": {
+    "command": [
+      "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\build\\ca-verifier-1.4.12\\verifpal.exe",
+      "verify",
+      "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\base_tls\\verification\\ca_models_v2\\replay_reusable_certificate.vp",
+      "--sessions",
+      "2",
+      "--format",
+      "json"
+    ],
+    "started_utc": "2026-10-04T07:32:11.587502+00:00",
+    "completed_utc": "2026-10-04T07:32:11.672743+00:00",
+    "returncode": 0,
+    "status": "completed",
+    "raw_sha256": "be15c169b2149e876c171abb9172f29b922ca3bfac93d29792ed7f0ea49b827b"
+  },
+  "json_result_code": "a0a0f0",
+  "attacks": 0,
+  "codes_agree": true,
+  "tool_completed": true
+}

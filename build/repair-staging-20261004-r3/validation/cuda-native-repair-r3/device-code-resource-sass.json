@@ -1,0 +1,14 @@
+{
+  "schema": "a15-cuda-device-code-review-v1",
+  "passed": true,
+  "object_sha256": "ffb218aeac478fcf127a18ac055f9d3bc6a70c769ed377858127dd0d28b0307d",
+  "sass_resource_sha256": "c7aa81a9e7377023de6a362d094a1ce25dd85b5f68ad50dbb61c533f8ff43119",
+  "kernels": [
+    "fors_leaf_kernel",
+    "fors_reduce_kernel",
+    "sm3_kernel"
+  ],
+  "scope": "Compiled SM86 device code/resource listing; no hardware occupancy or runtime performance measured",
+  "native_calls": 0,
+  "real_timing_samples": 0
+}

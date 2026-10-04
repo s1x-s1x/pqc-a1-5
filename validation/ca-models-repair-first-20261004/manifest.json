@@ -1,0 +1,85 @@
+{
+  "schema": "a15-ca-symbolic-run-v1",
+  "started_utc": "2026-10-04T07:04:33.829292+00:00",
+  "verifier_version": "Verifpal 1.4.12 - https://verifpal.com\nVerifpal is authored by Nadim Kobeissi.\nEveryone who has contributed to Verifpal is\nnamed on the Wall of Honor in the Verifpal\nDocumentation's Acknowledgments page:\n\n  https://verifpal.com/docs/acknowledgments/\n",
+  "verifier_sha256": "c6836c8b0f60e2e9a229ad1f7a5a7f02c6876c5b66730663f8803302e621cbdd",
+  "sessions": 1,
+  "source_sha256": {
+    "tools/run_ca_models.py": "b4415149e8749a69a68531562eefaf6b5dcceaf34d63d01d115a9d824779d19e",
+    "base_tls/verification/ca_models/control_all_ca_leaked.vp": "194737906f37272f2f5952a5859b192debf77400c81879f3c59b163377b619a0",
+    "base_tls/verification/ca_models/control_alt_disabled.vp": "2e94eef251c66724a7d7cd135f0855ee69ac10255ea07dff913b23fa85837d47",
+    "base_tls/verification/ca_models/control_both_online_leaked.vp": "e218758a1d533610b53b3bc69ddd1f44920850d212e56ba189de51621787bd08",
+    "base_tls/verification/ca_models/M1_all_classical.vp": "1f8c10168601af48967ad1145edcf7cc5ebb221c30c414632826ab33ac0c299c",
+    "base_tls/verification/ca_models/M1_ca_leaked.vp": "435d4a1106aed2acc17f2e56db7e57c63da9658a6f6e6032799ecccffd0fd662",
+    "base_tls/verification/ca_models/M1_honest.vp": "527eceb81ade8438b81cc3a5bb79ea5dfe6a426b76f9d24cf7488e3f1ed8bfd2",
+    "base_tls/verification/ca_models/M2_all_classical.vp": "4e5482bb1e92e075df04fbeb62ae0b4dd1ab3fbeb709d0ad40aaf7a44ce61602",
+    "base_tls/verification/ca_models/M2_ca_leaked.vp": "a0afa4a05b2c218a2c4cdfe14d5f95430d71a6de78b2d98ff1dedffbbafd6435",
+    "base_tls/verification/ca_models/M2_dual_all_classical.vp": "fbdd09e4119a8a967215a03e85f98f3414dec7c096749dd4ff37c4c6460e1446",
+    "base_tls/verification/ca_models/M2_honest.vp": "879a823a4f266bebb75ce901885eca47c700d2c482f7b89072dd360c69b575db",
+    "base_tls/verification/ca_models/queries.json": "6e02f5668b2bdcbee0b80b0988d2ba3fbd8ef99c45eae44c67094575a3834370"
+  },
+  "runs": [
+    {
+      "model": "M1_honest",
+      "command": [
+        "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\build\\ca-verifier-1.4.12\\verifpal.exe",
+        "verify",
+        "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\base_tls\\verification\\ca_models\\M1_honest.vp",
+        "--sessions",
+        "1",
+        "--color",
+        "never",
+        "--result-code"
+      ],
+      "returncode": 0,
+      "result_code": "a0a0f0c0",
+      "raw_sha256": "4f502235dddad40d14a93d7071001df0660d69f9019369b1b69982eaecaf6860",
+      "model_sha256": "527eceb81ade8438b81cc3a5bb79ea5dfe6a426b76f9d24cf7488e3f1ed8bfd2",
+      "json_command": [
+        "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\build\\ca-verifier-1.4.12\\verifpal.exe",
+        "verify",
+        "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\base_tls\\verification\\ca_models\\M1_honest.vp",
+        "--sessions",
+        "1",
+        "--format",
+        "json"
+      ],
+      "json_returncode": 0,
+      "json_sha256": "abbf01207862bee63f46bcc4ca658e8307fea334294978241dddf3dc3bb879a8"
+    },
+    {
+      "model": "M2_honest",
+      "command": [
+        "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\build\\ca-verifier-1.4.12\\verifpal.exe",
+        "verify",
+        "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\base_tls\\verification\\ca_models\\M2_honest.vp",
+        "--sessions",
+        "1",
+        "--color",
+        "never",
+        "--result-code"
+      ],
+      "returncode": 0,
+      "result_code": "a0a0f0c0",
+      "raw_sha256": "203e966a4950e69d2fab7141652c5c93b3d1871f5a28712183bdeb9ed74ffc0f",
+      "model_sha256": "879a823a4f266bebb75ce901885eca47c700d2c482f7b89072dd360c69b575db",
+      "json_command": [
+        "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\build\\ca-verifier-1.4.12\\verifpal.exe",
+        "verify",
+        "C:\\Users\\23380\\Desktop\\\u5bc6\u7801\u6bd4\u8d5b\\pqc-a1-5\\base_tls\\verification\\ca_models\\M2_honest.vp",
+        "--sessions",
+        "1",
+        "--format",
+        "json"
+      ],
+      "json_returncode": 0,
+      "json_sha256": "30aa5d74600948dd5ee28570a7595008b6b9c307e4a233c594a9642b6f9d3949"
+    }
+  ],
+  "real_timing_samples": 0,
+  "formal_performance_started": false,
+  "scope": "Bounded ideal-primitives search; implementation/DER and unbounded security are separate.",
+  "completed_utc": "2026-10-04T07:05:35.567448+00:00",
+  "source_unchanged": true,
+  "tool_runs_completed": true
+}

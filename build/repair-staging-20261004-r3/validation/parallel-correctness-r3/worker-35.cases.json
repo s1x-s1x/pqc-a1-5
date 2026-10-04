@@ -1,0 +1,5 @@
+[
+  "lib0-ebc18f682915/201/AVX2/8/sign/uncached",
+  "lib0-ebc18f682915/201/AVX2/8/sign/matrix-t10",
+  "lib0-ebc18f682915/201/AVX2/8/sign_fault/changed-root-self-check"
+]

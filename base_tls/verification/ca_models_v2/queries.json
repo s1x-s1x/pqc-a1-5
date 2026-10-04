@@ -1,0 +1,118 @@
+{
+  "schema": "a15-ca-query-map-v2",
+  "queries": [
+    {
+      "name": "Binding",
+      "query": "authentication? Intermediate -> Client: leafTBS",
+      "meaning": "Issuing-CA source of accepted certificate identity/keys/policy, conditioned on application sending; stronger than reusable-certificate authorization."
+    },
+    {
+      "name": "SignatureOrigin",
+      "query": "authentication? Server -> Client: onlineSignature",
+      "meaning": "Source of the received classical signature atom, separately bound by ASSERT to the signature extracted from the complete flight; not by itself session agreement."
+    },
+    {
+      "name": "SessionAuth",
+      "query": "authentication? Server -> Client: serverAuthentication",
+      "meaning": "Source of the complete accepted flight: server hello, exact accepted certificate transcript, both online proofs and Finished, conditioned on application sending."
+    },
+    {
+      "name": "Fresh",
+      "query": "freshness? transcriptClient",
+      "meaning": "Accepted transcript includes fresh values; this alone does not imply authenticated peer or unknown session key."
+    },
+    {
+      "name": "Secret",
+      "query": "confidentiality? applicationMessage",
+      "meaning": "Application plaintext after all received-flight checks stays unknown to the attacker."
+    }
+  ],
+  "acceptance": "Every main query is conditioned on Client -> Server: appRecord.",
+  "projected_atom": "onlineSignature is delivered alongside the composite only to retain Verifpal's required explicit-reception atom-origin query. ASSERT binds it to receivedOnlineSignature, and every online/Finished/key check uses SPLIT-derived fields. This is not a TLS byte-overhead model.",
+  "flight": "CONCAT(serverHello, certificateTranscript, onlineSignature, onlineAltSignature, serverFinished), with 5 fields; exact certificate binding plus CA verification and local policy assertions are repeated on extracted certificate fields.",
+  "relationship_to_v1": "Adds accepted complete-flight origin and freshness acceptance condition. v1 source/results remain separate and unchanged; no expected result-code table is used.",
+  "bounds": "Ideal primitives, bounded sessions, incomplete attack search. No DER/numeric expiry/implementation or unbounded proof.",
+  "replay_control": "Separate small 2-session certificate-reuse control; exact verdict is retained without assuming failure or success.",
+  "scenarios": {
+    "M1_honest": {
+      "require_alt": false,
+      "classical_ca_leaked": false,
+      "classical_online_leaked": false,
+      "require_dual_online": false,
+      "alternative_ca_leaked": false,
+      "alternative_online_leaked": false
+    },
+    "M2_honest": {
+      "require_alt": true,
+      "classical_ca_leaked": false,
+      "classical_online_leaked": false,
+      "require_dual_online": false,
+      "alternative_ca_leaked": false,
+      "alternative_online_leaked": false
+    },
+    "M1_ca_leaked": {
+      "require_alt": false,
+      "classical_ca_leaked": true,
+      "classical_online_leaked": false,
+      "require_dual_online": false,
+      "alternative_ca_leaked": false,
+      "alternative_online_leaked": false
+    },
+    "M2_ca_leaked": {
+      "require_alt": true,
+      "classical_ca_leaked": true,
+      "classical_online_leaked": false,
+      "require_dual_online": false,
+      "alternative_ca_leaked": false,
+      "alternative_online_leaked": false
+    },
+    "M1_all_classical": {
+      "require_alt": false,
+      "classical_ca_leaked": true,
+      "classical_online_leaked": true,
+      "require_dual_online": false,
+      "alternative_ca_leaked": false,
+      "alternative_online_leaked": false
+    },
+    "M2_all_classical": {
+      "require_alt": true,
+      "classical_ca_leaked": true,
+      "classical_online_leaked": true,
+      "require_dual_online": false,
+      "alternative_ca_leaked": false,
+      "alternative_online_leaked": false
+    },
+    "M2_dual_all_classical": {
+      "require_alt": true,
+      "classical_ca_leaked": true,
+      "classical_online_leaked": true,
+      "require_dual_online": true,
+      "alternative_ca_leaked": false,
+      "alternative_online_leaked": false
+    },
+    "control_alt_disabled": {
+      "require_alt": false,
+      "classical_ca_leaked": true,
+      "classical_online_leaked": false,
+      "require_dual_online": false,
+      "alternative_ca_leaked": false,
+      "alternative_online_leaked": false
+    },
+    "control_all_ca_leaked": {
+      "require_alt": true,
+      "classical_ca_leaked": true,
+      "classical_online_leaked": false,
+      "require_dual_online": false,
+      "alternative_ca_leaked": true,
+      "alternative_online_leaked": false
+    },
+    "control_both_online_leaked": {
+      "require_alt": true,
+      "classical_ca_leaked": true,
+      "classical_online_leaked": true,
+      "require_dual_online": true,
+      "alternative_ca_leaked": false,
+      "alternative_online_leaked": true
+    }
+  }
+}

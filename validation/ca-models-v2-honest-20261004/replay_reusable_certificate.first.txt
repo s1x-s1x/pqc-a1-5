@@ -1,0 +1,16 @@
+ Verifpal * Verification initiated for 'replay_reusable_certificate.vp' at 03:32:11 PM.
+     Info . Analyzing 2 parallel sessions per principal; per-session values and principals are suffixed #2.
+     Info . Attacker is configured as active.
+     Info . Running at phase 0.
+
+--------------------------------------------------
+ Verifpal * Verification completed for 'replay_reusable_certificate.vp' at 03:32:11 PM in 67ms.
+
+     PASS + authentication? Issuer -> Client: certificate[precondition[Client -> Server: accepted]]  [search exhausted at 2 sessions]
+     PASS + authentication? Server -> Client: proof[precondition[Client -> Server: accepted]]  [search exhausted at 2 sessions]
+     PASS + freshness? accepted[precondition[Client -> Server: accepted]]  [search exhausted at 2 sessions]
+
+--------------------------------------------------
+     PASS + All 3 queries pass.
+ Verifpal * Thank you for using Verifpal.
+a0a0f0

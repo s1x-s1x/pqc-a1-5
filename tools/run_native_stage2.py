@@ -86,11 +86,11 @@ def main():
             raise RuntimeError("stage failed: " + name)
     try:
         prefix = "../build/" + out.name + "/"
-        common = ["all", "test", "review-test", "avx2-test", "wots-test", "prehash-test", "fault-test", "guard-test"]
+        common = ["all", "test", "review-test", "repair-test", "avx2-test", "wots-test", "prehash-test", "fault-test", "guard-test"]
         make = ["make", "CC=gcc", "CFLAGS=-O3"]
         run("avx2-build-and-tests", [*make, "OUT=" + prefix + "avx2", *common], ROOT / "c")
         run("counter-build-and-tests", [*make, "OUT=" + prefix + "counters", "COUNTERS=1",
-            "all", "review-test", "avx2-test", "wots-test", "prehash-test"], ROOT / "c")
+            "all", "review-test", "repair-test", "avx2-test", "wots-test", "prehash-test"], ROOT / "c")
         run("portable-build-and-tests", [*make, "OUT=" + prefix + "portable", "AVX2=0", *common], ROOT / "c")
         run("sanitizer-tests", [*make, "OUT=" + prefix + "avx2", "SAN_OUT=" + prefix + "sanitizer", "sanitizer"], ROOT / "c")
         for backend in ("avx2", "portable"):

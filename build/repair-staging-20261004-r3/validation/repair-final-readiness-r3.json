@@ -1,0 +1,47 @@
+{
+  "schema": "a15-optimization-final-readiness-v1",
+  "passed": true,
+  "created_utc": "2026-10-04T11:29:09.243578+00:00",
+  "packages": {
+    "cpu": {
+      "passed": true,
+      "directory": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/optimization-cpu-repair-r3-final",
+      "source_files": 78,
+      "evidence_files": 13,
+      "freeze_sha256": "b689edbd39cb330a0fa2e89fbb3bae461769d18fe513b11f2c9f8b7610e8464d",
+      "package_sha256": "01ed66953f0b324b9d2fe93810f6cc1314308c683a4c1de1f198e06a825b1055",
+      "files_sha256": {
+        "source.tar.gz": "6fcdeec8737f62c7e4bc23cfc425e76c6a01de7ae7afba919736f83f1deb6e03",
+        "source-manifest.json": "8f224b1a4a57bee67378ace94a2e4bc10e134e87924246ddbaceb760f415f57e",
+        "REVIEW.md": "8217381f4fa03359ac63b6d9abef8cfc429364ec9b51675f718c0f4dbcf86e11",
+        "freeze.json": "b689edbd39cb330a0fa2e89fbb3bae461769d18fe513b11f2c9f8b7610e8464d"
+      },
+      "mock_checks": 28,
+      "real_timing_samples": 0
+    },
+    "cuda": {
+      "passed": true,
+      "directory": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/optimization-cuda-repair-r3-final",
+      "source_files": 74,
+      "evidence_files": 197,
+      "freeze_sha256": "1ddb89f43d805b3e9113c5beaef9bd6070a91ba00fc63f2103d9020688e08bb7",
+      "package_sha256": "690d14f813d693788e5217c4c40d5e029ce65def06cca609e1534b753aa247be",
+      "files_sha256": {
+        "source.tar.gz": "5c1327b8044b0887ba4ae530b0fb91bb948969f1fa5211b67728279b07cb1d54",
+        "source-manifest.json": "4fa40d0c95b46cd0a284a6364486482b85c78f8e8506e918151f4689d0e2dff1",
+        "REVIEW.md": "de88a18fe6f56d61dcb2a7eee653e68d67b615c8a9ad61c627a8aabd49fb11c4",
+        "freeze.json": "1ddb89f43d805b3e9113c5beaef9bd6070a91ba00fc63f2103d9020688e08bb7"
+      },
+      "mock_checks": 25,
+      "real_timing_samples": 0
+    }
+  },
+  "cpu_gate_passed": true,
+  "cuda_gate_passed": true,
+  "real_native_calls": 0,
+  "real_timing_samples": 0,
+  "formal_performance_started": false,
+  "active_benchmark_processes": [],
+  "performance_jsonl_files": [],
+  "stopping_point": "current r3 full acceptance and CPU/CUDA freeze; performance not started"
+}

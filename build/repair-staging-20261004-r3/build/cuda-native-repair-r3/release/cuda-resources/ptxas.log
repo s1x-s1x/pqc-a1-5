@@ -1,0 +1,13 @@
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_Z18fors_reduce_kernel12a15_cuda_jobjjPKhPh' for 'sm_86'
+ptxas info    : Function properties for _Z18fors_reduce_kernel12a15_cuda_jobjjPKhPh
+    368 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 40 registers, 456 bytes cmem[0]
+ptxas info    : Compiling entry function '_Z16fors_leaf_kernel12a15_cuda_jobjPh' for 'sm_86'
+ptxas info    : Function properties for _Z16fors_leaf_kernel12a15_cuda_jobjPh
+    368 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 47 registers, 448 bytes cmem[0]
+ptxas info    : Compiling entry function '_Z10sm3_kernelPKhmmmPh' for 'sm_86'
+ptxas info    : Function properties for _Z10sm3_kernelPKhmmmPh
+    368 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 95 registers, 392 bytes cmem[0]

@@ -1,0 +1,139 @@
+{
+  "schema": "a15-build-config-regression-v1",
+  "passed": true,
+  "checks": {
+    "changed_settings_rebuild": true,
+    "A_B_A_rebuild": true,
+    "A_repeat_reuses": true,
+    "flags_rebuild": true,
+    "flags_return_rebuild": true,
+    "A_bytes_reproducible": true,
+    "source_unchanged": true
+  },
+  "steps": [
+    {
+      "name": "A-first",
+      "command": [
+        "make",
+        "-C",
+        "c",
+        "OUT=/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/build-config-repair-r3/same-output",
+        "CC=gcc",
+        "CFLAGS=-O3",
+        "COUNTERS=0",
+        "AVX2=1",
+        "all"
+      ],
+      "returncode": 0,
+      "stamp": ".a15-config-f94bc9737a58a600fdea8f5dd7f6d480a0fa27232b3ddf39680c7a94abe5c2fc",
+      "library_sha256": "6ecb9557f6e72dd5e30c9d3be8eff6c759b928ac005ab6f37f4918064f5d7f36",
+      "build_mtime_ns": 1791101026108269811,
+      "compiler_executed": true,
+      "log_sha256": "e2337fcdf745b2f53f29201395c9cddb6c1d8b874d8b7c6b25de3c29b3844756"
+    },
+    {
+      "name": "B",
+      "command": [
+        "make",
+        "-C",
+        "c",
+        "OUT=/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/build-config-repair-r3/same-output",
+        "CC=gcc",
+        "CFLAGS=-O3",
+        "COUNTERS=1",
+        "AVX2=0",
+        "all"
+      ],
+      "returncode": 0,
+      "stamp": ".a15-config-cfd458d8a7e5d8d0a1656efc11667aca836a48a8ceaf98666f5eb880bb4ba420",
+      "library_sha256": "5e66e7aa0402d995f55b986923b35246a92dd986ae5fc7dbb1cd89809093e066",
+      "build_mtime_ns": 1791101028188320669,
+      "compiler_executed": true,
+      "log_sha256": "a7692e80df4dee6bf1b9f4df9ca8a796dae850f96be5fa17008c0600da90e899"
+    },
+    {
+      "name": "A-return",
+      "command": [
+        "make",
+        "-C",
+        "c",
+        "OUT=/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/build-config-repair-r3/same-output",
+        "CC=gcc",
+        "CFLAGS=-O3",
+        "COUNTERS=0",
+        "AVX2=1",
+        "all"
+      ],
+      "returncode": 0,
+      "stamp": ".a15-config-f94bc9737a58a600fdea8f5dd7f6d480a0fa27232b3ddf39680c7a94abe5c2fc",
+      "library_sha256": "6ecb9557f6e72dd5e30c9d3be8eff6c759b928ac005ab6f37f4918064f5d7f36",
+      "build_mtime_ns": 1791101030772383849,
+      "compiler_executed": true,
+      "log_sha256": "e2337fcdf745b2f53f29201395c9cddb6c1d8b874d8b7c6b25de3c29b3844756"
+    },
+    {
+      "name": "A-repeat",
+      "command": [
+        "make",
+        "-C",
+        "c",
+        "OUT=/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/build-config-repair-r3/same-output",
+        "CC=gcc",
+        "CFLAGS=-O3",
+        "COUNTERS=0",
+        "AVX2=1",
+        "all"
+      ],
+      "returncode": 0,
+      "stamp": ".a15-config-f94bc9737a58a600fdea8f5dd7f6d480a0fa27232b3ddf39680c7a94abe5c2fc",
+      "library_sha256": "6ecb9557f6e72dd5e30c9d3be8eff6c759b928ac005ab6f37f4918064f5d7f36",
+      "build_mtime_ns": 1791101030772383849,
+      "compiler_executed": false,
+      "log_sha256": "020a11f45ddcf58cdec41441a3ec4c65214fcea71163a5df3066cea1d332ad2f"
+    },
+    {
+      "name": "C-flags",
+      "command": [
+        "make",
+        "-C",
+        "c",
+        "OUT=/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/build-config-repair-r3/same-output",
+        "CC=gcc",
+        "CFLAGS=-O2",
+        "COUNTERS=0",
+        "AVX2=1",
+        "all"
+      ],
+      "returncode": 0,
+      "stamp": ".a15-config-0e57218e0625029d52b8a9e1f2f45aecfceb414f2e056d00b4059448d59996d2",
+      "library_sha256": "20144e49c694b95a13330343842f08baa53eadc4350b7cc6c7aca19945114fdb",
+      "build_mtime_ns": 1791101032668430205,
+      "compiler_executed": true,
+      "log_sha256": "ea9e66af459367dd9ebfb1b1c4b5007ff3cc3b8420d509b223ab25d903c7e103"
+    },
+    {
+      "name": "A-flags-return",
+      "command": [
+        "make",
+        "-C",
+        "c",
+        "OUT=/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/build-config-repair-r3/same-output",
+        "CC=gcc",
+        "CFLAGS=-O3",
+        "COUNTERS=0",
+        "AVX2=1",
+        "all"
+      ],
+      "returncode": 0,
+      "stamp": ".a15-config-f94bc9737a58a600fdea8f5dd7f6d480a0fa27232b3ddf39680c7a94abe5c2fc",
+      "library_sha256": "6ecb9557f6e72dd5e30c9d3be8eff6c759b928ac005ab6f37f4918064f5d7f36",
+      "build_mtime_ns": 1791101034748481058,
+      "compiler_executed": true,
+      "log_sha256": "e2337fcdf745b2f53f29201395c9cddb6c1d8b874d8b7c6b25de3c29b3844756"
+    }
+  ],
+  "makefile_sha256": "ceb01df11af00548d41cfb313878ca5bd52f08336dd2647d8e04adaddade9b1f",
+  "native_calls": 0,
+  "real_timing_samples": 0,
+  "formal_performance_started": false
+}

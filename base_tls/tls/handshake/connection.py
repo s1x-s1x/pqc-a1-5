@@ -57,7 +57,7 @@ class HandshakeResult:
 
     @property
     def handshake_bytes(self) -> int:
-        """Total handshake bytes including record protection and record headers."""
+        """Actual bare harness handshake bytes, including inner types and AEAD tags."""
         return sum(record.total_bytes for record in self.messages)
 
     @property
@@ -116,7 +116,7 @@ class HandshakeResult:
     def flight_table(self) -> list[tuple[str, str, int, int]]:
         """``(message, sender, plaintext bytes, protection bytes)`` per message."""
         return [
-            (record.name, record.sender, record.message_bytes, record.protection_bytes)
+            (record.name, record.sender, record.message_bytes, record.total_bytes - record.message_bytes)
             for record in self.messages
         ]
 
@@ -208,8 +208,6 @@ class HybridConnection:
             trusted_name=server_identity.decode(),
         )
         server = HybridServer(config, credentials, certificate, metrics=metrics)
-        suite = config.aead_suite()
-        protection = suite.tag_length + TLS_RECORD_HEADER_BYTES
         messages: list[MessageRecord] = []
 
         with metrics.time("handshake_total"):
@@ -225,14 +223,15 @@ class HybridConnection:
             # Flight 2: authenticated server flight, then the client's Finished.
             flight = server.send_authenticated_flight()
             mark("server_flight_ready")
-            for name, _record, frame in flight:
-                messages.append(MessageRecord(name, "server", len(frame), protection))
+            for name, record, frame in flight:
+                messages.append(MessageRecord(name, "server", len(frame), len(record) - len(frame)))
             client.receive_server_flight([record for _, record, _ in flight])
 
             client_finished = client.send_client_finished()
             mark("client_finished_ready")
             messages.append(
-                MessageRecord("Finished", "client", len(client.sent_client_finished or b""), protection)
+                MessageRecord("Finished", "client", len(client.sent_client_finished or b""),
+                              len(client_finished) - len(client.sent_client_finished or b""))
             )
             server.receive_client_finished(client_finished)
         mark("complete")
@@ -253,9 +252,9 @@ class HybridConnection:
             certificate=certificate,
             application_payload_ok=application_ok,
             exporters_match=exporters_match,
-            kem=config.kem_backend(),
+            kem=config.kem_backend() if config.pq_enabled else None,
             classical_signer=config.classical(),
-            pq_signer=config.pq(),
+            pq_signer=config.pq() if config.pq_enabled else None,
         )
 
 

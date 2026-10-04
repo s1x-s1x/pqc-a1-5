@@ -1,0 +1,290 @@
+{
+  "schema": "a15-cuda-correctness-v1",
+  "passed": false,
+  "completed_requested_scope": false,
+  "final": true,
+  "planned_cases": 8,
+  "passed_planned": 0,
+  "records": 1,
+  "failed_case_ids": [
+    "cuda-0-cf70d53e312f/201/CUDA/1/missing_backend/required-runtime-absence"
+  ],
+  "unavailable_case_ids": [],
+  "pending_case_ids": [
+    "cuda-0-cf70d53e312f/1/CUDA/1/missing_backend/required-runtime-absence",
+    "cuda-0-cf70d53e312f/2/CUDA/1/missing_backend/required-runtime-absence",
+    "cuda-0-cf70d53e312f/3/CUDA/1/missing_backend/required-runtime-absence",
+    "disabled-1-ebc18f682915/1/CUDA/1/disabled_backend/explicit-rejection",
+    "disabled-1-ebc18f682915/2/CUDA/1/disabled_backend/explicit-rejection",
+    "disabled-1-ebc18f682915/201/CUDA/1/disabled_backend/explicit-rejection",
+    "disabled-1-ebc18f682915/3/CUDA/1/disabled_backend/explicit-rejection"
+  ],
+  "error": "persisted CUDA failed check: cuda-0-cf70d53e312f/201/CUDA/1/missing_backend/required-runtime-absence",
+  "source_hashes": {
+    "c/Makefile": "ceb01df11af00548d41cfb313878ca5bd52f08336dd2647d8e04adaddade9b1f",
+    "c/src/engine.c": "e9ef382c21ee8ae7576d524959a6d12808c848b00ad5d728cbb0bcc1eb5d227b",
+    "c/src/secure_zero.h": "9ac49e9ece7575d338b8cec116cbacee394273392f2672af97af58266dca2b70",
+    "c/src/sm3.c": "1e2712dc6a2ac0f7f2950936acc37c08d80c69e39743ce211abbc5ed7142d20f",
+    "c/src/sm3.h": "a8eb36558ee2680ffb486c81430461406f8a6002a367d3187fa130e3e0d46761",
+    "c/src/sm3x8.c": "41da8e709dd31d8ce126b5ea4bbf972ad57fcdc1565247a959f94f8001263b2e",
+    "c/src/sm3x8.h": "94f3bef4ff710d6fff7d3e29633e390778ef0cfd2b4ab90084a01e497da43fc4",
+    "c/include/slhdsa_sm3.h": "dd3c12dd2ea439eab9bdd38fead74bd1bdae271588650c9fd1a8e511f52674c4",
+    "third_party/slhdsa-c/sha2_256.c": "cbc9ef22886cf8a6a8f4e51b60b4b858d9c8a5a5dbe2ad16764a7e6ea3fba85c",
+    "third_party/slhdsa-c/sha2_512.c": "b06e26570cc3492b060c7f97d4fe7f69b1667628c176ed9f83af11b60076c9aa",
+    "third_party/slhdsa-c/sha2_api.h": "96698a33d10b8e1c50f82ee82e34209f37607ea207baaf6ee8f238bff9878ef7",
+    "third_party/slhdsa-c/sha3_api.c": "6d3814614abbc671f290a39a65c0ab7dd9176a31c4cca52cd28b7d37b06cccdb",
+    "third_party/slhdsa-c/sha3_f1600.c": "1c094367c05bb887fd5b48faf24125619904b88fe0c18ca0d64dd4e5bb5ab757",
+    "tools/native.py": "2bd269ee8f4b091d6da86e73e5a18e6c0e091800c904329fb91f34f16a892fd9",
+    "tools/count_model.py": "6ac77e6b63e6cf9c03818c0e7d349012e16fafc5d1624e59da960564d97fc419",
+    "tools/signing_budget.py": "db3fe3982dd66bbef74dedbb273e1bfd136213563d324ba5807c13871e205d1f",
+    "tools/check_optimization.py": "bc49016fbd8e35107b2a9983c4049d349545676b562ca7b4ff4b921241079df3",
+    "reference/sm3.py": "43fb6d92afc803f4842bd06dfb00f813c7ed102f1b68d9115c3e0cd6497c2c8e",
+    "third_party/slhdsa-c/plat_local.h": "57ca78d49794cbfd5b45bca5b31576e8de126eb3b9e07beb7a783282f84d706a",
+    "c/src/sm3_cuda.h": "6354878a69a8c299688d8805de46a4b6adfecdf43560de04d6f081feabd18bf1",
+    "third_party/slhdsa-c/sha3_api.h": "1432755b08078487d2391f2bdb3def145f3f5c8855e01ab301fd9e9f7ce0b4eb",
+    "c/tests/test_cuda.c": "6dee97e16a8f89832f6073f106c3b96202648c4d20de5b3ed23d51e61710e16b",
+    "c/src/sm3_cuda.cu": "97b2d7f9a4ca92eb412bc94b0636cc47b8bcf89c8db3dfdbd56b234dbc3c1d25",
+    "c/tests/test_cuda_kernel_host.cpp": "9ac22fadf8bd5591fc661eda8de9ce4cff263485273785ec8976ec95b1d208f9",
+    "c/src/sm3_cuda_stub.c": "b5f2ccb7c8ca60e0eb8adf4609962ad0f5f6acbb109b22a799cc33e274a998f6",
+    "c/src/sm3_cuda_device.cuh": "7e9a63997620c38a1a8b93406b55ebbde9201679c4a1006f2b6cc1867c9ee48e",
+    "tools/check_cuda.py": "4516f4311236de9cc5730762921c701259a21de9ef3e6b5e520f4e96d4544950"
+  },
+  "libraries": {
+    "cuda-0-cf70d53e312f": {
+      "path": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/build/cuda-native-repair-r3/counters/libslhdsa_sm3.so",
+      "sha256": "cf70d53e312f7f4cad2dd3954f1f013a3a5bf9d2a1478abf35f205f85e6ebe38",
+      "role": "cuda"
+    },
+    "disabled-1-ebc18f682915": {
+      "path": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/build/cuda-native-repair-r3/disabled/libslhdsa_sm3.so",
+      "sha256": "ebc18f6829157cbd04feed9f831d271f661124dde5d05cebe5ddaf01ba0d2ea8",
+      "role": "disabled"
+    }
+  },
+  "identity": {
+    "schema": "a15-cuda-correctness-v1",
+    "sources_sha256": {
+      "c/Makefile": "ceb01df11af00548d41cfb313878ca5bd52f08336dd2647d8e04adaddade9b1f",
+      "c/src/engine.c": "e9ef382c21ee8ae7576d524959a6d12808c848b00ad5d728cbb0bcc1eb5d227b",
+      "c/src/secure_zero.h": "9ac49e9ece7575d338b8cec116cbacee394273392f2672af97af58266dca2b70",
+      "c/src/sm3.c": "1e2712dc6a2ac0f7f2950936acc37c08d80c69e39743ce211abbc5ed7142d20f",
+      "c/src/sm3.h": "a8eb36558ee2680ffb486c81430461406f8a6002a367d3187fa130e3e0d46761",
+      "c/src/sm3x8.c": "41da8e709dd31d8ce126b5ea4bbf972ad57fcdc1565247a959f94f8001263b2e",
+      "c/src/sm3x8.h": "94f3bef4ff710d6fff7d3e29633e390778ef0cfd2b4ab90084a01e497da43fc4",
+      "c/include/slhdsa_sm3.h": "dd3c12dd2ea439eab9bdd38fead74bd1bdae271588650c9fd1a8e511f52674c4",
+      "third_party/slhdsa-c/sha2_256.c": "cbc9ef22886cf8a6a8f4e51b60b4b858d9c8a5a5dbe2ad16764a7e6ea3fba85c",
+      "third_party/slhdsa-c/sha2_512.c": "b06e26570cc3492b060c7f97d4fe7f69b1667628c176ed9f83af11b60076c9aa",
+      "third_party/slhdsa-c/sha2_api.h": "96698a33d10b8e1c50f82ee82e34209f37607ea207baaf6ee8f238bff9878ef7",
+      "third_party/slhdsa-c/sha3_api.c": "6d3814614abbc671f290a39a65c0ab7dd9176a31c4cca52cd28b7d37b06cccdb",
+      "third_party/slhdsa-c/sha3_f1600.c": "1c094367c05bb887fd5b48faf24125619904b88fe0c18ca0d64dd4e5bb5ab757",
+      "tools/native.py": "2bd269ee8f4b091d6da86e73e5a18e6c0e091800c904329fb91f34f16a892fd9",
+      "tools/count_model.py": "6ac77e6b63e6cf9c03818c0e7d349012e16fafc5d1624e59da960564d97fc419",
+      "tools/signing_budget.py": "db3fe3982dd66bbef74dedbb273e1bfd136213563d324ba5807c13871e205d1f",
+      "tools/check_optimization.py": "bc49016fbd8e35107b2a9983c4049d349545676b562ca7b4ff4b921241079df3",
+      "reference/sm3.py": "43fb6d92afc803f4842bd06dfb00f813c7ed102f1b68d9115c3e0cd6497c2c8e",
+      "third_party/slhdsa-c/plat_local.h": "57ca78d49794cbfd5b45bca5b31576e8de126eb3b9e07beb7a783282f84d706a",
+      "c/src/sm3_cuda.h": "6354878a69a8c299688d8805de46a4b6adfecdf43560de04d6f081feabd18bf1",
+      "third_party/slhdsa-c/sha3_api.h": "1432755b08078487d2391f2bdb3def145f3f5c8855e01ab301fd9e9f7ce0b4eb",
+      "c/tests/test_cuda.c": "6dee97e16a8f89832f6073f106c3b96202648c4d20de5b3ed23d51e61710e16b",
+      "c/src/sm3_cuda.cu": "97b2d7f9a4ca92eb412bc94b0636cc47b8bcf89c8db3dfdbd56b234dbc3c1d25",
+      "c/tests/test_cuda_kernel_host.cpp": "9ac22fadf8bd5591fc661eda8de9ce4cff263485273785ec8976ec95b1d208f9",
+      "c/src/sm3_cuda_stub.c": "b5f2ccb7c8ca60e0eb8adf4609962ad0f5f6acbb109b22a799cc33e274a998f6",
+      "c/src/sm3_cuda_device.cuh": "7e9a63997620c38a1a8b93406b55ebbde9201679c4a1006f2b6cc1867c9ee48e",
+      "tools/check_cuda.py": "4516f4311236de9cc5730762921c701259a21de9ef3e6b5e520f4e96d4544950"
+    },
+    "libraries": {
+      "cuda-0-cf70d53e312f": {
+        "path": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/build/cuda-native-repair-r3/counters/libslhdsa_sm3.so",
+        "sha256": "cf70d53e312f7f4cad2dd3954f1f013a3a5bf9d2a1478abf35f205f85e6ebe38",
+        "role": "cuda"
+      },
+      "disabled-1-ebc18f682915": {
+        "path": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/build/cuda-native-repair-r3/disabled/libslhdsa_sm3.so",
+        "sha256": "ebc18f6829157cbd04feed9f831d271f661124dde5d05cebe5ddaf01ba0d2ea8",
+        "role": "disabled"
+      }
+    },
+    "vector_sha256": "cad64b833bfe18ea17e418919788468d3811ebc3f2161314631dc07945e0d8f6",
+    "configuration": {
+      "library": [
+        "build/cuda-native-repair-r3/counters/libslhdsa_sm3.so"
+      ],
+      "disabled_library": [
+        "build/cuda-native-repair-r3/disabled/libslhdsa_sm3.so"
+      ],
+      "missing_library": [],
+      "run_dir": "validation/cuda-full-repair-r3",
+      "budget_db": "validation/repair-pipeline/correctness-budget.sqlite",
+      "vectors": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/report-data/DP1-analysis/count-replay-inputs.jsonl",
+      "cpu_run": "validation/cpu-full-repair-r3",
+      "kernel_record": "validation/cuda-native-repair-r3/kernel.json",
+      "suite": "full",
+      "threads": [
+        1,
+        4,
+        64
+      ],
+      "subtree_heights": [
+        0,
+        1,
+        3,
+        5,
+        8
+      ],
+      "large_sign_all_levels": true,
+      "require_cuda_absent": true,
+      "fail_fast": true
+    },
+    "cpu_evidence_sha256": {
+      "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/cpu-full-repair-r3/manifest.json": "15bd299d2e78a5674ae396b8e1070130e65eddff2ecb2c3151fc40e7578538b1",
+      "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/cpu-full-repair-r3/summary.json": "de4533db7d9b7d7b926ca690c0ad29206802a5807ce2462fa18d6b78a56da288",
+      "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/cpu-full-repair-r3/cases.jsonl": "efe851cc4fa6b2cdfb0c908cca669fbca2496590800a69d838379162f1ccccde"
+    },
+    "kernel_evidence_sha256": {
+      "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/cuda-native-repair-r3/kernel.json": "3f38d5c82409180c5ba83327644fde212f3789f7bcdff86135c276a5303d6fbd"
+    },
+    "budget_database_path": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/repair-pipeline/correctness-budget.sqlite"
+  },
+  "gpu_environment": {
+    "CUDA_VISIBLE_DEVICES": "0",
+    "CUDA_DEVICE_ORDER": null,
+    "commands": {
+      "nvcc": {
+        "argv": [
+          "nvcc",
+          "--version"
+        ],
+        "returncode": 0,
+        "stdout": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2021 NVIDIA Corporation\nBuilt on Thu_Nov_18_09:45:30_PST_2021\nCuda compilation tools, release 11.5, V11.5.119\nBuild cuda_11.5.r11.5/compiler.30672275_0\n",
+        "stderr": ""
+      },
+      "c_compiler": {
+        "argv": [
+          "gcc",
+          "--version"
+        ],
+        "returncode": 0,
+        "stdout": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0\nCopyright (C) 2021 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+        "stderr": ""
+      },
+      "devices": {
+        "argv": [
+          "nvidia-smi",
+          "--query-gpu=index,uuid,name,driver_version,memory.total,compute_cap",
+          "--format=csv,noheader"
+        ],
+        "returncode": 0,
+        "stdout": "0, GPU-b1437971-c076-b899-3733-5668ff2dd085, NVIDIA GeForce RTX 4090, 575.64.03, 24564 MiB, 8.9\n1, GPU-469f3183-02d2-d984-1b0c-5dff8da73116, NVIDIA GeForce RTX 4090, 575.64.03, 24564 MiB, 8.9\n2, GPU-20e99b07-526a-3a1d-9a4a-48bd6b2f4f1c, NVIDIA GeForce RTX 4090, 575.64.03, 24564 MiB, 8.9\n3, GPU-3517b169-d757-5630-1237-51b3a6ad8643, NVIDIA GeForce RTX 4090, 575.64.03, 24564 MiB, 8.9\n4, GPU-1850e9d7-ec77-1330-3603-24cf7683c77d, NVIDIA GeForce RTX 4090, 575.64.03, 24564 MiB, 8.9\n5, GPU-97f2bd58-5a03-3f22-6e19-fb0a299e5bd3, NVIDIA GeForce RTX 4090, 575.64.03, 24564 MiB, 8.9\n6, GPU-9c063cfc-3d0b-348b-56ff-764ffa4b6dc7, NVIDIA GeForce RTX 4090, 575.64.03, 24564 MiB, 8.9\n7, GPU-42ca8521-82a6-4c31-6880-7a7f86a75ebe, NVIDIA GeForce RTX 4090, 575.64.03, 24564 MiB, 8.9\n",
+        "stderr": ""
+      }
+    },
+    "header_sha256": {
+      "/usr/include/cuda.h": "d948d7a75ff4d6b4ad61fa36f6f8b1ba39e39fe59b0003da566fde47c7dd1958",
+      "/usr/include/cuda_runtime_api.h": "58311f39a916cc0ff1dfc5f231a3d932feac771aba1fb4654adffbc108eec7e5",
+      "/usr/local/cuda/include/cuda_runtime_api.h": "ad4430edd7a80754792ca1202cac2a15da17e9e91ee1b729f7c089ea20a4fee9"
+    }
+  },
+  "cases_jsonl_sha256": "aca4ff52dfd9772eeb7419ca5687d7e5451b5e59164d87b09cd04327d981a91e",
+  "budget_status": [
+    {
+      "key_id": "1e0c4e655b92e6d8bd35df2695f05840d37175409dfc0b1a8e1adb3da9889209",
+      "algorithm": "slh-dsa-sm3-128s",
+      "limit": 18446744073709551616,
+      "used": 28,
+      "remaining": 18446744073709551588,
+      "states": {
+        "committed": 28
+      },
+      "count_reconciled": true
+    },
+    {
+      "key_id": "22283145e71ffc8894dd7704f59583cc267de58fa4c806772e22f21d9d105c0d",
+      "algorithm": "slh-dsa-sha2-128-24",
+      "limit": 16777216,
+      "used": 37,
+      "remaining": 16777179,
+      "states": {
+        "committed": 37
+      },
+      "count_reconciled": true
+    },
+    {
+      "key_id": "3f915bef8286e7367556fef73e55e9909b06c043ffef7ae8a02e671b46c93d5a",
+      "algorithm": "slh-dsa-sm3-128-24",
+      "limit": 16777216,
+      "used": 74,
+      "remaining": 16777142,
+      "states": {
+        "committed": 74
+      },
+      "count_reconciled": true
+    },
+    {
+      "key_id": "4ca1ea4802915fe12766958fa395fa5859343314fed2e3c0e05ba1b26b5ada0d",
+      "algorithm": "slh-dsa-sm3-128f",
+      "limit": 18446744073709551616,
+      "used": 28,
+      "remaining": 18446744073709551588,
+      "states": {
+        "committed": 28
+      },
+      "count_reconciled": true
+    },
+    {
+      "key_id": "6241e0d75bb40eee76927a353d4f0ab5c3216ea5900511514771f1f7a6d58572",
+      "algorithm": "slh-dsa-sm3-toy",
+      "limit": 18446744073709551616,
+      "used": 64,
+      "remaining": 18446744073709551552,
+      "states": {
+        "committed": 50,
+        "failed": 14
+      },
+      "count_reconciled": true
+    },
+    {
+      "key_id": "9665bf43a47a34e07e62999ecc84f5ffc43988513ad1243e363e916237bc0e9a",
+      "algorithm": "slh-dsa-sha2-128s",
+      "limit": 18446744073709551616,
+      "used": 14,
+      "remaining": 18446744073709551602,
+      "states": {
+        "committed": 14
+      },
+      "count_reconciled": true
+    },
+    {
+      "key_id": "b313e843ac9615509475a1dac460c28b3e3afb98fc0b114561234db8f8ee51a4",
+      "algorithm": "slh-dsa-sha2-128f",
+      "limit": 18446744073709551616,
+      "used": 14,
+      "remaining": 18446744073709551602,
+      "states": {
+        "committed": 14
+      },
+      "count_reconciled": true
+    }
+  ],
+  "budget_reconciled": true,
+  "formal_performance_started": false,
+  "measured_durations": false,
+  "global_atomic_measurements_serialized": true,
+  "coverage": {
+    "verify_existing_pids": [],
+    "CUDA_complete_sign_pids": [],
+    "CUDA_large_sign_levels": [],
+    "cache_load_levels": {
+      "201": [],
+      "3": []
+    },
+    "direct_gpu_operations": [],
+    "actual_selected_backends": [],
+    "GPU_WOTS": "B1 mixed backend: WOTS/message/upper/cache hashing remains CPU; GPU FORS PRF/F/H subtrees"
+  },
+  "deferred_scope": [],
+  "suite": "full",
+  "large_sign_all_levels": true,
+  "validation_kind": "backend-absence",
+  "direct_gpu_operation_counts": {},
+  "all_gpu_measurements_without_timing": true
+}

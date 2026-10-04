@@ -1,49 +1,44 @@
-# GitHub 优化阶段交付
+# GitHub 修复版交付
 
-本仓库保存 CPU 与 CUDA 优化完成、正式性能测试开始前的项目快照。
-当前状态见 `OPTIMIZATION_CHECKPOINT.md`，后续服务器运行入口见
-`PERFORMANCE_START_READY.md`。历史 TLS 原型保留在 `base_tls/`。
+当前工程修复、当前源码完整正确性、CA/TLS功能、干净复现与新CPU/CUDA冻结已完成，详见 `PROJECT_REPAIR_CHECKPOINT.md`。
+完整会话形式化搜索按用户选择保留未完成，原始模型/首次输出/超时记录随源码保存。正式CPU/CUDA/网络性能样本0，论文和LaTeX未修改。
 
-## 克隆与交付检查
+## 克隆与只读复核
 
 ```sh
 git clone https://github.com/s1x-s1x/pqc-a1-5.git
 cd pqc-a1-5
+python ops/restore_optimization_external_evidence.py --source-root / --manifest validation/repair-external-evidence-r3-manifest.json
+python ops/audit_project_repair.py
 ```
 
-仓库保存项目证据与系统依赖哈希；12 份系统编译器、运行库和 CUDA 头文件的原始字节
-保留在本地交付目录，未公开分发。完整离线交付副本可以直接运行：
+第一条复核步骤应在原验收环境或具有逐字节匹配依赖的Linux环境执行。修复版清单包含 12 份系统编译器/运行库/CUDA头文件原字节，保存哈希、大小和原路径。
+系统文件保留在完整本地交付副本，GitHub只分发其清单。全新克隆依赖版本不同会报错，不覆盖原冻结。
+也可用 `--ssh --manifest validation/repair-external-evidence-r3-manifest.json` 从原验收主机恢复；安装paramiko，连接设置经当前进程的 `A15_JUMP_*`/`A15_TARGET_*`环境变量提供。
+真实连接凭据只保存在本地，未提交。
+
+完整本地副本可以直接执行 `python ops/audit_project_repair.py`。该入口只读当前源码、归档和证据，内含新双冻结19项交付审计；它不重新加载原生库、不跑GPU、不产生性能样本。
+Linux执行能力仍由服务器 readiness及绑定版本日志证明。
+
+## 功能重建
+
+在匹配的Linux依赖环境中安装 `base_tls/requirements.lock.txt` 的锁定主依赖，Falcon使用匹配Python ABI的单独target：
 
 ```sh
-python ops/audit_optimization_delivery.py
+/实际匹配解释器 tools/install_falcon_provider.py
+/实际匹配解释器 tools/reproduce_project.py --fixtures build/repair-staging-20261004-r3/validation/real-alt-fixtures-repair-r3-parallel2 --output validation/fresh-clean-reproduction
 ```
 
-全新克隆需先从具有相同文件版本的原验收 Linux 环境恢复系统依赖字节：
+复现脚本只做干净源码复制、fresh release build/repair专项、真实profile/严格负例与ABI边界。Python独立参考依赖 `third_party/py-acvp-pqc`，已纳入复制。
+公开夹具中的 `*-test-key.pem` 与向量种子是这次新建的测试材料；用于重放演示，均不用于真实服务。Falcon provider是已锁定的独立依赖，不复用项目旧构建产物。
 
-```sh
-python ops/restore_optimization_external_evidence.py --source-root /
-python ops/audit_optimization_delivery.py
-```
+## 证据路径和历史
 
-也可用 `--ssh` 从原验收主机取回，需安装 `paramiko` 并在当前进程设置
-`A15_JUMP_HOST`、`A15_JUMP_USER`、`A15_JUMP_PASSWORD`、`A15_TARGET_HOST`、
-`A15_TARGET_USER`、`A15_TARGET_PASSWORD`。真实部署值只在本地配置。
-恢复入口逐文件核对清单 SHA256，版本不同会报错，保留原始冻结记录。
+修复版镜像在 `build/repair-staging-20261004-r3`；只显式纳入新验收、新库、新冻结、公开测试夹具、演示与最终绑定数据，重建cache及本地连接adapter保持忽略。
+CPU矩阵采用串行前缀及独立进程补齐，完整3471计划与七档线程保留。私有缓存、共享账本、原始工作进程记录、逐行合并来源和独立结算快照均随交付保存，原串行未完成记录单独留存；项目审计核对该并行证据闭包。
+冻结里的Linux绝对路径保留原始来源身份；审计把它们映射到上述镜像，系统原字节映射到 `validation/optimization-external-evidence`。
+`.gitattributes`保留原换行字节以保持SHA256。
 
-Python 3.10 或更新版本即可执行标准库审计。完整副本正常结果为 `passed=true`，
-19 项检查通过，真实原生调用及计时样本均为 0。该入口只核验交付字节，
-Linux/CUDA 运行门禁仍以原始服务器环境和 readiness 记录为依据。
-
-`.gitattributes` 关闭自动换行转换，保留冻结源码及证据的原始 SHA256。
-`build/` 默认忽略临时构建；最终冻结引用的验收文件与发布库单独纳入版本管理，
-使克隆副本可以重跑上述校验。冻结记录中的 Linux 绝对路径保持原始来源身份；
-本地检查将其映射到仓库，外部工具字节由 `validation/optimization-external-evidence/manifest.json` 映射。
-
-## 已验收范围
-
-- 历史 CPU 完整矩阵 3471/3471，当前集成版 CPU 回归 948/948。
-- CUDA 完整矩阵 1789/1789；GPU 执行 FORS，WOTS、消息及上层树在 CPU 执行。
-- 两份最终冻结包、无计数器发布库、规范测试计划及项目引用证据已保存；系统依赖另有哈希与恢复入口。
-- 正式性能测试尚未启动，实际计时样本为 0。
-
-上游来源与许可证见 `THIRD_PARTY.md`；本次提交未另行指定项目整体许可证。
+历史双冻结、历史完整矩阵及 `validation/optimization-final-readiness.json` 保留原样。历史19项复核使用基线提交 `23947a2c9a336ece46ea7fae3dcd83e1fbbc6391` 的源码副本、默认 `ops/audit_optimization_delivery.py` 与默认系统manifest；当前源码已经修复，不能与旧冻结混配。
+后续性能测试范围见 `PERFORMANCE_SCOPE_REPAIR.md`。论文修改和正式采样仍是后续阶段。
+第三方来源/许可证见 `THIRD_PARTY.md`；项目整体未另行指定许可证。

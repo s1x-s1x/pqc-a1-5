@@ -1,0 +1,3 @@
+﻿output_bits,scope,generic_classical_preimage_exponent,generic_classical_collision_exponent,generic_quantum_preimage_query_exponent,generic_quantum_collision_query_exponent,model,certification_or_category_inference,final
+128,n=16 truncated primitive output,128,64.0,64.0,42.666666666666664,ideal generic oracle query asymptotics; not full scheme or circuit cost,False,False
+256,full underlying hash output,256,128.0,128.0,85.33333333333333,ideal generic oracle query asymptotics; not full scheme or circuit cost,False,False

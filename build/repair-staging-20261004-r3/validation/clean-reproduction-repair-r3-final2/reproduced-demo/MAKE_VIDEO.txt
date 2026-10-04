@@ -1,0 +1,3 @@
+Generated evidence presentation video; not a captured live terminal session.
+Run from this output directory after PNG slides are available.
+ffmpeg -nostdin -n -f concat -safe 1 -i slides.ffconcat -i captions.srt -map 0:v:0 -map 1:0 -c:v libx264 -r 24 -pix_fmt yuv420p -c:s mov_text -metadata:s:s:0 language=zho -disposition:s:0 default -t 32 -movflags +faststart evidence-demo.mp4

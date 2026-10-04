@@ -1,2 +1,4 @@
 # Preserve exact bytes for frozen source, evidence and archive SHA256 checks.
 * -text
+# Frozen compiler output, historical sources and raw logs keep their original whitespace.
+build/repair-staging-20261004-*/** -whitespace

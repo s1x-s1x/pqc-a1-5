@@ -1,0 +1,10 @@
+{
+  "version": "1.4.12",
+  "url": "https://github.com/symbolicsoft/verifpal/releases/download/v1.4.12/verifpal_1.4.12_windows_amd64.zip",
+  "archive_sha256": "86b74a4a4d4af40637edd35d330a9725181f24122a8d9012a3fd7fb6b106079d",
+  "checksum_source": "https://github.com/symbolicsoft/verifpal/releases/download/v1.4.12/verifpal_1.4.12_checksums.txt",
+  "binary_sha256": "c6836c8b0f60e2e9a229ad1f7a5a7f02c6876c5b66730663f8803302e621cbdd",
+  "platform": "windows",
+  "binary": "verifpal.exe",
+  "system_modified": false
+}

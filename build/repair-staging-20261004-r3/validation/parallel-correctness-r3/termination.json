@@ -1,0 +1,13 @@
+{
+  "original_summary_final": false,
+  "original_files_sha256": {
+    "manifest.json": "4cc4fd880b87e0aa57ed2dac612af8f94aed98920d97f900c77db7b4620a067f",
+    "summary.json": "3d1ce0e0c602a625084086012e0b609b0283de5f16b5764451b8875a5a8a93c9",
+    "cases.jsonl": "78e090f82293eeec8274889f7dc39c708160e553338f17dbed5edc7ff144a743"
+  },
+  "charged_aborted_receipts": [],
+  "generated_snapshot": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/serial-snapshot",
+  "original_raw_evidence_preserved": true,
+  "native_calls": 0,
+  "real_timing_samples": 0
+}

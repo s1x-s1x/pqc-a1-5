@@ -1,0 +1,12 @@
+{
+  "audit_sha256": "fc3204a2fec492ddace65c472c1b62718ac831a0a89cfb6fa7200944d092f6f0",
+  "errors": 0,
+  "failures": 0,
+  "formal_performance_started": false,
+  "native_calls": 0,
+  "passed": true,
+  "real_timing_samples": 0,
+  "schema": "a15-parallel-correctness-audit-selftest-v1",
+  "test_sha256": "8ae549849fce58180b2913573dd3b67236a330d180b4ecdb6c40a6f4aaa88410",
+  "tests": 60
+}

@@ -160,7 +160,7 @@ def test_budget_callback_runs_before_sign_and_failure_stops_signing(monkeypatch)
     monkeypatch.setattr(signer, "sign", lambda *args: order.append("sign"))
     with pytest.raises(RuntimeError, match="budget exhausted"):
         alt_chain.issue_alt_certificate(name="ml-dsa-44", signer=signer, secret_key=secret,
-            issuer_public_key=public, before_sign=reserve, subject="test",
+            issuer_public_key=public, before_sign=reserve, after_sign=lambda *args: None, subject="test",
             issuer=alt_chain._name("test"), subject_key=classical.public_key(), issuer_key=classical,
             ca=True, path_length=0, serial=10, valid_from=now-dt.timedelta(days=1), valid_to=now+dt.timedelta(days=1))
     assert order == ["reserve"]

@@ -1,0 +1,76 @@
+{
+  "schema": "a15-parallel-correctness-provenance-v1",
+  "kind": "worker",
+  "original_manifest_path": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/cpu-full-repair-r3-serial-history/manifest.json",
+  "original_manifest_sha256": "4cc4fd880b87e0aa57ed2dac612af8f94aed98920d97f900c77db7b4620a067f",
+  "requested_case_ids": [
+    "lib0-ebc18f682915/201/AVX2/64/sign/uncached",
+    "lib0-ebc18f682915/201/AVX2/64/sign/matrix-t10",
+    "lib0-ebc18f682915/201/AVX2/64/sign_fault/changed-root-self-check"
+  ],
+  "created_utc": "2026-10-04T10:58:44.399847+00:00",
+  "global_atomic_measurements_serialized": true,
+  "formal_performance_started": false,
+  "real_timing_samples": 0,
+  "copied_caches": [
+    {
+      "source_path": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/cpu-full-repair-r3-serial-history/cache/lib0-ebc18f682915/pid201/pid201-t10.cache",
+      "destination_path": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-38/cache/lib0-ebc18f682915/pid201/pid201-t10.cache",
+      "sha256": "3cc983cd0cfbd9827dcee0a6b2cee381f5e62d819dffc11246119390706ed4c6",
+      "source_records_path": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/cpu-full-repair-r3-serial-history/cases.jsonl",
+      "source_records_snapshot_path": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-38/cache-source-records.jsonl",
+      "source_records_snapshot_sha256": "78e090f82293eeec8274889f7dc39c708160e553338f17dbed5edc7ff144a743"
+    }
+  ],
+  "executed_case_ids": [
+    "lib0-ebc18f682915/201/REF/1/counter_probe/enabled",
+    "lib0-ebc18f682915/201/AVX2/64/sign/uncached",
+    "lib0-ebc18f682915/201/AVX2/64/sign/matrix-t10",
+    "lib0-ebc18f682915/201/AVX2/64/sign_fault/changed-root-self-check"
+  ],
+  "requested_scope_complete": true,
+  "error": null,
+  "receipt_bindings": [
+    {
+      "ledger_uuid": "9ef8ee531b8e4e4cb8d8a32b2576810d",
+      "receipt": "d5b6dfc9d2d04e8281281cb74867bfee",
+      "key_id": "6241e0d75bb40eee76927a353d4f0ab5c3216ea5900511514771f1f7a6d58572",
+      "algorithm": "slh-dsa-sm3-toy",
+      "public_key_sha256": "488d0f8976a709d2e31457a4bc07398bb9155390b0e968cb0b25774c4c8c3e71",
+      "message_sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
+      "status": "committed",
+      "signature_sha256": "464886728bae95082afd5277133669984dc3c7411cf6be29a1a1bc435fc99a06"
+    },
+    {
+      "ledger_uuid": "9ef8ee531b8e4e4cb8d8a32b2576810d",
+      "receipt": "04a69af040b2439590be1dc9e181b621",
+      "key_id": "6241e0d75bb40eee76927a353d4f0ab5c3216ea5900511514771f1f7a6d58572",
+      "algorithm": "slh-dsa-sm3-toy",
+      "public_key_sha256": "488d0f8976a709d2e31457a4bc07398bb9155390b0e968cb0b25774c4c8c3e71",
+      "message_sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
+      "status": "committed",
+      "signature_sha256": "464886728bae95082afd5277133669984dc3c7411cf6be29a1a1bc435fc99a06"
+    },
+    {
+      "ledger_uuid": "9ef8ee531b8e4e4cb8d8a32b2576810d",
+      "receipt": "e6c315713d0b46cb861c3e6007aae625",
+      "key_id": "6241e0d75bb40eee76927a353d4f0ab5c3216ea5900511514771f1f7a6d58572",
+      "algorithm": "slh-dsa-sm3-toy",
+      "public_key_sha256": "488d0f8976a709d2e31457a4bc07398bb9155390b0e968cb0b25774c4c8c3e71",
+      "message_sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
+      "status": "failed",
+      "signature_sha256": null
+    }
+  ],
+  "input_files_sha256": {
+    "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/cpu-full-repair-r3-serial-history/manifest.json": "4cc4fd880b87e0aa57ed2dac612af8f94aed98920d97f900c77db7b4620a067f",
+    "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/build/native-repair-r3/counters/libslhdsa_sm3.so": "ebc18f6829157cbd04feed9f831d271f661124dde5d05cebe5ddaf01ba0d2ea8",
+    "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/report-data/DP1-analysis/count-replay-inputs.jsonl": "cad64b833bfe18ea17e418919788468d3811ebc3f2161314631dc07945e0d8f6",
+    "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-38.cases.json": "81c821fe574aad010e7d4444c85d995c5efebf55fd61fb0c981a0f85ea4c1bd1",
+    "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/parallel-correctness-r3/worker-38/cache-source-records.jsonl": "78e090f82293eeec8274889f7dc39c708160e553338f17dbed5edc7ff144a743",
+    "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/cpu-full-repair-r3-serial-history/cache/lib0-ebc18f682915/pid201/pid201-t10.cache": "3cc983cd0cfbd9827dcee0a6b2cee381f5e62d819dffc11246119390706ed4c6"
+  },
+  "cases_jsonl_sha256": "eda55baa35149387d53b430b059efa5fb198eac97c79069143b552805cffbe91",
+  "worker_summary_sha256": "c3bcf32b02a6737c4aa24fa748c51fa0be341593f0fa0ea46d610f811719a329",
+  "helper_sha256": "4fc4ef5821b5a06f21e787feb9cdfe9972a8513cda620d1ac5be7c8d8db86e27"
+}

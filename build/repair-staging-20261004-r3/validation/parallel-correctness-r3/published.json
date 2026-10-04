@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "canonical_path": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/cpu-full-repair-r3",
+  "summary_sha256": "de4533db7d9b7d7b926ca690c0ad29206802a5807ce2462fa18d6b78a56da288",
+  "formal_performance_started": false,
+  "real_timing_samples": 0
+}

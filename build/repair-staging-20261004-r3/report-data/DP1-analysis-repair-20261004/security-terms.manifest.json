@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-10-04T07:19:36.486594+00:00",
+  "scope": "FORS target-coverage probability term",
+  "security_records": 59,
+  "R7_rows": 6,
+  "source_hashes": {
+    "SPEC.md": "6e0a5562cadcc8a4ae2c504c12a6f51b083d2b2eab5e394878b59ac732051b02",
+    "c/src/engine.c": "e9ef382c21ee8ae7576d524959a6d12808c848b00ad5d728cbb0bcc1eb5d227b",
+    "tools/security_terms.py": "8a1ef5eb04282b3b552c6a72f7a97bb4d47f92e64b4ca933e7e3e7abf2d33cac",
+    "tools/count_model.py": "6ac77e6b63e6cf9c03818c0e7d349012e16fafc5d1624e59da960564d97fc419",
+    "reference/sm3.py": "43fb6d92afc803f4842bd06dfb00f813c7ed102f1b68d9115c3e0cd6497c2c8e",
+    "docs/plans/A1-5_\u8bbe\u8ba1\u62a5\u544a\u6846\u67b6_150\u9875.md": "4eaea9efa63a2d37c63354c6091ff78101e00573823f56fc11a3451ee31202d2",
+    "docs/plans/A1-5_\u5355\u4eba\u5f00\u53d1\u5b9e\u65bd\u8ba1\u5212_v3.md": "773bacc1a62e2df0edc40a52d89c5374c122f26357033d1f9ed6c4e05377b837",
+    "docs/plans/A1-5_\u5206\u5de5\u5b9e\u65bd\u8ba1\u5212_\u56fd\u4e00\u51b2\u523a.md": "b0d85504ba3ee25c68043bffc444b28439fae5408ccf63a2be43cd4e84dc6a45",
+    "report-data/DP1-analysis/sources/NIST.FIPS.205.pdf": "8ef34228276f3386d23cb0da8c14592b8cfb0db3358016bba64df7a004f8d13d",
+    "report-data/DP1-analysis/sources/NIST.SP.800-230.ipd.pdf": "62d092f787a1f79260454bf332b642ff3b5b73dbcce2678a133a1406065e452e",
+    "report-data/DP1-analysis/sources/MANIFEST.json": "e602350875a921fc8e1b14a888a18222f613bb129d237a1deb1f91291bbc45e6"
+  },
+  "parameters": {
+    "128s": {
+      "document": "FIPS 205",
+      "status": "final / SHA2 and SHAKE parameter sets",
+      "pdf_page": 53,
+      "printed_page": 43,
+      "table": 2,
+      "url": "https://csrc.nist.gov/pubs/fips/205/final"
+    },
+    "128f": {
+      "document": "FIPS 205",
+      "status": "final / SHA2 and SHAKE parameter sets",
+      "pdf_page": 53,
+      "printed_page": 43,
+      "table": 2,
+      "url": "https://csrc.nist.gov/pubs/fips/205/final"
+    },
+    "128-24": {
+      "document": "SP 800-230 ipd",
+      "status": "initial public draft April 2026",
+      "pdf_page": 10,
+      "printed_page": 2,
+      "table": 1,
+      "url": "https://csrc.nist.gov/pubs/sp/800/230/ipd"
+    }
+  },
+  "strict_limit_interpretation": "2^24 is a strict per-key lifetime total across copies/devices; higher-q rows are analysis only",
+  "numerical_method": "exact binomial; outward-rounded intervals; bounded positive tail",
+  "no_Poisson_approximation": true,
+  "not_full_EUF_CMA_or_category": true,
+  "final": false,
+  "files": {
+    "security-terms.jsonl": "5edb4de6df8790fef3ffe565ad2fd726f904c97ccc1a8f807b26c83256d69db2",
+    "R7-security-parameters.csv": "97c5570aff84dc48969062b51de6e8d532d18c8ca14e57a7bd99536a3597a9d8",
+    "R8-FORS-probability-term.csv": "2274735dfa0cde8f5d04a328f011594f05b463c80295ca22b64e6968e8589f98",
+    "R7-R8-tables.md": "fa2cb304fed700b72966b2c1bc1b25b9fb1785fad72400833200146c41d2ebdd",
+    "generic-output-bounds.csv": "35561202876aaeea405e74f85458efc4a78863ad28f63450af4e0482a3f49dad"
+  }
+}

@@ -1,0 +1,409 @@
+{
+  "schema": "a15-demo-evidence-v1",
+  "performance_samples": 0,
+  "slh_ca_signing_calls": 0,
+  "library_sha256": "6ecb9557f6e72dd5e30c9d3be8eff6c759b928ac005ab6f37f4918064f5d7f36",
+  "fixture_manifest_sha256": {
+    "slh-dsa-sm3-128-24": "92348d6213c893e8c1411daa5de2af1f984de922bffaae6069ca8f266b70896a",
+    "slh-dsa-sm3-128s": "3da375263af600eb13ff6bf4058fc063648d3dc86a5838682e5db76ffc86afbe",
+    "ml-dsa-44": "b525b645cec24299de9549336896092948be9fb3e3f58f615878d32318903435"
+  },
+  "profiles": [
+    {
+      "profile": "P0",
+      "passed": true,
+      "handshake_bytes": 1313,
+      "server_flight_bytes": 1148,
+      "chain_der_bytes": [
+        446,
+        403
+      ],
+      "chain_der_sha256": [
+        "8d79b5a507f4c9d655e862d7fc51309c111816a315661af7dcfe978846f58e70",
+        "be5c8ba5513d9248b19816e710b8f167bd6e818224f292a1b021fc2570b0098f"
+      ],
+      "fragments": [
+        {
+          "name": "ClientHello",
+          "sender": "client",
+          "plaintext_bytes": 112,
+          "record_bytes": 112,
+          "wire_bytes": 112
+        },
+        {
+          "name": "ServerHello",
+          "sender": "server",
+          "plaintext_bytes": 91,
+          "record_bytes": 91,
+          "wire_bytes": 91
+        },
+        {
+          "name": "EncryptedExtensions",
+          "sender": "server",
+          "plaintext_bytes": 6,
+          "record_bytes": 23,
+          "wire_bytes": 23
+        },
+        {
+          "name": "Certificate",
+          "sender": "server",
+          "plaintext_bytes": 867,
+          "record_bytes": 884,
+          "wire_bytes": 884
+        },
+        {
+          "name": "CertificateVerify",
+          "sender": "server",
+          "plaintext_bytes": 80,
+          "record_bytes": 97,
+          "wire_bytes": 97
+        },
+        {
+          "name": "Finished",
+          "sender": "server",
+          "plaintext_bytes": 36,
+          "record_bytes": 53,
+          "wire_bytes": 53
+        },
+        {
+          "name": "Finished",
+          "sender": "client",
+          "plaintext_bytes": 36,
+          "record_bytes": 53,
+          "wire_bytes": 53
+        }
+      ]
+    },
+    {
+      "profile": "P1",
+      "passed": true,
+      "handshake_bytes": 5180,
+      "server_flight_bytes": 3821,
+      "chain_der_bytes": [
+        1368,
+        403
+      ],
+      "chain_der_sha256": [
+        "2d1b4da6c01c1e1ad4c6559694d84f9edee85e23b2c1fd1ad6b4daec8c5777c0",
+        "be5c8ba5513d9248b19816e710b8f167bd6e818224f292a1b021fc2570b0098f"
+      ],
+      "fragments": [
+        {
+          "name": "ClientHello",
+          "sender": "client",
+          "plaintext_bytes": 1306,
+          "record_bytes": 1306,
+          "wire_bytes": 1306
+        },
+        {
+          "name": "ServerHello",
+          "sender": "server",
+          "plaintext_bytes": 1185,
+          "record_bytes": 1185,
+          "wire_bytes": 1185
+        },
+        {
+          "name": "EncryptedExtensions",
+          "sender": "server",
+          "plaintext_bytes": 6,
+          "record_bytes": 23,
+          "wire_bytes": 23
+        },
+        {
+          "name": "Certificate",
+          "sender": "server",
+          "plaintext_bytes": 1789,
+          "record_bytes": 1806,
+          "wire_bytes": 1806
+        },
+        {
+          "name": "CertificateVerify",
+          "sender": "server",
+          "plaintext_bytes": 737,
+          "record_bytes": 754,
+          "wire_bytes": 754
+        },
+        {
+          "name": "Finished",
+          "sender": "server",
+          "plaintext_bytes": 36,
+          "record_bytes": 53,
+          "wire_bytes": 53
+        },
+        {
+          "name": "Finished",
+          "sender": "client",
+          "plaintext_bytes": 36,
+          "record_bytes": 53,
+          "wire_bytes": 53
+        }
+      ]
+    },
+    {
+      "profile": "P2",
+      "passed": true,
+      "handshake_bytes": 13039,
+      "server_flight_bytes": 11680,
+      "chain_der_bytes": [
+        5265,
+        4364
+      ],
+      "chain_der_sha256": [
+        "feb07ef2eb3c2276eb4123f3ef6c7342d18bf4ddae3238ba397419dc26868f74",
+        "4826a72e1b702cfea2840a5d8abf1f7a19928031fe597688111b3ef1dcf69a56"
+      ],
+      "fragments": [
+        {
+          "name": "ClientHello",
+          "sender": "client",
+          "plaintext_bytes": 1306,
+          "record_bytes": 1306,
+          "wire_bytes": 1306
+        },
+        {
+          "name": "ServerHello",
+          "sender": "server",
+          "plaintext_bytes": 1185,
+          "record_bytes": 1185,
+          "wire_bytes": 1185
+        },
+        {
+          "name": "EncryptedExtensions",
+          "sender": "server",
+          "plaintext_bytes": 6,
+          "record_bytes": 23,
+          "wire_bytes": 23
+        },
+        {
+          "name": "Certificate",
+          "sender": "server",
+          "plaintext_bytes": 9647,
+          "record_bytes": 9664,
+          "wire_bytes": 9664
+        },
+        {
+          "name": "CertificateVerify",
+          "sender": "server",
+          "plaintext_bytes": 738,
+          "record_bytes": 755,
+          "wire_bytes": 755
+        },
+        {
+          "name": "Finished",
+          "sender": "server",
+          "plaintext_bytes": 36,
+          "record_bytes": 53,
+          "wire_bytes": 53
+        },
+        {
+          "name": "Finished",
+          "sender": "client",
+          "plaintext_bytes": 36,
+          "record_bytes": 53,
+          "wire_bytes": 53
+        }
+      ]
+    },
+    {
+      "profile": "P3",
+      "passed": true,
+      "handshake_bytes": 21058,
+      "server_flight_bytes": 19699,
+      "chain_der_bytes": [
+        9266,
+        8364
+      ],
+      "chain_der_sha256": [
+        "7893e903552129382830085c27b993d18e5dc67ed4700b06ea9e8cf74da4a52b",
+        "7db34206c43ae8aec8510bc2d6cf3a038b29474b33c48a6472d254ba2656fa0a"
+      ],
+      "fragments": [
+        {
+          "name": "ClientHello",
+          "sender": "client",
+          "plaintext_bytes": 1306,
+          "record_bytes": 1306,
+          "wire_bytes": 1306
+        },
+        {
+          "name": "ServerHello",
+          "sender": "server",
+          "plaintext_bytes": 1185,
+          "record_bytes": 1185,
+          "wire_bytes": 1185
+        },
+        {
+          "name": "EncryptedExtensions",
+          "sender": "server",
+          "plaintext_bytes": 6,
+          "record_bytes": 23,
+          "wire_bytes": 23
+        },
+        {
+          "name": "Certificate",
+          "sender": "server",
+          "plaintext_bytes": 16384,
+          "record_bytes": 16401,
+          "wire_bytes": 16401
+        },
+        {
+          "name": "Certificate",
+          "sender": "server",
+          "plaintext_bytes": 1264,
+          "record_bytes": 1281,
+          "wire_bytes": 1281
+        },
+        {
+          "name": "CertificateVerify",
+          "sender": "server",
+          "plaintext_bytes": 739,
+          "record_bytes": 756,
+          "wire_bytes": 756
+        },
+        {
+          "name": "Finished",
+          "sender": "server",
+          "plaintext_bytes": 36,
+          "record_bytes": 53,
+          "wire_bytes": 53
+        },
+        {
+          "name": "Finished",
+          "sender": "client",
+          "plaintext_bytes": 36,
+          "record_bytes": 53,
+          "wire_bytes": 53
+        }
+      ]
+    },
+    {
+      "profile": "P4",
+      "passed": true,
+      "handshake_bytes": 11459,
+      "server_flight_bytes": 10100,
+      "chain_der_bytes": [
+        3829,
+        4215
+      ],
+      "chain_der_sha256": [
+        "8e32f03e84eeb9ae98a2789f782d7f0f5ab50f545ad5947c5e6ddd7bb6c400f8",
+        "a5ba6c7fb4e300b25ede92c95d6234bb8f6b70b3b12514365906a885f72c0cf4"
+      ],
+      "fragments": [
+        {
+          "name": "ClientHello",
+          "sender": "client",
+          "plaintext_bytes": 1306,
+          "record_bytes": 1306,
+          "wire_bytes": 1306
+        },
+        {
+          "name": "ServerHello",
+          "sender": "server",
+          "plaintext_bytes": 1185,
+          "record_bytes": 1185,
+          "wire_bytes": 1185
+        },
+        {
+          "name": "EncryptedExtensions",
+          "sender": "server",
+          "plaintext_bytes": 6,
+          "record_bytes": 23,
+          "wire_bytes": 23
+        },
+        {
+          "name": "Certificate",
+          "sender": "server",
+          "plaintext_bytes": 8062,
+          "record_bytes": 8079,
+          "wire_bytes": 8079
+        },
+        {
+          "name": "CertificateVerify",
+          "sender": "server",
+          "plaintext_bytes": 743,
+          "record_bytes": 760,
+          "wire_bytes": 760
+        },
+        {
+          "name": "Finished",
+          "sender": "server",
+          "plaintext_bytes": 36,
+          "record_bytes": 53,
+          "wire_bytes": 53
+        },
+        {
+          "name": "Finished",
+          "sender": "client",
+          "plaintext_bytes": 36,
+          "record_bytes": 53,
+          "wire_bytes": 53
+        }
+      ]
+    }
+  ],
+  "dual_verification": [
+    {
+      "algorithm": "slh-dsa-sm3-128-24",
+      "mode": "native",
+      "passed": true,
+      "checked_edges": 2,
+      "library_sha256": [
+        "6ecb9557f6e72dd5e30c9d3be8eff6c759b928ac005ab6f37f4918064f5d7f36",
+        "6ecb9557f6e72dd5e30c9d3be8eff6c759b928ac005ab6f37f4918064f5d7f36"
+      ]
+    },
+    {
+      "algorithm": "slh-dsa-sm3-128-24",
+      "mode": "python",
+      "passed": true,
+      "checked_edges": 2,
+      "library_sha256": []
+    },
+    {
+      "algorithm": "slh-dsa-sm3-128s",
+      "mode": "native",
+      "passed": true,
+      "checked_edges": 2,
+      "library_sha256": [
+        "6ecb9557f6e72dd5e30c9d3be8eff6c759b928ac005ab6f37f4918064f5d7f36",
+        "6ecb9557f6e72dd5e30c9d3be8eff6c759b928ac005ab6f37f4918064f5d7f36"
+      ]
+    },
+    {
+      "algorithm": "slh-dsa-sm3-128s",
+      "mode": "python",
+      "passed": true,
+      "checked_edges": 2,
+      "library_sha256": []
+    },
+    {
+      "algorithm": "ml-dsa-44",
+      "mode": "provider",
+      "passed": true,
+      "checked_edges": 2,
+      "library_sha256": []
+    }
+  ],
+  "negatives": [
+    {
+      "name": "strip-alt-pair",
+      "rejected": true,
+      "step": "certificate_alt",
+      "public_der_sha256": "9f7a4fddb3675224f826f497dcf8a2f148a523cc2bb340bdbc4582cffe58a53b",
+      "outer_ecdsa_resigned": true,
+      "new_slh_signatures": 0
+    },
+    {
+      "name": "tamper-alt-signature",
+      "rejected": true,
+      "step": "certificate_alt",
+      "public_der_sha256": "863d7c8637bebda80b3ba3504bb5c272f5a07a2e24a016b1c1b7ac8bb4bf7f68",
+      "outer_ecdsa_resigned": true,
+      "new_slh_signatures": 0
+    }
+  ],
+  "functional_gates": [],
+  "scope": "executed untimed fixture handshakes and public certificate negative checks; no terminal screenshot or standard TLS interoperability claim",
+  "passed": true
+}

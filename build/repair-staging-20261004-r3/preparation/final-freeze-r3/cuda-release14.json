@@ -1,0 +1,575 @@
+{
+  "schema": "a15-cuda-release-correctness-v1",
+  "timestamp_utc": "2026-10-04T11:28:37.825517+00:00",
+  "passed": true,
+  "error": null,
+  "rows": [
+    {
+      "case_id": "python-3-0/keygen",
+      "checks": {
+        "actual_backend": true,
+        "pk_equals_Python": true,
+        "sk_equals_Python": true
+      },
+      "passed": true,
+      "gpu_stats": null,
+      "actual_selected_backend": 5,
+      "input_reference_record_sha256": "1a69985b2727c065ba34636428d688a4ebb6f954bc14c7ed7fb1823a06a3cb1a",
+      "public_key_sha256": "b41e74f16fb3d8906febd6f471f967932760b13da05cced08add6132e864a2bb",
+      "record_sha256": "8dd61fcbe81dd64e90cb5314fdb9cf71f167997f2f38333ecb055a0aa151a5b1"
+    },
+    {
+      "case_id": "python-3-0/sign",
+      "checks": {
+        "signature_equals_Python": true,
+        "verify_internal": true,
+        "pure_verify": true,
+        "changed_message_rejected": true,
+        "REF_verify": true,
+        "events_disabled": true,
+        "actual_GPU_work": true
+      },
+      "passed": true,
+      "gpu_stats": {
+        "kernel_launches": 150,
+        "h2d_bytes": 96,
+        "d2h_bytes": 2400,
+        "device_hashes": 301989882,
+        "kernel_ns": 0,
+        "timing_enabled": 0
+      },
+      "budget_receipt": "53c1b6b127df4524a96a48ab67cf8d5b",
+      "budget_status": "committed",
+      "actual_selected_backend": 5,
+      "input": {
+        "pid": 3,
+        "api": "sign_internal",
+        "hash_alg": null,
+        "randomization": "deterministic",
+        "api_input_sha256": "495b3c08a1bbeb4f958134bfc197568f84142ca19501d4e2a00d7257fea0eded",
+        "message_sha256": "9eb417e0a6c3873d23af3b7f9a4b3a7a8dbc234e679e25e5cf3a2cc3a405b145",
+        "context_sha256": "f930e7f71bc64c413ea3809e23d55ca29c9c8c9cd8f7ccdb39cc65c653fb2298",
+        "opt_rand_sha256": null,
+        "public_key_hex": "e2722ae406e85b626b9dc6d4b9903edb2794c2775a1984ea8671691f29c771fa",
+        "public_key_sha256": "b41e74f16fb3d8906febd6f471f967932760b13da05cced08add6132e864a2bb",
+        "budget_algorithm": "SLH-DSA-SM3-128-24",
+        "budget_message_sha256": "495b3c08a1bbeb4f958134bfc197568f84142ca19501d4e2a00d7257fea0eded"
+      },
+      "input_reference_record_sha256": "1a69985b2727c065ba34636428d688a4ebb6f954bc14c7ed7fb1823a06a3cb1a",
+      "signature_sha256": "79fdf94fd27ac2df384ee32bdde2dd4337670c8944925a206d9f81d4ac9bb5af",
+      "record_sha256": "a543d42202d4d1be0cca038f66b78761e0c88f9d219ed27d818f50e38537c1f4"
+    },
+    {
+      "case_id": "python-3-0/release-counts",
+      "checks": {
+        "counters_disabled": true
+      },
+      "passed": true,
+      "gpu_stats": null,
+      "input_reference_record_sha256": "1a69985b2727c065ba34636428d688a4ebb6f954bc14c7ed7fb1823a06a3cb1a",
+      "record_sha256": "f63b256c632aa8374594b48e6b85f95ef0e11d043ba5720a457f64d6114888f3"
+    },
+    {
+      "case_id": "python-3-1/keygen",
+      "checks": {
+        "actual_backend": true,
+        "pk_equals_Python": true,
+        "sk_equals_Python": true
+      },
+      "passed": true,
+      "gpu_stats": null,
+      "actual_selected_backend": 5,
+      "input_reference_record_sha256": "3cab4164d2d4822444134e2a7ce5edbd5d45ab6c8d09375e707f4af9825aa4fd",
+      "public_key_sha256": "5cbcfe0676bef84ace8de9b083f114c6970b51f9ff1b50ebe5208c3ed1e316f4",
+      "record_sha256": "a41457a7f119484602a124e36e69f60a36912f58efe95276804abe9396b3efe1"
+    },
+    {
+      "case_id": "python-3-1/sign",
+      "checks": {
+        "signature_equals_Python": true,
+        "verify_internal": true,
+        "pure_verify": true,
+        "changed_message_rejected": true,
+        "REF_verify": true,
+        "events_disabled": true,
+        "actual_GPU_work": true
+      },
+      "passed": true,
+      "gpu_stats": {
+        "kernel_launches": 150,
+        "h2d_bytes": 96,
+        "d2h_bytes": 2400,
+        "device_hashes": 301989882,
+        "kernel_ns": 0,
+        "timing_enabled": 0
+      },
+      "budget_receipt": "b75e19ec998546e8aa3666f9aa8d1f96",
+      "budget_status": "committed",
+      "actual_selected_backend": 5,
+      "input": {
+        "pid": 3,
+        "api": "sign_internal",
+        "hash_alg": null,
+        "randomization": "explicit",
+        "api_input_sha256": "326a5a2a99f8d0e14b83c3bc2d65a6b21ab47012a301ad4200bcdd2f4c1768bc",
+        "message_sha256": "28f8411b09d9a769753d0b12f987831f6c0f280918ca225a9ed3867a320e63d4",
+        "context_sha256": "f930e7f71bc64c413ea3809e23d55ca29c9c8c9cd8f7ccdb39cc65c653fb2298",
+        "opt_rand_sha256": "e0d97c06faf45411e9c86b2aded6e6e8fe13e072b060fd09172d0a6661656970",
+        "public_key_hex": "4d4a5bc4e34158be980066ec7c4cb9cc910b60414b5962f593de9c902df75b30",
+        "public_key_sha256": "5cbcfe0676bef84ace8de9b083f114c6970b51f9ff1b50ebe5208c3ed1e316f4",
+        "budget_algorithm": "SLH-DSA-SM3-128-24",
+        "budget_message_sha256": "326a5a2a99f8d0e14b83c3bc2d65a6b21ab47012a301ad4200bcdd2f4c1768bc"
+      },
+      "input_reference_record_sha256": "3cab4164d2d4822444134e2a7ce5edbd5d45ab6c8d09375e707f4af9825aa4fd",
+      "signature_sha256": "843ad8b2ac02e590ecd638fc1d9b3065a4a08fc13ad149c6f975d6b5141ebca6",
+      "record_sha256": "27f15d6c6fd357998cdaa8029ea40f8f46444eb38d20988257799fefb1354320"
+    },
+    {
+      "case_id": "python-3-1/release-counts",
+      "checks": {
+        "counters_disabled": true
+      },
+      "passed": true,
+      "gpu_stats": null,
+      "input_reference_record_sha256": "3cab4164d2d4822444134e2a7ce5edbd5d45ab6c8d09375e707f4af9825aa4fd",
+      "record_sha256": "47421c515d0fd103786e3d4730f185e4e3097c120ee1a60d05e53cb0e19c339e"
+    },
+    {
+      "case_id": "python-3-2/keygen",
+      "checks": {
+        "actual_backend": true,
+        "pk_equals_Python": true,
+        "sk_equals_Python": true
+      },
+      "passed": true,
+      "gpu_stats": null,
+      "actual_selected_backend": 5,
+      "input_reference_record_sha256": "895a994552ce0b0802f732c20debed34523636cc668fa70d53c69a93ea188ae8",
+      "public_key_sha256": "bbb9291110209c870a91381caae2ea6ae2281c1a6cd1e6714894423abe0c61cc",
+      "record_sha256": "bcbcf36e60d304464352ce0ed1c8bab047cfd0b8902dad991c256a12f0439ee6"
+    },
+    {
+      "case_id": "python-3-2/sign",
+      "checks": {
+        "signature_equals_Python": true,
+        "verify_internal": true,
+        "pure_verify": true,
+        "changed_message_rejected": true,
+        "REF_verify": true,
+        "events_disabled": true,
+        "actual_GPU_work": true
+      },
+      "passed": true,
+      "gpu_stats": {
+        "kernel_launches": 150,
+        "h2d_bytes": 96,
+        "d2h_bytes": 2400,
+        "device_hashes": 301989882,
+        "kernel_ns": 0,
+        "timing_enabled": 0
+      },
+      "budget_receipt": "6af3112eb29e49dabb1e6bb34088af38",
+      "budget_status": "committed",
+      "actual_selected_backend": 5,
+      "input": {
+        "pid": 3,
+        "api": "sign_internal",
+        "hash_alg": null,
+        "randomization": "deterministic",
+        "api_input_sha256": "4f36444439289e0bab5beb5cc732eada1aaa19b341c8083352a25ad363b44fc6",
+        "message_sha256": "5fe54ffde5a31359d7900cb495563a6a058b7ea4cc51542fd9084f436ded7fc4",
+        "context_sha256": "f930e7f71bc64c413ea3809e23d55ca29c9c8c9cd8f7ccdb39cc65c653fb2298",
+        "opt_rand_sha256": null,
+        "public_key_hex": "c96d85beba19e041699598a8562aa8dd4a1b738f58e4b81c810fdedabab5f7f6",
+        "public_key_sha256": "bbb9291110209c870a91381caae2ea6ae2281c1a6cd1e6714894423abe0c61cc",
+        "budget_algorithm": "SLH-DSA-SM3-128-24",
+        "budget_message_sha256": "4f36444439289e0bab5beb5cc732eada1aaa19b341c8083352a25ad363b44fc6"
+      },
+      "input_reference_record_sha256": "895a994552ce0b0802f732c20debed34523636cc668fa70d53c69a93ea188ae8",
+      "signature_sha256": "339ee0221d6f28d7a68ca22a4267ecd698372f501631b5f190f39b3adf6b0d74",
+      "record_sha256": "3285b434f262da811f3a12d3ed741603328c456583fe368ee8440f9d8109968c"
+    },
+    {
+      "case_id": "python-3-2/release-counts",
+      "checks": {
+        "counters_disabled": true
+      },
+      "passed": true,
+      "gpu_stats": null,
+      "input_reference_record_sha256": "895a994552ce0b0802f732c20debed34523636cc668fa70d53c69a93ea188ae8",
+      "record_sha256": "a07659c0b44b20bc73538db29c54f59894d08561f04343375f10d242fa5d6935"
+    },
+    {
+      "case_id": "toy/prehash-1",
+      "checks": {
+        "CUDA_verify": true,
+        "REF_verify": true,
+        "wrong_context_rejected": true,
+        "events_disabled": true,
+        "actual_GPU_work": true
+      },
+      "passed": true,
+      "gpu_stats": {
+        "kernel_launches": 66,
+        "h2d_bytes": 96,
+        "d2h_bytes": 1056,
+        "device_hashes": 18426,
+        "kernel_ns": 0,
+        "timing_enabled": 0
+      },
+      "budget_receipt": "abf7144206974df5baf9bff61a0e7d96",
+      "budget_status": "committed",
+      "actual_selected_backend": 5,
+      "input": {
+        "pid": 201,
+        "api": "sign_prehash",
+        "hash_alg": 1,
+        "randomization": "deterministic",
+        "api_input_sha256": "00677bbecbab8ed8d9aba26f994dbf8c0f380ef272d4fa17e7c521801c82954e",
+        "message_sha256": "00677bbecbab8ed8d9aba26f994dbf8c0f380ef272d4fa17e7c521801c82954e",
+        "context_sha256": "ab78d989ee72589c8422cb1437da5bf5d686f6e7163c6c6b54962cfd10267382",
+        "opt_rand_sha256": null,
+        "public_key_hex": "202122232425262728292a2b2c2d2e2f46af7f0af6f29843c817fa2d32742de7",
+        "public_key_sha256": "cae4d118d336117082e7970ea52846657ae027d40971be8f6b2eff05c603eef9",
+        "budget_algorithm": "SLH-DSA-SM3-TOY",
+        "budget_message_sha256": "00677bbecbab8ed8d9aba26f994dbf8c0f380ef272d4fa17e7c521801c82954e"
+      },
+      "signature_sha256": "12126f7eb0305a17f4ad764e3828adbc28a5bf355459da44ef15bfe5220aa90b",
+      "record_sha256": "4b3760160b81789339e97f959d3fef74d53aac2d52791b6f7700be884836bdd2"
+    },
+    {
+      "case_id": "toy/prehash-2",
+      "checks": {
+        "CUDA_verify": true,
+        "REF_verify": true,
+        "wrong_context_rejected": true,
+        "events_disabled": true,
+        "actual_GPU_work": true
+      },
+      "passed": true,
+      "gpu_stats": {
+        "kernel_launches": 66,
+        "h2d_bytes": 96,
+        "d2h_bytes": 1056,
+        "device_hashes": 18426,
+        "kernel_ns": 0,
+        "timing_enabled": 0
+      },
+      "budget_receipt": "e27d42a48e7743c694bfbaee9d60926b",
+      "budget_status": "committed",
+      "actual_selected_backend": 5,
+      "input": {
+        "pid": 201,
+        "api": "sign_prehash",
+        "hash_alg": 2,
+        "randomization": "deterministic",
+        "api_input_sha256": "00677bbecbab8ed8d9aba26f994dbf8c0f380ef272d4fa17e7c521801c82954e",
+        "message_sha256": "00677bbecbab8ed8d9aba26f994dbf8c0f380ef272d4fa17e7c521801c82954e",
+        "context_sha256": "ab78d989ee72589c8422cb1437da5bf5d686f6e7163c6c6b54962cfd10267382",
+        "opt_rand_sha256": null,
+        "public_key_hex": "202122232425262728292a2b2c2d2e2f46af7f0af6f29843c817fa2d32742de7",
+        "public_key_sha256": "cae4d118d336117082e7970ea52846657ae027d40971be8f6b2eff05c603eef9",
+        "budget_algorithm": "SLH-DSA-SM3-TOY",
+        "budget_message_sha256": "00677bbecbab8ed8d9aba26f994dbf8c0f380ef272d4fa17e7c521801c82954e"
+      },
+      "signature_sha256": "131e19043820dceff91ff7a2956927e7b5dae18386f969677dc4ee414fb2843f",
+      "record_sha256": "729c982b9eb4a41e78f0818a40ff007d442d217b4a65eba2c905da06785a9c3a"
+    },
+    {
+      "case_id": "toy/prehash-3",
+      "checks": {
+        "CUDA_verify": true,
+        "REF_verify": true,
+        "wrong_context_rejected": true,
+        "events_disabled": true,
+        "actual_GPU_work": true
+      },
+      "passed": true,
+      "gpu_stats": {
+        "kernel_launches": 66,
+        "h2d_bytes": 96,
+        "d2h_bytes": 1056,
+        "device_hashes": 18426,
+        "kernel_ns": 0,
+        "timing_enabled": 0
+      },
+      "budget_receipt": "4dd8ecbc0ba7478eabffc7ff8c10b739",
+      "budget_status": "committed",
+      "actual_selected_backend": 5,
+      "input": {
+        "pid": 201,
+        "api": "sign_prehash",
+        "hash_alg": 3,
+        "randomization": "deterministic",
+        "api_input_sha256": "00677bbecbab8ed8d9aba26f994dbf8c0f380ef272d4fa17e7c521801c82954e",
+        "message_sha256": "00677bbecbab8ed8d9aba26f994dbf8c0f380ef272d4fa17e7c521801c82954e",
+        "context_sha256": "ab78d989ee72589c8422cb1437da5bf5d686f6e7163c6c6b54962cfd10267382",
+        "opt_rand_sha256": null,
+        "public_key_hex": "202122232425262728292a2b2c2d2e2f46af7f0af6f29843c817fa2d32742de7",
+        "public_key_sha256": "cae4d118d336117082e7970ea52846657ae027d40971be8f6b2eff05c603eef9",
+        "budget_algorithm": "SLH-DSA-SM3-TOY",
+        "budget_message_sha256": "00677bbecbab8ed8d9aba26f994dbf8c0f380ef272d4fa17e7c521801c82954e"
+      },
+      "signature_sha256": "d437e89561556bed2a0b8dbfd1fa057bf6137f81e77fdba6ea3159128cd11ff3",
+      "record_sha256": "76af25a46b9fd1bfe2236a3c8afd0ec8637da885dce9bc1a2d4eccb2821d3df8"
+    },
+    {
+      "case_id": "toy/prehash-4",
+      "checks": {
+        "CUDA_verify": true,
+        "REF_verify": true,
+        "wrong_context_rejected": true,
+        "events_disabled": true,
+        "actual_GPU_work": true
+      },
+      "passed": true,
+      "gpu_stats": {
+        "kernel_launches": 66,
+        "h2d_bytes": 96,
+        "d2h_bytes": 1056,
+        "device_hashes": 18426,
+        "kernel_ns": 0,
+        "timing_enabled": 0
+      },
+      "budget_receipt": "428183985466471e97092f2dc4489408",
+      "budget_status": "committed",
+      "actual_selected_backend": 5,
+      "input": {
+        "pid": 201,
+        "api": "sign_prehash",
+        "hash_alg": 4,
+        "randomization": "deterministic",
+        "api_input_sha256": "00677bbecbab8ed8d9aba26f994dbf8c0f380ef272d4fa17e7c521801c82954e",
+        "message_sha256": "00677bbecbab8ed8d9aba26f994dbf8c0f380ef272d4fa17e7c521801c82954e",
+        "context_sha256": "ab78d989ee72589c8422cb1437da5bf5d686f6e7163c6c6b54962cfd10267382",
+        "opt_rand_sha256": null,
+        "public_key_hex": "202122232425262728292a2b2c2d2e2f46af7f0af6f29843c817fa2d32742de7",
+        "public_key_sha256": "cae4d118d336117082e7970ea52846657ae027d40971be8f6b2eff05c603eef9",
+        "budget_algorithm": "SLH-DSA-SM3-TOY",
+        "budget_message_sha256": "00677bbecbab8ed8d9aba26f994dbf8c0f380ef272d4fa17e7c521801c82954e"
+      },
+      "signature_sha256": "bbd023bfbac82a243dffdabd8fab1a38fa10177a41f72d13bb1f4813f32441bf",
+      "record_sha256": "aab5d832dc8703aa16a00750c99d35ce9585cbd17ba32357409280bef3c50106"
+    },
+    {
+      "case_id": "toy/prehash-5",
+      "checks": {
+        "CUDA_verify": true,
+        "REF_verify": true,
+        "wrong_context_rejected": true,
+        "events_disabled": true,
+        "actual_GPU_work": true
+      },
+      "passed": true,
+      "gpu_stats": {
+        "kernel_launches": 66,
+        "h2d_bytes": 96,
+        "d2h_bytes": 1056,
+        "device_hashes": 18426,
+        "kernel_ns": 0,
+        "timing_enabled": 0
+      },
+      "budget_receipt": "2f03ca96033546f081530d756cfe881b",
+      "budget_status": "committed",
+      "actual_selected_backend": 5,
+      "input": {
+        "pid": 201,
+        "api": "sign_prehash",
+        "hash_alg": 5,
+        "randomization": "deterministic",
+        "api_input_sha256": "00677bbecbab8ed8d9aba26f994dbf8c0f380ef272d4fa17e7c521801c82954e",
+        "message_sha256": "00677bbecbab8ed8d9aba26f994dbf8c0f380ef272d4fa17e7c521801c82954e",
+        "context_sha256": "ab78d989ee72589c8422cb1437da5bf5d686f6e7163c6c6b54962cfd10267382",
+        "opt_rand_sha256": null,
+        "public_key_hex": "202122232425262728292a2b2c2d2e2f46af7f0af6f29843c817fa2d32742de7",
+        "public_key_sha256": "cae4d118d336117082e7970ea52846657ae027d40971be8f6b2eff05c603eef9",
+        "budget_algorithm": "SLH-DSA-SM3-TOY",
+        "budget_message_sha256": "00677bbecbab8ed8d9aba26f994dbf8c0f380ef272d4fa17e7c521801c82954e"
+      },
+      "signature_sha256": "ff66a3dee6e691da2caaec615ca49bd9373b95aacb4f1fb2f219a46408158564",
+      "record_sha256": "5393f1662233c05c13e025a095497b1b72f6bde50df5761cefe58a4e3e820b6c"
+    }
+  ],
+  "source_sha256": {
+    "c/Makefile": "ceb01df11af00548d41cfb313878ca5bd52f08336dd2647d8e04adaddade9b1f",
+    "c/include/slhdsa_sm3.h": "dd3c12dd2ea439eab9bdd38fead74bd1bdae271588650c9fd1a8e511f52674c4",
+    "c/src/engine.c": "e9ef382c21ee8ae7576d524959a6d12808c848b00ad5d728cbb0bcc1eb5d227b",
+    "c/src/sm3.c": "1e2712dc6a2ac0f7f2950936acc37c08d80c69e39743ce211abbc5ed7142d20f",
+    "c/src/sm3.h": "a8eb36558ee2680ffb486c81430461406f8a6002a367d3187fa130e3e0d46761",
+    "c/src/sm3x8.c": "41da8e709dd31d8ce126b5ea4bbf972ad57fcdc1565247a959f94f8001263b2e",
+    "c/src/sm3x8.h": "94f3bef4ff710d6fff7d3e29633e390778ef0cfd2b4ab90084a01e497da43fc4",
+    "c/src/secure_zero.h": "9ac49e9ece7575d338b8cec116cbacee394273392f2672af97af58266dca2b70",
+    "c/src/sm3_cuda.h": "6354878a69a8c299688d8805de46a4b6adfecdf43560de04d6f081feabd18bf1",
+    "c/src/sm3_cuda_device.cuh": "7e9a63997620c38a1a8b93406b55ebbde9201679c4a1006f2b6cc1867c9ee48e",
+    "third_party/slhdsa-c/sha2_256.c": "cbc9ef22886cf8a6a8f4e51b60b4b858d9c8a5a5dbe2ad16764a7e6ea3fba85c",
+    "third_party/slhdsa-c/sha2_512.c": "b06e26570cc3492b060c7f97d4fe7f69b1667628c176ed9f83af11b60076c9aa",
+    "third_party/slhdsa-c/sha2_api.h": "96698a33d10b8e1c50f82ee82e34209f37607ea207baaf6ee8f238bff9878ef7",
+    "third_party/slhdsa-c/sha3_api.c": "6d3814614abbc671f290a39a65c0ab7dd9176a31c4cca52cd28b7d37b06cccdb",
+    "third_party/slhdsa-c/sha3_api.h": "1432755b08078487d2391f2bdb3def145f3f5c8855e01ab301fd9e9f7ce0b4eb",
+    "third_party/slhdsa-c/sha3_f1600.c": "1c094367c05bb887fd5b48faf24125619904b88fe0c18ca0d64dd4e5bb5ab757",
+    "third_party/slhdsa-c/plat_local.h": "57ca78d49794cbfd5b45bca5b31576e8de126eb3b9e07beb7a783282f84d706a",
+    "c/src/sm3_cuda.cu": "97b2d7f9a4ca92eb412bc94b0636cc47b8bcf89c8db3dfdbd56b234dbc3c1d25"
+  },
+  "sources_and_tools_sha256": {
+    "c/Makefile": "ceb01df11af00548d41cfb313878ca5bd52f08336dd2647d8e04adaddade9b1f",
+    "c/include/slhdsa_sm3.h": "dd3c12dd2ea439eab9bdd38fead74bd1bdae271588650c9fd1a8e511f52674c4",
+    "c/src/engine.c": "e9ef382c21ee8ae7576d524959a6d12808c848b00ad5d728cbb0bcc1eb5d227b",
+    "c/src/sm3.c": "1e2712dc6a2ac0f7f2950936acc37c08d80c69e39743ce211abbc5ed7142d20f",
+    "c/src/sm3.h": "a8eb36558ee2680ffb486c81430461406f8a6002a367d3187fa130e3e0d46761",
+    "c/src/sm3x8.c": "41da8e709dd31d8ce126b5ea4bbf972ad57fcdc1565247a959f94f8001263b2e",
+    "c/src/sm3x8.h": "94f3bef4ff710d6fff7d3e29633e390778ef0cfd2b4ab90084a01e497da43fc4",
+    "c/src/secure_zero.h": "9ac49e9ece7575d338b8cec116cbacee394273392f2672af97af58266dca2b70",
+    "c/src/sm3_cuda.h": "6354878a69a8c299688d8805de46a4b6adfecdf43560de04d6f081feabd18bf1",
+    "c/src/sm3_cuda_device.cuh": "7e9a63997620c38a1a8b93406b55ebbde9201679c4a1006f2b6cc1867c9ee48e",
+    "third_party/slhdsa-c/sha2_256.c": "cbc9ef22886cf8a6a8f4e51b60b4b858d9c8a5a5dbe2ad16764a7e6ea3fba85c",
+    "third_party/slhdsa-c/sha2_512.c": "b06e26570cc3492b060c7f97d4fe7f69b1667628c176ed9f83af11b60076c9aa",
+    "third_party/slhdsa-c/sha2_api.h": "96698a33d10b8e1c50f82ee82e34209f37607ea207baaf6ee8f238bff9878ef7",
+    "third_party/slhdsa-c/sha3_api.c": "6d3814614abbc671f290a39a65c0ab7dd9176a31c4cca52cd28b7d37b06cccdb",
+    "third_party/slhdsa-c/sha3_api.h": "1432755b08078487d2391f2bdb3def145f3f5c8855e01ab301fd9e9f7ce0b4eb",
+    "third_party/slhdsa-c/sha3_f1600.c": "1c094367c05bb887fd5b48faf24125619904b88fe0c18ca0d64dd4e5bb5ab757",
+    "third_party/slhdsa-c/plat_local.h": "57ca78d49794cbfd5b45bca5b31576e8de126eb3b9e07beb7a783282f84d706a",
+    "c/src/sm3_cuda.cu": "97b2d7f9a4ca92eb412bc94b0636cc47b8bcf89c8db3dfdbd56b234dbc3c1d25",
+    "tools/bench_cuda.py": "74dae93d1095d732e323a9b562b70de1079696b8d58bc5d82820bbf8f394d9c0",
+    "tools/bench_cpu.py": "07385da89cc9e55fde08351f417253f5b910d88ca7a8a68d04fe5de524a83a7f",
+    "tools/bench_sm3_harness.c": "ddf61075e429aa8e6f3bae4f3eab63ec364d8567196a4c489165684ff4e141ee",
+    "tools/native.py": "2bd269ee8f4b091d6da86e73e5a18e6c0e091800c904329fb91f34f16a892fd9",
+    "tools/signing_budget.py": "db3fe3982dd66bbef74dedbb273e1bfd136213563d324ba5807c13871e205d1f",
+    "tools/count_model.py": "6ac77e6b63e6cf9c03818c0e7d349012e16fafc5d1624e59da960564d97fc419",
+    "reference/sm3.py": "43fb6d92afc803f4842bd06dfb00f813c7ed102f1b68d9115c3e0cd6497c2c8e",
+    "tools/check_cuda_release.py": "67057ffac6beafaa85fd479448dffe2d90f0fb03767b9cb292c0a68ebb0b54ed"
+  },
+  "library_sha256": "03ccb1e084c38a8c56cd4af6500d05f6a150dbce5778fe9df1f67c3d9eeca322",
+  "build_record_sha256": "68344508c8878f864b3ad9d883379b5a450545fd95400d82f4752b13ced310a9",
+  "input_sha256": {
+    "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/reference/evidence/python-sm3-128-24.jsonl": "b9a0cdf1ca02deaa666ee88c1726ce1ed590f04afb551432bb21e52c741c9c46"
+  },
+  "device_identity": {
+    "device": 0,
+    "runtime_version": 11050,
+    "driver_version": 12090,
+    "compute_major": 8,
+    "compute_minor": 9,
+    "total_memory": 25250627584,
+    "name": "NVIDIA GeForce RTX 4090"
+  },
+  "budget_database_path": "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/repair-pipeline/correctness-budget.sqlite",
+  "prehash_public_key_hex": "202122232425262728292a2b2c2d2e2f46af7f0af6f29843c817fa2d32742de7",
+  "prehash_seed_sha256": "4dbdc2b2b62cb00749785bc84202236dbc3777d74660611b8e58812f0cfde6c3",
+  "budget_status": [
+    {
+      "key_id": "1e0c4e655b92e6d8bd35df2695f05840d37175409dfc0b1a8e1adb3da9889209",
+      "algorithm": "slh-dsa-sm3-128s",
+      "limit": 18446744073709551616,
+      "used": 40,
+      "remaining": 18446744073709551576,
+      "states": {
+        "committed": 40
+      },
+      "count_reconciled": true
+    },
+    {
+      "key_id": "22283145e71ffc8894dd7704f59583cc267de58fa4c806772e22f21d9d105c0d",
+      "algorithm": "slh-dsa-sha2-128-24",
+      "limit": 16777216,
+      "used": 37,
+      "remaining": 16777179,
+      "states": {
+        "committed": 37
+      },
+      "count_reconciled": true
+    },
+    {
+      "key_id": "3f915bef8286e7367556fef73e55e9909b06c043ffef7ae8a02e671b46c93d5a",
+      "algorithm": "slh-dsa-sm3-128-24",
+      "limit": 16777216,
+      "used": 99,
+      "remaining": 16777117,
+      "states": {
+        "committed": 99
+      },
+      "count_reconciled": true
+    },
+    {
+      "key_id": "4ca1ea4802915fe12766958fa395fa5859343314fed2e3c0e05ba1b26b5ada0d",
+      "algorithm": "slh-dsa-sm3-128f",
+      "limit": 18446744073709551616,
+      "used": 40,
+      "remaining": 18446744073709551576,
+      "states": {
+        "committed": 40
+      },
+      "count_reconciled": true
+    },
+    {
+      "key_id": "6241e0d75bb40eee76927a353d4f0ab5c3216ea5900511514771f1f7a6d58572",
+      "algorithm": "slh-dsa-sm3-toy",
+      "limit": 18446744073709551616,
+      "used": 82,
+      "remaining": 18446744073709551534,
+      "states": {
+        "committed": 62,
+        "failed": 20
+      },
+      "count_reconciled": true
+    },
+    {
+      "key_id": "720b9bb2c30c4629b2606dab8062f749f90b6f7f1f1713e06ac856251a6631e6",
+      "algorithm": "slh-dsa-sm3-128-24",
+      "limit": 16777216,
+      "used": 1,
+      "remaining": 16777215,
+      "states": {
+        "committed": 1
+      },
+      "count_reconciled": true
+    },
+    {
+      "key_id": "8f1ad811288545f0df80343c30426da0957a7335af7d044ed8628a37c8f9bb8b",
+      "algorithm": "slh-dsa-sm3-toy",
+      "limit": 18446744073709551616,
+      "used": 5,
+      "remaining": 18446744073709551611,
+      "states": {
+        "committed": 5
+      },
+      "count_reconciled": true
+    },
+    {
+      "key_id": "957a7d070c95661f5c7c0f6e06a7e3418ceea1eb3146d9604955696dc28ea9f5",
+      "algorithm": "slh-dsa-sm3-128-24",
+      "limit": 16777216,
+      "used": 1,
+      "remaining": 16777215,
+      "states": {
+        "committed": 1
+      },
+      "count_reconciled": true
+    },
+    {
+      "key_id": "9665bf43a47a34e07e62999ecc84f5ffc43988513ad1243e363e916237bc0e9a",
+      "algorithm": "slh-dsa-sha2-128s",
+      "limit": 18446744073709551616,
+      "used": 14,
+      "remaining": 18446744073709551602,
+      "states": {
+        "committed": 14
+      },
+      "count_reconciled": true
+    },
+    {
+      "key_id": "b313e843ac9615509475a1dac460c28b3e3afb98fc0b114561234db8f8ee51a4",
+      "algorithm": "slh-dsa-sha2-128f",
+      "limit": 18446744073709551616,
+      "used": 14,
+      "remaining": 18446744073709551602,
+      "states": {
+        "committed": 14
+      },
+      "count_reconciled": true
+    }
+  ],
+  "real_timing_samples": 0,
+  "formal_performance_started": false,
+  "measured_durations": false,
+  "actual_selected_backend": 5
+}

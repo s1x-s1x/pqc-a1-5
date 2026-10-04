@@ -1,0 +1,3 @@
+ Verifpal * Verification initiated for 'M2_ca_leaked.vp' at 03:30:23 PM.
+     Info . Attacker is configured as active.
+     Info . Running at phase 0.

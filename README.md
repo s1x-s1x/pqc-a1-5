@@ -5,14 +5,36 @@ This directory is its development mirror. Original plans are preserved in
 `docs/plans/`; corrections and implementation decisions are recorded in `SPEC.md`
 and `LOG.md`. The prior TLS prototype is preserved in `base_tls/`.
 
-The first review milestone is a reproducible scalar engine with external test
-vectors, a separate Python reference, subtree parallelism and validated cache
-loading. SIMD, CUDA and TLS integration follow this review.
+The implementation includes a separate Python reference, external vectors,
+REF/AVX2/OpenMP, validated public-node caches, CUDA FORS and an experimental
+alternative CA/TLS harness. Each acceptance result is tied to its tested source.
 
 Measurements before the first correctness gate are diagnostic timings only.
 They are not final competition performance results.
 
-## Current checkpoint: CPU and CUDA optimization before performance testing
+## Current checkpoint: project repairs, before performance and paper edits
+
+The authorized 2026-10-04 engineering repairs and current-source acceptance are complete.
+See `docs/PROJECT_REPAIR_CHECKPOINT.md` and `docs/NATIVE_REPAIR_20261004.md`.
+ABI 1.1 adds checked-capacity operations, private signature candidates and
+optional reference self-verification. Signing budgets use canonical algorithm identities,
+a persistent ledger UUID and receipt reconciliation. TLS accepts fragmented
+handshake streams with 16 KiB record-content limits and reports serialized byte
+counts explicitly. Native/Python fixture acceptance requires both actual paths.
+
+Current-source Linux acceptance passed CPU full 3471/3471, CUDA full
+1789/1789, 11 project functional gates and clean reproduction in
+`build/repair-staging-20261004-r3`. The full-session symbolic searches timed out
+and remain explicitly incomplete under the user's delivery choice. Earlier freezes below remain
+historical evidence. Formal CPU/CUDA/network performance samples remain zero.
+The paper/LaTeX and old report framework remain untouched. Project capabilities,
+security boundaries and wire details are in `docs/CAPABILITIES.md`,
+`docs/SECURITY.md` and `docs/PROTOCOL.md`. Read-only delivery verification is
+`python ops/audit_project_repair.py`; clone recovery instructions are in
+`docs/GITHUB_HANDOFF.md`. Pending measurement scopes are in
+`docs/PERFORMANCE_SCOPE_REPAIR.md`.
+
+## Historical optimization checkpoint
 
 The user selected completing CPU and CUDA optimization and their correctness acceptance,
 then stopping immediately before optimized performance testing. Scope and

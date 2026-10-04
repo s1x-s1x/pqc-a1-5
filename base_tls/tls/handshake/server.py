@@ -189,9 +189,9 @@ class HybridServer(HandshakeState):
     ) -> list[tuple[str, bytes, bytes]]:
         """Build and protect the server's authenticated flight.
 
-        Returns ``(name, record_bytes, plaintext_frame)`` triples. The plaintext
-        frame is returned as well so the caller can account for handshake bytes and
-        record-protection bytes separately. The Finished message is built last
+        Returns ``(name, record_bytes, plaintext_fragment)`` triples. Messages over
+        16384 bytes produce multiple records; each transcript message is hashed
+        once before fragmentation. The Finished message is built last
         because its MAC covers a transcript that now includes CertificateVerify.
 
         ``frame_filter`` rewrites each plaintext frame just before it is hashed into
@@ -209,7 +209,12 @@ class HybridServer(HandshakeState):
             if frame_filter is not None:
                 frame = frame_filter(name, frame)
             self.transcript.add(frame)
-            flight.append((name, self.seal_handshake(frame), frame))
+            # Transcript hashes complete messages once; record sequence advances
+            # once for each protected fragment, independently of message boundaries.
+            from ..record.aead import MAX_CONTENT_BYTES
+            for start in range(0, len(frame), MAX_CONTENT_BYTES):
+                fragment = frame[start:start + MAX_CONTENT_BYTES]
+                flight.append((name, self.seal_handshake(fragment), fragment))
 
         # EncryptedExtensions and Certificate must reach the transcript before the
         # CertificateVerify input is built, because that input covers them.

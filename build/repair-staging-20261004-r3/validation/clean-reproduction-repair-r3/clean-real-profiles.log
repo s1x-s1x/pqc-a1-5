@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/clean-reproduction-repair-r3/checkout/base_tls/tls/alt_chain.py", line 146, in verify_alt_chain
+    raise DerError("alternative signature verification failed")
+tls.der.DerError: alternative signature verification failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/clean-reproduction-repair-r3/checkout/tools/demo_project.py", line 362, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/clean-reproduction-repair-r3/checkout/tools/demo_project.py", line 342, in main
+    executed = run_fixtures(args.fixtures.resolve(), args.library.resolve(), args.handshake_signer)
+  File "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/clean-reproduction-repair-r3/checkout/tools/demo_project.py", line 170, in run_fixtures
+    verification = verify_alt_chain(chain, root, "server.example", require_alt_chain=True,
+        expected_algorithm=name, force_python=python, require_native=name.startswith("slh-") and not python,
+        library=library)
+  File "/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/clean-reproduction-repair-r3/checkout/base_tls/tls/alt_chain.py", line 157, in verify_alt_chain
+    raise HandshakeError("certificate_alt", str(error)) from error
+tls.errors.HandshakeError: certificate_alt: alternative signature verification failed

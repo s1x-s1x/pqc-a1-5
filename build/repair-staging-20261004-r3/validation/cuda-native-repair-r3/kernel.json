@@ -1,0 +1,54 @@
+{
+  "schema": "a15-cuda-kernel-v1",
+  "passed": true,
+  "actual_selected_backend": 5,
+  "formal_performance_started": false,
+  "measured_durations": false,
+  "real_timing_samples": 0,
+  "source_hashes": {
+    "c/src/sm3_cuda.cu": "97b2d7f9a4ca92eb412bc94b0636cc47b8bcf89c8db3dfdbd56b234dbc3c1d25",
+    "c/src/sm3_cuda.h": "6354878a69a8c299688d8805de46a4b6adfecdf43560de04d6f081feabd18bf1",
+    "c/src/sm3_cuda_device.cuh": "7e9a63997620c38a1a8b93406b55ebbde9201679c4a1006f2b6cc1867c9ee48e",
+    "c/src/sm3_cuda_stub.c": "b5f2ccb7c8ca60e0eb8adf4609962ad0f5f6acbb109b22a799cc33e274a998f6",
+    "c/tests/test_cuda.c": "6dee97e16a8f89832f6073f106c3b96202648c4d20de5b3ed23d51e61710e16b",
+    "c/tests/test_cuda_kernel_host.cpp": "9ac22fadf8bd5591fc661eda8de9ce4cff263485273785ec8976ec95b1d208f9"
+  },
+  "gpu_stats": {
+    "kernel_launches": 2770,
+    "device_hashes": 395926,
+    "kernel_ns": 0,
+    "timing_enabled": 0
+  },
+  "cases": [
+    {
+      "case": "gpu-sm3",
+      "comparisons": 7294,
+      "passed": true,
+      "timed": false
+    },
+    {
+      "case": "gpu-fors-subtrees-and-hybrid-wots",
+      "comparisons": 148,
+      "passed": true,
+      "timed": false
+    },
+    {
+      "case": "gpu-full-signatures-cache-randomized-inputs-and-guards",
+      "comparisons": 12,
+      "passed": true,
+      "timed": false
+    },
+    {
+      "passed": true,
+      "cuda_available": true,
+      "actual_backend": 5,
+      "device": 0,
+      "kernel_launches": 2770,
+      "device_hashes": 395926,
+      "timed": false
+    }
+  ],
+  "library_sha256": "cf70d53e312f7f4cad2dd3954f1f013a3a5bf9d2a1478abf35f205f85e6ebe38",
+  "executable_sha256": "48fae670196f1a022d196e028bdae87c9b045afd37f6540146e5c7148b022a1a",
+  "log_sha256": "05e52e485b128539dfe5cae4fa674ff6662a34d1c32737979b9017b6958f4fc2"
+}

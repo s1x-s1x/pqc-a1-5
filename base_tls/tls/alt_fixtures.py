@@ -14,7 +14,7 @@ from .pki import CertificateChain, pq_extension_from_leaf, verify_chain
 
 
 def load_fixture(directory, *, chain_kind="alt", identity="server.example",
-                 pq_signer=None, expected_algorithm=None):
+                 pq_signer=None, expected_algorithm=None, library=None, require_native=False):
     directory = Path(directory).resolve()
     metadata_path = directory / "fixture.json"
     if not metadata_path.is_file():
@@ -38,7 +38,8 @@ def load_fixture(directory, *, chain_kind="alt", identity="server.example",
     chain = CertificateChain((leaf_der, intermediate_der), root_der, root.public_key(), leaf_der)
     if chain_kind == "alt":
         verify_alt_chain(chain.chain_der, root, identity, require_alt_chain=True,
-                         expected_algorithm=expected_algorithm or metadata["alt_algorithm"])
+                         expected_algorithm=expected_algorithm or metadata["alt_algorithm"],
+                         library=library, require_native=require_native)
     else:
         verify_chain(chain.chain_der, root, identity)
     classical_secret = serialization.load_pem_private_key(read("leaf-test-key.pem"), password=None)

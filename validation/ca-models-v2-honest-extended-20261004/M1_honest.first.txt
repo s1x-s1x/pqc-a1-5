@@ -1,0 +1,3 @@
+ Verifpal * Verification initiated for 'M1_honest.vp' at 03:33:12 PM.
+     Info . Attacker is configured as active.
+     Info . Running at phase 0.

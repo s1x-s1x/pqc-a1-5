@@ -1,0 +1,198 @@
+{
+  "schema": "a15-project-audit-repair-synthetic-regression-v1",
+  "passed": true,
+  "checks": [
+    {
+      "name": "complete-synthetic-baseline",
+      "passed": true,
+      "errors": []
+    },
+    {
+      "name": "verified-file-closure-nonempty",
+      "passed": true
+    },
+    {
+      "name": "native-empty-source_sha256",
+      "passed": true
+    },
+    {
+      "name": "native-empty-evidence_sha256",
+      "passed": true
+    },
+    {
+      "name": "native-empty-build_sha256",
+      "passed": true
+    },
+    {
+      "name": "native-empty-inputs_sha256",
+      "passed": true
+    },
+    {
+      "name": "native-wrong-step-name",
+      "passed": true
+    },
+    {
+      "name": "native-wrong-log-hash",
+      "passed": true
+    },
+    {
+      "name": "native-required-log-missing",
+      "passed": true
+    },
+    {
+      "name": "functional-empty-source_sha256",
+      "passed": true
+    },
+    {
+      "name": "functional-empty-evidence_sha256",
+      "passed": true
+    },
+    {
+      "name": "functional-required-evidence-map-entry-missing",
+      "passed": true
+    },
+    {
+      "name": "functional-source-windows-path",
+      "passed": true
+    },
+    {
+      "name": "cpu-missing-full_sha2",
+      "passed": true
+    },
+    {
+      "name": "cpu-nonempty-failed_case_ids",
+      "passed": true
+    },
+    {
+      "name": "cpu-nonempty-pending_case_ids",
+      "passed": true
+    },
+    {
+      "name": "cpu-nonempty-unavailable_case_ids",
+      "passed": true
+    },
+    {
+      "name": "cpu-real-record-count-mismatch",
+      "passed": true
+    },
+    {
+      "name": "cpu-case-file-hash-mismatch",
+      "passed": true
+    },
+    {
+      "name": "cpu-row-checksum-mismatch",
+      "passed": true
+    },
+    {
+      "name": "cpu-row-failure-status",
+      "passed": true
+    },
+    {
+      "name": "cpu-row-check-false",
+      "passed": true
+    },
+    {
+      "name": "cpu-row-source-binding-differs",
+      "passed": true
+    },
+    {
+      "name": "cpu-row-case-identity-differs",
+      "passed": true
+    },
+    {
+      "name": "config-empty-checks",
+      "passed": true
+    },
+    {
+      "name": "config-empty-steps",
+      "passed": true
+    },
+    {
+      "name": "config-failed-returncode",
+      "passed": true
+    },
+    {
+      "name": "clean-empty-source-map",
+      "passed": true
+    },
+    {
+      "name": "clean-formal-timing-state",
+      "passed": true
+    },
+    {
+      "name": "clean-empty-provider-inventory",
+      "passed": true
+    },
+    {
+      "name": "resource-required-device-code-resource-sass.log",
+      "passed": true
+    },
+    {
+      "name": "resource-required-sm3_cuda.o",
+      "passed": true
+    },
+    {
+      "name": "resource-required-ptxas.log",
+      "passed": true
+    },
+    {
+      "name": "demo-empty-artifacts",
+      "passed": true
+    },
+    {
+      "name": "demo-required-video",
+      "passed": true
+    },
+    {
+      "name": "binding-empty-inputs",
+      "passed": true
+    },
+    {
+      "name": "binding-empty-csv-map",
+      "passed": true
+    },
+    {
+      "name": "fixture-bundle-test-only-required",
+      "passed": true
+    },
+    {
+      "name": "fixture-set-required",
+      "passed": true
+    },
+    {
+      "name": "fixture-authorized-test-key-required",
+      "passed": true
+    },
+    {
+      "name": "fixture-ledger-UUID-differs",
+      "passed": true
+    },
+    {
+      "name": "fixture-receipt-missing",
+      "passed": true
+    },
+    {
+      "name": "fixture-receipt-status-differs",
+      "passed": true
+    },
+    {
+      "name": "fixture-receipt-message-digest-differs",
+      "passed": true
+    },
+    {
+      "name": "fixture-receipt-signature-digest-differs",
+      "passed": true
+    },
+    {
+      "name": "fixture-charge-reconciliation-differs",
+      "passed": true
+    }
+  ],
+  "check_count": 46,
+  "passed_checks": 46,
+  "tool_sha256": "83c21a324daec9c9062dc0080b97b86c09c75ca16d352692f3b9abf4820699d7",
+  "native_calls": 0,
+  "real_timing_samples": 0,
+  "formal_performance_started": false,
+  "scope": "Synthetic metadata fixtures and stub delivery; not actual matrix or runtime acceptance."
+}

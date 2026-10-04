@@ -86,9 +86,33 @@ SLH_ERR_BACKEND. Thread
 counts are explicit; 0 selects a recorded sensible automatic allocation.
 Verification validates signature length before reading its contents. ABI callers
 must allocate key/signature buffers using the exported size functions.
-Verify-after-sign failure clears the signature buffer and returns SLH_ERR_FAULT.
+ABI version 1.1 (`slh_abi_version()==0x00010001`) also exposes `*_checked`
+signing and subtree operations with explicit output capacities. The Python
+adapter requires this ABI and uses checked operations; historical libraries
+must be rebuilt for the current adapter. Legacy C entries remain compatible
+and retain the caller's output-allocation responsibility. Checked operations
+reject inadequate capacity before reading secrets or generating a candidate.
+Signing generates an internal private candidate, uses REF for requested
+self-verification, and copies to the caller only after success. Self-verification
+failure clears the output as contracted and returns SLH_ERR_FAULT. Candidate and
+secret-bearing CPU/SM3/SIMD/HMAC workspaces use explicit erasure on exit.
+CUDA seeds live in a dedicated device allocation, with synchronization and
+checked erasure/free handling; CUDA local arithmetic-state eradication and
+physical side-channel resistance are outside the demonstrated guarantee.
 Contexts must be independently owned by concurrent callers. Context mutation,
 cache operations and bound-key changes must not overlap a subtree/sign call.
+
+Budgeted Python/CLI/CA and experiment entries canonicalize supported pid/OID
+algorithm aliases before identifying a public key. Transactional legacy migration
+merges charges and receipts, preserving failed/crashed reservations. A ledger
+UUID binds campaign identity; completion/skip/resume checks reconcile receipts
+against the live ledger's algorithm, key, message, status and signature digest.
+UUID equality is not an anti-rollback guarantee for copied/restored databases.
+CA issuance finalizes reserved receipts on success or failure before publication.
+
+The Makefile's compiler/flags/counter/dispatch/CUDA configuration stamp is a
+build prerequisite, so switching configuration within an output directory
+invalidates prior products. Acceptance and release builds still use fresh names.
 
 slh_subtree requires leaf_start aligned to 2^z. target=UINT32_MAX requests only
 the root. Otherwise target is an absolute leaf index inside that subtree; auth

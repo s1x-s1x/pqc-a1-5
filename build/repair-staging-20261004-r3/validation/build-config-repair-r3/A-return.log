@@ -1,0 +1,7 @@
+make: Entering directory '/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/c'
+mkdir -p /home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/build-config-repair-r3/same-output
+rm -f /home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/build-config-repair-r3/same-output/.a15-config-*
+touch /home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/build-config-repair-r3/same-output/.a15-config-f94bc9737a58a600fdea8f5dd7f6d480a0fa27232b3ddf39680c7a94abe5c2fc
+mkdir -p /home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/build-config-repair-r3/same-output
+gcc -std=c11 -Wall -Wextra -Wno-misleading-indentation -fPIC -fopenmp -Iinclude -Isrc -I../third_party/slhdsa-c -O3 -DSLH_RELEASE_BUILD -shared src/engine.c src/sm3.c src/sm3x8.c ../third_party/slhdsa-c/sha2_256.c ../third_party/slhdsa-c/sha2_512.c ../third_party/slhdsa-c/sha3_api.c ../third_party/slhdsa-c/sha3_f1600.c src/sm3_cuda_stub.c   -o /home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/validation/build-config-repair-r3/same-output/libslhdsa_sm3.so
+make: Leaving directory '/home/guest-experiment/pqc-a1-5/build/repair-staging-20261004-r3/c'

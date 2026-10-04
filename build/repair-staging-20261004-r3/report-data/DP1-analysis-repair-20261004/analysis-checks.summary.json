@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "passed": true,
+  "checks": 121,
+  "failed_checks": [],
+  "no_native_execution": true,
+  "no_large_signature_generated": true,
+  "scope": "numerical, structural-count and frozen-grid validation; analytical evidence",
+  "source_hashes": {
+    "tools/check_analysis.py": "e982997ada6cf12b04d3bb4292146d5e222501ca4b080cb5d3c969b134127ec0",
+    "tools/security_terms.py": "8a1ef5eb04282b3b552c6a72f7a97bb4d47f92e64b4ca933e7e3e7abf2d33cac",
+    "tools/parameter_grid.py": "293f447acb29827ca84cee0471e40cfd94a1a57bc8b71be2747778765f498fd8",
+    "tools/count_model.py": "6ac77e6b63e6cf9c03818c0e7d349012e16fafc5d1624e59da960564d97fc419",
+    "tools/native.py": "2bd269ee8f4b091d6da86e73e5a18e6c0e091800c904329fb91f34f16a892fd9",
+    "tools/external_vectors.py": "c6eb4b30c70f4a994b8a0f508be6cd38c4516576a26c85f26ea582c40f910526",
+    "reference/sm3.py": "43fb6d92afc803f4842bd06dfb00f813c7ed102f1b68d9115c3e0cd6497c2c8e",
+    "docs/SECURITY_TERM_ANALYSIS.md": "e99f9a6c781159681e805b42b10194bf568b44bcaec7d749be74ab83af27d380"
+  },
+  "package_files": {
+    "analysis-checks.jsonl": "3c5ba92e741c8b53761a36fcf179ce88279c9426b86a4699245cc850e4ae0a24",
+    "count-coverage-review.json": "36ab41f87d70e6e392fcb7399e59f75e54922f04b18cd88ff8cefc69abf69728",
+    "count-replay-inputs.jsonl": "cad64b833bfe18ea17e418919788468d3811ebc3f2161314631dc07945e0d8f6",
+    "generic-output-bounds.csv": "35561202876aaeea405e74f85458efc4a78863ad28f63450af4e0482a3f49dad",
+    "grid-all-candidates.csv": "c01bdf4458a9523fcc729eceb54b9d6740d61f7806359add0d155305eda367ce",
+    "grid-config.json": "fb999b67f61e018924a61c21457f37de9634c0789ea830f2c01805a626ef03a0",
+    "grid-Pareto-no-cache.csv": "1eedca965447dcaaf8463eea071054c57bba6494841a9ecbeeab2f129aa01bf3",
+    "grid-Pareto-t12.csv": "790a5941865162e4167762d50d9f259d7f1b60698b5ff3fa990144b90eb2d1d2",
+    "grid-tables.md": "04b4d556bb971ae43821dcecd9a153a30d68340f659676f8d59e52cd2b2c9306",
+    "grid.manifest.json": "4acaf3992a8790a278d164be6d4d541cc8a642975cdc0130cc02f4b0fd14c282",
+    "parameter-baselines.csv": "ff2d7defcbf0365d0ff0ccee5b1b250c1315e8c1aecfce0308b9bf8043bfc205",
+    "R2-existing-vector-predictions.csv": "5b7c2866342e3cc7f10e4620a9add05b5759cfc1442d5beb1b49c4d26dd37500",
+    "R7-R8-tables.md": "fa2cb304fed700b72966b2c1bc1b25b9fb1785fad72400833200146c41d2ebdd",
+    "R7-security-parameters.csv": "97c5570aff84dc48969062b51de6e8d532d18c8ca14e57a7bd99536a3597a9d8",
+    "R8-FORS-probability-term.csv": "2274735dfa0cde8f5d04a328f011594f05b463c80295ca22b64e6968e8589f98",
+    "security-terms.jsonl": "5edb4de6df8790fef3ffe565ad2fd726f904c97ccc1a8f807b26c83256d69db2",
+    "security-terms.manifest.json": "b07b19d83053acbaeaaa101b0b12d557c3a665cca61bd6bbe965e40eb30be275",
+    "wots-uniform-chain-distribution.csv": "de4291a2f846aaa5bc70b26afb666ff6c0d1e7098769a79188f83326c55287dd"
+  },
+  "final": false
+}

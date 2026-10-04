@@ -1,0 +1,56 @@
+test_authorized_hash_bound_test_fixture_keys_are_included (__main__.PackageRepair.test_authorized_hash_bound_test_fixture_keys_are_included) ... ERROR
+test_backslash_external_rejected (__main__.PackageRepair.test_backslash_external_rejected) ... ok
+test_existing_archive_preserved (__main__.PackageRepair.test_existing_archive_preserved) ... ok
+test_existing_sidecar_preserved (__main__.PackageRepair.test_existing_sidecar_preserved) ... ok
+test_fixture_bundle_without_test_only_rejected (__main__.PackageRepair.test_fixture_bundle_without_test_only_rejected) ... ok
+test_includes_ignored_hash_closure_and_runs_unpacked_gate (__main__.PackageRepair.test_includes_ignored_hash_closure_and_runs_unpacked_gate) ... ok
+test_live_ignored_evidence_mutation_rejected (__main__.PackageRepair.test_live_ignored_evidence_mutation_rejected) ... ok
+test_missing_external_rejected (__main__.PackageRepair.test_missing_external_rejected) ... ok
+test_parent_original_rejected (__main__.PackageRepair.test_parent_original_rejected) ... ok
+test_portable_member_names (__main__.PackageRepair.test_portable_member_names) ... ok
+test_publication_sidecar_race_preserves_prior_record_and_cleans_archive (__main__.PackageRepair.test_publication_sidecar_race_preserves_prior_record_and_cleans_archive) ... ok
+test_stale_audited_hash_rejected (__main__.PackageRepair.test_stale_audited_hash_rejected) ... ok
+test_test_key_map_outside_declared_bundle_rejected (__main__.PackageRepair.test_test_key_map_outside_declared_bundle_rejected) ... ok
+test_tracked_private_fixture_rejected (__main__.PackageRepair.test_tracked_private_fixture_rejected) ... ok
+test_unpacked_closure_change_rejected (__main__.PackageRepair.test_unpacked_closure_change_rejected) ... ok
+test_unreported_audit_dependency_fails_clean_unpack_without_residue (__main__.PackageRepair.test_unreported_audit_dependency_fails_clean_unpack_without_residue) ... ok
+test_windows_absolute_external_rejected (__main__.PackageRepair.test_windows_absolute_external_rejected) ... ok
+test_wrong_external_hash_rejected (__main__.PackageRepair.test_wrong_external_hash_rejected) ... ok
+test_wrong_external_size_rejected (__main__.PackageRepair.test_wrong_external_size_rejected) ... ok
+
+======================================================================
+ERROR: test_authorized_hash_bound_test_fixture_keys_are_included (__main__.PackageRepair.test_authorized_hash_bound_test_fixture_keys_are_included)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\23380\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 722, in mkdir
+    os.mkdir(self, mode)
+    ~~~~~~~~^^^^^^^^^^^^
+FileNotFoundError: [WinError 206] 文件名或扩展名太长。: 'C:\\Users\\23380\\Desktop\\密码比赛\\pqc-a1-5\\build\\repair-delivery-tools\\package-regression\\offline-repair-test-4c7kd06l\\.a15-offline-package-iby80vdh\\extracted\\pqc-a1-5\\build\\repair-staging-20261004-r3\\validation\\real-alt-fixtures-repair-r3-parallel2\\ml-dsa-44'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\23380\Desktop\密码比赛\pqc-a1-5\ops\test_package_project_repair.py", line 196, in test_authorized_hash_bound_test_fixture_keys_are_included
+    self.call()
+    ~~~~~~~~~^^
+  File "C:\Users\23380\Desktop\密码比赛\pqc-a1-5\ops\test_package_project_repair.py", line 86, in call
+    self.module.main()
+    ~~~~~~~~~~~~~~~~^^
+  File "C:\Users\23380\Desktop\密码比赛\pqc-a1-5\build\repair-delivery-tools\package-regression\offline-repair-test-4c7kd06l\project\ops\package_project_repair.py", line 280, in main
+    extract_and_audit(archive_path, extracted, files, evidence)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\23380\Desktop\密码比赛\pqc-a1-5\build\repair-delivery-tools\package-regression\offline-repair-test-4c7kd06l\project\ops\package_project_repair.py", line 217, in extract_and_audit
+    target.parent.mkdir(parents=True, exist_ok=True)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\23380\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 727, in mkdir
+    self.mkdir(mode, parents=False, exist_ok=exist_ok)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\23380\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 722, in mkdir
+    os.mkdir(self, mode)
+    ~~~~~~~~^^^^^^^^^^^^
+FileNotFoundError: [WinError 206] 文件名或扩展名太长。: 'C:\\Users\\23380\\Desktop\\密码比赛\\pqc-a1-5\\build\\repair-delivery-tools\\package-regression\\offline-repair-test-4c7kd06l\\.a15-offline-package-iby80vdh\\extracted\\pqc-a1-5\\build\\repair-staging-20261004-r3\\validation\\real-alt-fixtures-repair-r3-parallel2\\ml-dsa-44'
+
+----------------------------------------------------------------------
+Ran 19 tests in 14.729s
+
+FAILED (errors=1)

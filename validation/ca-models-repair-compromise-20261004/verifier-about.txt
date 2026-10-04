@@ -1,0 +1,7 @@
+Verifpal 1.4.12 - https://verifpal.com
+Verifpal is authored by Nadim Kobeissi.
+Everyone who has contributed to Verifpal is
+named on the Wall of Honor in the Verifpal
+Documentation's Acknowledgments page:
+
+  https://verifpal.com/docs/acknowledgments/

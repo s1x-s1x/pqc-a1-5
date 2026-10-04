@@ -1,0 +1,111 @@
+{
+  "schema": "a15-ca-query-map-v1",
+  "queries": [
+    {
+      "name": "Binding",
+      "query": "authentication? Intermediate -> Client: leafTBS",
+      "meaning": "Accepted leaf identity, online keys, algorithms, use and validity have an issuing-CA transmission; this injective query is stronger than reusable-certificate authorization."
+    },
+    {
+      "name": "LiveAuth",
+      "query": "authentication? Server -> Client: onlineSignature",
+      "meaning": "Accepted online classical proof was transmitted by Server for this transcript."
+    },
+    {
+      "name": "Fresh",
+      "query": "freshness? transcriptClient",
+      "meaning": "The accepted transcript includes fresh client/server random values and ephemeral shares."
+    },
+    {
+      "name": "Secret",
+      "query": "confidentiality? applicationMessage",
+      "meaning": "Application plaintext sent after certificate, online proof and Finished checks remains secret."
+    }
+  ],
+  "policy": "Local fixed policy and checked symbolic use/validity/algorithm labels; no numeric expiry or DER proof.",
+  "certificate_reuse": "Binding authentication is injective. Replay of a legitimately reusable certificate can fail that stronger query at sessions>1; inspect traces before calling it unauthorized binding.",
+  "dual_online": "Additional online alternative proof is separate from CA alternative signing; 128-24 is CA-only.",
+  "honest_execution": "Every checked SIGNVERIF/ASSERT/AEAD_DEC matches in the unsubstituted symbolic execution; functional honest CA/TLS runs are retained separately.",
+  "scenarios": {
+    "M1_honest": {
+      "require_alt": false,
+      "classical_ca_leaked": false,
+      "classical_online_leaked": false,
+      "require_dual_online": false,
+      "alternative_ca_leaked": false,
+      "alternative_online_leaked": false
+    },
+    "M2_honest": {
+      "require_alt": true,
+      "classical_ca_leaked": false,
+      "classical_online_leaked": false,
+      "require_dual_online": false,
+      "alternative_ca_leaked": false,
+      "alternative_online_leaked": false
+    },
+    "M1_ca_leaked": {
+      "require_alt": false,
+      "classical_ca_leaked": true,
+      "classical_online_leaked": false,
+      "require_dual_online": false,
+      "alternative_ca_leaked": false,
+      "alternative_online_leaked": false
+    },
+    "M2_ca_leaked": {
+      "require_alt": true,
+      "classical_ca_leaked": true,
+      "classical_online_leaked": false,
+      "require_dual_online": false,
+      "alternative_ca_leaked": false,
+      "alternative_online_leaked": false
+    },
+    "M1_all_classical": {
+      "require_alt": false,
+      "classical_ca_leaked": true,
+      "classical_online_leaked": true,
+      "require_dual_online": false,
+      "alternative_ca_leaked": false,
+      "alternative_online_leaked": false
+    },
+    "M2_all_classical": {
+      "require_alt": true,
+      "classical_ca_leaked": true,
+      "classical_online_leaked": true,
+      "require_dual_online": false,
+      "alternative_ca_leaked": false,
+      "alternative_online_leaked": false
+    },
+    "M2_dual_all_classical": {
+      "require_alt": true,
+      "classical_ca_leaked": true,
+      "classical_online_leaked": true,
+      "require_dual_online": true,
+      "alternative_ca_leaked": false,
+      "alternative_online_leaked": false
+    },
+    "control_alt_disabled": {
+      "require_alt": false,
+      "classical_ca_leaked": true,
+      "classical_online_leaked": false,
+      "require_dual_online": false,
+      "alternative_ca_leaked": false,
+      "alternative_online_leaked": false
+    },
+    "control_all_ca_leaked": {
+      "require_alt": true,
+      "classical_ca_leaked": true,
+      "classical_online_leaked": false,
+      "require_dual_online": false,
+      "alternative_ca_leaked": true,
+      "alternative_online_leaked": false
+    },
+    "control_both_online_leaked": {
+      "require_alt": true,
+      "classical_ca_leaked": true,
+      "classical_online_leaked": true,
+      "require_dual_online": true,
+      "alternative_ca_leaked": false,
+      "alternative_online_leaked": true
+    }
+  }
+}

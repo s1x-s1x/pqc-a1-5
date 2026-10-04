@@ -1,0 +1,434 @@
+{
+  "schema": "a15-cli-budget-v1",
+  "timestamp_utc": "2026-10-04T07:31:13.279517+00:00",
+  "total": 23,
+  "passed": 23,
+  "failed": 0,
+  "results": [
+    {
+      "case_id": "concurrent-budget",
+      "attempts": 40,
+      "reserved": 17,
+      "status": {
+        "key_id": "847c45d19df09a8476c37f43ad8b012b3c9718e0301344ff744b8df5b4bff9a7",
+        "algorithm": "slh-dsa-sm3-128-24",
+        "limit": 17,
+        "used": 17,
+        "remaining": 0,
+        "states": {
+          "committed": 12,
+          "reserved": 5
+        },
+        "count_reconciled": true
+      },
+      "passed": true
+    },
+    {
+      "case_id": "keygen",
+      "command": [
+        "keygen",
+        "/tmp/a15-cli-doo7qha9/key",
+        "--seed-hex",
+        "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f",
+        "--save-cache",
+        "/tmp/a15-cli-doo7qha9/key.cache",
+        "--cache-level",
+        "5"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "stdout": "{\"command\": \"keygen\", \"pid\": 201, \"backend_requested\": \"auto\", \"backend_selected\": 2, \"threads_requested\": 1, \"library_sha256\": \"6ecb9557f6e72dd5e30c9d3be8eff6c759b928ac005ab6f37f4918064f5d7f36\", \"pk_sha256\": \"cae4d118d336117082e7970ea52846657ae027d40971be8f6b2eff05c603eef9\", \"sk_sha256\": \"5d338be87d9ae4188a744a8659220e04ef5d8da08df75818fa9c8b10d02ee2de\", \"pk_bytes\": 32, \"sk_bytes\": 64, \"signature_bytes\": 2320, \"fixture_seeded\": true}\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "case_id": "keygen-overwrite",
+      "command": [
+        "keygen",
+        "/tmp/a15-cli-doo7qha9/key"
+      ],
+      "returncode": 1,
+      "expected_returncode": 1,
+      "stdout": "",
+      "stderr": "{\"error\": \"FileExistsError: /tmp/a15-cli-doo7qha9/key.pk\"}\n",
+      "passed": true
+    },
+    {
+      "case_id": "cache-load",
+      "command": [
+        "cache-load",
+        "/tmp/a15-cli-doo7qha9/key.cache",
+        "/tmp/a15-cli-doo7qha9/key.pk"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "stdout": "{\"command\": \"cache-load\", \"pid\": 201, \"backend_requested\": \"auto\", \"backend_selected\": 2, \"threads_requested\": 1, \"library_sha256\": \"6ecb9557f6e72dd5e30c9d3be8eff6c759b928ac005ab6f37f4918064f5d7f36\", \"cache_valid\": true}\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "case_id": "sign-None",
+      "command": [
+        "sign",
+        "/tmp/a15-cli-doo7qha9/message.bin",
+        "/tmp/a15-cli-doo7qha9/key.sk",
+        "/tmp/a15-cli-doo7qha9/signature-None.bin",
+        "--context-hex",
+        "aabb",
+        "--load-cache",
+        "/tmp/a15-cli-doo7qha9/key.cache",
+        "--budget-db",
+        "/tmp/a15-cli-doo7qha9/sign.sqlite"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "stdout": "{\"command\": \"sign\", \"pid\": 201, \"backend_requested\": \"auto\", \"backend_selected\": 2, \"threads_requested\": 1, \"library_sha256\": \"6ecb9557f6e72dd5e30c9d3be8eff6c759b928ac005ab6f37f4918064f5d7f36\", \"signature_bytes\": 2320, \"signature_sha256\": \"a0a53eec40fd33f34cd1ad795f11d0bc0f35ff949531476e735a6504a036ac5f\", \"budget_receipt\": \"929d5d015d5940dea177928b110265c3\", \"ledger_uuid\": \"1efb990612a8435bab758db585271b74\", \"budget_evidence\": {\"ledger_uuid\": \"1efb990612a8435bab758db585271b74\", \"receipt\": \"929d5d015d5940dea177928b110265c3\", \"key_id\": \"8f1ad811288545f0df80343c30426da0957a7335af7d044ed8628a37c8f9bb8b\", \"algorithm\": \"slh-dsa-sm3-toy\", \"public_key_sha256\": \"cae4d118d336117082e7970ea52846657ae027d40971be8f6b2eff05c603eef9\", \"message_sha256\": \"7840947851e1deed04524365b7566b792e2819b01a789bf58c3e07e8261cf653\", \"status\": \"committed\", \"signature_sha256\": \"a0a53eec40fd33f34cd1ad795f11d0bc0f35ff949531476e735a6504a036ac5f\"}, \"mode\": \"pure\"}\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "case_id": "verify-None",
+      "command": [
+        "verify",
+        "/tmp/a15-cli-doo7qha9/message.bin",
+        "/tmp/a15-cli-doo7qha9/key.pk",
+        "/tmp/a15-cli-doo7qha9/signature-None.bin",
+        "--context-hex",
+        "aabb"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "stdout": "{\"command\": \"verify\", \"pid\": 201, \"backend_requested\": \"auto\", \"backend_selected\": 2, \"threads_requested\": 1, \"library_sha256\": \"6ecb9557f6e72dd5e30c9d3be8eff6c759b928ac005ab6f37f4918064f5d7f36\", \"valid\": true}\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "case_id": "wrong-context-None",
+      "command": [
+        "verify",
+        "/tmp/a15-cli-doo7qha9/message.bin",
+        "/tmp/a15-cli-doo7qha9/key.pk",
+        "/tmp/a15-cli-doo7qha9/signature-None.bin",
+        "--context-hex",
+        "aabc"
+      ],
+      "returncode": 2,
+      "expected_returncode": 2,
+      "stdout": "{\"command\": \"verify\", \"pid\": 201, \"backend_requested\": \"auto\", \"backend_selected\": 2, \"threads_requested\": 1, \"library_sha256\": \"6ecb9557f6e72dd5e30c9d3be8eff6c759b928ac005ab6f37f4918064f5d7f36\", \"valid\": false}\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "case_id": "sign-sm3",
+      "command": [
+        "sign",
+        "/tmp/a15-cli-doo7qha9/message.bin",
+        "/tmp/a15-cli-doo7qha9/key.sk",
+        "/tmp/a15-cli-doo7qha9/signature-sm3.bin",
+        "--context-hex",
+        "aabb",
+        "--load-cache",
+        "/tmp/a15-cli-doo7qha9/key.cache",
+        "--budget-db",
+        "/tmp/a15-cli-doo7qha9/sign.sqlite",
+        "--prehash",
+        "sm3"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "stdout": "{\"command\": \"sign\", \"pid\": 201, \"backend_requested\": \"auto\", \"backend_selected\": 2, \"threads_requested\": 1, \"library_sha256\": \"6ecb9557f6e72dd5e30c9d3be8eff6c759b928ac005ab6f37f4918064f5d7f36\", \"signature_bytes\": 2320, \"signature_sha256\": \"dc6f2667f11579597c04958560e9b486672b6a57ceb415f69df2fcad96ae4f37\", \"budget_receipt\": \"402af0159801473cb69a0d76801d4490\", \"ledger_uuid\": \"1efb990612a8435bab758db585271b74\", \"budget_evidence\": {\"ledger_uuid\": \"1efb990612a8435bab758db585271b74\", \"receipt\": \"402af0159801473cb69a0d76801d4490\", \"key_id\": \"8f1ad811288545f0df80343c30426da0957a7335af7d044ed8628a37c8f9bb8b\", \"algorithm\": \"slh-dsa-sm3-toy\", \"public_key_sha256\": \"cae4d118d336117082e7970ea52846657ae027d40971be8f6b2eff05c603eef9\", \"message_sha256\": \"54a0773ac119772f0cdca6d3017a3294acf4ec79b84dde99ee4f712f2b3839cf\", \"status\": \"committed\", \"signature_sha256\": \"dc6f2667f11579597c04958560e9b486672b6a57ceb415f69df2fcad96ae4f37\"}, \"mode\": \"sm3\"}\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "case_id": "verify-sm3",
+      "command": [
+        "verify",
+        "/tmp/a15-cli-doo7qha9/message.bin",
+        "/tmp/a15-cli-doo7qha9/key.pk",
+        "/tmp/a15-cli-doo7qha9/signature-sm3.bin",
+        "--context-hex",
+        "aabb",
+        "--prehash",
+        "sm3"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "stdout": "{\"command\": \"verify\", \"pid\": 201, \"backend_requested\": \"auto\", \"backend_selected\": 2, \"threads_requested\": 1, \"library_sha256\": \"6ecb9557f6e72dd5e30c9d3be8eff6c759b928ac005ab6f37f4918064f5d7f36\", \"valid\": true}\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "case_id": "wrong-context-sm3",
+      "command": [
+        "verify",
+        "/tmp/a15-cli-doo7qha9/message.bin",
+        "/tmp/a15-cli-doo7qha9/key.pk",
+        "/tmp/a15-cli-doo7qha9/signature-sm3.bin",
+        "--context-hex",
+        "aabc",
+        "--prehash",
+        "sm3"
+      ],
+      "returncode": 2,
+      "expected_returncode": 2,
+      "stdout": "{\"command\": \"verify\", \"pid\": 201, \"backend_requested\": \"auto\", \"backend_selected\": 2, \"threads_requested\": 1, \"library_sha256\": \"6ecb9557f6e72dd5e30c9d3be8eff6c759b928ac005ab6f37f4918064f5d7f36\", \"valid\": false}\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "case_id": "sign-sha256",
+      "command": [
+        "sign",
+        "/tmp/a15-cli-doo7qha9/message.bin",
+        "/tmp/a15-cli-doo7qha9/key.sk",
+        "/tmp/a15-cli-doo7qha9/signature-sha256.bin",
+        "--context-hex",
+        "aabb",
+        "--load-cache",
+        "/tmp/a15-cli-doo7qha9/key.cache",
+        "--budget-db",
+        "/tmp/a15-cli-doo7qha9/sign.sqlite",
+        "--prehash",
+        "sha256"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "stdout": "{\"command\": \"sign\", \"pid\": 201, \"backend_requested\": \"auto\", \"backend_selected\": 2, \"threads_requested\": 1, \"library_sha256\": \"6ecb9557f6e72dd5e30c9d3be8eff6c759b928ac005ab6f37f4918064f5d7f36\", \"signature_bytes\": 2320, \"signature_sha256\": \"025e5d5fe5b4e174713f69986a80c5be0cfec54e04d896e4148e05a937f5b832\", \"budget_receipt\": \"3514b623bc5145e995f94c7f4cd3047d\", \"ledger_uuid\": \"1efb990612a8435bab758db585271b74\", \"budget_evidence\": {\"ledger_uuid\": \"1efb990612a8435bab758db585271b74\", \"receipt\": \"3514b623bc5145e995f94c7f4cd3047d\", \"key_id\": \"8f1ad811288545f0df80343c30426da0957a7335af7d044ed8628a37c8f9bb8b\", \"algorithm\": \"slh-dsa-sm3-toy\", \"public_key_sha256\": \"cae4d118d336117082e7970ea52846657ae027d40971be8f6b2eff05c603eef9\", \"message_sha256\": \"77eb372d792427a96204d58daa6e2f70372a88ce51bf8754e1f470fd588d871a\", \"status\": \"committed\", \"signature_sha256\": \"025e5d5fe5b4e174713f69986a80c5be0cfec54e04d896e4148e05a937f5b832\"}, \"mode\": \"sha256\"}\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "case_id": "verify-sha256",
+      "command": [
+        "verify",
+        "/tmp/a15-cli-doo7qha9/message.bin",
+        "/tmp/a15-cli-doo7qha9/key.pk",
+        "/tmp/a15-cli-doo7qha9/signature-sha256.bin",
+        "--context-hex",
+        "aabb",
+        "--prehash",
+        "sha256"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "stdout": "{\"command\": \"verify\", \"pid\": 201, \"backend_requested\": \"auto\", \"backend_selected\": 2, \"threads_requested\": 1, \"library_sha256\": \"6ecb9557f6e72dd5e30c9d3be8eff6c759b928ac005ab6f37f4918064f5d7f36\", \"valid\": true}\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "case_id": "wrong-context-sha256",
+      "command": [
+        "verify",
+        "/tmp/a15-cli-doo7qha9/message.bin",
+        "/tmp/a15-cli-doo7qha9/key.pk",
+        "/tmp/a15-cli-doo7qha9/signature-sha256.bin",
+        "--context-hex",
+        "aabc",
+        "--prehash",
+        "sha256"
+      ],
+      "returncode": 2,
+      "expected_returncode": 2,
+      "stdout": "{\"command\": \"verify\", \"pid\": 201, \"backend_requested\": \"auto\", \"backend_selected\": 2, \"threads_requested\": 1, \"library_sha256\": \"6ecb9557f6e72dd5e30c9d3be8eff6c759b928ac005ab6f37f4918064f5d7f36\", \"valid\": false}\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "case_id": "sign-sha512",
+      "command": [
+        "sign",
+        "/tmp/a15-cli-doo7qha9/message.bin",
+        "/tmp/a15-cli-doo7qha9/key.sk",
+        "/tmp/a15-cli-doo7qha9/signature-sha512.bin",
+        "--context-hex",
+        "aabb",
+        "--load-cache",
+        "/tmp/a15-cli-doo7qha9/key.cache",
+        "--budget-db",
+        "/tmp/a15-cli-doo7qha9/sign.sqlite",
+        "--prehash",
+        "sha512"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "stdout": "{\"command\": \"sign\", \"pid\": 201, \"backend_requested\": \"auto\", \"backend_selected\": 2, \"threads_requested\": 1, \"library_sha256\": \"6ecb9557f6e72dd5e30c9d3be8eff6c759b928ac005ab6f37f4918064f5d7f36\", \"signature_bytes\": 2320, \"signature_sha256\": \"4883a4d861edb94bb1d1058f1afbbbb19c9c467fe1af3b97b83796d053e0ddad\", \"budget_receipt\": \"6e08f5d3c18e418cafc4b3fe08473a34\", \"ledger_uuid\": \"1efb990612a8435bab758db585271b74\", \"budget_evidence\": {\"ledger_uuid\": \"1efb990612a8435bab758db585271b74\", \"receipt\": \"6e08f5d3c18e418cafc4b3fe08473a34\", \"key_id\": \"8f1ad811288545f0df80343c30426da0957a7335af7d044ed8628a37c8f9bb8b\", \"algorithm\": \"slh-dsa-sm3-toy\", \"public_key_sha256\": \"cae4d118d336117082e7970ea52846657ae027d40971be8f6b2eff05c603eef9\", \"message_sha256\": \"3f272675152f454e3012f4fc2b61c8ba9a8aaf26862cf9d9ee75413f65fb70fb\", \"status\": \"committed\", \"signature_sha256\": \"4883a4d861edb94bb1d1058f1afbbbb19c9c467fe1af3b97b83796d053e0ddad\"}, \"mode\": \"sha512\"}\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "case_id": "verify-sha512",
+      "command": [
+        "verify",
+        "/tmp/a15-cli-doo7qha9/message.bin",
+        "/tmp/a15-cli-doo7qha9/key.pk",
+        "/tmp/a15-cli-doo7qha9/signature-sha512.bin",
+        "--context-hex",
+        "aabb",
+        "--prehash",
+        "sha512"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "stdout": "{\"command\": \"verify\", \"pid\": 201, \"backend_requested\": \"auto\", \"backend_selected\": 2, \"threads_requested\": 1, \"library_sha256\": \"6ecb9557f6e72dd5e30c9d3be8eff6c759b928ac005ab6f37f4918064f5d7f36\", \"valid\": true}\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "case_id": "wrong-context-sha512",
+      "command": [
+        "verify",
+        "/tmp/a15-cli-doo7qha9/message.bin",
+        "/tmp/a15-cli-doo7qha9/key.pk",
+        "/tmp/a15-cli-doo7qha9/signature-sha512.bin",
+        "--context-hex",
+        "aabc",
+        "--prehash",
+        "sha512"
+      ],
+      "returncode": 2,
+      "expected_returncode": 2,
+      "stdout": "{\"command\": \"verify\", \"pid\": 201, \"backend_requested\": \"auto\", \"backend_selected\": 2, \"threads_requested\": 1, \"library_sha256\": \"6ecb9557f6e72dd5e30c9d3be8eff6c759b928ac005ab6f37f4918064f5d7f36\", \"valid\": false}\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "case_id": "sign-shake128",
+      "command": [
+        "sign",
+        "/tmp/a15-cli-doo7qha9/message.bin",
+        "/tmp/a15-cli-doo7qha9/key.sk",
+        "/tmp/a15-cli-doo7qha9/signature-shake128.bin",
+        "--context-hex",
+        "aabb",
+        "--load-cache",
+        "/tmp/a15-cli-doo7qha9/key.cache",
+        "--budget-db",
+        "/tmp/a15-cli-doo7qha9/sign.sqlite",
+        "--prehash",
+        "shake128"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "stdout": "{\"command\": \"sign\", \"pid\": 201, \"backend_requested\": \"auto\", \"backend_selected\": 2, \"threads_requested\": 1, \"library_sha256\": \"6ecb9557f6e72dd5e30c9d3be8eff6c759b928ac005ab6f37f4918064f5d7f36\", \"signature_bytes\": 2320, \"signature_sha256\": \"a0e1d4e706e3045ab982656b3dbfe1b81924f13f4309603a5e41867354294f07\", \"budget_receipt\": \"71bbf07b70dd42d392b1e36da2fbb4ad\", \"ledger_uuid\": \"1efb990612a8435bab758db585271b74\", \"budget_evidence\": {\"ledger_uuid\": \"1efb990612a8435bab758db585271b74\", \"receipt\": \"71bbf07b70dd42d392b1e36da2fbb4ad\", \"key_id\": \"8f1ad811288545f0df80343c30426da0957a7335af7d044ed8628a37c8f9bb8b\", \"algorithm\": \"slh-dsa-sm3-toy\", \"public_key_sha256\": \"cae4d118d336117082e7970ea52846657ae027d40971be8f6b2eff05c603eef9\", \"message_sha256\": \"5446cd62d3270e6cb5fb864e4e5a89aa04c1a48a08efcac1d59c7a6938fb9c54\", \"status\": \"committed\", \"signature_sha256\": \"a0e1d4e706e3045ab982656b3dbfe1b81924f13f4309603a5e41867354294f07\"}, \"mode\": \"shake128\"}\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "case_id": "verify-shake128",
+      "command": [
+        "verify",
+        "/tmp/a15-cli-doo7qha9/message.bin",
+        "/tmp/a15-cli-doo7qha9/key.pk",
+        "/tmp/a15-cli-doo7qha9/signature-shake128.bin",
+        "--context-hex",
+        "aabb",
+        "--prehash",
+        "shake128"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "stdout": "{\"command\": \"verify\", \"pid\": 201, \"backend_requested\": \"auto\", \"backend_selected\": 2, \"threads_requested\": 1, \"library_sha256\": \"6ecb9557f6e72dd5e30c9d3be8eff6c759b928ac005ab6f37f4918064f5d7f36\", \"valid\": true}\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "case_id": "wrong-context-shake128",
+      "command": [
+        "verify",
+        "/tmp/a15-cli-doo7qha9/message.bin",
+        "/tmp/a15-cli-doo7qha9/key.pk",
+        "/tmp/a15-cli-doo7qha9/signature-shake128.bin",
+        "--context-hex",
+        "aabc",
+        "--prehash",
+        "shake128"
+      ],
+      "returncode": 2,
+      "expected_returncode": 2,
+      "stdout": "{\"command\": \"verify\", \"pid\": 201, \"backend_requested\": \"auto\", \"backend_selected\": 2, \"threads_requested\": 1, \"library_sha256\": \"6ecb9557f6e72dd5e30c9d3be8eff6c759b928ac005ab6f37f4918064f5d7f36\", \"valid\": false}\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "case_id": "sign-shake256",
+      "command": [
+        "sign",
+        "/tmp/a15-cli-doo7qha9/message.bin",
+        "/tmp/a15-cli-doo7qha9/key.sk",
+        "/tmp/a15-cli-doo7qha9/signature-shake256.bin",
+        "--context-hex",
+        "aabb",
+        "--load-cache",
+        "/tmp/a15-cli-doo7qha9/key.cache",
+        "--budget-db",
+        "/tmp/a15-cli-doo7qha9/sign.sqlite",
+        "--prehash",
+        "shake256"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "stdout": "{\"command\": \"sign\", \"pid\": 201, \"backend_requested\": \"auto\", \"backend_selected\": 2, \"threads_requested\": 1, \"library_sha256\": \"6ecb9557f6e72dd5e30c9d3be8eff6c759b928ac005ab6f37f4918064f5d7f36\", \"signature_bytes\": 2320, \"signature_sha256\": \"c4bbf4b5b6629dc6bf807cc2eb693940567d89f989a022d45efd27d66dd013a6\", \"budget_receipt\": \"2f0caee176f348fa89427fe6b66968f6\", \"ledger_uuid\": \"1efb990612a8435bab758db585271b74\", \"budget_evidence\": {\"ledger_uuid\": \"1efb990612a8435bab758db585271b74\", \"receipt\": \"2f0caee176f348fa89427fe6b66968f6\", \"key_id\": \"8f1ad811288545f0df80343c30426da0957a7335af7d044ed8628a37c8f9bb8b\", \"algorithm\": \"slh-dsa-sm3-toy\", \"public_key_sha256\": \"cae4d118d336117082e7970ea52846657ae027d40971be8f6b2eff05c603eef9\", \"message_sha256\": \"b1eb21b88262b455549801650a0b30ed89cc999391f22d2ece2ae9d6d7037bd1\", \"status\": \"committed\", \"signature_sha256\": \"c4bbf4b5b6629dc6bf807cc2eb693940567d89f989a022d45efd27d66dd013a6\"}, \"mode\": \"shake256\"}\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "case_id": "verify-shake256",
+      "command": [
+        "verify",
+        "/tmp/a15-cli-doo7qha9/message.bin",
+        "/tmp/a15-cli-doo7qha9/key.pk",
+        "/tmp/a15-cli-doo7qha9/signature-shake256.bin",
+        "--context-hex",
+        "aabb",
+        "--prehash",
+        "shake256"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "stdout": "{\"command\": \"verify\", \"pid\": 201, \"backend_requested\": \"auto\", \"backend_selected\": 2, \"threads_requested\": 1, \"library_sha256\": \"6ecb9557f6e72dd5e30c9d3be8eff6c759b928ac005ab6f37f4918064f5d7f36\", \"valid\": true}\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "case_id": "wrong-context-shake256",
+      "command": [
+        "verify",
+        "/tmp/a15-cli-doo7qha9/message.bin",
+        "/tmp/a15-cli-doo7qha9/key.pk",
+        "/tmp/a15-cli-doo7qha9/signature-shake256.bin",
+        "--context-hex",
+        "aabc",
+        "--prehash",
+        "shake256"
+      ],
+      "returncode": 2,
+      "expected_returncode": 2,
+      "stdout": "{\"command\": \"verify\", \"pid\": 201, \"backend_requested\": \"auto\", \"backend_selected\": 2, \"threads_requested\": 1, \"library_sha256\": \"6ecb9557f6e72dd5e30c9d3be8eff6c759b928ac005ab6f37f4918064f5d7f36\", \"valid\": false}\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "case_id": "CLI-budget-committed",
+      "status": {
+        "key_id": "8f1ad811288545f0df80343c30426da0957a7335af7d044ed8628a37c8f9bb8b",
+        "algorithm": "slh-dsa-sm3-toy",
+        "limit": 18446744073709551616,
+        "used": 6,
+        "remaining": 18446744073709551610,
+        "states": {
+          "committed": 6
+        },
+        "count_reconciled": true
+      },
+      "passed": true
+    }
+  ],
+  "library_sha256": "6ecb9557f6e72dd5e30c9d3be8eff6c759b928ac005ab6f37f4918064f5d7f36",
+  "sources_sha256": {
+    "tools/cli.py": "80fa717e3ddc369f76dc89e6547272c1fbbd99c7d84840e837259965621349e3",
+    "tools/signing_budget.py": "db3fe3982dd66bbef74dedbb273e1bfd136213563d324ba5807c13871e205d1f",
+    "tools/native.py": "2bd269ee8f4b091d6da86e73e5a18e6c0e091800c904329fb91f34f16a892fd9",
+    "tools/check_cli_budget.py": "c68f2293ce542a42921f50bfc253b541878b8274fd5f783db6bdcec7c8b583c4"
+  }
+}
